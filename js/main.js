@@ -87,9 +87,13 @@
 		//ステータスのテキストボックスの文字
 		$('.ui-dropdownchecklist-text').css('font-size',  newFontSize + '%');		
 		$('.before_list_line label').css('font-size',  newFontSize + '%');		//リスト前行のラベル
-		$('#fig3-1 .edit_buttons button.button.ui-button').css('font-size',  newFontSize - strechFix1 + '%');		
+		//Fig.3-1のボタンのフォントサイズ
 		$('#fig3-1 .edit_buttons button.button.ui-button').css('font-size',  newFontSize - strechFix1 + '%');		
 		$('.users_table th').css('font-size',  newFontSize - strechFix1 + '%');		
+		$('#tab-container ul li').css('font-size',  newFontSize + '%');			
+		$('#tab-container .edit_buttons .normal-button').css('font-size',  newFontSize + '%');		
+		$('.space_width').css('font-size',  newFontSize + '%');	
+		$('.space_width_syubetu label').css('font-size',  newFontSize + '%');	
 	}
 	
 	//画面伸縮時に画面の高さを修正する

@@ -886,9 +886,13 @@ zoom: 1;    /* for IE */
  * テキストボックス左端にあわせる
  * 作成日:2014.06.20
  * 作成者:H.U
+ * 修正日:2014.07.21
+ * 修正者:T.M
+ * 内容  :レスポンシブ対応
  */
 .space_width{
-	width:15%;
+	display: inline;	/* インライン要素として扱う */
+	margin-right: 0.5%;	/* 最低限の間隔を取る */
 }
 /*
  * クラス:space_width
@@ -899,7 +903,6 @@ zoom: 1;    /* for IE */
 .space_width_syubetu{
 	width:12%;
 }
-
 /* fig.9 */
 .users_table{
 	width: 100%;
