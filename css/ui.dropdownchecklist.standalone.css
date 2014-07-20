@@ -4,6 +4,7 @@
 .ui-dropdownchecklist {
 	font-size: medium;
 	color: black;
+	border: solid 1px #eee;	/* 薄いグレーの罫線で囲む */
 }
 .ui-dropdownchecklist-selector {
 	height: 20px;
@@ -15,6 +16,7 @@
 .ui-dropdownchecklist-dropcontainer {
 	background-color: #fff;
 	border: 1px solid #999;
+	margin-top: -2px;		/* 2px分上に引き上げる */
 }
 .ui-dropdownchecklist-item {
 }

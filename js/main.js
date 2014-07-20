@@ -95,11 +95,36 @@
 		$('.space_width').css('font-size',  newFontSize + '%');	
 		$('.space_width_syubetu label').css('font-size',  newFontSize + '%');	
 	}
+
+	var dropdownPerMain = 0.33;	//ドロップダウンチェックリストの幅の割合
+	var dropdownTextFix = 2;
+
+	/* 関数名:dropdownResize()
+	 * 引数　:なし
+	 * 戻り値:なし
+	 * 概要  :ドロップダウンチェックリストのレスポンシブ対応関数
+	 * 作成日:14.07.21
+	 * 作成者:T.M
+	*/
+	function dropdownResize(){
+		//ドロップダウンチェックリストのテキストボックスの外側をリサイズ
+		$('.ui-dropdownchecklist-selector').css('width', $('.main').width() * dropdownPerMain);
+		//ドロップダウンチェックリストのテキストボックスの内側をリサイズ
+//		$('.ui-dropdownchecklist-text').css('width', $('.main').width() * dropdownPerMain);
+		//ドロップダウンチェックリストのドロップダウンをリサイズ
+//		$('.ui-dropdownchecklist-dropcontainer-wrapper').css('width', $('.main').width() * dropdownPerMain);
+		//ドロップダウンチェックリストのドロップダウンをリサイズ
+		$('.ui-dropdownchecklist').css('width', $('.main').width() * dropdownPerMain);		
+	}
+
+
+
 	
 	//画面伸縮時に画面の高さを修正する
 	$(window).resize(function(){
 		setContentHeight();	//setContentHeightを呼び出し高さを修正
 		changeFontSize();	//フォントサイズを調整する
+		dropdownResize();
 	});
 	
 	changeFontSize();
@@ -1399,6 +1424,7 @@ $(function() {
 		//下にあるページを隠す
 	}
 
+	
 	/* 関数名:onPageClose = function()
 	 * 引数　:なし
 	 * 戻り値:なし
