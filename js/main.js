@@ -1689,7 +1689,7 @@ $(document).on('change', '.list td select', function(e){
 
 
 var mainWidthPercent = 0.97;		//mainのタグの幅に対するリスト幅の割合
-var tabContainerPercent = 0.98;		//タブの幅に対するリスト幅の割合
+var tabContainerPercent = 0.98;		//タブの幅に対するリスト幅の割合。paddingの値を加味する
 var tabContainerWidth;						//タブの幅を格納する変数
 
 /* 関数名: gridResize()

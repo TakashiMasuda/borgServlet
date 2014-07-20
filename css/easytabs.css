@@ -14,6 +14,7 @@
 	/*max-width: 600px;*/	/* 最大幅 */
 	/*min-width: 300px;*/	/* 最小幅 */
 	margin: 0 auto 0;	/* 中央寄せ */
+	padding: 0 1%;		/* 左右1%のpadding */
 }
 /*
  * クラス:panel-container

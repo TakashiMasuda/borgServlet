@@ -1117,9 +1117,10 @@ th.fig9_content_header{
 /* 製品名のテキストボックス */
 .single-line-text.right.product-select{
 	/* 種別、製品名を並べるにあたって幅の配分をする必要があり、製品名は82%に設定 */
-	width: 82%;
+	width: 80%;			/* 種別とあわせて100%の幅を取るようにし、こちらは80%を取る */
 	float: left;		/* 左に寄せる */
 	clear: none;		/* 回り込みを許可する */
+	text-align: center;	/* 中央に寄せる */
 }
 /* 製品名のテキストボックスのボタン */
 .single-line-text.right.product-select button.button.ui-button{
@@ -1138,7 +1139,7 @@ th.fig9_content_header{
 
 /* 種別の項目を囲むdivタグについて */
 .parallel-text.left.product-category{
-	width: 18%;		/* 幅を18%に設定 */
+	width: 20%;		/* 幅を20%に設定 */
 }
 /* 種別の項目の文字について */
 .parallel-text.left.product-category label{
@@ -1282,6 +1283,7 @@ th.fig9_content_header{
 	width: 8.49%;			/* 高さを30pxにする */
 	height: 32px;			/* 幅も30pxにする */
 	vertical-align: middle;	/* 縦方向の真ん中に置く */
+	cursor: pointer;		/* ボタンは指で指す */
 }
 /* ボタンをJQuery UIのボタンにした場合 */
 button.button.ui-button{
@@ -1372,12 +1374,12 @@ button.button.list-sort-button{
 }
 /* 通常のボタン */
 button.button.normal-button{
-	width: auto;		/* 横幅自動調節 */
+	width: auto !important;		/* 横幅自動調節 */
 	max-width: none;	/* 最大幅なし */
 	max-height: none;	/* 最大高なし */
 	height: auto;		/* 高さ自動調節 */
 	/* JQuery UIのテキストのボタンは大きめなので小さく */
-	font-size: small;	
+	font-size: small;	/* 小さめのテキスト */
 }
 /* fig.8-3、8-4の見出し */
 #graph-region #sub_header{
