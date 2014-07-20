@@ -998,6 +998,7 @@ th.fig9_content_header{
 /* fig.2請求額のスタイルシート */
 #fig2 .textbox_M.bill{
 	width: 30%;
+	text-align: center;
 }
 /* fig.2請求額のテキストエリア */
 #fig2 .textbox_M.bill input{
@@ -1010,9 +1011,10 @@ th.fig9_content_header{
 }
 /* fig.2請求額の文字 */
 #fig2 .right.textbox_M.bill label{
-	width: 30%;			/* 幅30% */
+	width: auto;			/* 幅 */
 	display: inline;	/* インライン */
-	vertical-align: sub;/* サブ */
+	vertical-align: sub;/* サブ */	
+	vertical-align: -webkit-baseline-middle;/* webkitでは中間 */
 }
 /* 以上、請求額のスタイルシート */
 /*
