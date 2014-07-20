@@ -86,6 +86,7 @@
 		$('.voucher-status-text').css('font-size',  newFontSize + '%');		//ステータスの文字
 		//ステータスのテキストボックスの文字
 		$('.ui-dropdownchecklist-text').css('font-size',  newFontSize + '%');		
+		$('.before_list_line label').css('font-size',  newFontSize + '%');		//リスト前行のラベル
 		$('#fig3-1 .edit_buttons button.button.ui-button').css('font-size',  newFontSize - strechFix1 + '%');		
 		$('#fig3-1 .edit_buttons button.button.ui-button').css('font-size',  newFontSize - strechFix1 + '%');		
 		$('.users_table th').css('font-size',  newFontSize - strechFix1 + '%');		
@@ -1689,7 +1690,7 @@ $(document).on('change', '.list td select', function(e){
 
 
 var mainWidthPercent = 0.97;		//mainのタグの幅に対するリスト幅の割合
-var tabContainerPercent = 0.98;		//タブの幅に対するリスト幅の割合。paddingの値を加味する
+var tabContainerPercent = 0.99;		//タブの幅に対するリスト幅の割合。paddingの値を加味する
 var tabContainerWidth;						//タブの幅を格納する変数
 
 /* 関数名: gridResize()

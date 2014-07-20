@@ -1129,8 +1129,8 @@ th.fig9_content_header{
 }
 /* 製品名のテキストボックスについて */
 .pulldown-menu.product{
-	width: 77.2%;		/* 幅を78.1%分取る */
-	text-align:left;
+	width: 76.0%;		/* 幅を76.0%分取る */
+	text-align:left;	/* 左詰 */
 }
 /* 製品名の項目の文字について */
 .single-line-text.right.product-select label{
@@ -1273,6 +1273,13 @@ th.fig9_content_header{
 .sort-by-year-button,sort-by-month-button{
 	float: right;	/* 右に寄せる */
 }
+/* 月別ソートボタン */
+.a_line button.button.ui-button.sort-by-month-button{
+	margin-right: 0.9%;	/* 0.9%の右margin */
+}
+/* 年別ソートボタン */
+.a_line button.button.ui-button.sort-by-year-button{
+	margin-right: 0;	/* 0%の右margin */}
 /*
  * クラス:button
  * 概要  :ボタンの基底クラス
@@ -1695,4 +1702,9 @@ input#denpyo{
  */
 button.button.ui-button.summary-button{
 	margin-right: 0;	/* 右marginをなくす */
+}
+/* タブパネル内の編集ボタン群 */
+.panel-container .line.edit_buttons{
+	width: 98%;	/* 幅をpaddingを加味して98%にする */
+	padding: 1%;	/* 全方向に1%のpadding */
 }
