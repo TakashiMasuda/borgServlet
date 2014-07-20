@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>取引先登録・編集</title>
+<link href="css/borgstyle.css" rel="stylesheet" type="text/css">
+<!--link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css"-->
+<link href="css/pqgrid.min.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<!--script language="javascript" type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js" charset="utf-8"></script-->
+<script language="javascript" type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+<!--[if lt IE 9]>
+    <script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script>
+<![endif]-->
+<script language="javascript" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
+<script language="javascript" type="text/javascript" href="js/jqplot.categoryAxisRenderer.min.js"></script>
+
+<link href="css/pqgrid.min.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript" src="js/pqgrid.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/rainbow.min.js"></script>
+</head>
+<body>
+<div id = "container">
+<div class = "main">
+<script type='text/javascript'>
+//ページの読み込みが終わった後の処理
+$(document).ready(function(){
+	setButtons();	//JQuery UIのボタンを配置する
+});
+</script>
+<!-- 見出し部を開始 -->
+<div id="header">
+	<!-- ヘッダーのタイトル部分 -->
+	<div id="header-title">
+		<!-- このページの要旨 -->
+		<h1>取引先登録・編集</h1>
+    	<!-- ヘッダーのタイトル部分を閉じる -->
+    </div>
+   	<!-- ヘッダーのボタン群 -->
+	<div id="header-buttons" class="half_line">
+   		<!-- 閉じるボタン -->
+		<button class="backbutton button close-button" value="戻る" name="fig1" />
+   		<!-- リンクのリストダイアログを出すボタン -->
+		<button class="button setting-button" />
+   	<!-- ヘッダーのボタン群を閉じる -->
+   	</div>
+<!-- ヘッダー部分を終える -->
+</div>
+<div id = "fig4-1" class="figs">
+<div class=" parallel-text left">
+  <label for="textfield">日付</label>
+  <input type="text" name="date" id="date" class="textbox_S date default_textbox" readonly>
+  </div>
+  <div class="parallel-text right">
+  <label for="textfield2">更新日</label>
+  <input type="text" name="update" id="update" class="textbox_S date default_textbox" readonly>
+  </div>
+
+<div class="parallel-text left">
+  <label for="textfield3">担当者</label>
+  <input type="text" name="charger" id="charger"  class="textbox_S pulldown-menu person default_textbox" readonly>
+</div>
+<div class="parallel-text right">
+<label for="textfield4">作成者</label>
+<input type="text" name="writer" id="writer"  class="textbox_S pulldown-menu person default_textbox" readonly>
+</div>
+<div class="single-line-text">
+    <label for="textfield9">取引先名</label>
+    <input type="text" name="account_name" id="account_name"  class="textbox_L pulldown-menu customer default_textbox">
+</div>
+
+<div class="margin_top">
+
+<div class="left space_width_syubetu">
+    <label>種別</label>
+    </div>
+<div class="left space_width">
+  顧客<input type="checkbox" name="customertype" class="checkbox" value="customer">
+</div>
+  <div class="left space_width">
+	製造<input type="checkbox" name="customertype" class="checkbox" value="manufacturer">
+  </div>
+  <div class="left space_width">
+	加工<input type="checkbox" name="customertype" class="checkbox" value="processor">
+  </div>
+  <div class="left space_width">
+	倉庫<input type="checkbox" name="customertype" class="checkbox" value="warehouse">
+  </div> 
+   <div class="left space_width" name="customertype">
+	代理店<input type="checkbox" name="customertype" class="checkbox" value="agency">
+  </div>
+</div>
+  <div class="line a_line before_list_line">
+  	<label for="textfield3" class="left">取引一覧</label>
+  	<button name="summary-button" class="button right margin-bottom summary-button" id="summary-button" value="まとめ">
+  </div>
+<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+<div class="wrap-list">
+<!-- JQ Gridによりリストを形成するtableタグ -->
+<table id="fig4-1-list" class="list"></table>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

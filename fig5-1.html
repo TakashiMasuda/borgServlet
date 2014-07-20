@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>製品登録</title>
+<link href="css/borgstyle.css" rel="stylesheet" type="text/css">
+<!--link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css"-->
+<link href="css/pqgrid.min.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<!--script language="javascript" type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js" charset="utf-8"></script-->
+<script language="javascript" type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+<!--[if lt IE 9]>
+    <script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script>
+<![endif]-->
+<script language="javascript" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
+<script language="javascript" type="text/javascript" href="js/jqplot.categoryAxisRenderer.min.js"></script>
+
+<link href="css/pqgrid.min.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript" src="js/pqgrid.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/rainbow.min.js"></script>
+
+</head>
+<body>
+<div id = "container">
+<div class="main">
+<script type='text/javascript'>
+//ページの読み込みが終わった後の処理
+$(document).ready(function(){
+	setButtons();	//JQuery UIのボタンを配置する
+});
+</script>
+<!-- 見出し部を開始 -->
+<div id="header">
+	<!-- ヘッダーのタイトル部分 -->
+	<div id="header-title">
+		<!-- このページの要旨 -->
+		<h1>製品登録</h1>
+    	<!-- ヘッダーのタイトル部分を閉じる -->
+    </div>
+   	<!-- ヘッダーのボタン群 -->
+	<div id="header-buttons" class="half_line">
+   		<!-- 閉じるボタン -->
+		<button class="backbutton button close-button" value="戻る" name="fig1" />
+   		<!-- リンクのリストダイアログを出すボタン -->
+		<button class="button setting-button" />
+   	<!-- ヘッダーのボタン群を閉じる -->
+   	</div>
+<!-- ヘッダー部分を終える -->
+</div>
+<div id = "fig5-1" class="figs">
+<div class=" parallel-text left">
+  <label for="textfield">日付</label>
+  <input type="text" name="date" id="date" class="textbox_S date default_textbox" readonly>
+  </div>
+  <div class="parallel-text right">
+  <label for="textfield2">更新日</label>
+  <input type="text" name="update" id="update" class="textbox_S date default_textbox" readonly>
+  </div>
+
+<div class="parallel-text left">
+  <label for="textfield3">担当者</label>
+  <input type="text" name="charger" id="charger"  class="textbox_S pulldown-menu person default_textbox" readonly>
+</div>
+<div class="parallel-text right">
+  <label for="textfield4">作成者</label>
+<input type="text" name="writer" id="writer"  class="textbox_S pulldown-menu person default_textbox" readonly>
+</div>
+<div class="single-line-text">
+  <label for="textfield9">分類</label>
+  <input type="text" name="categories" id="categories"  class="textbox_L pulldown-menu categories default_textbox  parts_height select-text-box">
+    <button name="select-button" class="button select-button " id="select-button" value="選択">
+</div>
+<div class="single-line-text">
+  <label for="textfield9">製品名</label>
+  <input type="text" name="product" id="product"  class="textbox_L default_textbox">
+</div>
+<div class="single-line-text">
+  <label for="textfield9">メーカー</label>
+  <input type="text" name="maker" id="maker"  class="textbox_L  pulldown-menu customer select-text-box default_textbox parts_height">
+  <button name="select_button" id="select_button" value="選択" class="button select-button" />
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+<!-- @make
+	 6/20 
+	 図作成
+     T.M
+     
+	 @mod
+	 6/20 19:00
+     図形を追加
+     H.U
+     -->

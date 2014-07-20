@@ -1,0 +1,62 @@
+/* EasyTabs公式サンプルCSS */
+	#tab-container ul { margin: 0; padding: 0; }
+	#tab-container ul li { display: inline-block; background: #ccc; border: solid 1px; border-bottom: none; }
+	#tab-container ul li a { display: block; padding: 5px; outline: none; color: #000;}
+	#tab-container ul li a:hover { text-decoration: underline; }
+	#tab-container ul li.active { background: #fff; padding-top: 6px; position: relative; top: 1px; }
+	#tab-container ul li a.active { font-weight: bold; }
+	#tab-container .panel-container { border: solid 1px; padding: 0px; }
+/* ここまで公式サンプルCSS */
+
+/* タブ全体を包むタグ */
+#tab-container{
+	width: 100%;		/* 幅 */
+	/*max-width: 600px;*/	/* 最大幅 */
+	/*min-width: 300px;*/	/* 最小幅 */
+	margin: 0 auto 0;	/* 中央寄せ */
+}
+/*
+ * クラス:panel-container
+ * 概要  :タブのパネル部分
+ * 作成日:2014.07.04
+ * 作成者:T.M
+*/
+.panel-container{
+	width: 100%;		/* 幅 */
+	padding: 20px;		/* 枠の内側に余白 */
+	background: #FFF;	/* 背景色を白にする */
+}
+/* パネルの中の各項目 */
+.panel-container > *{
+	padding: 1% 0.5%;	/* 全体的に余白 */
+	margin: 0 auto 0;	/* 中央寄せ*/
+}
+/*
+ * クラス:list-wrap
+ * 概要  :リストを囲む枠
+ * 作成日:2014.07.04
+ * 作成者:T.M
+*/
+.list-wrap{
+	clear: both;	/* 回り込みを防止 */
+	width: 100%;	/* 幅 */
+}
+/* リスト */
+#gbox_list{
+	margin: 0 auto 0;	/* 中央に寄せる */
+}
+/* タブのメニューボタン */
+#tab-container ul li {
+	border-top-left-radius: 5px 5px;/* 左上角を丸くする */
+	border-top-right-radius: 5px 5px;/* 右上角を丸くする */
+}
+/* タブのメニューボタンのテキスト部分 */
+#tab-container ul li a{
+	text-decoration: none;			/* 下線を消す */
+}
+/* Fig.6用タブ用の記述 */
+/* panel-conainerの子要素 */
+#fig6 .panel-container > *{
+/*	padding-bottom: 0px;*/	/* 下paddingを消す */
+}
+/* Fig.6用タブの記述終了 */

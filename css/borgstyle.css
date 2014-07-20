@@ -1,0 +1,1696 @@
+@charset "utf-8";
+/* bodyタグ。全体に影響を及ぼす */
+body{
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	margin: 0 1% 0;
+	font-size: 90%;	/* 全体的を通常の9割程度のサイズにする */
+}
+/* クリック時の動作についてのスタイルシート */
+*:focus { 
+	outline:none;	/* 表示される青い枠線を消す */
+}	
+
+/* ヘッダー */
+#header{
+	display: block;	/* ブロックとして扱う */
+	margin-bottom: 1%;	/* 1%の下margin */
+	margin-top: 5px;	/* 上に5pxのmargin */
+}
+.maincontent{
+	clear: both;
+	display: block;
+}
+/*
+ * クラス:
+ * 概要  :画面サイズの割合を定義
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+#container {
+	width: 100%;		/* 幅を100%に設定 */
+	height: 100%;		/* 高さをautoに設定 */ 
+}
+
+/*
+ * クラス:main
+ * 概要  :画面全体の定義
+ * 作成日:2014.07.15
+ * 作成者:T.M
+ */
+.page {
+	width: 100%;		/* 幅の基準パーセンテージ */
+	height: inherit;	/* containerの高さを継承 */
+}/*
+ * クラス:main
+ * 概要  :画面全体の定義
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.main {
+/*	min-width: 310px;*/	/* 画面幅の最小値*/
+	max-width: 768px;	/* 画面幅の最大値 */
+	width: 100%;		/* 幅の基準パーセンテージ */
+	height: inherit;	/* containerの高さを継承 */
+	margin: 0 auto 0;	/* 画面全体の各マージン */
+	max-height: 1024px;	/* 画面の最大高 */
+}
+
+/*
+ * クラス:
+ * 概要  :fig1に共通する属性
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+#fig1 {
+	text-align: center; /* 文字を中央揃えに */
+	height: inherit;	/* 高さを継承する */
+	max-height: 600px;	/* 最大の高さを指定 */
+}
+
+/*
+ * クラス:
+ * 概要  :fig7に共通する属性
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ * 修正日:2014.06.13
+ * 修正者:H.U
+ * コメント内容の修正
+ */
+#fig7 {
+	text-align: center; /* 文字を中央揃えに */
+}
+	
+/*
+ * クラス:calendar
+ * 概要  :カレンダーの幅を定義
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.calendar {
+	width: 10%;			/* 幅を10%に指定*/
+}
+
+/*
+ * クラス:check_left
+ * 概要  :チェックボックスを左に寄せる
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ * 修正日:2014.06.13
+ * 修正者:H.U
+ * コメント内容の修正
+ */
+.check_left {
+	margin-right: 8%;		/* 幅を10%に指定*/
+	margin-bottom: 5px;		/* 下余白を20pxで指定 */
+	float: left;			/* 左に滑り込ませる */
+}
+
+/*
+ * クラス:margin_left
+ * 概要  :左に全体の10%の余白を作成
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ * 修正日:2014.06.13
+ * 修正者:H.U
+ * コメント内容の修正
+ */
+.margin_left {
+	margin-left: 10%;		/* 左側に余白を挿入 */
+}
+
+/*
+ * クラス:float_left
+ * 概要  :要素を左に表示
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.float_left {
+	float: left;		/* 左から表示 */
+}
+
+/*
+ * クラス:float_right
+ * 概要  :要素を右に表示
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ * 修正日:2014.06.13
+ * 修正者:H.U
+ * コメント内容の修正
+ */
+.float_right {
+	float: right;		/* 右から表示 */
+}
+
+/*
+ * クラス:without_right
+ * 概要  :右側への回り込みを防止
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ * 修正日:2014.06.13
+ * 修正者:H.U
+ * コメント内容の修正
+ */
+.without_right {
+	clear: both;		/* 右側への回り込みを防止 */
+}
+
+/*
+ * クラス:edit
+ * 概要  :編集ボタンの幅を定義
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.edit {
+	/*width: 20%;*/			/* 幅を20%に指定 */
+}
+
+/*
+ * クラス:lines_interval
+ * 概要  :テキストボックスが含まれる各行の高さ(行間隔)
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.lines_interval {
+	height: 60px;		/* 高さを60ピクセルに指定 */
+}
+/* ボタンの大きさを統一する */
+.parts_height{
+	/*height:100%;*/
+}
+/* テキストボックスとボタンをリサイズする記述。marginの問題が出るためオミット */
+/*
+.parallel-text input{
+	height: 85% !important;
+}
+.parallel-text button{
+	height: 85% !important;
+}
+.single-line-text button{
+	height: 85% !important;
+}
+*/
+/*
+ * クラス:figs
+ * 概要  :各fig
+ * 作成日:2014.07.15
+ * 作成者:T.M
+ */
+ .figs{
+	 height: inherit;	/* 高さを継承する */
+ }
+ 
+ 
+/*
+ * クラス:select_interval
+ * 概要  :選択ボタンの定義
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ * 修正日:2014.06.13
+ * 修正者:H.U
+ * コメント内容の修正
+ */
+.select_button {
+	width: 20%;			/* 幅を20%に指定*/
+}
+
+/*
+ * クラス:submit_L
+ * 概要  :大サイズの送信ボタン
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.submit_L {
+	height: 200px;	/* 大サイズ送信ボタンの高さ */
+}
+
+/*
+ * クラス:submit_M
+ * 概要  :中サイズの送信ボタン
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.submit_M {
+	height:100px;	/* 中サイズ送信ボタンの高さ */
+}
+
+/*
+ * クラス:submit_S
+ * 概要  :小サイズの送信ボタン
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.submit_S {
+	height: 37px;	/* 中サイズ送信ボタンの高さ */
+}
+
+/*
+ * クラス:textbox_L
+ * 概要  :横幅が大きいテキストボックス
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.textbox_L {
+	width: 76.5%;		/* 幅を76.5%に指定 */
+/*	height:30px;*/
+}
+
+/*
+ * クラス:textbox_M
+ * 概要  :横幅が中の大きさのテキストボックス
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ * 修正日:2014.06.13
+ * 修正者:H.U
+ * コメント内容の修正
+ */
+.textbox_M {
+	width: 50%;		/* 幅を30%に指定 */
+/*	height:30px;*/
+}
+
+/*
+ * クラス:textbox_S
+ * 概要  :横幅が小さいテキストボックス
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.textbox_S {
+	width: 55%;		/* 幅を55%に指定 */
+/*	height:30px;*/
+}
+
+/*
+ * クラス:top_page_button
+ * 概要  :Fig.1(トップページ)のボタン
+ * 作成日:2014.07.15
+ * 作成者:T.M
+ * 
+ */
+.top_page_button{
+	
+}
+/* jQuery UIのボタンに置き換えたFig.1のボタン */
+#fig1 button.button.ui-button.top_page_button{
+	width: 40%;		/* 幅 */
+	height: 100%;	/* 高さ100% */
+	zoom: 1;    /* for IE */
+	cursor: pointer;	/* カーソルを指差しにする */
+}
+
+/*
+ * クラス:parallel-text
+ * 概要  :二段組テキストボックス
+ * 作成日:2014.07.15
+ * 作成者:T.M
+ */
+.parallel-text{
+	padding: 0.4% 0;	/* 上下に0.2%のpadding */
+}
+
+.parallel-text input{
+	height: 100%;	/* テキストボックスの高さを100%に指定 */
+}
+/*
+ * クラス:parallel-text.right
+ * 概要  :テキストボックスを右に置く
+ * 作成日:2014.06.12
+ * 作成者:T.M
+ * 修正日:2014.06.13
+ * 修正者:H.U
+ * コメント内容の修正
+ */
+.parallel-text.right{
+	width: 50%;		/* 幅を50%に指定 */
+	float: right;	/* 右に寄せる */
+/*	margin-bottom: 5px;*/	/* 下に20%のmarginを挿入 */
+}
+
+/*
+ * クラス:parallel-text.left
+ * 概要  :テキストボックスを左に置く
+ * 作成日:2014.06.12
+ * 作成者:T.M
+ * 修正日:2014.06.13
+ * 修正者:H.U
+ * コメント内容の修正
+ */
+.parallel-text.left{
+	width: 50%;		/* 幅を50%に指定 */
+	float: left;	/* 左に寄せる */
+/*	margin-bottom: 5px;*/	/* 下に20%のmarginを挿入 */
+}
+
+/* 2段組テキストボックス */
+.parallel-text input.textbox_S {
+	width: 55%;		/* 幅を55%に指定 */
+}
+/* 全ページのラベルのスタイルシート */
+label{
+	display: inline-block;	/* インラインブロックとして扱う */
+	vertical-align: middle;	/* 親要素の中心の高さに合わせる */
+}
+/* 2段組レイアウトでのラベル */
+.parallel-text label{
+	width: 27%;	/* 幅を27%取る */
+}
+/*
+ * クラス:single-line-text
+ * 概要  :parallel-textに対する一段組み
+ * 作成日:2014.06.12
+ * 作成者:T.M
+ */
+.single-line-text{
+	clear: both;		/* 回り込みをしないようにする */
+	padding: 0.4% 0 1%;	/* 上下に少々のpadding */
+}
+/* 一段組みでのラベルのスタイルシート */
+.single-line-text label{
+	width: 13.5%;		/* ラベルの幅を2段組の半分にする */
+}
+/* 一段組みでのテキストボックスのスタイルシート */
+.single-line-text input{
+	height: 100%;		/* 高さを外枠一杯に伸ばす */
+}
+/* 一段組みでのラベルのスタイルシート */
+.single-line-text textbox_M{
+	float: left;	/* 左に寄せて詰める */
+	width: 75%;
+}
+/*
+ * クラス:parallel-text.left.without_right
+ * 概要  :回り込み防止
+ * 作成日:2014.06.12
+ * 作成者:H.U
+ */
+.parallel-text.left.without_right{
+	clear:both;		/* 右の回りこみ防止 */
+}
+
+/* 
+ * クラス:parallel.left.edit_buttons
+ * 概要  :幅を100%にし、上に余白20pxをいれる
+ * 作成日:2014.06.12
+ * 作成者:H.U
+ * 更新日:2014.06.20
+ * 更新者:T.M
+ * 更新内容:margin-topを削除
+ */
+.parallel-text.left.edit_buttons{
+	width: 50%;		/* 幅を100%に指定 */
+}
+.list{
+	border-collapse: collapse;
+	border-color: #CCC;
+	width: 100%;
+	clear: both;
+}
+.list tr{
+	border-color: #CCC;
+}
+/* 
+ * クラス:list1
+ * 概要  :幅を100%に設定する
+ * 作成日:2014.06.13
+ * 作成者:H.U
+ */
+.list1{
+	width:100%;		/* 100%で固定 */
+}
+
+/* 
+ * クラス:list1
+ * 概要  :幅を100%に設定する
+ * 作成日:2014.06.13
+ * 作成者:H.U
+ */
+.list2{
+		width:100%;		/* 100%で固定 */
+}
+/* 
+ * クラス:pulldown-out
+ * 概要  :プルダウンメニューを表示するテキストボックス、ボタンを囲む
+ * 作成日:2014.06.2
+ * 作成者:H.U
+ */
+.pulldown-out{
+	position: static;
+	height: 50px;
+}
+/* 
+ * クラス:list1
+ * 概要  :幅を100%に設定する
+ * 作成日:2014.06.13
+ * 作成者:H.U
+ */
+.pulldown-menu-list{
+	display: none;
+	position: absolute;
+	list-style: none;
+	margin: 0px;
+	top: -30px;
+	left: 0px;
+	padding: 0px;
+	margin-top: 25px;
+	padding-top: 25px;
+	width: 100%;
+}
+/* 
+ * クラス:list1
+ * 概要  :幅を100%に設定する
+ * 作成日:2014.06.13
+ * 作成者:H.U
+ */
+.pulldown-menu-list > li{
+	background-color: #FC6;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #666;
+}
+/* 
+ * クラス:list1
+ * 概要  :幅を100%に設定する
+ * 作成日:2014.06.13
+ * 作成者:H.U
+ */
+.pulldown-menu{
+	position: static;
+}
+#user-id{
+	display: block;
+	margin-bottom: 5px;
+}
+#user-password{
+	display: block;
+	margin-bottom: 5px;
+}
+#user-login{
+	display: block;
+}
+/* containerの子要素となるタブパネルのリストに対するスタイルシート */
+#graph-region > ul {
+  margin: 0px;	/* marginをなくす */
+  padding: 0px;	/* paddingもなくす */
+  position: relative;
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  margin-bottom: -1px;
+}
+/* タブパネルのリストの要素に対するスタイルシート */
+#graph-region > ul li {
+  list-style-type: none;	/* リストの要素の先頭に自動挿入される文字をなくす */
+  line-height: 160%;		/* 行の高さを通常の160%にする */
+  height: 26px;				/* 要素そのものの高さを40pxに設定 */
+  border: solid 1px #000;
+  border-bottom: none;
+  display: table-cell;
+}
+/* タブパネルのリストの最後の要素に対するスタイルシート */
+/*#graph-region > ul > li:last-child {
+	border-style: none none none none;
+	border-bottom: none 1px #000;
+}*/
+/* タブパネルのリストの要素となるアンカータグに対するスタイルシート */
+#graph-region > ul li a {
+  display: block;			/* ブロックとして扱う */
+  text-align: center;		/* テキストを中央に揃える */
+  text-decoration: none;	/* リンクの下線を消す */
+  background-color: #FFF;	/* 背景色を薄い緑にする */
+  color: #000;				/* フォントカラーを黒にする */
+  /*border: none;*/	/* 実線、1px、黒の罫線で囲む */
+  border-bottom: solid 1px #000;
+  height: 25px;
+}
+
+#graph-region > ul li a+a {
+	position:absolute;
+	display: none;
+	clear: both;
+}
+#graph-region{
+	width: 100%;
+	max-width: 600px;
+	/*border: none;*/
+	height: auto;
+}
+/* selectedクラスを付加したアンカータグに対するスタイルシート */
+#graph-region > ul li a.selected {
+  background-color: #FFF;	/* 背景を薄い灰色にする */
+  border-bottom-style: none;
+}
+div#graph.jqplot-target{
+	height: 500px;
+	/*background-color: #F5F5F5;*/
+}
+/* canvas.jqplot-event-canvas{
+	width: 50%;
+} */
+canvas.jqplot-grid-canvas{
+	width: 100%;
+}
+canvas.jqplot-event-canvas{
+}
+div#graph-explain{
+	float: right;
+	margin-top: 5px;
+}
+/* クラス:voucher-status
+ * 概要  :見出し内の伝票ステータスプルダウンメニュー
+ * 作成日:2014.06.25
+ * 作成者:T.M
+*/
+.voucher-status{
+/*	float: right;*/		/* 右側に寄せる */
+/*	display: none;*/		/* 実際にはDROPDOWN CHECK LISTで表示するので隠す */
+/*	margin-right: 65px;*/	/* 30pxのmarginを右側に挿入 */
+}
+/* クラス:voucher-status-text
+ * 概要  :見出し内のステータス部分の項目名テキスト
+ * 作成日:2014.06.25
+ * 作成者:T.M
+*/
+.voucher-status-text{
+	display: inline;	/* インライン要素として扱う */
+	color: #888;		/* フォントの色を灰色にする */
+	margin-right: 1%;	/* 右にmargin */
+	font-size:	90%;	/* 小さくして改行しにくくする */
+	width: 30%;			/* 幅 */
+}
+div#flowbuttons{
+	position: relative;
+	height: 100px;
+	width: 400px;
+	top: -150px;
+}
+#flowbuttons *{
+	position: absolute;
+}
+
+/* 流通経路についてのスタイルシート群 */
+/* フロー2 */
+.flow02 {
+    margin: 0 auto 20px;
+    width: 160px;
+	float: left;
+}
+/* floatを使うのでclearfixの指定 */
+.flow02:after {
+    height: 0;
+    visibility: hidden;
+    content: ".";
+    display: block;
+    clear: both;
+}
+.flow02 .box {
+    padding-top: 25px; /* テキストの位置調整 */
+    width: 80px; /* ウィンドウの幅が広くなった時のために％で指定 */
+    height: 60px;
+    float: left; /* 横並び */
+    position: relative;
+
+    font-size: 1.6em; /* テキストの指定 */
+    font-weight: bold; /* テキストの指定 */
+    line-height: 1.4; /* テキストの指定 */
+}
+
+
+/* ボックスの左側に三角形を作る */
+.flow02 .box:before {
+    border-left: 20px solid #FFFFFF; /* １番目の三角形は背景色と同じ色を指定 */
+    border-top: 35px solid transparent;
+    border-bottom: 35px solid transparent;
+    content: "";
+    position: absolute;
+    left: 0; /* ボックスの左に合わせて三角形を作る */
+    top: 0;
+}
+/* 矢印の鏃部分 */
+.flow02 .box04:before { border-left-color: #D3D3D3; } /* ４番目の三角形は３番目のボックスと同じ色を指定 */
+
+/* 矢印の後方部分*/
+.flow02 .box03 {
+	 background: #D3D3D3;/* ３番目のボックスの色指定*/
+	 left: 0px;
+} 
+
+/* 最後のボックスにだけ、右側に付ける三角形を作成する */
+.flow02 .box04:after {
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid transparent;
+    content: "";
+    position: absolute;
+    right: -20px; /* 三角形の幅の分だけ右にずらす */
+    top: 0;
+}
+.flow02 .box span {
+    padding-left: 20px; /* テキストの位置調整 */
+	font-size: 12px;
+	padding-top: 22px;
+	display: inline-block;
+}
+.box.box03{
+
+padding:5px 0; text-align:center; display:block;
+text-shadow:#999 1px 3px 2px;/* 文字の影 */ 
+box-shadow:#666 6px 6px 6px -2px;/* 枠の影 */ 
+-moz-box-shadow:#666 6px 6px 6px -2px;   /* Firefox */ 
+-webkit-box-shadow:#666 6px 6px 6px -2px;    /* Safari,Google Chrome */ 
+ 
+behavior:url(/path/PIE10b5/PIE.htc);/* 表示HTMLからの相対 */
+position: relative; /* for lt IE8 */
+zoom: 1;    /* for IE */	
+}
+
+#i02s{
+	float: left;
+	clear: both;
+	width: 340px;
+	position: absolute;
+	left: -100px;
+}
+#i03s{
+	float: left;
+	left: 300px;
+}
+#flow-left{
+	width: 380px;
+}
+#flow-right{
+	float: left;
+	width: auto;
+	position: relative;
+	top: -30px;
+	left: 75px;
+}
+#fig3-1 #flow-right *{
+	top: -10px;
+	left: 0px;
+}
+#f01 *{
+	left: 40px;
+}
+#f02 *{
+	left: -10px;
+}
+#f03{
+	margin-bottom: -5px;
+}
+#f03 *{
+	left: 150px;
+}
+
+#flow-right #f05 *{
+	left: 50px;
+}
+#fig5 #flow-right *{
+	left: 20px;
+	top: -10px;
+}
+#fig5 #flow-right #f06 *{
+	left: -20px;
+}
+#distribution_flow{
+	width: 100%;
+}
+/*
+ * クラス:fig1_buttons 
+ * 概要  :fig1の左右のボタンを囲む
+ * 作成日:2014.06.19
+ * 作成者:T.M
+ */
+.fig1_buttons{
+	clear: both;	/* 他の要素と横並べにならないようにする */
+	height: 13%;	/* 高さを13%に指定 */
+}
+/*
+ * クラス:first 
+ * 概要  :複数ある同系統の要素の1番目
+ * 作成日:2014.07.15
+ * 作成者:T.M
+ */
+/* 1行目のみ大きくする */
+.fig1_buttons.first{
+	height: 25%;	/* 高さを25%に指定 */
+}
+
+/*
+ * クラス:right
+ * 概要  :右に寄せる
+ * 作成日:2014.06.19
+ * 作成者:T.M
+ */
+.right{
+	float: right;	/* 右に寄せる */
+}
+/*
+ * クラス:left
+ * 概要  :左に寄せる
+ * 作成日:2014.06.19
+ * 作成者:T.M
+ */
+.left {
+	float: left;	/* 左に寄せる */
+}
+
+/* fig1の右のボタンに対するスタイルシート */
+#fig1 .fig1_buttons input.right{
+	/* 上、右、下、左の順にmarginを設定。左右はボタンの幅と合わせて合計100%にする */
+	margin: 0 8% 1% 2%;
+}
+/* fig1の左のボタンに対するスタイルシート */
+#fig1 .fig1_buttons input.left{
+	margin: 0 2% 1% 8%; /* 右のボタンの設定と同様。左右のmarginを入れ替える */
+}
+
+/* fig1の右のボタンに対するスタイルシート。jQuery UIのボタン版 */
+#fig1 .fig1_buttons button.right.top_page_button{
+	/* 上、右、下、左の順にmarginを設定。左右はボタンの幅と合わせて合計100%にする */
+	margin: 0 8% 1% 2%;
+}
+/* fig1の左のボタンに対するスタイルシート。jQuery UIのボタン版 */
+#fig1 .fig1_buttons button.left.top_page_button{
+	margin: 0 2% 1% 8%; /* 右のボタンの設定と同様。左右のmarginを入れ替える */
+}
+.ui-widget-content{
+	margin: 0 auto 0;
+}
+
+ /*
+  * クラス:in-tab
+  * 概要  :タブで切り替えるコンテンツの中のコンテンツ
+  * 作成日:2014.06.23
+  * 作成者:T.M
+ */
+#sub_header.in-tab{
+	margin-bottom: 0;
+}
+
+/* fig-2の伝票のステータスを切り替える
+プルダウンメニューについてのスタイルシート */
+#voucher_status{
+	float: right;		/* 右側に寄せる */
+	display: block;		/* ブロックとして扱う */
+	margin-right: 5%;	/* 30pxのmarginを右側に挿入 */
+}
+
+
+/* 
+ * クラス:rounded_corners
+ * 概要  :テキストボックスを角丸にする
+ * 作成日:2014.06.19
+ * 作成者:H.U
+ */
+.default_textbox{
+	border-radius:4.5px;
+}
+
+
+/*
+ * クラス:fig1_buttons 
+ * 概要  :fig1の左右のボタンを囲む
+ * 作成日:2014.06.19
+ * 作成者:T.M
+ */
+.fig1_buttons{
+	clear: both;	/* 他の要素と横並べにならないようにする */
+}
+/* fig1の右のボタンに対するスタイルシート */
+#fig1 .fig1_buttons input.right{
+	/* 上、右、下、左の順にmarginを設定。左右はボタンの幅と合わせて合計100%にする */
+	margin: 0 8% 2% 2%;	
+}
+/* fig1の左のボタンに対するスタイルシート */
+#fig1 .fig1_buttons input.left{
+	margin: 0 2% 2% 8%; /* 右のボタンの設定と同様。左右のmarginを入れ替える */
+}/* fig1の右のボタンに対するスタイルシート */
+#fig1 .fig1_buttons button.right{
+	/* 上、右、下、左の順にmarginを設定。左右はボタンの幅と合わせて合計100%にする */
+	margin: 0 8% 2% 2%;	
+}
+/* fig1の左のボタンに対するスタイルシート */
+#fig1 .fig1_buttons button.left{
+	margin: 0 2% 2% 8%; /* 右のボタンの設定と同様。左右のmarginを入れ替える */
+}
+
+.block{
+	display:block;
+	}
+	
+/*
+ * クラス:margin_top
+ * 上部にマージンを設ける
+ * 作成日:2014.06.20
+ * 作成者:H.U
+ */
+.margin_top{
+	margin-top:15px;	/* 15pxの上margin */
+}
+/* 流通フローのボタンは.margin-topのそのまま
+の値だと足りないので個別に設定 */
+#distribution_flow.margin_top{
+	margin-top: 30px;	/* 40pxの上margin */
+}
+
+/*
+ * クラス:margin_bottom
+ * 下部にマージンを設ける
+ * 作成日:2014.06.20
+ * 作成者:H.U
+ */
+.margin_bottom{
+		margin-bottom::0px;
+}
+
+/*
+ * クラス:margin_right
+ * 右部にマージンを設ける
+ * 作成日:2014.06.20
+ * 作成者:H.U
+ */
+.margin_right{
+		margin-right:0px;
+}
+
+/*
+ * クラス:margin_left
+ * 左部にマージンを設ける
+ * 作成日:2014.06.20
+ * 作成者:H.U
+ */
+.margin_left{
+		margin-left:0px;
+}
+
+/*
+ * クラス:space_width
+ * テキストボックス左端にあわせる
+ * 作成日:2014.06.20
+ * 作成者:H.U
+ */
+.space_width{
+	width:15%;
+}
+/*
+ * クラス:space_width
+ * テキストボックス左端にあわせる
+ * 作成日:2014.06.20
+ * 作成者:H.U
+ */
+.space_width_syubetu{
+	width:12%;
+}
+
+/* fig.9 */
+.users_table{
+	width: 100%;
+	border: none;
+	margin: 0 auto 10px;
+	padding: 0 5% 0;
+}
+.users_table th{
+	width: auto;
+	font-weight: normal;
+	border: solid 1px #DDDDDD;
+	border-radius: 5px 5px;
+	background: #FFF;
+}
+.users_table td{
+	width: 3%;
+}
+th.fig9_content_header{
+	border: none;
+	background: #EEE;
+}
+.fig9_content_header p{
+	text-align: left;
+	margin: 0;
+}
+.fig9_content_header input{
+	text-align: left;
+	padding-bottom: 0px;
+}
+/* fig.9はここまで */
+
+/*
+ * クラス:fig9-1_table
+ * 概要  :fig9.1のテーブル
+ * 作成日:2014.06.20
+ * 作成者:T.M
+ */
+.fig9-1_table{
+	width: 96%;			/* 幅を96% */
+	margin: 0 2% 5%;	/* 左右に同じだけ余白を入れ、下にも間隔を空ける */
+}
+/* 1つめのカラム */
+#edit_user .edit_1_column{
+	width: 22%;			/* 幅を14% */
+}
+/* 2つめのカラム */
+#edit_user .edit_2_column{
+	width: 36%;			/* 幅を42% */
+}
+/* 3つめのカラム */
+#edit_user .edit_3_column{
+	width: 36%;			/* 幅を42% */
+}
+
+/* 1つめのカラム */
+#notice_user .edit_1_column{
+	width: 22%;			/* 幅を14% */
+}
+/* 2つめのカラム */
+#notice_user .edit_2_column{
+	width: 25%;			/* 幅を42% */
+}
+/* 3つめのカラム */
+#notice_user .edit_3_column{
+	width: 24%;
+	display: inline-block;
+}
+/* 3つめのカラム */
+#notice_user .edit_4_column{
+	width: 24%;
+	display: inline-block;
+}
+
+/* テキストボックス */
+.textbox_table{
+	width: 90%;
+	height:30px;
+}
+
+/* fig9.1はここまで */
+
+
+/* 
+ * クラス:position_center
+ * 概要  :テキストポジションをセンターに設定する
+ * 作成日:2014.06.20
+ * 作成者:H.U
+ */
+ .position_ceneter{
+	text-align:center;
+	}
+
+/* fig.2請求額のスタイルシート */
+#fig2 .textbox_M.bill{
+	width: 30%;
+}
+/* fig.2請求額のテキストエリア */
+#fig2 .textbox_M.bill input{
+	display: inline;	/* インライン要素にする */
+	float: right;		/* 右寄せ */
+	width: 65%;			/* 幅65% */
+	font-size: 125%;	/* 数値を大きく */
+	font-weight:bold;	/* 太字 */
+	font-family:"ＭＳ ゴシック", "MS Gothic", "Osaka－等幅", Osaka-mono, monospace;	/* フォントを指定 */
+}
+/* fig.2請求額の文字 */
+#fig2 .right.textbox_M.bill label{
+	width: 30%;			/* 幅30% */
+	display: inline;	/* インライン */
+	vertical-align: sub;/* サブ */
+}
+/* 以上、請求額のスタイルシート */
+/*
+ * クラス:before_list_line
+ * 概要  :リスト直前の行のdivタグ
+ * 作成日:2014.06.23
+ * 作成者:T.M
+ * 更新日:2014.06.25
+ * 更新者:T.M
+ * 内容  :下marginの追加
+ */
+ .before_list_line{
+	margin-bottom: 1%;	/* 下に1%の間隔を空け、リストとの間に適度な隙間を作る */
+	width: 100%;		/* 1行分全ての幅を取る */
+	clear: both;		/* floatによる回り込みを防止 */
+}
+.edit_buttons{
+}
+/* edit_buttons内のinput要素 */
+.edit_buttons input{
+	float: left;	/* 左に寄せる */
+}
+ /* クラス:text-align-right
+  * 概要  :テキストを右に寄せる
+  * 作成日:2014/06.25
+  * 作成者:T.M
+ */
+.text-align-right{
+	text-align: right;	/* テキストを右に寄せる */
+}
+ /* クラス:text-align-left
+  * 概要  :テキストを左に寄せる
+  * 作成日:2014/06.25
+  * 作成者:T.M
+ */
+.text-align-left{
+	text-align: left;
+}
+ /* クラス:margin-bottom-right
+  * 概要  :要素の右下にmarginを挿入する
+  * 作成日:2014/06.25
+  * 作成者:T.M
+ */
+.margin-bottom-right{
+	margin: 0 1% 1% 0;	/* 右と下に1%のmarginを挿入 */
+}
+ /* クラス:margin-bottom
+  * 概要  :要素の下にmarginを挿入する
+  * 作成日:2014/06.25
+  * 作成者:T.M
+ */
+.margin-bottom{
+	margin-bottom: 1%;	/* 下に1%のmarginを挿入 */
+}
+/* 請求書の下margin */
+.bill.margin-bottom{
+	margin: 0;	/* margin0 */
+}
+/* 請求書のタグ */
+.bill.parallel-text{
+	padding: 0;	/* padding0 */
+}
+/* 項目とテキストボックスの間隔を、列の最大文字数の項目を基準に縮める */
+/* parallel-textでは、18.5が3文字用、24が4文字用 */
+/* single-line-textでは、9.3が3文字用、18.5が4文字用 */
+
+/* 2段組みテキストボックス横のボタン */
+.parallel-text button.button.ui-button{
+	width: 8.49%;	/* 幅10% */
+	display: inline;
+}
+/* 2段組でないテキストボックスの横のボタン */
+.single-line-text button.button.ui-button{
+	width: 8.49%;
+	margin-left: 0.2%; /* 左marginを少々 */
+}
+/* 2段組のテキストボックスの横のボタン */
+.parallel-text button.button.ui-button{
+	margin-left: 1%;	/* コンテンツの外枠のpaddingと同じだけの右margin */
+}
+/* 2段組のテキストボックス横のdatepickerのボタン */
+.parallel-text button.ui-datepicker-trigger.ui-button{
+/*	float: left;	*//* 右に寄せる */
+	margin-left: 2%;	/* コンテンツの外枠のpaddingと同じだけの右margin */
+	width: 8.49%;			/* 幅8.49% */
+}
+
+/*
+ * クラス:fig8-list-head
+ * 概要  :fig8で扱うリストの見出し部分
+ * 作成日:2014.06.23
+ * 作成者:T.M
+ */
+.fig8-list-head{
+	display: inline-block;	/* インラインブロックとして扱う */
+	position: relative;		/* 相対位置に設定 */
+	margin: 0 0 0 40%;		/* 左に40%のmargin */
+	font-size: 18px;		/* 小さめの文字 */
+	margin-bottom: 5px;		/* 下に軽く間隔を空ける */
+	width: 30%;				/* 幅を親の30%の幅にする */
+}
+/* Fig2.1についての追加CSS */
+/* 製品名の項目を囲むdivタグについて */
+
+/* 製品名のテキストボックス */
+.single-line-text.right.product-select{
+	/* 種別、製品名を並べるにあたって幅の配分をする必要があり、製品名は82%に設定 */
+	width: 82%;
+	float: left;		/* 左に寄せる */
+	clear: none;		/* 回り込みを許可する */
+}
+/* 製品名のテキストボックスのボタン */
+.single-line-text.right.product-select button.button.ui-button{
+	width: 6.098%;	/* 他のボタンと合う幅に指定。親要素の幅に注意 */
+	margin-left: 0.7%;	/* 左margin */
+}
+/* 製品名のテキストボックスについて */
+.pulldown-menu.product{
+	width: 77.2%;		/* 幅を78.1%分取る */
+	text-align:left;
+}
+/* 製品名の項目の文字について */
+.single-line-text.right.product-select label{
+	width: 11%;		/* 幅を11%取る */
+}
+
+/* 種別の項目を囲むdivタグについて */
+.parallel-text.left.product-category{
+	width: 18%;		/* 幅を18%に設定 */
+}
+/* 種別の項目の文字について */
+.parallel-text.left.product-category label{
+	width: 35%;		/* 幅を35%分取る */
+}
+/* 種別のテキストボックスについて */
+#product_category.pulldown-menu.categories.select-category{
+	width: 55%;		/* 幅を58%分取る。広すぎるとlabelの下に回りこむので注意 */
+}
+/* fig2-1のリスト前に来る行についてのスタイルシート */
+.fig2-1 .before_list_line select{
+	height: auto;	/* 高さを自動調節 */
+}
+/* before_list_line内のプルダウンメニュー(selectタグ)について */
+.before_list_line select{
+	width: 30%;		/* 幅を30%に設定 */
+	height: 100%;	/* 外枠の高さに合わせる */
+}
+/* クラス:inner-list-title
+ * 概要  :リストのタイトル領域の記述
+ * 作成日:2014.06.25
+ * 作成者:T.M
+*/
+.inner-list-title{
+	float: right; /* 左側にタイトルがあるので、右詰にして離す */
+	width: 20%;		/* 幅をタイトル枠の横幅の20%に設定 */
+	text-align: right;	/* 中の要素を右に詰める */
+}
+/* クラス:ammount
+ * 概要  :合計金額の数値を入れるテキストボックス
+ * 作成日:2014.06.25
+ * 作成者:T.M
+*/
+.ammount{
+	
+}
+/* innner-list-title内の項目名 */
+.inner-list-title label{
+	width: 35%;		/* 幅を35%に設定。 */
+}
+/* inner-list-title内のテキストボックス */
+.inner-list-title .textbox_M{
+	width: 60%;		/* 幅を60%に設定。多少余裕がないと回り込む */
+	height: inherit;	/* 親要素の高さを受け継ぐ */
+}
+/* 以上Fig2.1 2014.06.25 */
+/*
+ * クラス:ui-dropdownchecklist
+ * 概要  :チェックボックスを格納したドロップダウンメニュー
+ * 作成日:2014.06.23
+ * 作成者:T.M
+ * 補足  :JQueryプラグインにより自動生成されるクラス
+ */
+.ui-dropdownchecklist{
+	height: 25px;		/* フォントに合った高さにする */
+	font-size: 8pt;	/* フォントの大きさを8ptに設定 */
+	color: #888;	/* フォントの色を灰色にする */
+}
+/* Fig3.1をシリアルナンバーを取り扱う仕様にしたバージョンの
+   スタイルシート群 作成日時:2014.06.25 */
+/* Fig3.1ではedit_buttonsの5個ボタンと見出し文字を横並べ
+   にするため、幅を再設定する */
+#fig3-1.edit_buttons{
+	width: 60%;		/* 幅を60%に設定 */
+}
+/* シリアルナンバーのボタンであることを説明する文について */
+#fig3-1 .single-line-text .serial-number-label{
+	width: 25%;	/* ボタンの領域と幅を合わせて */
+	float:left;	/* こちらを左にして横に並べる */
+}
+/* ここまでFig3-1の修正分 */
+/*
+ * クラス:
+ * 概要  :fig1のinputが押されたときの変化
+ * 作成日:2014.06.26
+ * 作成者:T.M
+ */
+#fig1 button.top_page_button:active{
+	top: 5px;	/* 下に5pxずらしてボタンを押したような動きを見せる */
+}
+/* クローズボックスについて */
+.backbutton{
+	/* 作成日時点は隣り合う絶対位置指定されたリンクリストの判定と
+	被さるので、まずは相対位置に指定 */
+	position: relative;
+	/* 被さったときの判定の優先度をリンクリストより高くする */
+	z-index: 50;
+}
+/* 各Fig別に項目とテキストボックスの幅を調整した結果、Fig3-1で無効になった
+	product-category、product-selectのラベルのサイズを修正する */
+/* 種別のラベル */
+#fig3-1 .parallel-text.left.product-category label {
+	width: 35%;	/* 本来適用するはずだった数値に設定 */
+}
+.single-line-text.patch{
+	height: 0;
+	
+}
+/*
+ * クラス:divide-line
+ * 概要  :リストと他コンテンツを区切る線
+ * 作成日:2014.06.30
+ * 作成者:T.M
+*/
+.divide-list{
+	clear: both;		/* 回り込みを防ぐ */
+	visibility: hidden;	/* 見えなくする */
+	margin: 0;			/* marginをなくす */
+}
+/*
+ * クラス:list-wrap
+ * 概要  :リストを囲む
+ * 作成日:2014.06.30
+ * 作成者:T.M
+*/
+.wrap-list{
+	clear: both; /* 回り込むのを防止する */
+}
+/*
+ * クラス:sort-by-year-button
+ * 概要  :統計の年別ソートボタン
+ * 作成日:2014.07.01
+ * 作成者:T.M
+*/
+/*
+ * クラス:sort-by-month-button
+ * 概要  :統計の月別ソートボタン
+ * 作成日:2014.07.01
+ * 作成者:T.M
+*/
+.sort-by-year-button,sort-by-month-button{
+	float: right;	/* 右に寄せる */
+}
+/*
+ * クラス:button
+ * 概要  :ボタンの基底クラス
+ * 作成日:2014.07.01
+ * 作成者:T.M
+*/
+.button{
+	width: 8.49%;			/* 高さを30pxにする */
+	height: 32px;			/* 幅も30pxにする */
+	vertical-align: middle;	/* 縦方向の真ん中に置く */
+}
+/* ボタンをJQuery UIのボタンにした場合 */
+button.button.ui-button{
+	width: 8.49%;			/* 高さを30pxにする */
+	height: 100%;			/* 幅も100%にする */
+	vertical-align: middle;	/* 縦方向の真ん中に置く */
+	display: inline;		/* インライン要素 */
+}
+/* datepickerのカレンダーボタン */
+button.ui-datepicker-trigger{
+	width: 8.49%;		/* 高さを30pxにする */
+	height: 32px;		/* 幅も30pxにする */
+}
+/* datepickerのカレンダーボタンをJQuery UIのものにしたもの */
+button.ui-datepicker-trigger.ui-button{
+	width: 8.49%;			/* 高さを30pxにする */
+	height: 100%;			/* 幅も30pxにする */
+	vertical-align: middle;	/* 縦方向の真ん中に置く */
+}
+/*
+ * クラス:setting-button
+ * 概要  :設定ボタン
+ * 作成日:2014.07.01
+ * 作成者:T.M
+*/
+button.button.setting-button{
+	float: none;		/* float属性を無効 */
+	display: inline;	/* インライン要素として扱う */
+	margin: 0;			/* marginをなくす */
+}
+/* クラス:close-button
+ * 概要  :閉じるボタン
+ * 作成日:2014.07.01
+ * 作成者:T.M
+ */
+button.button.close-button{
+	margin: 0;				/* marginをなくす */
+	display: inline-block;	/* インラインブロック要素として扱う */
+	float: right;			/* 右に寄せる */
+}
+/* クラス:list-sort-button
+ * 概要  :統計の並び替えボタン
+ * 作成日:2014.07.01
+ * 作成者:T.M
+ */
+button.button.list-sort-button{
+	display: block;	/* ブロック要素として扱う */
+	float: right;	/* 右に寄せる */
+}
+
+/*
+ * クラス:edit_buttons
+ * 概要  :追加・編集・削除のボタンのセット
+ * 作成日:2014.06.17
+ * 作成者:T.M
+ */
+.line.edit_buttons{
+	float: left;	/* 左に寄せる */
+	width: 100%;	/* 2段組でない状況をまずは想定して100%の幅 */
+}
+/* fig.2のedit_buttons */
+#fig2 .edit_buttons{
+	width: 20%; /* 幅15% */
+	height: 100%;	/* 縦100% */
+	float: left;	/* 左寄せ */
+}
+/* fig.2のedit_buttonsのボタン */
+#fig2 .edit_buttons button.button.ui-button{
+	width: 21.9%; /* 幅21.9% */
+	margin-right: 5%;	/* 右に4%のmargin */
+}
+/* fig.3のedit_buttons */
+#fig3 .edit_buttons{
+	height: 100%;	/* 外枠の縦に合わせて */
+	width: 100%;	/* 幅100% */
+}
+/* fig.3-1のedit_buttons */
+#fig3-1 .edit_buttons{
+	width: 100%;	/* 幅80% */
+}/* fig.3-1のedit_buttonsのui-button */
+#fig3-1 .edit_buttons button.button.ui-button{
+	width: auto;	/* 自動調整でテキストの分だけ幅取り */
+	margin-left: 1%;	/* 左に1%隙間を空ける */
+}
+/* edit_buttons内のボタン */
+.edit_buttons .button{
+	float: left;	/* 左に寄せる */
+}
+/* 通常のボタン */
+button.button.normal-button{
+	width: auto;		/* 横幅自動調節 */
+	max-width: none;	/* 最大幅なし */
+	max-height: none;	/* 最大高なし */
+	height: auto;		/* 高さ自動調節 */
+	/* JQuery UIのテキストのボタンは大きめなので小さく */
+	font-size: small;	
+}
+/* fig.8-3、8-4の見出し */
+#graph-region #sub_header{
+	display: inline;	/* インライン要素として扱う */
+}
+/*
+ * クラス:ui-datepicker
+ * 概要  :カレンダーの本体
+ * 作成日:2014.07.02
+ * 作成者:T.M
+*/
+.ui-datepicker { 
+	/* z-indexを高くして、他の要素に隠れないようにする */
+	z-index: 1000 !important; 
+}
+/* プルダウンメニューの項目 */
+.formlyWrapper-Base .pulldown-menu-list > li{
+	background-color: #FFF;	/* 背景を白にする */
+	border: solid 1px #CCC;	/* 実線、1pxの太さ、薄い灰色の罫線 */
+/*	border-top-style: none;	*//* 上の罫線を外す */
+}
+/* fig8のリスト */
+#fig8 .list{
+/*	margin: 0 auto 0;*/
+}
+/*
+ * クラス:select-textbox
+ * 概要  :選択ボタンがついたテキストボックス
+ * 作成日:2014.07.07
+ * 作成者:T.M
+*/
+.select-text-box{
+	vertical-align: middle;	/* 中心に寄せる */
+}
+/*
+ * クラス:table
+ * 概要  :表。特にグラフとセットになっているもの
+ * 作成日:2014.07.07
+ * 作成者:T.M
+*/
+.table.lower{
+	width: 100%;	/* 幅をできるだけのばす */
+}
+/*
+ * クラス:lower
+ * 概要  :特定の要素の下に配置されている場合のクラス
+ * 作成日:2014.07.07
+ * 作成者:T.M
+*/
+.table.lower{
+	margin-top: 1%;/* 上にmarginを挿入 */
+}
+
+/* モーダルダイアログのリンクリストの記述はここまで */
+/* ヘッダー内での設定ボタン */
+#header .setting-button{
+	float: right;	/* 右寄せ */
+	margin-right: 3.5%;	/* 右のボタンとの間に余白 */
+}
+/*
+ * クラス:ui-dropdownchecklist-text
+ * 概要  :ステータスのプルダウンメニューのテキスト
+ * 作成日:2014.07.08
+ * 作成者:T.M
+ */
+.ui-dropdownchecklist-text{
+	color: #888;	/* フォントを灰色にする */
+}
+/* タイトル */
+#header h1{
+	margin: 0;
+	display: inline;
+	text-align: left;
+	color: #888;	/* 文字を薄めの灰色にする */
+}
+/* Fig.1のタイトル */
+#fig1 h1{
+	color: #888;	/* 文字を薄めの灰色にする */
+}
+/*
+ * クラス:inner-list-title
+ * 概要  :リストのタイトル行内に入れる要素
+ * 作成日:2014.07.09
+ * 作成者:T.M
+ */
+.inner-list-title{
+	float: right;		/* 右に寄せる */
+	margin-right: 5%;	/* 右にmarginを挿入し開閉ボタンと重ならないようにする */
+	width: 20%;			/* 幅 */
+}
+/*
+ * クラス:checkbox
+ * 概要  :チェックボックス
+ * 作成日:2014.07.09
+ * 作成者:T.M
+ */
+.checkbox{
+	vertical-align: middle;	/* 中心の高さに合わせる */
+}
+/*
+ * クラス:width-100
+ * 概要  :親要素に対し100%の幅を取る
+ * 作成日:2014.07.09
+ * 作成者:T.M
+ */
+ .width-100{
+	width: 100%;	/* 幅を100%に設定 */
+ }
+ /*
+ * クラス:button-col
+ * 概要  :テーブルのボタンのみの列
+ * 作成日:2014.07.09
+ * 作成者:T.M
+ */
+/* テーブル内の、ウィジェットによるボタン。 */
+table td.button-col{
+	width: 5%;/* ボタンのための幅を取る */
+}
+/* テーブル内の、ウィジェットによるボタン。 */
+table td.button-col button.ui-button{
+	margin-right: 1px;/* 右marginを縮める */
+	width: 100%;		/* 外枠となるtdタグの幅でボタンの幅を決める */
+}
+ /*
+ * クラス:dummy
+ * 概要  :レイアウトのためのダミー要素
+ * 作成日:2014.07.09
+ * 作成者:T.M
+ */
+.dummy{
+	visibility: hidden;	/* 幅だけは取って非表示 */
+}
+/* ヘッダーの子要素となるdivタグ */
+#header > div{
+	display: inline-block;	/* インラインブロックとして扱う */
+	vertical-align: middle;	/* 中心に揃える */
+}
+/* ヘッダー部分のタイトル部分 */
+#header-title{
+	width: 70%;	/* 幅 */
+	float: left;	/* 左に寄せる */
+	text-align:left;	/* 中の文章を左に寄せる */
+}
+/* ヘッダー部分のボタン群 */
+#header-buttons{
+	width: 28%;	/* 幅 */
+}/* ヘッダー部分のボタン群 */
+#header-buttons button.button.ui-button{
+	width: 14.73%;	/* 幅 */
+}
+/* ヘッダー */
+#header{
+	text-align: right;	/* 中のテキストを右に寄せる */
+}
+/* 伝票ステータスがあるヘッダー部分のタイトル部分 */
+.has_voucher_status #header-title{
+	width: 25%;	/* 幅 */
+}
+/* ヘッダー部分の伝票ステータス部分 */
+.has_voucher_status #header-voucher-status{
+	width: 57%;	/* 幅 */
+	text-align: left;	/* このままだと中のテキスト全てが右に寄るので左に寄せる */
+}
+/* 伝票ステータスがあるヘッダー部分のボタン群 */
+.has_voucher_status #header-buttons{
+	width: 14.5%;	/* 幅 */
+}
+/* 伝票ステータスがあるヘッダー部分のボタン群 */
+.has_voucher_status #header-buttons button.button.ui-button{
+	width: 28.442%;	/* 幅 */
+}
+/* 伝票ステータスありの設定ボタン */
+.has_voucher_status #header-buttons button.button.ui-button.setting-button{
+	margin-right: 6.75%;	/* 右margin */
+}
+/* 伝票ステータスありの設定ボタン */
+#header-buttons button.button.ui-button.close-button{
+	margin-right: 0;	/* 右marginなし */
+}
+/* inputタグについて */
+input{
+	vertical-align: middle;	/* 高さを親要素の中心に合わせる */
+}
+ /*
+ * クラス:modal
+ * 概要  :モーダルダイアログ
+ * 作成日:2014.07.11
+ * 作成者:T.M
+ */
+.modal{
+}
+ /*
+ * クラス:ui-dialog
+ * 概要  :jQuery UIによるダイアログ
+ * 作成日:2014.07.11
+ * 作成者:T.M
+ */
+ /*
+ * クラス:ui-button-text
+ * 概要  :jQuery UIによるボタンのテキスト
+ * 作成日:2014.07.11
+ * 作成者:T.M
+ */
+ /* ダイアログ内のボタンのテキスト */
+.ui-dialog .ui-button-text{
+	font-size: 75%;/* ボタンのフォントサイズを下げてボタンを小さくする */
+}
+/* single-line-textの中のプルダウンメニュー */
+.single-line-text .pulldown-menu-list{
+	margin-top: 30px;	/* もう少し下にずらす */
+}
+/*  
+@media screen and (min-width: 580px){
+	.ui-dropdownchecklist-text {*/
+/*		font-size: 16px;*/
+		/* line-height: 20px; */
+/*	}
+}
+@media screen and (max-width: 579px) and (min-width: 420px){
+	body{
+		font-size: 75%;
+	}/*
+/*	.ui-dropdownchecklist-text { */
+/*		font-size: 14px; */
+		/* line-height: 20px; */
+/*	}
+}
+@media screen and (max-width: 419px){
+	body{
+		font-size: 60%;
+	}
+	.ui-dropdownchecklist-text {
+		font-size: 12px;*/
+		/* line-height: 20px; */
+/*	}
+}
+*/
+label div {
+	width: 100%;
+}
+ /*
+ * クラス:line
+ * 概要  :行の先頭
+ * 作成日:2014.07.17
+ * 作成者:T.M
+ */
+.line{
+
+}
+ /*
+ * クラス:a_line
+ * 概要  :1項目で行全ての幅を使う行
+ * 作成日:2014.07.17
+ * 作成者:T.M
+ */
+.a_line{
+}
+/* 1行1項目のタグの中のボタン */
+.a_line button.button.ui-button{
+	width: 4.245%;	/* 1/20の幅 */
+	margin-right: 1%;	/* 右に1%のmargin */
+}
+/* 1行1項目のタグの中のボタン */
+.a_line.single-line-text button.button.ui-button{
+	margin-right: 0%;	/* 右marginが余分となるのでなくす */
+}
+ /*
+ * クラス:line
+ * 概要  :2項目で1行を使う要素
+ * 作成日:2014.07.17
+ * 作成者:T.M
+ */
+/* 1行2項目のタグの中のボタン */
+.half_line  button.button.ui-button{
+	width: 8.49%;	/* 1/10の幅 */
+	margin-right: 1%;	/* 右に2%のmargin */
+}
+/* 1行2項目のタグの中のボタン。テキストボックス入り */
+.half_line.parallel-text  button.button.ui-button{
+	margin-right: 0;	/* 右に2%のmargin */
+}
+/* ボタン用tdタグのボタン */
+.button-col button.button.ui-button{
+	width: 100%;	/* 枠に幅を合わせる */
+	height: 100%;	/* 枠に高さを合わせる */
+}
+/* 伝票のプルダウンメニュー */
+input#denpyo{
+	height: 100%;	/* 要素一杯に高さをとる */
+}
+/* fig3-1のステータスボタンを囲むdiv */
+#status_buttons{
+	height: auto !important;	/* 必ずボタンの高さを高さの基準にする */
+}
+ /*
+ * クラス:last_line
+ * 概要  :テキストボックス最終行
+ * 作成日:2014.07.18
+ * 作成者:T.M
+ */
+.last_line{
+	padding-bottom:	1%;	/* 主にリストの下部と間を取る */
+}
+/* fig2-1のリスト前行のラベル */
+#fig2-1 .before_list_line label{
+	vertical-align: middle;	/* 高さを中心に合わせる */
+}
+ /*
+ * クラス:summaery-button
+ * 概要  :まとめボタン
+ * 作成日:2014.07.18
+ * 作成者:T.M
+ */
+button.button.ui-button.summary-button{
+	margin-right: 0;	/* 右marginをなくす */
+}

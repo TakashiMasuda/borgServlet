@@ -1,0 +1,116 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>取引先一覧</title>
+<link href="css/borgstyle.css" rel="stylesheet" type="text/css">
+<!--link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css"-->
+<link href="css/pqgrid.min.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<!--script language="javascript" type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js" charset="utf-8"></script-->
+<script language="javascript" type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+<!--[if lt IE 9]>
+    <script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script>
+<![endif]-->
+<script language="javascript" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
+<script language="javascript" type="text/javascript" href="js/jqplot.categoryAxisRenderer.min.js"></script>
+
+<link href="css/pqgrid.min.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript" src="js/pqgrid.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/rainbow.min.js"></script>
+</head>
+
+<body>
+<body>
+<div id = "container">
+	<div class = "main">
+		<script type='text/javascript'>
+			//ページの読み込みが終わった後の処理
+			$(document).ready(function(){
+				setButtons();	//JQuery UIのボタンを配置する
+   		    	$('#tab-container').easytabs({
+					updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
+				});
+			});
+		</script>
+		<div id="header">
+			<!-- ヘッダーのタイトル部分 -->
+			<div id="header-title">
+				<!-- このページの要旨 -->
+				<h1>販売管理</h1>
+    			<!-- ヘッダーのタイトル部分を閉じる -->
+   			</div>
+   			<!-- ヘッダーのボタン群 -->
+			<div id="header-buttons" class="half_line">
+   				<!-- 閉じるボタン -->
+				<button class="backbutton button close-button" value="戻る" name="fig1" />
+   				<!-- リンクのリストダイアログを出すボタン -->
+				<button class="button setting-button" />
+   			<!-- ヘッダーのボタン群を閉じる -->
+   			</div>
+		<!-- ヘッダー部分を終える -->
+		</div>
+		<div id = "fig6" class="figs">
+			<div id="tab-container">
+				<!-- タブメニュー -->
+				<ul>
+				    <!-- タブメニューのボタン3項目 -->
+					<li id="default"><a href="#fig6-1">見積依頼</a></li>
+					<li ><a href="#fig6-2">納品依頼</a></li>
+					<li ><a href="#fig6-3">発注依頼</a></li>
+				<!-- タブメニューを閉じる -->
+				</ul>
+				<!-- タブパネル -->
+				<div class="panel-container">
+					<div class="line a_line edit_buttons margin-bottom">
+  						<button name="fig2" class="callpage button edit-button" id="edit_button"value="編集" />
+  						<button name="delete_button" id="delete_button" class="edit delete_button button delete-button"value="削除" />
+					</div>
+					<div id="fig6-1">
+						<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+						<div class="wrap-list">
+							<!-- JQ Gridによりリストを形成するtableタグ -->
+							<table id="fig6-1-list" class="list"></table>
+						</div>
+   			        	<script>
+							 callList('fig6-1');	
+						</script>
+					</div>
+					<div id="fig6-2">
+						<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+						<div class="wrap-list">
+							<!-- JQ Gridによりリストを形成するtableタグ -->
+							<table id="fig6-2-list" class="list"></table>
+						</div>
+   			        	<script>
+							 callList('fig6-2');	
+						</script>
+					</div>
+					<div id="fig6-3">
+						<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+						<div class="wrap-list">
+							<!-- JQ Gridによりリストを形成するtableタグ -->
+							<table id="fig6-3-list" class="list"></table>
+						</div>
+   			        	<script>
+							 callList('fig6-3');	
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
+<!-- @mod
+	 6/20 18:25
+	 merge
+     H.U
+     -->

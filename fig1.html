@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>株式会社ボルグシステム</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<!-- メディアクエリーの記述 -->
+<!-- 全体に適用するスタイルシート -->
+<link href="css/borgstyle.css" rel="stylesheet">
+<!-- スマートフォン -->
+<link href="css/smartphone.css" rel="stylesheet" type="text/css" media="only screen and (max-width:480px)">
+<!-- タブレット -->
+<link href="css/tablet.css" rel="stylesheet" type="text/css" media="only screen and (min-width:481px) and (max-width:768px)">
+<!-- デスクトップ -->
+<link href="css/desktop.css" rel="stylesheet" type="text/css" media="only screen and (min-width:769px)">
+<meta charset="utf-8">
+<!-- viewportの設定により、端末の幅を初期解像度とする -->
+<meta name="viewport" content="width=device-width">
+<!-- メディアクエリーの記述終了 -->
+<!-- jQueryの本体 -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+
+<!--link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
+<script language="javascript" type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js" charset="utf-8"></script-->
+
+<!-- ウェブからjQuery UIのCSSを取得 -->
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" />
+<!-- ウェブからjQuery UIの本体を取得 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
+<!-- jQuery UIの補助となるJS -->
+<script language="javascript" type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
+
+<!-- IEならcanvasを使えるようにするJSファイルを読み込む -->
+<!--[if lt IE 9]>
+    <script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script>
+<![endif]-->
+<!-- ドロップダウンメニュー内でチェックボックスを使うプラグインdropdown check listのCSSを読み込む -->
+<link href="css/ui.dropdownchecklist.standalone.css" rel="stylesheet" type="text/css">
+<!-- ドロップダウンメニュー内でチェックボックスを使うプラグインdropdown check listを読み込む -->
+<script language="javascript" type="text/javascript" src="js/ui.dropdownchecklist-1.4-min.js"></script>
+<!-- リストのプラグインJQ Gridを読み込む -->
+<script src="js/jquery.jqGrid.min.js"></script>
+<!-- JQ GridのCSS -->
+<link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
+<!-- JQ Gridの日本語訳ファイル -->
+<script type="text/javascript" src="js/grid.locale-en.js"></script>
+<!-- 表のプラグインJQ Grid -->
+<script type="text/javascript" src="js/jquery.jqGrid.min.js"></script>
+<!-- JQ Gridでセルの編集を可能にするプラグイン -->
+<script type="text/javascript" src="js/grid.celledit.js"></script>
+<!-- フォームの一括レイアウトを行うプラグインFormlyのCSSを読み込む -->
+<link rel="stylesheet" type="text/css" media="screen" href="css/formly.css" />
+<!-- フォームの一括レイアウトを行うプラグインFormlyを読み込む -->
+<script type="text/javascript" src="js/formly.js"></script>
+<!-- タブを生成するプラグインのスタイルシート -->
+<link href='css/easytabs.css' rel='stylesheet' type='text/css'>
+<!-- タブを生成するプラグイン -->
+<script src="js/jquery.easytabs.js" type="text/javascript"></script>
+<!-- 表やグラフの生成のためにGoogleのAPIを読み込む -->
+<script src="https://www.google.com/jsapi"></script>
+<!-- テキストのサイズを画面サイズに合わせて調整するjs -->
+<script type="text/javascript" src="js/jquery.fittext.js"></script>
+<!-- このウェブアプリケーションに必要な処理をまとめたJSファイル -->
+<script type="text/javascript" src="js/main.js"></script>
+<!-- JavaScriptのコードを記述 -->
+<script type='text/javascript'>
+//ページの読み込みが終わった後の処理
+$(document).ready(function(){
+	setButtons();		//JQuery UIのボタンを配置する
+	setButtonSize();	//ボタンの大きさを比率どおりにする
+});	
+//JavaScriptのコード記述を終える
+</script>
+</head>
+<body>
+<div id = "container">
+	<div class="page">
+		<div class = "main">
+			<div id = "fig1" class="figs">
+				<h1>ボルグシステム</h1>
+				<div class="fig1_buttons first">
+					<button value= "受注" class = "submit_L top_page_button left callpage button button_fontsize" name="fig2">受注</button>
+					<button value= "発注" class = "submit_L top_page_button right callpage button button_fontsize" name="fig3">発注</button>
+				</div>
+				<div class="fig1_buttons">
+					<button value= "販売管理" class = "submit_M top_page_button left callpage button button_fontsize" name="fig6">販売管理</button>
+					<button value= "在庫一覧" class = "submit_M top_page_button right callpage button button_fontsize" name="fig7">在庫一覧</button>
+				</div>
+				<div class="fig1_buttons">
+					<button value= "取引先登録" class = "submit_M top_page_button left callpage button button_fontsize" name="fig4">取引先登録</button>
+					<button value= "製品登録" class = "submit_M top_page_button right callpage button button_fontsize" name="fig5">製品登録</button>
+				</div>
+				<div class="fig1_buttons">
+					<button value= "統計" class = "submit_M top_page_button left callpage button button_fontsize" name="fig8">統計</button>
+					<button value= "管理者" class = "submit_M top_page_button right callpage button button_fontsize" name="fig9">管理者</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- モーダルダイアログの中身 -->
+<div id="modal" class="modal">
+	<!-- リンクのリスト -->
+    <ul id="link-list">
+    	<!-- リンクの項目 全8項目 -->
+ 	   	<li name="fig2" class="callpage link-button"><span><nobr>受注伝票</nobr></span></li>
+ 	   	<li name="fig3" class="callpage link-button"><span><nobr>発注伝票</nobr></span></li>
+	   	<li name="fig6" class="callpage link-button"><span><nobr>受注一覧</nobr></span></li>
+	    <li name="fig7" class="callpage link-button"><span><nobr>在庫一覧</nobr></span></li>
+	    <li name="fig4" class="callpage link-button"><span><nobr>取引先登録</nobr></span></li>
+	    <li name="fig5" class="callpage link-button"><span><nobr>製品登録</nobr></span></li>
+	    <li name="fig8" class="callpage link-button"><span><nobr>統計</nobr></span></li>
+  	    <li name="fig9" class="callpage link-button"><span><nobr>管理者</nobr></span></li>
+	<!-- リストの記述を終了 -->
+    </ul>
+<!-- リストの編集確認ダイアログ終了 -->
+</div>
+<!-- リストの直接入力ダイアログ -->
+<div id="direct-input-dialog" class="modal">
+	<input type="text" id="direct-input-text" />
+<!-- リストの直接入力ダイアログ -->
+</div>
+<div id="chooseListSave" class="modal">
+<!-- ダイアログの記述を終了 -->
+</div>
+</body>
+</html>
