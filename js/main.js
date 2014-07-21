@@ -34,16 +34,16 @@
  		 $('.line.edit_buttons').css('height', divHeight);	//1行で書かれるボタン群の高さを設定 
 		 $('.line_table tr').css('height', divHeight);	//1行で書かれるボタン群の高さを設定
 		 $('#header-buttons').css('height', divHeight);	//1行で書かれるボタン群の高さを設定
-		 $('.fig1_buttons').css('height', divHeight * strechFix3);	//トップページのボタンの高さを設定
-		 $('.fig1_buttons.first').css('height', divHeight * strechFix2 * strechFix3);	//トップページの1行目ボタンの高さを設定
+//		 $('.fig1_buttons').css('height', divHeight * strechFix3);	//トップページのボタンの高さを設定
+//		 $('.fig1_buttons.first').css('height', divHeight * strechFix2 * strechFix3);	//トップページの1行目ボタンの高さを設定
   		 $('.users_table th').css('height', divHeight - 1);	
 //		 $('.variable-height').css('height', divHeight);	//高さを設定
 	}
 	/*
-	 * 関数名:setContentHeight
+	 * 関数名:setButtonSize()
 	 * 引数  :なし
 	 * 戻り値:なし
-	 * 概要  :画面の高さを取得してコンテンツの高さにする
+	 * 概要  :ボタンの大きさを修正する
 	 * 作成日:2014.07.16
 	 * 作成者:T.M
 	*/

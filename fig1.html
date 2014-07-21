@@ -72,6 +72,18 @@
 $(document).ready(function(){
 	setButtons();		//JQuery UIのボタンを配置する
 	setButtonSize();	//ボタンの大きさを比率どおりにする
+	
+		var parcentHeight	= 0.95;					//高さの倍率
+		var windowHeight 	= $(window).height();	//画面の高さを求める
+		var windowWidth 	= $(window).width() * contentWidthParcent;	//画面の幅を求める
+		//画面の比率の変数。幅を高さで割って比率を算出し格納
+		var windowRatio		= windowHeight / windowWidth;
+		var setHeight		= 0;					//コンテンツの高さを格納する変数$
+		//縦長であれば
+				setHeight = windowHeight;
+		//コンテンツ部分の高さを設定
+		$('#fig1').css('height', setHeight);
+	
 });	
 //JavaScriptのコード記述を終える
 </script>
