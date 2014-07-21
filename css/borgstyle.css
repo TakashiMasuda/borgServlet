@@ -1129,12 +1129,12 @@ th.fig9_content_header{
 }
 /* 製品名のテキストボックスのボタン */
 .single-line-text.right.product-select button.button.ui-button{
-	width: 6.098%;	/* 他のボタンと合う幅に指定。親要素の幅に注意 */
-	margin-left: 0.7%;	/* 左margin */
+	width: 5.2741%;	/* 他のボタンと合う幅に指定。親要素の幅に注意 */
+	margin-left: 0.6%;	/* 左margin */
 }
 /* 製品名のテキストボックスについて */
 .pulldown-menu.product{
-	width: 76.0%;		/* 幅を76.0%分取る */
+	width: 75.0%;		/* 幅を76.0%分取る */
 	text-align:left;	/* 左詰 */
 }
 /* 製品名の項目の文字について */
