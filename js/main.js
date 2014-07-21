@@ -88,7 +88,7 @@
 		$('.ui-dropdownchecklist-text').css('font-size',  newFontSize + '%');		
 		$('.before_list_line label').css('font-size',  newFontSize + '%');		//リスト前行のラベル
 		//Fig.3-1のボタンのフォントサイズ
-		$('#fig3-1 .edit_buttons button.button.ui-button').css('font-size',  newFontSize - strechFix1 + '%');		
+		$('.normal-button').css('font-size',  newFontSize - strechFix1 + '%');		
 		$('.users_table th').css('font-size',  newFontSize - strechFix1 + '%');		
 		$('#tab-container ul li').css('font-size',  newFontSize + '%');			
 		$('#tab-container .edit_buttons .normal-button').css('font-size',  newFontSize + '%');		
@@ -1333,6 +1333,13 @@ $(function() {
 		if($('.page:first .list').length > 0){	//リストがあれば
 			gridResize();							//幅を調整する
 		}
+		//GoogleChartToolsのグラフを描画するタグがあれば
+		if($('.page:first').length > 0){
+			//fig名を取得して宣言した変数figNameに格納
+			var figName = $('.page:first div[id *= "fig"]:first', document).attr('id');
+			//figのグラフを描画する関数drawChartInFigを呼ぶ
+			drawChartInFig(figName);
+		}
 		setContentHeight();	//setContentHeightを呼び出し高さを修正
 		changeFontSize();	//フォントサイズを調整する
 	});
@@ -1403,7 +1410,7 @@ $(function() {
 					wrapPulldown();				//wrapPulldownを呼び出しプルダウンメニューを配置
 				}
 				if($('.page:first #tab-container').length > 0){	//タブのあるページが呼び出されたら
-					//タブの幅を取得。Google Chart Toolsの幅設定に使う
+					//タブの幅を取得。パーセンテージ調整後リストの幅設定に使う
 					tabContainerWidth = $('#tab-container').width() * tabContainerPercent;
 				}
 				//DROPDOWN CHECK LISTを使いチェックリストを持ったドロップダウンメニューを生成する
@@ -1720,8 +1727,8 @@ $(document).on('change', '.list td select', function(e){
 
 
 var mainWidthPercent = 0.97;		//mainのタグの幅に対するリスト幅の割合
-var tabContainerPercent = 0.99;		//タブの幅に対するリスト幅の割合。paddingの値を加味する
-var tabContainerWidth;						//タブの幅を格納する変数
+var tabContainerPercent = 0.98;		//タブの幅に対するリスト幅の割合。paddingの値を加味する
+tabContainerWidth = 0;				//タブの幅を格納する変数
 
 /* 関数名: gridResize()
  * 引数  : なし
@@ -1787,7 +1794,7 @@ var chartData = new Array();
 var chartOptions = new Array();
 //fig8-0の追加設定データ
 chartOptions['fig8-0'] = {
-    width: tabContainerWidth, //横幅
+//    width: tabContainerWidth2,
     height: 400, //高さ
 	title: '統計',	//グラフのタイトル
 	'titleTextStyle': { fontName: 'Meiryo UI', fontSize: 26},
@@ -1796,7 +1803,7 @@ chartOptions['fig8-0'] = {
   }
 //fig8-1の追加設定データ
 chartOptions['fig8-1'] = {
-    width: 560, //横幅
+//    width: tabContainerWidth2, //横幅
     height: 400, //高さ
 	title: '受注別',	//グラフのタイトル
 	'titleTextStyle': { fontName: 'Meiryo UI', fontSize: 26},
@@ -1805,7 +1812,7 @@ chartOptions['fig8-1'] = {
   }
 //fig8-2の追加設定データ
 chartOptions['fig8-2'] = {
-    width: tabContainerWidth, //横幅
+//    width: tabContainerWidth2, //横幅
     height: 400, //高さ
 	title: '発注別',	//グラフのタイトル
 	'titleTextStyle': { fontName: 'Meiryo UI', fontSize: 26},
@@ -1836,16 +1843,21 @@ tableOptions['fig8-2'] = {
  * 概要  :Google Chart Toolsでグラフを描く
  * 作成日:14.07.06
  * 作成者:T.M
+ * 修正日:14.07.21
+ * 修正者:T.M
+ * 内容  :resizeイベント対応
 */ 
 function drawChart(contentName, graphType, existTable) {
+  //タブの幅を算出し変数に格納
+  tabContainerWidth2 = $('#tab-container').width() * tabContainerPercent;
   //chartDataをセット
   data = google.visualization.arrayToDataTable(chartData[contentName]);
   //折れ線グラフを描く場合
-  if(graphType == 'line'){
+  if(graphType == 'line_chart'){
   //折れ線グラフを描き出す場所をセット
   chart = new google.visualization.LineChart(document.getElementById(contentName + '-graph'));
   //横棒グラフを描く場合
-  } else if(graphType == 'bar'){
+  } else if(graphType == 'bar_chart'){
   //横棒グラフを描き出す場所をセット
   chart = new google.visualization.BarChart(document.getElementById(contentName + '-graph'));
   }
@@ -1861,4 +1873,70 @@ function drawChart(contentName, graphType, existTable) {
   }
 }
 
+/* 
+ * 関数名:drawChartInFig(figName)
+ * 引数  :var figName
+ * 戻り値:なし
+ * 概要  :Figにグラフを描く
+ * 作成日:14.07.21
+ * 作成者:T.M
+*/ 
+function drawChartInFig(figName){
+	$('#'+ figName +' .google-chart').each(function(){
+		//グラフのタグからFig名を取り出して、ここで宣言した変数thisFigに格納
+		var thisFig = $(this).attr('id').replace('-graph', '');
+		//グラフのタイプを抜き出す
+		var graphType = '';
+		//表を描画するかどうかの値を格納する変数hasTableを宣言。falseで初期化
+		var hasTable = false;
+		//折れ線グラフなら
+		if($(this).hasClass('line_chart')){
+			graphType = 'line_chart';	//graphTypeに折れ線グラフのクラス名を格納
+		} else if($(this).hasClass('bar_chart')) {
+			graphType = 'bar_chart';	//graphTypeに棒グラフのクラス名を格納
+		}
+		//表を持っていれば
+		if($(this).hasClass('has-table')){
+			hasTable = true;	//表の描画フラグをtrueにする
+		}
+		
+		//Fig、グラフのタイプ、表があるかどうかの各変数を引数にしてdrawChartでグラフを描く
+		drawChart(thisFig, graphType, hasTable);
+	});
+}
 
+/* 
+ * 関数名:doDrawChart()
+ * 引数  :なし
+ * 戻り値:なし
+ * 概要  :グラフを描く
+ * 作成日:14.07.21
+ * 作成者:T.M
+*/ 
+function doDrawChart(){
+	//現在表示しているページにグラフがあれば
+	if($('.page:first .google-chart').length > 0){
+		//fig名を取得して宣言した変数figNameに格納
+		var figName = $('.page:first div[id *= "fig"]:first', document).attr('id');
+		//figのグラフを描画する関数drawChartInFigを呼ぶ
+		drawChartInFig(figName);
+	}
+}
+
+//タイマーとなる変数timerを宣言、falseで初期化
+var timer = false;
+//画面のサイズが変わったときのイベント
+$(window).resize(function() {
+    if (timer !== false) {		//リサイズが続いていれば
+        clearTimeout(timer);	//タイマーのカウントダウンをやり直す
+    }
+    timer = setTimeout(function() {	//リサイズを終えたら関数実行
+	doDrawChart();	//doDrawChartを呼び出してグラフを描く
+    }, 200);		//タイムアウトは200ミリ秒
+});
+
+
+//easytabsのタブボタンが押されたら
+$(document).on('easytabs:after', function(){
+	doDrawChart();	//doDrawChartを呼び出してグラフを描く
+});

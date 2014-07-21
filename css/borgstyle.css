@@ -1088,7 +1088,7 @@ th.fig9_content_header{
 }
 /* 2段組でないテキストボックスの横のボタン */
 .single-line-text button.button.ui-button{
-	width: 8.49%;
+	width: 4.245%;		/* 2段組の半分の幅 */
 	margin-left: 0.2%; /* 左marginを少々 */
 }
 /* 2段組のテキストボックスの横のボタン */
@@ -1379,6 +1379,7 @@ button.button.list-sort-button{
 #fig3-1 .edit_buttons button.button.ui-button{
 	width: auto;	/* 自動調整でテキストの分だけ幅取り */
 	margin-left: 1%;	/* 左に1%隙間を空ける */
+	float: right;		/* 右に寄せる */
 }
 /* edit_buttons内のボタン */
 .edit_buttons .button{
@@ -1710,6 +1711,6 @@ button.button.ui-button.summary-button{
 }
 /* タブパネル内の編集ボタン群 */
 .panel-container .line.edit_buttons{
-	width: 98%;	/* 幅をpaddingを加味して98%にする */
-	padding: 1%;	/* 全方向に1%のpadding */
+	width: 100%;	/* 幅をpaddingを加味して98%にする */
+	margin-bottom: 1%;	/* 1%の下margin */
 }

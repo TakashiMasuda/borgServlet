@@ -175,6 +175,9 @@ function drawChart() {
 				setButtons();	//JQuery UIのボタンを配置する
 				//idがtab-containerのタグを外枠にしてタブを生成
    		    	$('#tab-container').easytabs({
+					//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
+					//になることからアニメーションを切る。
+					animate: false,		
 					updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
 				});
    			 });
@@ -215,38 +218,20 @@ function drawChart() {
 				<div class="panel-container">
 					<!-- Fig.8-0 -->
 					<div id="fig8-0">
-				        <!-- JavaScriptを開始 -->
-  			 	         <script>
-							//折れ線グラフを描画
-							drawChart('fig8-0' ,'line', false);
-						//JavaScriptを終了
-						</script>
 						<!-- GoogleChartによりグラフが描画されるタグ -->
-   	  		       <div id="fig8-0-graph"></div>
+   	  		       <div id="fig8-0-graph" class="google-chart line_chart"></div>
 					<!-- Fig.8-0を終了 -->
 					</div>
 					<!-- Fig.8-1 -->
 					<div id="fig8-1">
-				        <!-- JavaScriptを開始 -->
-   	  			        <script>
-							//横棒グラフを描画
-							drawChart('fig8-1' ,'bar', false);
-						//JavaScriptを終了
-						</script>
 						<!-- GoogleChartによりグラフが描画されるタグ -->
-   	    			     <div id="fig8-1-graph"></div>
+   	    			     <div id="fig8-1-graph" class="google-chart bar_chart"></div>
 					<!-- Fig.8-1を終了 -->
 					</div>
 					<!-- Fig.8-2 -->
 					<div id="fig8-2">
-		  		 	     <!-- JavaScriptを開始 -->
-		   			     <script>
-								//横棒グラフを描画
-								drawChart('fig8-2' ,'bar', true);
-						//JavaScriptを終了
-						</script>
 						<!-- GoogleChartによりグラフが描画されるタグ -->
-   				         <div id="fig8-2-graph"></div>
+   				         <div id="fig8-2-graph" class="google-chart  bar_chart has-table"></div>
 						<!-- GoogleChartにより表が描画されるタグ -->
    				         <div class="table lower" id="fig8-2-table"></div>
 					<!-- タブパネル3つめを閉じる -->
