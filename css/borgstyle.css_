@@ -2,7 +2,7 @@
 /* bodyタグ。全体に影響を及ぼす */
 body{
 	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-	margin: 0 1% 0;
+	margin: 8px 5px 0;
 	font-size: 90%;	/* 全体的を通常の9割程度のサイズにする */
 }
 /* クリック時の動作についてのスタイルシート */
@@ -14,45 +14,34 @@ body{
 #header{
 	display: block;	/* ブロックとして扱う */
 	margin-bottom: 1%;	/* 1%の下margin */
-	margin-top: 5px;	/* 上に5pxのmargin */
 }
 .maincontent{
 	clear: both;
+	margin-p: 20px;
 	display: block;
 }
 /*
  * クラス:
- * 概要  :画面サイズの割合を定義
+ * 概要  :画面幅の割合を定義
  * 作成日:2014.06.12
  * 作成者:T.I
  */
 #container {
 	width: 100%;		/* 幅を100%に設定 */
-	height: 100%;		/* 高さをautoに設定 */ 
 }
 
 /*
- * クラス:main
- * 概要  :画面全体の定義
- * 作成日:2014.07.15
- * 作成者:T.M
- */
-.page {
-	width: 100%;		/* 幅の基準パーセンテージ */
-	height: inherit;	/* containerの高さを継承 */
-}/*
  * クラス:main
  * 概要  :画面全体の定義
  * 作成日:2014.06.12
  * 作成者:T.I
  */
 .main {
-/*	min-width: 310px;*/	/* 画面幅の最小値*/
-	max-width: 768px;	/* 画面幅の最大値 */
+	min-width: 310px;	/* 画面幅の最小値*/
+	max-width: 590px;	/* 画面幅の最大値 */
 	width: 100%;		/* 幅の基準パーセンテージ */
-	height: inherit;	/* containerの高さを継承 */
 	margin: 0 auto 0;	/* 画面全体の各マージン */
-	max-height: 1024px;	/* 画面の最大高 */
+
 }
 
 /*
@@ -63,8 +52,6 @@ body{
  */
 #fig1 {
 	text-align: center; /* 文字を中央揃えに */
-	height: inherit;	/* 高さを継承する */
-	max-height: 600px;	/* 最大の高さを指定 */
 }
 
 /*
@@ -175,31 +162,9 @@ body{
 }
 /* ボタンの大きさを統一する */
 .parts_height{
-	/*height:100%;*/
+	height:30px;
 }
-/* テキストボックスとボタンをリサイズする記述。marginの問題が出るためオミット */
-/*
-.parallel-text input{
-	height: 85% !important;
-}
-.parallel-text button{
-	height: 85% !important;
-}
-.single-line-text button{
-	height: 85% !important;
-}
-*/
-/*
- * クラス:figs
- * 概要  :各fig
- * 作成日:2014.07.15
- * 作成者:T.M
- */
- .figs{
-	 height: inherit;	/* 高さを継承する */
- }
- 
- 
+
 /*
  * クラス:select_interval
  * 概要  :選択ボタンの定義
@@ -250,8 +215,8 @@ body{
  * 作成者:T.I
  */
 .textbox_L {
-	width: 76.5%;		/* 幅を76.5%に指定 */
-/*	height:30px;*/
+	width: 60%;		/* 幅を60%に指定 */
+	height:30px;
 }
 
 /*
@@ -265,7 +230,7 @@ body{
  */
 .textbox_M {
 	width: 50%;		/* 幅を30%に指定 */
-/*	height:30px;*/
+	height:30px;
 }
 
 /*
@@ -276,40 +241,41 @@ body{
  */
 .textbox_S {
 	width: 55%;		/* 幅を55%に指定 */
-/*	height:30px;*/
+	height:30px;
 }
 
 /*
- * クラス:top_page_button
- * 概要  :Fig.1(トップページ)のボタン
- * 作成日:2014.07.15
- * 作成者:T.M
+ * クラス:
+ * 概要  :fig1のinputに適用
+ * 作成日:2014.06.12
+ * 作成者:T.I
  * 
  */
-.top_page_button{
-	
-}
-/* jQuery UIのボタンに置き換えたFig.1のボタン */
-#fig1 button.button.ui-button.top_page_button{
+#fig1 input {
 	width: 40%;		/* 幅 */
-	height: 100%;	/* 高さ100% */
+	/* 背景 */
+	/* border */
+	background: #EEE;
+	border: 1px solid #CCC;
+	border-radius: 10px; /* CSS3草案 */
+	-webkit-border-radius: 10px; /* Safari, Chrome用 */
+	-moz-border-radius: 10px; /* Firefox用 */
+	color: #666;
+	padding: 5px 0;
+	text-align: center;
+	display: block;
+	text-shadow: #999 1px 3px 2px;/* 文字の影 */
+	box-shadow: #666 3px 3px 7px;/* 枠の影 */
+	-moz-box-shadow: #999 3px 3px 7px;   /* Firefox */
+	-webkit-box-shadow: #666 3px 3px 7px;    /* Safari,Google Chrome */
+	behavior: url(/path/PIE10b5/PIE.htc);/* 表示HTMLからの相対 */
+	position: relative; /* for lt IE8 */
 	zoom: 1;    /* for IE */
 	cursor: pointer;	/* カーソルを指差しにする */
 }
 
-/*
- * クラス:parallel-text
- * 概要  :二段組テキストボックス
- * 作成日:2014.07.15
- * 作成者:T.M
- */
-.parallel-text{
-	padding: 0.4% 0;	/* 上下に0.2%のpadding */
-}
 
-.parallel-text input{
-	height: 100%;	/* テキストボックスの高さを100%に指定 */
-}
+
 /*
  * クラス:parallel-text.right
  * 概要  :テキストボックスを右に置く
@@ -322,7 +288,7 @@ body{
 .parallel-text.right{
 	width: 50%;		/* 幅を50%に指定 */
 	float: right;	/* 右に寄せる */
-/*	margin-bottom: 5px;*/	/* 下に20%のmarginを挿入 */
+	margin-bottom: 5px;	/* 下に20%のmarginを挿入 */
 }
 
 /*
@@ -337,21 +303,26 @@ body{
 .parallel-text.left{
 	width: 50%;		/* 幅を50%に指定 */
 	float: left;	/* 左に寄せる */
-/*	margin-bottom: 5px;*/	/* 下に20%のmarginを挿入 */
+	margin-bottom: 5px;	/* 下に20%のmarginを挿入 */
 }
 
-/* 2段組テキストボックス */
-.parallel-text input.textbox_S {
-	width: 55%;		/* 幅を55%に指定 */
+/* 右側のテキストボックスと項目名 */
+.right .textbox_S {
+	width: 50%;		/* 幅を52%に指定 */
+}
+/* 左側のテキストボックスと項目名 */
+.parallel-text.left .textbox_S {
+	width: 51.5%;		/* 幅を51.5%に指定 */
 }
 /* 全ページのラベルのスタイルシート */
 label{
+	margin-top:5px;			/* 文字上部に5pxの空白を挿入 */\
 	display: inline-block;	/* インラインブロックとして扱う */
-	vertical-align: middle;	/* 親要素の中心の高さに合わせる */
 }
 /* 2段組レイアウトでのラベル */
 .parallel-text label{
-	width: 27%;	/* 幅を27%取る */
+	width: 30%;	/* 幅を30%取る */
+	float: left;
 }
 /*
  * クラス:single-line-text
@@ -361,20 +332,20 @@ label{
  */
 .single-line-text{
 	clear: both;		/* 回り込みをしないようにする */
-	padding: 0.4% 0 1%;	/* 上下に少々のpadding */
+	margin-bottom: 1%;	/* 下に1%のmarginを挿入 */
 }
 /* 一段組みでのラベルのスタイルシート */
 .single-line-text label{
-	width: 13.5%;		/* ラベルの幅を2段組の半分にする */
+	width: 15%;		/* ラベルの幅を2段組の半分にする */
+	float: left;	/* 左に詰める */
 }
-/* 一段組みでのテキストボックスのスタイルシート */
-.single-line-text input{
-	height: 100%;		/* 高さを外枠一杯に伸ばす */
+/* 一段組みでのラベルのスタイルシート。textbox_M版 */
+.single-line-text .textbox_M{
+	width: 75%
 }
-/* 一段組みでのラベルのスタイルシート */
-.single-line-text textbox_M{
-	float: left;	/* 左に寄せて詰める */
-	width: 75%;
+/* 一段組みでのラベルのスタイルシート。textbox_L版*/
+.single-line-text .textbox_L{
+	width: 75%
 }
 /*
  * クラス:parallel-text.left.without_right
@@ -570,11 +541,10 @@ div#graph-explain{
  * 作成者:T.M
 */
 .voucher-status-text{
-	display: inline;	/* インライン要素として扱う */
+	display: inline-block;	/* インラインブロックとして扱う */
 	color: #888;		/* フォントの色を灰色にする */
 	margin-right: 1%;	/* 右にmargin */
 	font-size:	90%;	/* 小さくして改行しにくくする */
-	width: 30%;			/* 幅 */
 }
 div#flowbuttons{
 	position: relative;
@@ -720,19 +690,7 @@ zoom: 1;    /* for IE */
  */
 .fig1_buttons{
 	clear: both;	/* 他の要素と横並べにならないようにする */
-	height: 13%;	/* 高さを13%に指定 */
 }
-/*
- * クラス:first 
- * 概要  :複数ある同系統の要素の1番目
- * 作成日:2014.07.15
- * 作成者:T.M
- */
-/* 1行目のみ大きくする */
-.fig1_buttons.first{
-	height: 25%;	/* 高さを25%に指定 */
-}
-
 /*
  * クラス:right
  * 概要  :右に寄せる
@@ -751,25 +709,14 @@ zoom: 1;    /* for IE */
 .left {
 	float: left;	/* 左に寄せる */
 }
-
 /* fig1の右のボタンに対するスタイルシート */
 #fig1 .fig1_buttons input.right{
 	/* 上、右、下、左の順にmarginを設定。左右はボタンの幅と合わせて合計100%にする */
-	margin: 0 8% 1% 2%;
+	margin: 0 8% 8% 2%;
 }
 /* fig1の左のボタンに対するスタイルシート */
 #fig1 .fig1_buttons input.left{
-	margin: 0 2% 1% 8%; /* 右のボタンの設定と同様。左右のmarginを入れ替える */
-}
-
-/* fig1の右のボタンに対するスタイルシート。jQuery UIのボタン版 */
-#fig1 .fig1_buttons button.right.top_page_button{
-	/* 上、右、下、左の順にmarginを設定。左右はボタンの幅と合わせて合計100%にする */
-	margin: 0 8% 1% 2%;
-}
-/* fig1の左のボタンに対するスタイルシート。jQuery UIのボタン版 */
-#fig1 .fig1_buttons button.left.top_page_button{
-	margin: 0 2% 1% 8%; /* 右のボタンの設定と同様。左右のmarginを入れ替える */
+	margin: 0 2% 8% 8%; /* 右のボタンの設定と同様。左右のmarginを入れ替える */
 }
 .ui-widget-content{
 	margin: 0 auto 0;
@@ -822,20 +769,22 @@ zoom: 1;    /* for IE */
 /* fig1の左のボタンに対するスタイルシート */
 #fig1 .fig1_buttons input.left{
 	margin: 0 2% 2% 8%; /* 右のボタンの設定と同様。左右のmarginを入れ替える */
-}/* fig1の右のボタンに対するスタイルシート */
-#fig1 .fig1_buttons button.right{
-	/* 上、右、下、左の順にmarginを設定。左右はボタンの幅と合わせて合計100%にする */
-	margin: 0 8% 2% 2%;	
-}
-/* fig1の左のボタンに対するスタイルシート */
-#fig1 .fig1_buttons button.left{
-	margin: 0 2% 2% 8%; /* 右のボタンの設定と同様。左右のmarginを入れ替える */
 }
 
 .block{
 	display:block;
 	}
 	
+/*
+ * クラス:font_size
+ * 概要  :ボタンのフォントサイズ変更
+ * 作成日:2014.06.19
+ * 作成者:H.U
+ */
+.button_fontsize{
+	font-size:30px;
+}
+
 /*
  * クラス:margin_top
  * 上部にマージンを設ける
@@ -886,13 +835,9 @@ zoom: 1;    /* for IE */
  * テキストボックス左端にあわせる
  * 作成日:2014.06.20
  * 作成者:H.U
- * 修正日:2014.07.21
- * 修正者:T.M
- * 内容  :レスポンシブ対応
  */
 .space_width{
-	display: inline;	/* インライン要素として扱う */
-	margin-right: 0.5%;	/* 最低限の間隔を取る */
+	width:15%;
 }
 /*
  * クラス:space_width
@@ -903,18 +848,19 @@ zoom: 1;    /* for IE */
 .space_width_syubetu{
 	width:12%;
 }
+
 /* fig.9 */
 .users_table{
-	width: 100%;
+	width: 90%;
 	border: none;
 	margin: 0 auto 10px;
-	padding: 0 5% 0;
 }
 .users_table th{
 	width: auto;
 	font-weight: normal;
 	border: solid 1px #DDDDDD;
 	border-radius: 5px 5px;
+	line-height: 30px;
 	background: #FFF;
 }
 .users_table td{
@@ -998,7 +944,6 @@ th.fig9_content_header{
 /* fig.2請求額のスタイルシート */
 #fig2 .textbox_M.bill{
 	width: 30%;
-	text-align: center;
 }
 /* fig.2請求額のテキストエリア */
 #fig2 .textbox_M.bill input{
@@ -1007,14 +952,13 @@ th.fig9_content_header{
 	width: 65%;			/* 幅65% */
 	font-size: 125%;	/* 数値を大きく */
 	font-weight:bold;	/* 太字 */
-	font-family:"ＭＳ ゴシック", "MS Gothic", "Osaka－等幅", Osaka-mono, monospace;	/* フォントを指定 */
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/* フォントを指定 */
 }
 /* fig.2請求額の文字 */
 #fig2 .right.textbox_M.bill label{
-	width: auto;			/* 幅 */
-	display: inline;	/* インライン */
-	vertical-align: sub;/* サブ */	
-	vertical-align: -webkit-baseline-middle;/* webkitでは中間 */
+	width: 30%;
+	display: inline;
+	text-align: center;
 }
 /* 以上、請求額のスタイルシート */
 /*
@@ -1027,11 +971,22 @@ th.fig9_content_header{
  * 内容  :下marginの追加
  */
  .before_list_line{
-	margin-bottom: 1%;	/* 下に1%の間隔を空け、リストとの間に適度な隙間を作る */
+	margin-top: 1.5%;	/* 上に1.5%の間隔を取る */
+	margin-bottom: 5px;	/* 下に5pxの間隔を空け、リストとの間に適度な隙間を作る */
 	width: 100%;		/* 1行分全ての幅を取る */
 	clear: both;		/* floatによる回り込みを防止 */
 }
+/* 製造フローの矢印ボタンをまとめた枠に対するスタイルシート */
+#distribution_flow {
+	margin-top: 30px;
+}
+/* クラス:edit_buttons
+ * 概要  :追加、編集、削除等のボタンをまとめる
+ * 作成日:2014.06.25
+ * 作成者:T.M
+*/
 .edit_buttons{
+	
 }
 /* edit_buttons内のinput要素 */
 .edit_buttons input{
@@ -1071,11 +1026,7 @@ th.fig9_content_header{
 }
 /* 請求書の下margin */
 .bill.margin-bottom{
-	margin: 0;	/* margin0 */
-}
-/* 請求書のタグ */
-.bill.parallel-text{
-	padding: 0;	/* padding0 */
+	margin: 0.3% 0 0;	/* 上にだけ0.3%のmargin */
 }
 /* 項目とテキストボックスの間隔を、列の最大文字数の項目を基準に縮める */
 /* parallel-textでは、18.5が3文字用、24が4文字用 */
@@ -1083,24 +1034,139 @@ th.fig9_content_header{
 
 /* 2段組みテキストボックス横のボタン */
 .parallel-text button.button.ui-button{
-	width: 8.49%;	/* 幅10% */
-	display: inline;
+	margin-right: 0; /* 右marginをなくす */
 }
 /* 2段組でないテキストボックスの横のボタン */
 .single-line-text button.button.ui-button{
-	width: 8.49%;
-	margin-left: 0.2%; /* 左marginを少々 */
+	margin-right: 0; /* 右marginをなくす */
+	float: right;	/* 右に寄せる */
 }
-/* 2段組のテキストボックスの横のボタン */
-.parallel-text button.button.ui-button{
-	margin-left: 1%;	/* コンテンツの外枠のpaddingと同じだけの右margin */
+/* 2段組右側のテキストボックスの横のボタン */
+.parallel-text.right button.button.ui-button{
+	float: right;	/* 右に寄せる */
+}/* 2段組左側のテキストボックスの横のボタン */
+.parallel-text.left button.button.ui-button{
+	float: right;	/* 右に寄せる */
+	margin-right: 3%;	/* コンテンツの外枠のpaddingと同じだけの右margin */
 }
-/* 2段組のテキストボックス横のdatepickerのボタン */
-.parallel-text button.ui-datepicker-trigger.ui-button{
-/*	float: left;	*//* 右に寄せる */
-	margin-left: 2%;	/* コンテンツの外枠のpaddingと同じだけの右margin */
-	width: 8.49%;			/* 幅8.49% */
+.parallel-text.left button.ui-datepicker-trigger.ui-button{
+	float: right;	/* 右に寄せる */
+	margin-right: 3%;	/* コンテンツの外枠のpaddingと同じだけの右margin */
 }
+.parallel-text.right button.ui-datepicker-trigger.ui-button{
+	float: right;	/* 右に寄せる */
+	margin-right: 0;	/* 右のmarginを消す */
+}
+/* Fig.2の2段組右側テキストボックスのラベル */
+#fig2 .parallel-text.right label{
+	width: 18.5%;
+}
+/* Fig.2の2段組右側テキストボックス */
+#fig2 .parallel-text.right .textbox_S{
+	width: 66%;	/* 3文字の項目 */
+}
+/* Fig.2の1段組テキストボックス */
+#fig2 .single-line-text .textbox_L{
+	width: 76.2%;	/* 3文字の項目 */
+}
+/* Fig2-1.の2段組右側テキストボックスのラベル */
+#fig2-1 .parallel-text.right label{
+	width: 18.5%;
+}
+/* Fig.2-1の2段組右側テキストボックス */
+#fig2-1 .parallel-text.right .textbox_S{
+	width: 66%;	/* 3文字の項目 */
+}
+/* Fig.3の2段組左側テキストボックスのラベル */
+#fig3 .parallel-text.left label{
+	width: 24%;
+}
+/* Fig.3の2段組右側テキストボックスのラベル */
+#fig3 .parallel-text.right label{
+	/* 5文字の項目が入ったため、無効化 */
+	/*width: 18.5%;*/
+}
+/* Fig.3の2段組右側テキストボックス */
+#fig3 .parallel-text.right .textbox_S{
+	width: 54.5%;	/* 5文字の項目 */
+}
+/* Fig.3の2段組左側テキストボックス */
+#fig3 .parallel-text.left .textbox_S{
+	width: 57.5%;	/* 4文字の項目 */
+}
+/* Fig.3の1段組テキストボックス */
+#fig3 .single-line-text .textbox_L{
+	width: 79.3%;	/* 4文字の項目 */
+}
+/* Fig.3の1段組テキストボックスのラベル */
+#fig3 .single-line-text label{
+	width: 12%;
+}
+/* Fig.3-1の2段組左側テキストボックスのラベル */
+#fig3-1 .parallel-text.left label{
+	width: 26%;
+}
+/* Fig.3-1の2段組左側テキストボックス */
+#fig3-1 .parallel-text.left .textbox_S{
+	width: 55.5%;	/* 4文字+αの項目 */
+}
+/* Fig.3-1の2段組右側テキストボックスのラベル */
+#fig3-1 .parallel-text.right label{
+/*	width: 18.5%;*/
+}
+/* Fig.3-1の2段組右側テキストボックス */
+#fig3-1 .parallel-text.right .textbox_S{
+	width: 54.5%;	/* 5文字の項目 */
+}
+/* Fig.4-1の2段組日有り側テキストボックスのラベル */
+#fig4-1 .parallel-text.left label{
+	width: 24%;
+}
+/* Fig.4-1の2段組左側テキストボックス */
+#fig4-1 .parallel-text.left .textbox_S{
+	width: 57.5%;	/* 4文字の項目 */
+}
+/* Fig.4-1の1段組テキストボックスのラベル */
+#fig4-1 .single-line-text label{
+	width: 12%;
+}
+/* Fig.4-1の2段組右側テキストボックスのラベル */
+#fig4-1 .parallel-text.right label{
+	width: 18.5%;
+}
+/* Fig.4-1の2段組右側テキストボックス */
+#fig4-1 .parallel-text.right .textbox_S{
+	width: 66%;
+}
+/* Fig.4-1の1段組テキストボックス */
+#fig4-1 .single-line-text .textbox_L{
+	width: 79.0%;	/* 4文字の項目 */
+}
+/* Fig.5-1の2段組右側テキストボックスのラベル */
+#fig5-1 .parallel-text.right label{
+	width: 18.5%;
+}
+/* Fig.5-1の2段組テキストボックスのラベル */
+#fig5-1 .parallel-text.right .textbox_S{
+	width: 66%;
+}
+/* Fig.5-1の2段組左側テキストボックスのラベル */
+#fig5-1 .parallel-text.left label{
+	width: 24%;
+}
+/* Fig.5-1の2段組左側テキストボックス */
+#fig5-1 .parallel-text.left .textbox_S{
+	width: 57.5%;	/* 4文字の項目 */
+}
+/* Fig.5-1の1段組テキストボックスのラベル */
+#fig5-1 .single-line-text label{
+	width: 12%;
+}
+/* Fig.5-1の1段組テキストボックス */
+#fig5-1 .single-line-text .textbox_L{
+	width: 79%;	/* 4文字の項目 */
+}
+/* 以上 */
 
 /*
  * クラス:fig8-list-head
@@ -1122,29 +1188,25 @@ th.fig9_content_header{
 /* 製品名のテキストボックス */
 .single-line-text.right.product-select{
 	/* 種別、製品名を並べるにあたって幅の配分をする必要があり、製品名は82%に設定 */
-	width: 80%;			/* 種別とあわせて100%の幅を取るようにし、こちらは80%を取る */
+	width: 82%;
 	float: left;		/* 左に寄せる */
 	clear: none;		/* 回り込みを許可する */
-	text-align: center;	/* 中央に寄せる */
-}
-/* 製品名のテキストボックスのボタン */
-.single-line-text.right.product-select button.button.ui-button{
-	width: 6.098%;	/* 他のボタンと合う幅に指定。親要素の幅に注意 */
-	margin-left: 0.7%;	/* 左margin */
 }
 /* 製品名のテキストボックスについて */
 .pulldown-menu.product{
-	width: 76.0%;		/* 幅を76.0%分取る */
-	text-align:left;	/* 左詰 */
+	width: 78.7%;		/* 幅を78.7%分取る */
+	text-align:left;
 }
 /* 製品名の項目の文字について */
 .single-line-text.right.product-select label{
 	width: 11%;		/* 幅を11%取る */
+	float: left;	/* 左に寄せる */
 }
+
 
 /* 種別の項目を囲むdivタグについて */
 .parallel-text.left.product-category{
-	width: 20%;		/* 幅を20%に設定 */
+	width: 18%;		/* 幅を18%に設定 */
 }
 /* 種別の項目の文字について */
 .parallel-text.left.product-category label{
@@ -1161,7 +1223,6 @@ th.fig9_content_header{
 /* before_list_line内のプルダウンメニュー(selectタグ)について */
 .before_list_line select{
 	width: 30%;		/* 幅を30%に設定 */
-	height: 100%;	/* 外枠の高さに合わせる */
 }
 /* クラス:inner-list-title
  * 概要  :リストのタイトル領域の記述
@@ -1210,10 +1271,12 @@ th.fig9_content_header{
 #fig3-1.edit_buttons{
 	width: 60%;		/* 幅を60%に設定 */
 }
+.single-line-text.serial-number{
+	margin-bottom: 2%;
+}
 /* シリアルナンバーのボタンであることを説明する文について */
 #fig3-1 .single-line-text .serial-number-label{
-	width: 25%;	/* ボタンの領域と幅を合わせて */
-	float:left;	/* こちらを左にして横に並べる */
+	width: 20%;
 }
 /* ここまでFig3-1の修正分 */
 /*
@@ -1222,7 +1285,7 @@ th.fig9_content_header{
  * 作成日:2014.06.26
  * 作成者:T.M
  */
-#fig1 button.top_page_button:active{
+#fig1 input:active{
 	top: 5px;	/* 下に5pxずらしてボタンを押したような動きを見せる */
 }
 /* クローズボックスについて */
@@ -1278,13 +1341,6 @@ th.fig9_content_header{
 .sort-by-year-button,sort-by-month-button{
 	float: right;	/* 右に寄せる */
 }
-/* 月別ソートボタン */
-.a_line button.button.ui-button.sort-by-month-button{
-	margin-right: 0.9%;	/* 0.9%の右margin */
-}
-/* 年別ソートボタン */
-.a_line button.button.ui-button.sort-by-year-button{
-	margin-right: 0;	/* 0%の右margin */}
 /*
  * クラス:button
  * 概要  :ボタンの基底クラス
@@ -1292,27 +1348,26 @@ th.fig9_content_header{
  * 作成者:T.M
 */
 .button{
-	width: 8.49%;			/* 高さを30pxにする */
+	width: 32px;			/* 高さを30pxにする */
 	height: 32px;			/* 幅も30pxにする */
 	vertical-align: middle;	/* 縦方向の真ん中に置く */
-	cursor: pointer;		/* ボタンは指で指す */
+	margin-right: 5px;		/* 右に5pxのmarginを挿入 */
 }
 /* ボタンをJQuery UIのボタンにした場合 */
 button.button.ui-button{
-	width: 8.49%;			/* 高さを30pxにする */
-	height: 100%;			/* 幅も100%にする */
-	vertical-align: middle;	/* 縦方向の真ん中に置く */
-	display: inline;		/* インライン要素 */
+	max-width: 32px;	/* 最大高を30pxにする */
+	max-height: 32px;	/* 最大幅も30pxにする */
+	margin-right: 5px;	/* 右に5pxのmarginを挿入 */
 }
 /* datepickerのカレンダーボタン */
 button.ui-datepicker-trigger{
-	width: 8.49%;		/* 高さを30pxにする */
+	width: 32px;		/* 高さを30pxにする */
 	height: 32px;		/* 幅も30pxにする */
 }
 /* datepickerのカレンダーボタンをJQuery UIのものにしたもの */
 button.ui-datepicker-trigger.ui-button{
-	width: 8.49%;			/* 高さを30pxにする */
-	height: 100%;			/* 幅も30pxにする */
+	width: 32px;			/* 高さを30pxにする */
+	height: 32px;			/* 幅も30pxにする */
 	vertical-align: middle;	/* 縦方向の真ん中に置く */
 }
 /*
@@ -1352,33 +1407,21 @@ button.button.list-sort-button{
  * 作成日:2014.06.17
  * 作成者:T.M
  */
-.line.edit_buttons{
+.edit_buttons{
 	float: left;	/* 左に寄せる */
 	width: 100%;	/* 2段組でない状況をまずは想定して100%の幅 */
 }
 /* fig.2のedit_buttons */
 #fig2 .edit_buttons{
-	width: 20%; /* 幅15% */
-	height: 100%;	/* 縦100% */
-	float: left;	/* 左寄せ */
-}
-/* fig.2のedit_buttonsのボタン */
-#fig2 .edit_buttons button.button.ui-button{
-	width: 21.9%; /* 幅21.9% */
-	margin-right: 5%;	/* 右に4%のmargin */
+	width: 25%; /* 幅25% */
 }
 /* fig.3のedit_buttons */
 #fig3 .edit_buttons{
-	height: 100%;	/* 外枠の縦に合わせて */
-	width: 100%;	/* 幅100% */
+	width: 25%;	/* 幅25% */
 }
 /* fig.3-1のedit_buttons */
 #fig3-1 .edit_buttons{
-	width: 100%;	/* 幅80% */
-}/* fig.3-1のedit_buttonsのui-button */
-#fig3-1 .edit_buttons button.button.ui-button{
-	width: auto;	/* 自動調整でテキストの分だけ幅取り */
-	margin-left: 1%;	/* 左に1%隙間を空ける */
+	width: 80%;	/* 幅80% */
 }
 /* edit_buttons内のボタン */
 .edit_buttons .button{
@@ -1386,12 +1429,12 @@ button.button.list-sort-button{
 }
 /* 通常のボタン */
 button.button.normal-button{
-	width: auto !important;		/* 横幅自動調節 */
+	width: auto;		/* 横幅自動調節 */
 	max-width: none;	/* 最大幅なし */
 	max-height: none;	/* 最大高なし */
 	height: auto;		/* 高さ自動調節 */
 	/* JQuery UIのテキストのボタンは大きめなので小さく */
-	font-size: small;	/* 小さめのテキスト */
+	font-size: small;	
 }
 /* fig.8-3、8-4の見出し */
 #graph-region #sub_header{
@@ -1415,7 +1458,7 @@ button.button.normal-button{
 }
 /* fig8のリスト */
 #fig8 .list{
-/*	margin: 0 auto 0;*/
+	margin: 0 auto 0;
 }
 /*
  * クラス:select-textbox
@@ -1424,7 +1467,7 @@ button.button.normal-button{
  * 作成者:T.M
 */
 .select-text-box{
-	vertical-align: middle;	/* 中心に寄せる */
+	vertical-align: top;	/* 上に寄せる */
 }
 /*
  * クラス:table
@@ -1442,14 +1485,33 @@ button.button.normal-button{
  * 作成者:T.M
 */
 .table.lower{
-	margin-top: 1%;/* 上にmarginを挿入 */
+	margin-top: 10px;/* 上にmarginを挿入 */
 }
-
+/* モーダルダイアログのリンクリストについて */
+/* ダイアログのリスト */
+#link-list{
+	list-style: none;	/* リストの先頭につく文字を消す */
+	padding: 0;			/* ulに最初から入っているpaddingを消す */
+}
+/* ダイアログのリストの項目 */
+#link-list li{
+	line-height: 30px;	/* 文字の高さ */
+}
+/* マウスオーバー時 */
+#link-list li span:hover{
+	color: #FFF;	/* 色 */
+	background: #999;	/* 背景色 */
+}
+/* 文字部分 */
+#link-list li span{
+	padding: 1px 5px;	/* 少々枠の範囲を広げる */
+	border-radius: 5px;	/* 角に丸みをつける */
+}
 /* モーダルダイアログのリンクリストの記述はここまで */
 /* ヘッダー内での設定ボタン */
 #header .setting-button{
 	float: right;	/* 右寄せ */
-	margin-right: 3.5%;	/* 右のボタンとの間に余白 */
+	margin-right: 5px;	/* 右のボタンとの間に余白 */
 }
 /*
  * クラス:ui-dropdownchecklist-text
@@ -1507,13 +1569,8 @@ button.button.normal-button{
  * 作成者:T.M
  */
 /* テーブル内の、ウィジェットによるボタン。 */
-table td.button-col{
-	width: 5%;/* ボタンのための幅を取る */
-}
-/* テーブル内の、ウィジェットによるボタン。 */
 table td.button-col button.ui-button{
 	margin-right: 1px;/* 右marginを縮める */
-	width: 100%;		/* 外枠となるtdタグの幅でボタンの幅を決める */
 }
  /*
  * クラス:dummy
@@ -1531,45 +1588,24 @@ table td.button-col button.ui-button{
 }
 /* ヘッダー部分のタイトル部分 */
 #header-title{
-	width: 70%;	/* 幅 */
-	float: left;	/* 左に寄せる */
-	text-align:left;	/* 中の文章を左に寄せる */
+	width: 49%;	/* 幅 */
 }
 /* ヘッダー部分のボタン群 */
 #header-buttons{
-	width: 28%;	/* 幅 */
-}/* ヘッダー部分のボタン群 */
-#header-buttons button.button.ui-button{
-	width: 14.73%;	/* 幅 */
+	width: 50%;	/* 幅 */
 }
-/* ヘッダー */
-#header{
-	text-align: right;	/* 中のテキストを右に寄せる */
-}
+
 /* 伝票ステータスがあるヘッダー部分のタイトル部分 */
 .has_voucher_status #header-title{
 	width: 25%;	/* 幅 */
 }
 /* ヘッダー部分の伝票ステータス部分 */
 .has_voucher_status #header-voucher-status{
-	width: 57%;	/* 幅 */
-	text-align: left;	/* このままだと中のテキスト全てが右に寄るので左に寄せる */
+	width: 50%;	/* 幅 */
 }
 /* 伝票ステータスがあるヘッダー部分のボタン群 */
 .has_voucher_status #header-buttons{
-	width: 14.5%;	/* 幅 */
-}
-/* 伝票ステータスがあるヘッダー部分のボタン群 */
-.has_voucher_status #header-buttons button.button.ui-button{
-	width: 28.442%;	/* 幅 */
-}
-/* 伝票ステータスありの設定ボタン */
-.has_voucher_status #header-buttons button.button.ui-button.setting-button{
-	margin-right: 6.75%;	/* 右margin */
-}
-/* 伝票ステータスありの設定ボタン */
-#header-buttons button.button.ui-button.close-button{
-	margin-right: 0;	/* 右marginなし */
+	width: 23.1%;	/* 幅 */
 }
 /* inputタグについて */
 input{
@@ -1603,113 +1639,16 @@ input{
 .single-line-text .pulldown-menu-list{
 	margin-top: 30px;	/* もう少し下にずらす */
 }
-/*  
-@media screen and (min-width: 580px){
-	.ui-dropdownchecklist-text {*/
-/*		font-size: 16px;*/
-		/* line-height: 20px; */
-/*	}
-}
-@media screen and (max-width: 579px) and (min-width: 420px){
-	body{
-		font-size: 75%;
-	}/*
-/*	.ui-dropdownchecklist-text { */
-/*		font-size: 14px; */
-		/* line-height: 20px; */
-/*	}
-}
-@media screen and (max-width: 419px){
-	body{
-		font-size: 60%;
-	}
-	.ui-dropdownchecklist-text {
-		font-size: 12px;*/
-		/* line-height: 20px; */
-/*	}
-}
-*/
-label div {
-	width: 100%;
-}
- /*
- * クラス:line
- * 概要  :行の先頭
- * 作成日:2014.07.17
- * 作成者:T.M
- */
-.line{
+/* 2段組テキストボックスのテキストボックス本体 */
+.parallel-text .textbox_S{
 
 }
  /*
- * クラス:a_line
- * 概要  :1項目で行全ての幅を使う行
- * 作成日:2014.07.17
- * 作成者:T.M
- */
-.a_line{
-}
-/* 1行1項目のタグの中のボタン */
-.a_line button.button.ui-button{
-	width: 4.245%;	/* 1/20の幅 */
-	margin-right: 1%;	/* 右に1%のmargin */
-}
-/* 1行1項目のタグの中のボタン */
-.a_line.single-line-text button.button.ui-button{
-	margin-right: 0%;	/* 右marginが余分となるのでなくす */
-}
- /*
- * クラス:line
- * 概要  :2項目で1行を使う要素
- * 作成日:2014.07.17
- * 作成者:T.M
- */
-/* 1行2項目のタグの中のボタン */
-.half_line  button.button.ui-button{
-	width: 8.49%;	/* 1/10の幅 */
-	margin-right: 1%;	/* 右に2%のmargin */
-}
-/* 1行2項目のタグの中のボタン。テキストボックス入り */
-.half_line.parallel-text  button.button.ui-button{
-	margin-right: 0;	/* 右に2%のmargin */
-}
-/* ボタン用tdタグのボタン */
-.button-col button.button.ui-button{
-	width: 100%;	/* 枠に幅を合わせる */
-	height: 100%;	/* 枠に高さを合わせる */
-}
-/* 伝票のプルダウンメニュー */
-input#denpyo{
-	height: 100%;	/* 要素一杯に高さをとる */
-}
-/* fig3-1のステータスボタンを囲むdiv */
-#status_buttons{
-	height: auto !important;	/* 必ずボタンの高さを高さの基準にする */
-}
- /*
- * クラス:last_line
- * 概要  :テキストボックス最終行
- * 作成日:2014.07.18
- * 作成者:T.M
- */
-.last_line{
-	padding-bottom:	1%;	/* 主にリストの下部と間を取る */
-}
-/* fig2-1のリスト前行のラベル */
-#fig2-1 .before_list_line label{
-	vertical-align: middle;	/* 高さを中心に合わせる */
-}
- /*
- * クラス:summaery-button
+ * クラス:summary-button
  * 概要  :まとめボタン
- * 作成日:2014.07.18
+ * 作成日:2014.07.14
  * 作成者:T.M
  */
 button.button.ui-button.summary-button{
-	margin-right: 0;	/* 右marginをなくす */
-}
-/* タブパネル内の編集ボタン群 */
-.panel-container .line.edit_buttons{
-	width: 98%;	/* 幅をpaddingを加味して98%にする */
-	padding: 1%;	/* 全方向に1%のpadding */
+	margin-right: 0;	/* 単独であるので右marginを消す */
 }

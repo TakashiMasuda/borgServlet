@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<content>
+		<name>断熱二重直管1200mm</name>
+		<productnumber>WL-1200</productnumber>
+		<category>断熱二重管部材</category>
+		<price>43700</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>断熱二重直管500mm</name>
+		<productnumber>WL-0500</productnumber>
+		<category>断熱二重管部材</category>
+		<price>24000</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>断熱二重直管120mm</name>
+		<productnumber>WL-0120</productnumber>
+		<category>断熱二重管部材</category>
+		<price>13500</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>断熱二重直管アジャスタ</name>
+		<productnumber>WL-A600</productnumber>
+		<category>断熱二重管部材</category>
+		<price>27800</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>チムニートップ</name>
+		<productnumber>WP-TP02</productnumber>
+		<category>断熱二重管部材</category>
+		<price>29000</price>
+		<lot_number>001</lot_number>
+	</content>
+	
+	<content>
+		<name>シングル直管1000mm φ150 黒</name>
+		<productnumber>SL-1000-B</productnumber>
+		<category>シングル管部材</category>
+		<price>10000</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>シングル直管500mm口元用 φ150 黒</name>
+		<productnumber>SL-SJ50-B</productnumber>
+		<category>シングル管部材</category>
+		<price>7500</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>シングル直管300mm φ150 黒</name>
+		<productnumber>SL-0300-B</productnumber>
+		<category>シングル管部材</category>
+		<price>5800</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>シングルエルボー管30°黒</name>
+		<productnumber>SL-E030-B</productnumber>
+		<category>シングル管部材</category>
+		<price>8000</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>シングルT字管（キャップ付）　黒</name>
+		<productnumber>SS-T090-B</productnumber>
+		<category>シングル管部材</category>
+		<price>18800</price>
+		<lot_number>001</lot_number>
+	</content>
+	
+	<content>
+		<name>ストームカラー　ネック付</name>
+		<productnumber>WS-CL01</productnumber>
+		<category>断熱二重管用支持部材</category>
+		<price>12800</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>ストームカラー　角トップ用</name>
+		<productnumber>WS-CLKT</productnumber>
+		<category>断熱二重管用支持部材</category>
+		<price>8800</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>結露防止板</name>
+		<productnumber>WS-DBP0</productnumber>
+		<category>断熱二重管用支持部材</category>
+		<price>9000</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>メガネ石</name>
+		<productnumber>WS-MEG1</productnumber>
+		<category>断熱二重管用支持部材</category>
+		<price>14600</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>ウォールステイ125～180</name>
+		<productnumber>WS-WS18</productnumber>
+		<category>断熱二重管用支持部材</category>
+		<price>18000</price>
+		<lot_number>001</lot_number>
+	</content>
+	
+	<content>
+		<name>二つ割リング　φ150　黒</name>
+		<productnumber>SS-2PRG-B</productnumber>
+		<category>シングル管用支持部材</category>
+		<price>2600</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>自在ステイ　丸ベース　φ150　黒</name>
+		<productnumber>SS-FSRB-B</productnumber>
+		<category>シングル管用支持部材</category>
+		<price>16800</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>自在ステイ　角ベース　φ150　黒</name>
+		<productnumber>SS-FSSB-B</productnumber>
+		<category>シングル管用支持部材</category>
+		<price>16800</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>スイングステイ　180度可動式　φ150　黒</name>
+		<productnumber>SS-FSSB-B</productnumber>
+		<category>シングル管用支持部材</category>
+		<price>18600</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>煙突ヒートシールド</name>
+		<productnumber>SS-HTSD-B</productnumber>
+		<category>シングル管用支持部材</category>
+		<!-- 都度見積につき暫定額 -->
+		<price>20000</price>
+		<lot_number>001</lot_number>
+	</content>
+	
+	<content>
+		<name>フラッシング2寸</name>
+		<productnumber>WR-FL02</productnumber>
+		<category>フラッシング・角トップ等</category>
+		<price>76800</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>フラッシング3寸</name>
+		<productnumber>WR-FL03</productnumber>
+		<category>フラッシング・角トップ等</category>
+		<price>76800</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>チムニーフラッシング　□650</name>
+		<productnumber>WS-CF65</productnumber>
+		<category>フラッシング・角トップ等</category>
+		<price>75400</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>チムニーフラッシング　□700</name>
+		<productnumber>WS-CF07</productnumber>
+		<category>フラッシング・角トップ等</category>
+		<price>78000</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>チムニーフラッシング　□800</name>
+		<productnumber>WS-CF08</productnumber>
+		<category>フラッシング・角トップ等</category>
+		<price>80600</price>
+		<lot_number>001</lot_number>
+	</content>
+	
+	<content>
+		<name>炉台キット2枚組　CB30</name>
+		<productnumber>WN-BS30</productnumber>
+		<category>炉台・アクセサリ</category>
+		<price>155000</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>炉台キット3枚組　CB30（コーナー型）</name>
+		<productnumber>WN-CS30</productnumber>
+		<category>炉台・アクセサリ</category>
+		<price>230000</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>スチールステージプレート　角</name>
+		<productnumber>WN-SPTS</productnumber>
+		<category>炉台・アクセサリ</category>
+		<price>35000</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>スチールステージプレート　コーナー型</name>
+		<productnumber>WN-SPTC</productnumber>
+		<category>炉台・アクセサリ</category>
+		<price>40000</price>
+		<lot_number>001</lot_number>
+	</content>
+	<content>
+		<name>バーベキュースタンド</name>
+		<productnumber>WN-BBQS</productnumber>
+		<category>炉台・アクセサリ</category>
+		<price>13000</price>
+		<lot_number>001</lot_number>
+	</content>
+	
+</root>

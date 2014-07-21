@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>製品一覧</title>
+<link href="css/borgstyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id = "container">
+<div class = "main">
+<script type='text/javascript'>
+//ページの読み込みが終わった後の処理
+$(document).ready(function(){
+	setButtons();	//JQuery UIのボタンを配置する	
+});	   
+</script>
+<!-- 見出し部を開始 -->
+<div id="header">
+	<!-- ヘッダーのタイトル部分 -->
+	<div id="header-title">
+		<!-- このページの要旨 -->
+		<h1>在庫一覧</h1>
+    	<!-- ヘッダーのタイトル部分を閉じる -->
+    </div>
+   	<!-- ヘッダーのボタン群 -->
+	<div id="header-buttons" class="half_line">
+   		<!-- 閉じるボタン -->
+		<button class="backbutton button close-button" value="戻る" name="fig1" />
+   		<!-- リンクのリストダイアログを出すボタン -->
+		<button class="button setting-button" />
+   	<!-- ヘッダーのボタン群を閉じる -->
+   	</div>
+<!-- ヘッダー部分を終える -->
+</div>
+<div id="fig7" class="figs">
+<div class="line a_line edit_buttons margin-top margin-bottom">
+<!-- @mod
+	 6/21 14:40
+     下marginを挿入するクラス追加
+     T.M
+     -->
+  <button name="fig7-1" id="stock_button" class="callpage button stock-button"value="入庫"></button>
+  <button name="delete_button" id="delete_button" class="delete_button button delete-button"value="削除"></button>
+</div>
+<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+<div class="wrap-list">
+<!-- JQ Gridによりリストを形成するtableタグ -->
+<table id="fig7-list" class="list"></table>
+</div>
+</div>
+
+</div>
+</div>
+</body>
+</html>
+
+<!-- @make
+	 6/20
+     追加、編集ボタン作成
+     T.M
+     
+	 @mod 
+	 6/20 19:05
+     追加、編集ボタンのmerge
+     H.U
+     -->
