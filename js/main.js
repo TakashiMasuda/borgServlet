@@ -1422,7 +1422,8 @@ $(function() {
 					//チェックリストを持ったドロップダウンメニューを生成する
 					$('#voucher-status-order:last', document).dropdownchecklist
 					({ width: ($('.main').width() / 3) , forceMultiple: true, emptyText: '-----'});
-			}
+				}
+				executeTextBoxResize();	/* テキストボックスのリサイズを行う */
 			  },
 				  error : function(){					//データの取得に失敗したら
 					  alert('申し訳ありません。ご指定されたページは現在製作中となっております。');	//その旨をalertで伝える
@@ -1939,4 +1940,77 @@ $(window).resize(function() {
 //easytabsのタブボタンが押されたら
 $(document).on('easytabs:after', function(){
 	doDrawChart();	//doDrawChartを呼び出してグラフを描く
+});
+
+
+//テキストボックスの各要素の幅(%指定)の値を格納する配列
+var widthSum = [
+				[0.01, 0.01, 0.27, 0.0849, 0.07],
+				[0.01, 0.01, 0.145, 0.0245, 0.04],
+				[0.01, 0.01, 0.11, 0.052741, 0.06]
+				];
+//現状画面崩れが起こる幅を格納する変数
+var borderWidth = 388;
+/* 
+ * 関数名:textBoxResize()
+ * 引数  :var selector, var index
+ * 戻り値:なし
+ * 概要  :縮小時のテキストボックスをリサイズする
+ * 作成日:14.07.22
+ * 作成者:T.M
+*/ 
+function textBoxResize(selector, index){
+	//テキストボックスを除いた幅のパーセンテージ合計を求めるための変数
+	//widhoutTextboxWidthParcentを宣言
+	var withoutTextboxWidthParcent = 0;
+	//for文をまわしてテキストボックスを除いた幅のパーセンテージ合計を算出
+	for(var counter = 0; counter < widthSum[index].length; counter++){
+		//divParcentに要素の幅パーセンテージを足していく
+		withoutTextboxWidthParcent += widthSum[index][counter];
+	}
+	//ウィンドウの幅( =端末のブラウザ幅)を取得してdeviceWidthに格納
+	var deviceWidth = $(window).width();
+	//テキストボックス以外が取る幅を計算してwithoutTextboxWidthに格納
+	var withoutTextboxWidth = borderWidth * withoutTextboxWidthParcent;
+	//テキストボックスが取る幅を算出
+	var textboxWidth = deviceWidth - withoutTextboxWidth;
+	//テキストボックスの幅を画面サイズで割り、100をかけた数値を
+	//テキストボックスの幅に指定
+	$(selector).css('width', (textboxWidth / deviceWidth) * 100 + '%');
+};
+/* 
+ * 関数名:removeTextBoxResize()
+ * 引数  :なし
+ * 戻り値:なし
+ * 概要  :縮小時のテキストボックスをリサイズする
+ * 作成日:14.07.22
+ * 作成者:T.M
+*/ 
+function removeTextBoxResize(){
+	$('.parallel-text input.textbox_S').css('width', '');
+	$('.single-line-text input.textbox_L').css('width', '');
+	$('.pulldown-menu.product').css('width', '');
+};
+/* 
+ * 関数名:executeTextBoxResize()
+ * 引数  :なし
+ * 戻り値:なし
+ * 概要  :テキストボックスのリサイズを一斉に実行する
+ * 作成日:14.07.22
+ * 作成者:T.M
+*/ 
+function executeTextBoxResize(){
+	//画面の幅がborderWidth以下であれば
+	if($(window).width() <= borderWidth){
+		textBoxResize('.parallel-text input.textbox_S', 0);	//テキストボックスのサイズを修正する
+		textBoxResize('.single-line-text input.textbox_L', 1);	//テキストボックスのサイズを修正する
+		textBoxResize('.pulldown-menu.product', 2);	//テキストボックスのサイズを修正する
+	} else{
+		removeTextBoxResize();	//textBoxResizeで付与された幅を消去する
+	}
+};
+
+//画面の幅が変わったら
+$(window).resize(function(){
+	executeTextBoxResize();	/* テキストボックスのリサイズを行う */
 });

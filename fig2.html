@@ -38,6 +38,14 @@
 $(document).ready(function(){
 	setButtons();	//JQuery UIのボタンを配置する
 });	
+//テキストボックス等の表示、非表示を切り替える 
+//読み込み後
+$(document).ready(function(){
+  $('.main h1').click(function(){
+    // 引数には開閉する速度を指定します
+    $('.page:first .figs > div').not('.wrap-list').slideToggle('slow');
+  });
+});
 //JavaScriptのコード記述を終える
 </script>
 <!-- 見出し部を開始 -->

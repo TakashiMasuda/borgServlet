@@ -1030,8 +1030,10 @@ th.fig9_content_header{
 	margin-bottom: 1%;	/* 下に1%の間隔を空け、リストとの間に適度な隙間を作る */
 	width: 100%;		/* 1行分全ての幅を取る */
 	clear: both;		/* floatによる回り込みを防止 */
+	min-height: 16.0746px;	/* 最小高 */
 }
 .edit_buttons{
+	min-height: 16.0746px;	/* 最小高 */
 }
 /* edit_buttons内のinput要素 */
 .edit_buttons input{
@@ -1122,33 +1124,37 @@ th.fig9_content_header{
 /* 製品名のテキストボックス */
 .single-line-text.right.product-select{
 	/* 種別、製品名を並べるにあたって幅の配分をする必要があり、製品名は82%に設定 */
-	width: 80%;			/* 種別とあわせて100%の幅を取るようにし、こちらは80%を取る */
+	width: 75%;			/* 種別とあわせて100%の幅を取るようにし、こちらは80%を取る */
 	float: left;		/* 左に寄せる */
 	clear: none;		/* 回り込みを許可する */
-	text-align: center;	/* 中央に寄せる */
+	text-align: left;	/* 左に寄せる */
 }
 /* 製品名のテキストボックスのボタン */
 .single-line-text.right.product-select button.button.ui-button{
-	width: 5.2741%;	/* 他のボタンと合う幅に指定。親要素の幅に注意 */
-	margin-left: 0.6%;	/* 左margin */
+	width: 5.7%;	/* 他のボタンと合う幅に指定。親要素の幅に注意 */
+	margin-left: 0.3%;	/* 左margin */
 }
 /* 製品名のテキストボックスについて */
 .pulldown-menu.product{
-	width: 75.0%;		/* 幅を76.0%分取る */
+	width: 75.0%;		/* 幅を78.5%分取る */
 	text-align:left;	/* 左詰 */
 }
 /* 製品名の項目の文字について */
 .single-line-text.right.product-select label{
 	width: 11%;		/* 幅を11%取る */
+	margin-right: 1.25%;	/* 右にmargin */
+	min-width: 32px;	/* 別個に最低幅を設定 */
 }
 
 /* 種別の項目を囲むdivタグについて */
 .parallel-text.left.product-category{
-	width: 20%;		/* 幅を20%に設定 */
+	width: 25%;		/* 幅を20%に設定 */
 }
 /* 種別の項目の文字について */
 .parallel-text.left.product-category label{
 	width: 35%;		/* 幅を35%分取る */
+	display: inline;	/* インライン要素にする */
+	margin-right: 5%;	/* 右に5%のmargin */
 }
 /* 種別のテキストボックスについて */
 #product_category.pulldown-menu.categories.select-category{
@@ -1433,9 +1439,6 @@ button.button.normal-button{
  * 作成日:2014.07.07
  * 作成者:T.M
 */
-.table.lower{
-	width: 100%;	/* 幅をできるだけのばす */
-}
 /*
  * クラス:lower
  * 概要  :特定の要素の下に配置されている場合のクラス
@@ -1444,8 +1447,28 @@ button.button.normal-button{
 */
 .table.lower{
 	margin-top: 1%;/* 上にmarginを挿入 */
+	width: 100%;	/* 幅をできるだけのばす */
 }
-
+/* モーダルダイアログのリンクリストについて */
+/* ダイアログのリスト */
+#link-list{
+	list-style: none;	/* リストの先頭につく文字を消す */
+	padding: 0;			/* ulに最初から入っているpaddingを消す */
+}
+/* ダイアログのリストの項目 */
+#link-list li{
+	line-height: 30px;	/* 文字の高さ */
+}
+/* マウスオーバー時 */
+#link-list li span:hover{
+	color: #FFF;	/* 色 */
+	background: #999;	/* 背景色 */
+}
+/* 文字部分 */
+#link-list li span{
+	padding: 1px 5px;	/* 少々枠の範囲を広げる */
+	border-radius: 5px;	/* 角に丸みをつける */
+ }
 /* モーダルダイアログのリンクリストの記述はここまで */
 /* ヘッダー内での設定ボタン */
 #header .setting-button{
@@ -1713,4 +1736,24 @@ button.button.ui-button.summary-button{
 .panel-container .line.edit_buttons{
 	width: 100%;	/* 幅をpaddingを加味して98%にする */
 	margin-bottom: 1%;	/* 1%の下margin */
+}
+/* parallel-textのlabel */
+.parallel-text label{
+	min-width: 52.38px;	/* 最小幅 */
+}
+/* parallel-textのボタン */
+button.ui-button{
+	min-width: 16.0746px;	/* 最小幅 */
+	min-height: 16.0746px;	/* 最小高 */
+}
+.parallel-text,.single-line-text{
+	min-height: 16.0746px;	/* 最小高 */
+}
+/* single-line-textのラベル */
+.single-line-text label{
+	min-width: 52.38px;	/* 最小幅 */
+}/* single-line-textのボタン */
+/* 2-1のラジオボタン */
+#fig2-1 .before_list_line input{
+	margin: 0px;	/* レイアウトがずれる原因となるmarginをなくす */
 }
