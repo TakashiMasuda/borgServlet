@@ -13,8 +13,7 @@ body{
 /* ヘッダー */
 #header{
 	display: block;	/* ブロックとして扱う */
-	margin-bottom: 1%;	/* 1%の下margin */
-	margin-top: 5px;	/* 上に5pxのmargin */
+	margin: 0.5% 0;	/* 上下0.5%のmargin */
 }
 .maincontent{
 	clear: both;
@@ -843,7 +842,7 @@ zoom: 1;    /* for IE */
  * 作成者:H.U
  */
 .margin_top{
-	margin-top:15px;	/* 15pxの上margin */
+	margin-top:1%;	/* 1%の上margin */
 }
 /* 流通フローのボタンは.margin-topのそのまま
 の値だと足りないので個別に設定 */
@@ -946,7 +945,7 @@ th.fig9_content_header{
 }
 /* 1つめのカラム */
 #edit_user .edit_1_column{
-	width: 22%;			/* 幅を14% */
+	width: 25%;			/* 幅を25% */
 }
 /* 2つめのカラム */
 #edit_user .edit_2_column{
@@ -1027,9 +1026,9 @@ th.fig9_content_header{
  * 内容  :下marginの追加
  */
  .before_list_line{
-	margin-bottom: 1%;	/* 下に1%の間隔を空け、リストとの間に適度な隙間を作る */
-	width: 100%;		/* 1行分全ての幅を取る */
-	clear: both;		/* floatによる回り込みを防止 */
+	margin-bottom: 1%;		/* 下に1%の間隔を空け、リストとの間に適度な隙間を作る */
+	width: 100%;			/* 1行分全ての幅を取る */
+	clear: both;			/* floatによる回り込みを防止 */
 	min-height: 16.0746px;	/* 最小高 */
 }
 .edit_buttons{
@@ -1085,8 +1084,8 @@ th.fig9_content_header{
 
 /* 2段組みテキストボックス横のボタン */
 .parallel-text button.button.ui-button{
-	width: 8.49%;	/* 幅10% */
-	display: inline;
+	width: 8.49%;		/* 幅10% */
+	display: inline;	/* インライン要素として扱う */
 }
 /* 2段組でないテキストボックスの横のボタン */
 .single-line-text button.button.ui-button{
@@ -1403,6 +1402,7 @@ button.button.normal-button{
 /* fig.8-3、8-4の見出し */
 #graph-region #sub_header{
 	display: inline;	/* インライン要素として扱う */
+	min-height: 16.0746px;	/* 最小高 */
 }
 /*
  * クラス:ui-datepicker
@@ -1555,8 +1555,7 @@ table td.button-col button.ui-button{
 }
 /* ヘッダー部分のタイトル部分 */
 #header-title{
-	width: 70%;	/* 幅 */
-	float: left;	/* 左に寄せる */
+	width: 72%;	/* 幅 */
 	text-align:left;	/* 中の文章を左に寄せる */
 }
 /* ヘッダー部分のボタン群 */
@@ -1572,7 +1571,7 @@ table td.button-col button.ui-button{
 }
 /* 伝票ステータスがあるヘッダー部分のタイトル部分 */
 .has_voucher_status #header-title{
-	width: 25%;	/* 幅 */
+	width: 27.5%;	/* 幅 */
 }
 /* ヘッダー部分の伝票ステータス部分 */
 .has_voucher_status #header-voucher-status{
@@ -1756,4 +1755,15 @@ button.ui-button{
 /* 2-1のラジオボタン */
 #fig2-1 .before_list_line input{
 	margin: 0px;	/* レイアウトがずれる原因となるmarginをなくす */
+}
+ /*
+ * クラス:clearfix
+ * 概要  :クラスを適用した要素の中にfloatがあっても、その高さを認識する
+ * 作成日:2014.07.23
+ * 作成者:T.M
+ */
+.clearfix:after{
+    content: "";	/* 場所をとらない形で要素を存在させる */
+    clear: both;	/* 回り込み防止 */
+    display: block;	/* 必ずブロックとして扱う */
 }

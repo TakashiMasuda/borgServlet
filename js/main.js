@@ -27,14 +27,14 @@
 	*/
 	function setContentHeight(){
 		//テキストボックスを含むdivタグの高さと幅の割合から妥当な高さを割り出す
-		 var divHeight = $('.figs').width() / (heightRatio * tbRatio);	
+		 var divHeight = $('.main').width() / (heightRatio * tbRatio);	
 		 $('.parallel-text').css('height', divHeight);		//2段組テキストボックスのdivタグに高さを設定
 		 $('.single-line-text').css('height', divHeight);	//1段組テキストボックスのdivタグに高さを設定
 		 $('.before_list_line').css('height', divHeight);	//リスト前の段落のdivタグに高さを設定
  		 $('.line.edit_buttons').css('height', divHeight);	//1行で書かれるボタン群の高さを設定 
 		 $('.line_table tr').css('height', divHeight);	//1行で書かれるボタン群の高さを設定
 		 $('#header-buttons').css('height', divHeight);	//1行で書かれるボタン群の高さを設定
-//		 $('.fig1_buttons').css('height', divHeight * strechFix3);	//トップページのボタンの高さを設定
+		 $('#header-title').css('font-size', divHeight);	//トップページのボタンの高さを設定
 //		 $('.fig1_buttons.first').css('height', divHeight * strechFix2 * strechFix3);	//トップページの1行目ボタンの高さを設定
   		 $('.users_table th').css('height', divHeight - 1);	
 //		 $('.variable-height').css('height', divHeight);	//高さを設定
@@ -80,20 +80,26 @@
 		}
 
 		//ボタンのサイズを変更
-		$('.parallel-text').each(function(){
-		})
 		$('#header-title').css('font-size',  newFontSize + '%');			//タイトル
 		$('.voucher-status-text').css('font-size',  newFontSize + '%');		//ステータスの文字
 		//ステータスのテキストボックスの文字
 		$('.ui-dropdownchecklist-text').css('font-size',  newFontSize + '%');		
 		$('.before_list_line label').css('font-size',  newFontSize + '%');		//リスト前行のラベル
 		//Fig.3-1のボタンのフォントサイズ
-		$('.normal-button').css('font-size',  newFontSize - strechFix1 + '%');		
-		$('.users_table th').css('font-size',  newFontSize - strechFix1 + '%');		
-		$('#tab-container ul li').css('font-size',  newFontSize + '%');			
+		$('.normal-button').css('font-size',  newFontSize - strechFix1 + '%');
+		//管理者画面の表の人名	
+		$('.users_table th').css('font-size',  newFontSize - strechFix1 + '%');
+		//タブの切り替えボタン		
+		$('#tab-container ul li').css('font-size',  newFontSize + '%');	
+		//タブ内の文字ボタン
 		$('#tab-container .edit_buttons .normal-button').css('font-size',  newFontSize + '%');		
-		$('.space_width').css('font-size',  newFontSize + '%');	
-		$('.space_width_syubetu label').css('font-size',  newFontSize + '%');	
+		//顧客種別チェックボックスのラベル
+		$('.space_width').css('font-size',  newFontSize + '%');					
+		//顧客種別のラベル
+		$('.space_width_syubetu label').css('font-size',  newFontSize + '%');
+		//ユーザー編集画面の表
+		$('.line_table td').css('font-size',  newFontSize + '%');	
+		//$('input:text').css('font-size',  newFontSize + '%');					//テキストボックス内
 	}
 
 	var dropdownPerMain = 0.33;	//ドロップダウンチェックリストの幅の割合
@@ -512,7 +518,7 @@
 	//fig.2-1
 	colNamesList['fig2-1'] 	= ['No', 'Serial No', '種別', '納品先 <input type="button" class="apply_all" value="全適用">'];
 	//fig.3
-	colNamesList['fig3']	= ['', 'No', '製品No', '製品名', '単価', '個数', '金額', '発注先'];
+	colNamesList['fig3']	= ['', 'No', '製品No', '製品名', '単価', '個数', '金額', '納品先'];
 	//fig.3-1
 	colNamesList['fig3-1']	= ['No', 'Serial No', '種別', 'ステータス', ''];
 	//fig.4
@@ -1622,6 +1628,12 @@ $(function(){
      	show: "fade",     			// 表示時のエフェクト
 	    hide: "fade",      			// 非表示時のエフェクト
 		position: 'center',			//表示位置の指定。上に表示
+		closeOnEscape: false,		//Escボタンを押しても閉じない
+		//ダイアログのクローズボックスを非表示にする
+		open:function(event, ui){ 
+			$(".ui-dialog-titlebar-close")
+				.hide()
+			;},
 		buttons: {					//ボタンのイベントを設定	
 　　　	"保存する": function(){				//OKボタンを押したら
 　　　			$(this).dialog('close');		//ダイアログを閉じる
@@ -1652,10 +1664,16 @@ $(function(){
 		modal: true,				//モーダルダイアログ
      	resizable: false, 			// リサイズしない
      	draggable: true, 			// ドラッグできる
+		closeOnEscape: false,		//Escボタンを押しても閉じない
      	show: "fade",     			// 表示時のエフェクト
 	    hide: "fade",      			// 非表示時のエフェクト
+		//ダイアログのクローズボックスを非表示にする
+		open:function(event, ui){ 
+			$(".ui-dialog-titlebar-close")
+				.hide();
+			},
 		position: 'center',			//表示位置の指定。上に表示
-		buttons: {					//ボタンのイベントを設定	
+		buttons: {					//ボタンのイベントを設定
 　　　	"OK": function(){				//OKボタンを押したら
 　　　			$(this).dialog('close');		//ダイアログを閉じる
 				//選択されたセルの行のセレクタを変数rowに格納
@@ -1672,7 +1690,8 @@ $(function(){
 				//入力されたテキストの変数に空白のテキストを格納
 				editText = '';
 				//テキストボックスを空にする
-				$("input#direct-input-text").val('');			}
+				$("input#direct-input-text").val('');
+				}
 		}
     });	
 

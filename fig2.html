@@ -49,42 +49,30 @@ $(document).ready(function(){
 //JavaScriptのコード記述を終える
 </script>
 <!-- 見出し部を開始 -->
-<div id="header" class="has_voucher_status">
+<div id="header" class="has_voucher_status clearfix">
 	<!-- ヘッダーのタイトル部分 -->
-	<div id="header-title">
-		<!-- このページの要旨 -->
-		<h1>受注伝票</h1>
-    	<!-- ヘッダーのタイトル部分を閉じる -->
-    </div>
-    <!-- 伝票ステータス部分 -->
-	<div id="header-voucher-status">
-    	<!-- 伝票ステータスのラベル部分--->
-		<span class="voucher-status-text">ステータス</span>
-		<!-- 伝票のプルダウンチェックボックス -->
-			<select name="voucher-status" id="voucher-status-order" class="voucher-status">
-				<!-- 伝票の状態のチェックボックス全7項目 -->
-				<option value="新規">新</option>
-				<option value="見積依頼">見依</option>
-				<option value="見積書発行">見</option>
-				<option value="注文請書発行">注</option>
-				<option value="納品書発行">納</option>
-				<option value="請求書発行">請</option>
-				<option value="領収書発行">領</option>
-   			<!-- 伝票のプルダウンチェックボックスを閉じる -->
-			</select>
-   		<!--伝票ステータス部分を閉じる -->
-   		</div>
-    	<!-- ヘッダーのボタン群 -->
-		<div id="header-buttons">
-        	<span id="disp"></span>
-    		<!-- 閉じるボタン -->
-			<button class="backbutton button close-button" value="戻る" name="fig1" />
-    		<!-- リンクのリストダイアログを出すボタン -->
-			<button class="button setting-button" />
-    	<!-- ヘッダーのボタン群を閉じる -->
-    	</div>
-<!-- ヘッダー部分を終える -->
-</div>
+    <!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
+	<div id="header-title"
+    ><!-- このページの要旨 --><h1>受注伝票</h1
+    ><!-- ヘッダーのタイトル部分を閉じる --></div
+    ><!-- 伝票ステータス部分 --><div id="header-voucher-status"
+    ><!-- 伝票ステータスのラベル部分---><span class="voucher-status-text"
+    >ステータス</span
+    ><!-- 伝票のプルダウンチェックボックス --><select name="voucher-status" id="voucher-status-order" class="voucher-status"
+    ><!-- 伝票の状態のチェックボックス全7項目 --><option value="新規">新</option
+    	><option value="見積依頼">見依</option
+        ><option value="見積書発行">見</option
+        ><option value="注文請書発行">注</option
+        ><option value="納品書発行">納</option
+        ><option value="請求書発行">請</option
+        ><option value="領収書発行">領</option
+        ><!-- 伝票のプルダウンチェックボックスを閉じる --></select><!--伝票ステータス部分を閉じる --></div
+        ><!-- ヘッダーのボタン群 --><div id="header-buttons"
+        	><span id="disp"></span
+            ><!-- 閉じるボタン --><button class="backbutton button close-button" value="戻る" name="fig1" /
+            ><!-- リンクのリストダイアログを出すボタン --><button class="button setting-button" /
+            ><!-- ヘッダーのボタン群を閉じる --></div
+            ><!-- ヘッダー部分を終える --></div>
 <!-- fig2独自の記述を開始 -->
 <div id = "fig2" class="figs">
 	<!-- 受注Noを記入する左寄せの枠 -->
