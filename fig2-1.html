@@ -32,6 +32,51 @@
 $(document).ready(function(){
 	//JQueryプラグインPopBoxの関数でポップアップするメニューを作成	
 	setButtons();	//JQuery UIのボタンを配置する
+//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
+//の高さ分リストの高さを取る
+//読み込み後
+$(document).ready(function(){
+	//ボタンが押されたら一度だけ計算を行う
+	$('.page:first .main h1').one('click', function(){
+		//リストの高さを取得
+		listHeight = $('.page:first .ui-jqgrid-bdiv').height();
+		//全てのテキストボックスが取っている高さを格納する変数textBoxsHeight
+		textBoxsHeight = 0;
+		//each関数で高さを取っている全てのテキストボックスの高さを合計する
+		$('.page:first .line').each(function(){
+			//テキストボックスの高さをtextBoxsHeightに加える
+			textBoxsHeight += $(this).outerHeight();
+		});
+		//テキストボックス等を非表示にした際にリストが取る高さを変数
+		//newListHeightに格納する
+		newListHeight = listHeight + textBoxsHeight;
+	});
+	
+	$('.page:first .main h1').click(function(){
+	// 引数には開閉する速度を指定します
+	var divs = 0;
+	
+	//リストのみ表示されている状態であれば
+	if($('.page:first .ui-jqgrid-bdiv').height() != listHeight){
+	//リストの高さを戻す
+		$('.page:first .list').setGridHeight(listHeight);
+	}
+	$('.page:first .figs > div').not('.wrap-list').slideToggle('slow', function(){
+		//divsをカウントアップしていく
+		divs++;
+		//最後の処理であれば
+		if(divs >= $('.page:first .figs > div').not('.wrap-list').length){
+			//テキストボックス等が表示いなければ
+			if($(this).css('display') == 'none'){
+				//リストの高さをのばす
+				$('.page:first .list').setGridHeight(newListHeight);
+				divs = 0;	//divsの値をリセット
+			}
+		}
+	});
+  });
+});
+
 });
 </script>
 <!-- 見出し部を開始 -->
@@ -47,58 +92,58 @@ $(document).ready(function(){
 <!-- ヘッダー部分を終える -->
 </div>
 		<div id = "fig2-1" class="figs">
-			<div class="line half_line parallel-text left">
+			<div class="line half_line parallel-text variable-height left">
 				<label for="textfield">日付</label>
 				<input type="text" name="date" id="padd_date" class="textbox_S date default_textbox  parts_height" readonly>
 			</div>
             
-			<div class="half_line parallel-text right">
+			<div class="half_line parallel-text variable-height right">
 				<label for="textfield2">更新日</label>
 				<input type="text" name="update" id="padd_update" class="textbox_S date default_textbox  parts_height" readonly>
 			</div>
 
-			<div class="line half_line parallel-text left">
+			<div class="line half_line parallel-text variable-height left">
 				<label for="textfield3">納品希望日</label>
 				<input type="text" name="wish_date" id="padd_wish_date"  class="textbox_S date default_textbox  parts_height" readonly>
 			</div>
             
-			<div class="half_line parallel-text right">
+			<div class="half_line parallel-text variable-height right">
 				<label for="textfield4">発注日</label>
 				<input type="text" name="parchase_date" id="padd_parchase_date"  class="textbox_S date default_textbox  parts_height" readonly>
 			</div>
             
-			<div class="line half_line parallel-text left">
+			<div class="line half_line parallel-text variable-height left">
 				<label for="textfield5">担当者</label>
 				<input type="text" name="charger" id="padd_charger"  class="textbox_S pulldown-menu person default_textbox  parts_height" readonly>
 			</div>
             
-			<div class="half_line parallel-text right">
+			<div class="half_line parallel-text variable-height right">
 				<label for="textfield6">作成者</label>
 				<input type="text" name="writer" id="padd_writer"  class="textbox_S pulldown-menu person default_textbox  parts_height" readonly>
 			</div>
             
-			<div class="line half_line parallel-text left">
+			<div class="line half_line parallel-text variable-height left">
 				<label for="textfield7">入金予定日</label>
 				<input type="text" name="scheduled_payment" id="padd_scheduled_payment"  class="textbox_S date default_textbox  parts_height" readonly>
 			</div>
             
-			<div class="half_line parallel-text right">
+			<div class="half_line parallel-text variable-height right">
 				<label for="textfield8">入金日</label>
 				<input type="text" name="fixed_payment" id="padd_fixed_payment"  class="textbox_S date default_textbox  parts_height" readonly>
 			</div>
 
-			<div class="line parallel-text left product-category">
+			<div class="line parallel-text variable-height left product-category">
 				<label for="textfield10">種別</label>
 				<input type="text" name="product_category" id="product_category"  class="textbox_S default_textbox pulldown-menu categories parts_height select-category" readonly>
 			</div>
 
-			<div class="single-line-text right product-select">
+			<div class="single-line-text variable-height right product-select">
 				<label for="textfield9">製品名</label>
 				<input type="text" name="product" id="product"  class="textbox_L pulldown-menu product select-text-box default_textbox  parts_height">
 				<button name="select_button" class="parts_height button select-button" id="select_category_button" value="選択">
 			</div>
             
-			<div class="line a_line before_list_line">
+			<div class="line a_line before_list_line variable-height">
 				<label>在庫(ロットNo)</label>
 				<input type="radio" name="stock_order" value="在庫" />
 				<label>発注伝票No</label>

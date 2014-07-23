@@ -32,6 +32,51 @@
 //ページの読み込みが終わった後の処理
 $(document).ready(function(){
 	setButtons();	//JQuery UIのボタンを配置する
+	//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
+	//の高さ分リストの高さを取る
+	//読み込み後
+	$(document).ready(function(){
+		//ボタンが押されたら一度だけ計算を行う
+		$('.page:first .main h1').one('click', function(){
+			//リストの高さを取得
+			listHeight = $('.page:first .ui-jqgrid-bdiv').height();
+			//全てのテキストボックスが取っている高さを格納する変数textBoxsHeight
+			textBoxsHeight = 0;
+			//each関数で高さを取っている全てのテキストボックスの高さを合計する
+			$('.page:first .line').each(function(){
+				//テキストボックスの高さをtextBoxsHeightに加える
+				textBoxsHeight += $(this).outerHeight();
+			});
+			//テキストボックス等を非表示にした際にリストが取る高さを変数
+			//newListHeightに格納する
+			newListHeight = listHeight + textBoxsHeight;
+		});
+		
+		$('.page:first .main h1').click(function(){
+		// 引数には開閉する速度を指定します
+		var divs = 0;
+		
+		//リストのみ表示されている状態であれば
+		if($('.page:first .ui-jqgrid-bdiv').height() != listHeight){
+		//リストの高さを戻す
+			$('.page:first .list').setGridHeight(listHeight);
+		}
+		$('.page:first .figs > div').not('.wrap-list').slideToggle('slow', function(){
+			//divsをカウントアップしていく
+			divs++;
+			//最後の処理であれば
+			if(divs >= $('.page:first .figs > div').not('.wrap-list').length){
+				//テキストボックス等が表示いなければ
+				if($(this).css('display') == 'none'){
+					//リストの高さをのばす
+					$('.page:first .list').setGridHeight(newListHeight);
+					divs = 0;	//divsの値をリセット
+				}
+			}
+		});
+	  });
+	});
+
 });
 </script>
 <!-- 見出し部を開始 -->
@@ -47,24 +92,24 @@ $(document).ready(function(){
 <!-- ヘッダー部分を終える -->
 </div>
 <div id = "fig4-1" class="figs">
-<div class=" parallel-text left">
+<div class=" parallel-text variable-height left">
   <label for="textfield">日付</label>
   <input type="text" name="date" id="date" class="textbox_S date default_textbox" readonly>
   </div>
-  <div class="parallel-text right">
+  <div class="parallel-text variable-height right">
   <label for="textfield2">更新日</label>
   <input type="text" name="update" id="update" class="textbox_S date default_textbox" readonly>
   </div>
 
-<div class="parallel-text left">
+<div class="parallel-text variable-height left">
   <label for="textfield3">担当者</label>
   <input type="text" name="charger" id="charger"  class="textbox_S pulldown-menu person default_textbox" readonly>
 </div>
-<div class="parallel-text right">
+<div class="parallel-text variable-height right">
 <label for="textfield4">作成者</label>
 <input type="text" name="writer" id="writer"  class="textbox_S pulldown-menu person default_textbox" readonly>
 </div>
-<div class="single-line-text">
+<div class="single-line-text variable-height">
     <label for="textfield9">取引先名</label>
     <input type="text" name="account_name" id="account_name"  class="textbox_L pulldown-menu customer default_textbox">
 </div>
@@ -91,7 +136,7 @@ $(document).ready(function(){
 	代理店<input type="checkbox" name="customertype" class="checkbox" value="agency">
   </div>
 </div>
-  <div class="line a_line before_list_line">
+  <div class="line a_line before_list_line variable-height">
   	<label for="textfield3" class="left">取引一覧</label>
   	<button name="summary-button" class="button right margin-bottom summary-button" id="summary-button" value="まとめ">
   </div>

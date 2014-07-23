@@ -2033,3 +2033,27 @@ function executeTextBoxResize(){
 $(window).resize(function(){
 	executeTextBoxResize();	/* テキストボックスのリサイズを行う */
 });
+
+
+/* 
+ * 関数名:changeGridHeight(newGridHeight)
+ * 引数  :var newGridHeight
+ * 戻り値:なし
+ * 概要  :リストの高さを変える
+ * 作成日:14.07.23
+ * 作成者:T.M
+*/ 
+function changeGridHeight(newGridHeight){
+	//リストの高さを変える
+	$('.list').setGridHeight(newGridHeight);
+}
+
+//タイトルをクリックしたらリストの大きさが変わる
+$(document).on('click', '.delete-button', function(){
+	$('.ui-jqgrid-bdiv').height();
+	$('.list').setGridHeight(1000);
+	});
+	
+function streachList(newListHeight){
+	$('.list', document).setGridHeight(newListHeight);
+}
