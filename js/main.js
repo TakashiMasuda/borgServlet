@@ -35,9 +35,12 @@
 		 $('.line_table tr').css('height', divHeight);	//1行で書かれるボタン群の高さを設定
 		 $('#header-buttons').css('height', divHeight);	//1行で書かれるボタン群の高さを設定
 		 $('#header-title').css('font-size', divHeight);	//トップページのボタンの高さを設定
+// 		 $('.ui-dropdownchecklist-selector').css('height', divHeight);	//トップページのボタンの高さを設定
+// 		 $('.ui-dropdownchecklist').css('height', divHeight);	//トップページのボタンの高さを設定
 //		 $('.fig1_buttons.first').css('height', divHeight * strechFix2 * strechFix3);	//トップページの1行目ボタンの高さを設定
   		 $('.users_table th').css('height', divHeight - 1);	
 //		 $('.variable-height').css('height', divHeight);	//高さを設定
+
 	}
 	/*
 	 * 関数名:setButtonSize()
@@ -1340,10 +1343,11 @@ $(function() {
 			gridResize();							//幅を調整する
 		}
 		//GoogleChartToolsのグラフを描画するタグがあれば
-		if($('.page:first').length > 0){
+		if($('.page:first .google-chart').length > 0){
 			//fig名を取得して宣言した変数figNameに格納
 			var figName = $('.page:first div[id *= "fig"]:first', document).attr('id');
 			//figのグラフを描画する関数drawChartInFigを呼ぶ
+			drawChartInFig(figName);
 			drawChartInFig(figName);
 		}
 		setContentHeight();	//setContentHeightを呼び出し高さを修正
@@ -1791,7 +1795,7 @@ var chartData = new Array();
     ["2011",3.9,2.5,1.4],
     ["2012",3.5,1.9,1.6],
     ["2013",4.7,2.5,2.2],
-    ["14",5.6,3.8,1.8]
+    ["2014",5.6,3.8,1.8]
   ];
   //Fig.8-1のダミーデータ
   chartData['fig8-1'] = [
@@ -1814,7 +1818,6 @@ var chartData = new Array();
 var chartOptions = new Array();
 //fig8-0の追加設定データ
 chartOptions['fig8-0'] = {
-//    width: tabContainerWidth2,
     height: 400, //高さ
 	title: '統計',	//グラフのタイトル
 	'titleTextStyle': { fontName: 'Meiryo UI', fontSize: 26},
@@ -1823,16 +1826,13 @@ chartOptions['fig8-0'] = {
   }
 //fig8-1の追加設定データ
 chartOptions['fig8-1'] = {
-//    width: tabContainerWidth2, //横幅
     height: 400, //高さ
 	title: '受注別',	//グラフのタイトル
 	'titleTextStyle': { fontName: 'Meiryo UI', fontSize: 26},
 	hAxis : { title: '単位 千万', slantedText: true},
 	vAxis : { title: '企業名'}
   }
-//fig8-2の追加設定データ
 chartOptions['fig8-2'] = {
-//    width: tabContainerWidth2, //横幅
     height: 400, //高さ
 	title: '発注別',	//グラフのタイトル
 	'titleTextStyle': { fontName: 'Meiryo UI', fontSize: 26},

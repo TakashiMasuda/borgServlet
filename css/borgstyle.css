@@ -1561,6 +1561,7 @@ table td.button-col button.ui-button{
 /* ヘッダー部分のボタン群 */
 #header-buttons{
 	width: 28%;	/* 幅 */
+	min-height: 16.0746px;	/* 最小高 */
 }/* ヘッダー部分のボタン群 */
 #header-buttons button.button.ui-button{
 	width: 14.73%;	/* 幅 */
@@ -1766,4 +1767,12 @@ button.ui-button{
     content: "";	/* 場所をとらない形で要素を存在させる */
     clear: both;	/* 回り込み防止 */
     display: block;	/* 必ずブロックとして扱う */
+}
+/* 歯車ボタン */
+.ui-icon-gear {
+	 background-position: -193px -112.5px !important; /* 画像を切り出す座標 */
+}
+/* クローズボタン */
+.ui-icon-close {
+	background-position: -80.5px -128px !important;	/* 画像を切り出す座標 */
 }
