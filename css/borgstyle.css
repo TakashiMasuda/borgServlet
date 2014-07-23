@@ -1174,8 +1174,9 @@ th.fig9_content_header{
  * 作成者:T.M
 */
 .inner-list-title{
-	float: right; /* 左側にタイトルがあるので、右詰にして離す */
-	width: 20%;		/* 幅をタイトル枠の横幅の20%に設定 */
+	float: right;		/* 右に寄せる */
+	margin-right: 5%;	/* 右にmarginを挿入し開閉ボタンと重ならないようにする */
+	width: 50%;		/* 幅をタイトル枠の横幅の20%に設定 */
 	text-align: right;	/* 中の要素を右に詰める */
 }
 /* クラス:ammount
@@ -1188,11 +1189,11 @@ th.fig9_content_header{
 }
 /* innner-list-title内の項目名 */
 .inner-list-title label{
-	width: 35%;		/* 幅を35%に設定。 */
+	width: 25%;		/* 幅を35%に設定。 */
 }
 /* inner-list-title内のテキストボックス */
 .inner-list-title .textbox_M{
-	width: 60%;		/* 幅を60%に設定。多少余裕がないと回り込む */
+	width: 40%;		/* 幅を60%に設定。多少余裕がないと回り込む */
 	height: inherit;	/* 親要素の高さを受け継ぐ */
 }
 /* 以上Fig2.1 2014.06.25 */
@@ -1494,17 +1495,6 @@ button.button.normal-button{
 /* Fig.1のタイトル */
 #fig1 h1{
 	color: #888;	/* 文字を薄めの灰色にする */
-}
-/*
- * クラス:inner-list-title
- * 概要  :リストのタイトル行内に入れる要素
- * 作成日:2014.07.09
- * 作成者:T.M
- */
-.inner-list-title{
-	float: right;		/* 右に寄せる */
-	margin-right: 5%;	/* 右にmarginを挿入し開閉ボタンと重ならないようにする */
-	width: 20%;			/* 幅 */
 }
 /*
  * クラス:checkbox
