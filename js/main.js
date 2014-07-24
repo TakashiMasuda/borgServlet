@@ -337,7 +337,7 @@
 		//人物(担当者)のプルダウンメニュー
 		pulldown['person'] = {value:'0:<span class="direct-input">直接入力</span>;1:木村隆; 2:佐藤祐作; 3:山田太郎'};
 		//製品のプルダウンメニュー 
-		pulldown['product'] = {value:'0:<span class="direct-input">直接入力</span>;1:フラッシング3寸;2:チムニーフラッシング　□650;3:炉台キット2枚組　CB30;4:煙突ヒートシールド;5:スチールステージプレート　角;6:バーベキュースタンド;7:ストームカラー　ネック付;8:チムニートップ;9:結露防止板;10:シングル直管1000mm φ150 黒;11:シングルエルボー管30°黒;12:断熱二重直管120mm;13:断熱二重直管500mm;14:断熱二重直管1200mm'};
+		pulldown['product'] = {value:'0:<span class="direct-input">直接入力</span>;1:<li><span class="list-name">フラッシング3寸</span><param></li>;2:チムニーフラッシング　□650;3:炉台キット2枚組　CB30;4:煙突ヒートシールド;5:スチールステージプレート　角;6:バーベキュースタンド;7:ストームカラー　ネック付;8:チムニートップ;9:結露防止板;10:シングル直管1000mm φ150 黒;11:シングルエルボー管30°黒;12:断熱二重直管120mm;13:断熱二重直管500mm;14:断熱二重直管1200mm'};
 		//製品種別のプルダウンメニュー
 		pulldown['product_category'] = {value:'0:<span class="direct-input">直接入力</span>;1:二管; 2:一管; 3:炉台; 4:二支;5:フラ'};
 		//顧客のプルダウンメニュー 
@@ -1179,18 +1179,18 @@ $(function() {
 		var pulldownlist = '';							//プルダウンメニューの本体のセレクタを格納する変数
 		if($(pulldown).attr('class').indexOf('select-button') != -1){	//選択ボタンで呼ばれたなら
 			//種別プルダウンとセットになっていたら
-			if($(this).parent().prev().attr('class').indexOf('product-category') != -1){
+//			if($(this).parent().prev().attr('class').indexOf('product-category') != -1){
 				//カテゴリーのプルダウンメニューを開くようにする
-				pulldown = $(this).parent().prev().find('span');
+//				pulldown = $(this).parent().prev().find('span');
 				//種別選択のフラグを立てる
-				isCategorySelect = true;
+//				isCategorySelect = true;
 				//プルダウンメニューを出現させ、重なる要素の一番上に表示する。
-				pulldownlist = $('ul',pulldown);		//プルダウンメニューのリスト本体をpulldownlistに格納
+//				pulldownlist = $('ul',pulldown);		//プルダウンメニューのリスト本体をpulldownlistに格納
 				//右paddingは現在ベタ打ちのため、修正の必要あり
-				$(pulldownlist).css('display', 'block').css('z-index', '200').css('padding-right','50px');
-				lastpulldown = $('input',pulldown);			//テキストボックスをlastpulldownに記憶させる
-				$(pulldown).css('position', 'relative');	//spanの位置をを表示の基準にする
-			} else {
+//				$(pulldownlist).css('display', 'block').css('z-index', '200').css('padding-right','50px');
+//				lastpulldown = $('input',pulldown);			//テキストボックスをlastpulldownに記憶させる
+//				$(pulldown).css('position', 'relative');	//spanの位置をを表示の基準にする
+//			} else {
 				pulldown = $($(this).prev());			//プルダウンメニュー本体のspanタグのセレクタを保存
 				//プルダウンメニューを出現させ、重なる要素の一番上に表示する。
 				pulldownlist = $('ul',pulldown);		//プルダウンメニューのリスト本体をpulldownlistに格納
@@ -1200,7 +1200,7 @@ $(function() {
 				$(pulldown).css('position', 'relative');	//spanの位置をを表示の基準にする
 				//種別選択のフラグを下ろす
 				isCategorySelect = false;
-			}
+//			}
 
 		} else{
 			pulldownlist = $(pulldown).next();		//プルダウンメニューのリスト本体をpulldownlistに格納
@@ -1268,17 +1268,21 @@ $(function() {
 			//フィルタリングするプルダウンメニューの祖先となるdivタグを変数に格納
 			var fillteringPulldown = $(this).parent().parent().parent().next();
 			//対応するプルダウンメニューをフィルタリングする
-			fillterPulldown(fillteringPulldown, categoryName);	//
+			fillterPulldown(fillteringPulldown, categoryName);	//製品名を絞る
+			//製品名のdivタグのセレクタを取得
+			var producttb = $(this).parent().parent().parent().next();	
+			//製品名のテキストボックスを空にする
+			$('input:text', producttb).val('');
 		}
 		//種別選択のフラグが立っていた状態で種別選択されていたら
-		if(isCategorySelect == true){
+//		if(isCategorySelect == true){
 			//製品名、顧客名を選択するテキストボックスの祖先となるdivタグを変数に格納
-			var nextSelect = $(this).parent().parent().parent().next();
+//			var nextSelect = $(this).parent().parent().parent().next();
 			//次に表示するプルダウンメニューのセレクタをnextPulldownに格納
-			var nextPulldown = $('.pulldown-menu' ,nextSelect);
+//			var nextPulldown = $('.pulldown-menu' ,nextSelect);
 			//製品名、顧客名のプルダウンメニューを表示する
-			appearPulldown(nextPulldown);
-		}
+//			appearPulldown(nextPulldown);
+//	}
 	}
 	/*
 	 * 関数　: fillterPulldown = function(pulldown category)
@@ -1484,17 +1488,42 @@ $(function() {
 //		$('#chooseListSave', document).remove();			//ダイアログを消す
 	}
 
+	//ツールチップ用のテキストを格納する配列
+	var toolTipText = {
+		add: '項目を追加します。',
+		edit: '項目を編集します',
+		delete:'項目を削除します',
+		select:'項目を選択します。',
+		stock:'入庫処理をします。',
+		summary:'項目を削除します',
+		close:'このページを閉じます。',
+		connect:'伝票の結合を行います。',
+		calendar:'カレンダーから日付を選択します。',
+		setting:'各ページへのリンクを表示します。'
+	};
+	
 	/* 関数名:setButtons()
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :ボタンをJQuery UIのものに置き換える
 	 * 作成日:14.07.01
 	 * 作成者:T.M
+	 * 修正日:14.07.25
+	 * 修正者:T.M
+	 * 内容  :ツールチップ対応
 	*/	
 function setButtons(){
 	//JQueryの記述を開始
 	$(function(){
-		$('.button').button();	//ボタンをJQuery UIで用意されたものにする
+			$('button.button').powerTip({						//ツールチップをセット
+				placement: 'n',				//上に表示
+				followMouse: true,			//マウスについてくる
+				smartPlacement: true,		//画面外に出たら戻ってくる
+				intentPollInteterval: 0,	//表示は早めに
+				intentSensitivity: 10		//表示されるまでの距離制限
+		})
+
+
 		//追加ボタンがあれば
 		if($('.page:first button.add-button').length >= 1){
 			//追加ボタンのレイアウトを変更
@@ -1503,7 +1532,10 @@ function setButtons(){
 					primary: 'ui-icon-plus'	//ボタンの画像を＋マークにする
 				},
 				text: false					//テキストを非表示にする
-			});
+			})
+			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['add']);
+
 		}
 		//編集ボタンがあれば
 		if($('.page:first button.edit-button').length >= 1){
@@ -1513,7 +1545,9 @@ function setButtons(){
 				primary: 'ui-icon-pencil'	//ボタンの画像を鉛筆マークにする
 				},
 				text: false					//テキストを非表示にする
-			});
+			})			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['edit']);
+
 		}
 		//削除ボタンがあれば
 		if($('.page:first button.delete-button').length >= 1){
@@ -1523,7 +1557,10 @@ function setButtons(){
 				primary: 'ui-icon-trash'	//ボタンの画像をゴミ箱マークにする
 				},
 			text: false					//テキストを非表示にする
-			});
+			})			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['delete'])
+;		
+
 		}
 		//選択ボタンがあれば
 		if($('.page:first button.select-button').length >= 1){
@@ -1533,7 +1570,9 @@ function setButtons(){
 				primary: 'ui-icon-arrowthick-1-s'	//ボタンの画像を下矢印にする
 				},
 			text: false					//テキストを非表示にする
-			});
+			})			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['select']);
+
 		}
 		//クローズボックスがあれば
 		if($('.page:first button.close-button').length >= 1){
@@ -1543,7 +1582,9 @@ function setButtons(){
 				primary: 'ui-icon-close'	//ボタンの画像を×マークにする
 			},
 			text: false						//テキストを非表示にする
-			});
+			})			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['close']);
+
 		}
 		//まとめボタンがあれば
 		if($('.page:first button.summary-button').length >= 1){
@@ -1553,7 +1594,9 @@ function setButtons(){
 				primary: 'ui-icon-document'	//ボタンの画像を文書マークにする
 			},
 			text: false						//テキストを非表示にする
-			});
+			})			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['summary']);
+
 		}
 		//入庫ボタンがあれば
 		if($('.page:first button.stock-button').length >= 1){
@@ -1563,7 +1606,9 @@ function setButtons(){
 				primary: 'ui-icon-plus'	//ボタンの画像を下向きプラスマークにする
 			},
 			text: false						//テキストを非表示にする
-			});
+			})			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['stock']);
+
 		}
 		//連結ボタンがあれば
 		if($('.page:first button.connect-button').length >= 1){
@@ -1573,7 +1618,9 @@ function setButtons(){
 				primary: 'ui-icon-link'		//ボタンの画像を連結マークにする
 			},
 			text: false						//テキストを非表示にする
-			});
+			})			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['connect']);
+
 		}
 		//カレンダーボタンがあれば
 		if($('.page:first button.ui-datepicker-trigger').length >= 1){
@@ -1583,7 +1630,16 @@ function setButtons(){
 				primary: 'ui-icon-calendar'	//ボタンの画像をカレンダーマークにする
 			},
 			text: false						//テキストを非表示にする
+			})			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['calendar'])
+			.powerTip({						//ツールチップをセット
+				placement: 'n',				//上に表示
+				followMouse: true,			//マウスについてくる
+				smartPlacement: true,		//画面外に出たら戻ってくる
+				intentPollInteterval: 0,	//表示は早めに
+				intentSensitivity: 10		//表示されるまでの距離制限			
 			});
+
 		}
 		//設定ボタンがあれば
 		if($('.page:first button.setting-button').length >= 1){
@@ -1593,8 +1649,20 @@ function setButtons(){
 				primary: 'ui-icon-gear'		//ボタンの画像を歯車マークにする
 			},
 			text: false						//テキストを非表示にする
-			});
+			})			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['setting']);
+
 		}
+		
+		//ボタンをJQuery UIで用意されたものにする
+		$('button.button').button()
+			.powerTip({						//ツールチップをセット
+				placement: 'n',					//上に表示
+				followMouse: true,				//マウスについてくる
+				smartPlacement: true,			//画面外に出たら戻ってくる
+				intentPollInteterval: 0,		//表示は早めに
+				intentSensitivity: 10			//表示されるまでの距離制限
+		});			
 	});
 }
 

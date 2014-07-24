@@ -12,7 +12,7 @@
 <file name="pqgrid.min.js" server="ddthink.com//var/www/html/test/borgsystem/" local="130501254401260000" remote="130501501800000000" Dst="0" />
 <file name="rainbow.min.js" server="ddthink.com//var/www/html/test/borgsystem/" local="130501254399850000" remote="130501501800000000" Dst="0" />
 <file name="jquery-1.11.0.min.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254370200000" remote="130501254370000000" Dst="0" />
-<file name="main.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130505631526090000" remote="130505631520000000" Dst="0" />
+<file name="main.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130506781881400000" remote="130506781880000000" Dst="0" />
 <file name="jquery-ui-i18n.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254390140000" remote="130501254390000000" Dst="0" />
 <file name="jquery.jqplot.min.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130482433180000000" remote="130482433180000000" Dst="0" />
 <file name="pqgrid.min.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130482433180000000" remote="130482433180000000" Dst="0" />
@@ -54,4 +54,12 @@
 <file name="grid.celledit.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254361120000" remote="130501254360000000" Dst="0" />
 <file name="jquery.fittext.js" server="ddthink.com//var/www/html/test/borgsystem/" local="130501254372980000" remote="130501480200000000" Dst="0" />
 <file name="jquery.fittext.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254372980000" remote="130501254370000000" Dst="0" />
+<file name="jquery.scrollablecombo.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130506314900140000" remote="130506314900000000" Dst="0" />
+<file name="jquery-migrate-1.2.1.min.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130506327274210000" remote="130506327270000000" Dst="0" />
+<file name="jquery-migrate-1.2.1.min.js" server="ddthink.com//var/www/html/test/borgsystem/" local="130506327274210000" remote="130506433800000000" Dst="0" />
+<file name="jquery.scrollablecombo.js" server="ddthink.com//var/www/html/test/borgsystem/" local="130506314900140000" remote="130506433800000000" Dst="0" />
+<file name="autocomplete.js" server="ddthink.com//var/www/html/test/borgsystem/" local="130506736909230000" remote="130506741600000000" Dst="0" />
+<file name="jquery-ui.js" server="ddthink.com//var/www/html/test/borgsystem/" local="130506598189300000" remote="130506598200000000" Dst="0" />
+<file name="autocomplete.js" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130506846039830000" remote="130506846030000000" Dst="0" />
+<file name="autocomplete.js" server="ddthink.com//var/www/html/test2/" local="130506811467770000" remote="130506834000000000" Dst="0" />
 </dwsync>
