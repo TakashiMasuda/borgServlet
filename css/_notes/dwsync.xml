@@ -14,14 +14,14 @@
 <file name="jquery.jqplot.min.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130501254260350000" remote="130501501200000000" Dst="0" />
 <file name="style.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130506314900660000" remote="130506433800000000" Dst="0" />
 <file name="ui.dropdownchecklist.themeroller.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130501472015660000" remote="130501501200000000" Dst="0" />
-<file name="borgstyle.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130505919629620000" remote="130505919620000000" Dst="0" />
+<file name="borgstyle.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130507131227910000" remote="130507131220000000" Dst="0" />
 <file name="smartphone.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501382058680000" remote="130501382050000000" Dst="0" />
 <file name="tablet.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254266490000" remote="130501254260000000" Dst="0" />
 <file name="desktop.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254257500000" remote="130501254250000000" Dst="0" />
-<file name="ui.dropdownchecklist.standalone.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130503719748500000" remote="130503719740000000" Dst="0" />
+<file name="ui.dropdownchecklist.standalone.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130505771410450000" remote="130505771410000000" Dst="0" />
 <file name="ui.jqgrid.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254270550000" remote="130501254270000000" Dst="0" />
 <file name="formly.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254260200000" remote="130501254260000000" Dst="0" />
-<file name="easytabs.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130503681023410000" remote="130503681020000000" Dst="0" />
+<file name="easytabs.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130505813906540000" remote="130505813900000000" Dst="0" />
 <file name="down.png" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130506314900320000" remote="130506314900000000" Dst="0" />
 <file name="up.png" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130506314900810000" remote="130506314900000000" Dst="0" />
 <file name="overlay.png" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130506314900480000" remote="130506314900000000" Dst="0" />
@@ -31,4 +31,6 @@
 <file name="overlay.png" server="ddthink.com//var/www/html/test/borgsystem/" local="130506314900480000" remote="130506433800000000" Dst="0" />
 <file name="jquery.jqplot.min.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254260350000" remote="130501254260000000" Dst="0" />
 <file name="jquery-ui-1.10.4.custom.min.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254262180000" remote="130501254260000000" Dst="0" />
+<file name="jquery.powertip-light.min.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130506893718800000" remote="130507069800000000" Dst="0" />
+<file name="jquery.powertip-light.min.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130506893718800000" remote="130506893710000000" Dst="0" />
 </dwsync>

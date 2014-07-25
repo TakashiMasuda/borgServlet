@@ -1766,3 +1766,7 @@ button.ui-button{
 .ui-icon-close {
 	background-position: -80.5px -128px !important;	/* 画像を切り出す座標 */
 }
+/* リスト内のparamタグ。カテゴリ名を表す */
+.list .category-name{
+	display: none;	/* 非表示 */
+}

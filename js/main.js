@@ -337,9 +337,11 @@
 		//人物(担当者)のプルダウンメニュー
 		pulldown['person'] = {value:'0:<span class="direct-input">直接入力</span>;1:木村隆; 2:佐藤祐作; 3:山田太郎'};
 		//製品のプルダウンメニュー 
-		pulldown['product'] = {value:'0:<span class="direct-input">直接入力</span>;1:<li><span class="list-name">フラッシング3寸</span><param></li>;2:チムニーフラッシング　□650;3:炉台キット2枚組　CB30;4:煙突ヒートシールド;5:スチールステージプレート　角;6:バーベキュースタンド;7:ストームカラー　ネック付;8:チムニートップ;9:結露防止板;10:シングル直管1000mm φ150 黒;11:シングルエルボー管30°黒;12:断熱二重直管120mm;13:断熱二重直管500mm;14:断熱二重直管1200mm'};
+		pulldown['product'] = {value:'0:<span class="direct-input">直接入力</span>;1:<span class="list-name">フラッシング3寸</span>;2:<span class="list-name">チムニーフラッシング　□650</span>;3:<span class="list-name">炉台キット2枚組　CB30</span>;4:<span class="list-name">煙突ヒートシールド</span>;5:<span class="list-name">スチールステージプレート　角</span>;6:<span class="list-name">バーベキュースタンド</span>;7:<span class="list-name">ストームカラー　ネック付</span>;8:<span class="list-name">チムニートップ</span>;9:<span class="list-name">結露防止板</span>;10:<span class="list-name">シングル直管1000mm φ150 黒</span>;11:<span class="list-name">シングルエルボー管30°黒</span>;12:<span class="list-name">断熱二重直管120mm</span>;13:<span class="list-name">断熱二重直管500mm</span>;14:<span class="list-name">断熱二重直管1200mm</span>'};
+		//製品のプルダウンメニュー。絞込み対応版
+		pulldown['product-for-sort'] = {value:'0:<span class="direct-input">直接入力</span>;1:<span class="list-name">フラッシング3寸</span><span class="category-name"> フラ</span>;2:<span class="list-name">チムニーフラッシング　□650</span><span class="category-name"> フラ</span> ;3:<span class="list-name">炉台キット2枚組　CB30</span><span> 炉台</span>;4:<span class="list-name">煙突ヒートシールド</span><span> 一支</span>;5:<span class="list-name">スチールステージプレート　角</span><span> アクセ</span>;6:<span class="list-name">バーベキュースタンド</span><span> アクセ</span>;7:<span class="list-name">ストームカラー　ネック付</span><span> 二支</span>;8:<span class="list-name">チムニートップ</span><span> 二管</span>;9:<span class="list-name">結露防止板</span><span> 二支</span>;10:<span class="list-name">シングル直管1000mm φ150 黒</span><span> 一管</span>;11:<span class="list-name">シングルエルボー管30°黒</span><span> 一管</span>;12:<span class="list-name">断熱二重直管120mm</span><span> 二管</span>;13:<span class="list-name">断熱二重直管500mm</span><span> 二管</span>;14:<span class="list-name">断熱二重直管1200mm</span><span> 二管</span>'};
 		//製品種別のプルダウンメニュー
-		pulldown['product_category'] = {value:'0:<span class="direct-input">直接入力</span>;1:二管; 2:一管; 3:炉台; 4:二支;5:フラ'};
+		pulldown['product_category'] = {value:'0:直接入力;1:二管; 2:一管; 3:炉台; 4:二支;5:一支;6:アク;7:フラ'};
 		//顧客のプルダウンメニュー 
 		pulldown['customer'] = {value:'0:<span class="direct-input">直接入力</span>;1:株式会社A;2:株式会社B;3:株式会社C;4:合同会社D;5:合同会社E;6:合同会社F;7:合同会社G;8:合同会社H;9:合同会社I'}; 
 		//顧客種別のプルダウンメニュー
@@ -356,7 +358,7 @@
 			{ name: "product_category", index:"product_category", width: 35, height: '150%',
 				align:"left", className: "p_category  categories", editable: true, edittype:"select", editoptions: pulldown['product_category']},
 			{ name: "product", index:"product", width: 110, height: '150%', align:"left",
-				className: " product", editable: true, edittype:"select", editoptions: pulldown['product']},
+				className: " product", editable: true, edittype:"select", editoptions: pulldown['product-for-sort']},
 			{ name: "lot_number", index:"lot_number", width: 45, height: '150%', align:"left",
 				className: "lot_number", editable: true},
 			{ name: "price", index:"price", width: 50, height: '150%', align:"left", className: "price", editable: true},
@@ -470,7 +472,7 @@
 		];
 	//fig.7-1		
 	colModelData['fig7-1'] =[{ name: "No", index:"No", width: 28, dataType: "string", align:"left", editable: true},
-			{ name: "product_number.", index:"product_number", width: 117, dataType: "string" , align:"left", className: "p_number", editable: true},
+			{ name: "product_number", index:"product_number", width: 117, dataType: "string" , align:"left", className: "p_number", editable: true},
 			{ name: "product", index:"product", width: 206, dataType: "string", align:"left", className:' product', editable: true, edittype:"select", editoptions: pulldown['product']},
 	       	{ name: "order_date", index:"order_date", width: 75, dataType: "date", align:"left", editable: true},
 			{ name: "quantity", index:"quantity", width: 40, dataType: "integer", align:"left", className: "quantity", editable: true},
@@ -592,7 +594,37 @@
 	var editingTable = '';	//編集中のテーブル
 	var editingRowId = '';	//編集中のセルの行のID
 
-
+	/* 関数名:sortProductsInList(cellname, table rowid)
+	 * 引数　:var cellname, Object table, var rowid
+	 * 戻り値:なし
+	 * 概要  :リストの中の製品名を種別で絞る
+	 * 作成日:14.07.25
+	 * 作成者:T.M
+	*/	
+	function sortProductsInList(cellname, table, rowid){
+		//指す列が製品名であれば
+		if(cellname == 'product'){
+			//現在のfigのIDを
+			var thisfig = $('.page:first div[id *= "fig"]:first', document).attr('id');
+			//同じ行の製品種別の値を取得
+			var categoryName = ' ' + $('#'+ rowid +' td[aria-describedby="' + thisfig + '-list_product_category"]', table).text();
+			//このセルのセレクタを取得
+			var listOut = $('#'+ rowid +' td[aria-describedby="' + thisfig + '-list_product"]', table);
+			//プルダウンメニューの項目を一旦非表示にする
+			$('option', listOut).css('display', 'none');
+			//リストの項目を全てチェックする
+			$('option', listOut).each(function(){
+				//直接入力か種別にあう製品名であれば
+				if($('span:first', this).attr('class').indexOf('direct-input') != -1 ||
+					$('span:last',this).text().indexOf(categoryName) != -1){
+					//表示する
+					$(this).css('display', 'block');
+					//種別名を抜く
+					$('span:last',this).text($('span:last',this).text().replace(categoryName, ''));
+				}
+			});
+		}	
+	}
 	//リストのルール設定を配列に格納
 	var objRule = new Array();
 	//fig2のルールを設定
@@ -618,9 +650,14 @@
 								editingCol = iCol;		//編集中のセルの列番号を保存
 								editingValue = value;	//編集中のセルの値を保存
 								editingRowId = rowid;	//編集中のセルの行IDを保存
-							}
+								//製品名を選択した場合は種別による項目絞込みを行う
+								sortProductsInList(cellname, $(this), rowid);
+							} 
 					};
 
+$(document).on('click', 'select', function(){
+	var chan;
+});
 	//fig2-1のルールを設定					
 	objRule['fig2-1'] ={
 							data: listData['fig2-1'],
@@ -1515,13 +1552,23 @@ $(function() {
 function setButtons(){
 	//JQueryの記述を開始
 	$(function(){
-			$('button.button').powerTip({						//ツールチップをセット
+		//タッチ端末か
+		var isTouchDevice = false;
+		//タッチ
+		if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) ||
+		 navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+			 isTouchDevice = true;	//isTouchDeviceにtrueを格納してタッチ端末であること確定
+		}else{
+				$('button.button').powerTip({						//ツールチップをセット
 				placement: 'n',				//上に表示
 				followMouse: true,			//マウスについてくる
 				smartPlacement: true,		//画面外に出たら戻ってくる
 				intentPollInteterval: 0,	//表示は早めに
 				intentSensitivity: 10		//表示されるまでの距離制限
-		})
+				})
+		}
+
+
 
 
 		//追加ボタンがあれば
@@ -1631,14 +1678,17 @@ function setButtons(){
 			},
 			text: false						//テキストを非表示にする
 			})			//ツールチップ用のテキストを追加
-			.attr('title', toolTipText['calendar'])
-			.powerTip({						//ツールチップをセット
-				placement: 'n',				//上に表示
-				followMouse: true,			//マウスについてくる
-				smartPlacement: true,		//画面外に出たら戻ってくる
-				intentPollInteterval: 0,	//表示は早めに
-				intentSensitivity: 10		//表示されるまでの距離制限			
-			});
+			.attr('title', toolTipText['calendar']);
+			if(!(isTouchDevice)){				//タッチ端末でなければ
+				$('.ui-datepicker-trigger')
+					.powerTip({						//ツールチップをセット
+						placement: 'n',				//上に表示
+						followMouse: true,			//マウスについてくる
+						smartPlacement: true,		//画面外に出たら戻ってくる
+						intentPollInteterval: 0,	//表示は早めに
+						intentSensitivity: 10		//表示されるまでの距離制限			
+				});
+			}
 
 		}
 		//設定ボタンがあれば
@@ -1672,7 +1722,7 @@ function setButtons(){
 $(function(){
     //　モーダル初期設定
     $('#modal').dialog({
-		title: '<nobr>リンクリスト</nobr>',		//ダイアログのタイトル
+		title: 'リンク一覧',		//ダイアログのタイトル
 		width: 'auto',				//幅
 		height: 'auto',				//高さ
         autoOpen: false, 			// 自動でオープンしない
@@ -1681,7 +1731,12 @@ $(function(){
         draggable: false, 			// ドラッグしない
         show: "clip",     			// 表示時のエフェクト
         hide: "fade",      			// 非表示時のエフェクト
-		position: ["right", "top"]	//表示位置の指定。右上に表示
+		position: ["right", "top"],	//表示位置の指定。右上に表示
+		//ダイアログのクローズボックスを非表示にする
+		open:function(event, ui){ 
+			$(".ui-dialog-titlebar-close")
+				.hide()
+			;},
     })
 	//ダイアログの項目をクリックしたら
 	.on('click', 'li', function(){
@@ -1811,12 +1866,12 @@ function callList(contentName){
 /* セルの直接入力ダイアログを呼び出す */
 $(document).on('change', '.list td select', function(e){
 	selectedValue = $(this).val();
-	if($('option[value="' + selectedValue + '"] span', this)[0]){
+	//直接入力の項目をクリックしたなら
+	if($('option[value="' + selectedValue + '"] span.direct-input', this)[0]){
 		editingTable = $(this).parents('table').attr('id');		//編集中のテーブルのIDを取得
 		$('#direct-input-dialog').dialog('open');		// 値の直接入力のダイアログを呼び出す
 	}
 });
-
 
 var mainWidthPercent = 0.97;		//mainのタグの幅に対するリスト幅の割合
 var tabContainerPercent = 0.98;		//タブの幅に対するリスト幅の割合。paddingの値を加味する
@@ -2116,12 +2171,6 @@ function changeGridHeight(newGridHeight){
 	$('.list').setGridHeight(newGridHeight);
 }
 
-//タイトルをクリックしたらリストの大きさが変わる
-$(document).on('click', '.delete-button', function(){
-	$('.ui-jqgrid-bdiv').height();
-	$('.list').setGridHeight(1000);
-	});
-	
 function streachList(newListHeight){
 	$('.list', document).setGridHeight(newListHeight);
 }
