@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="smartphone.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130501382058680000" remote="130501381800000000" Dst="0" />
-<file name="borgstyle.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130505919629620000" remote="130505920800000000" Dst="0" />
+<file name="borgstyle.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130508644018230000" remote="130508651400000000" Dst="0" />
 <file name="desktop.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130501254257500000" remote="130501480200000000" Dst="0" />
 <file name="tablet.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130501254266490000" remote="130501480200000000" Dst="0" />
 <file name="ui.dropdownchecklist.standalone.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130505771410450000" remote="130505821800000000" Dst="0" />
@@ -33,4 +33,6 @@
 <file name="jquery-ui-1.10.4.custom.min.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130501254262180000" remote="130501254260000000" Dst="0" />
 <file name="jquery.powertip-light.min.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130506893718800000" remote="130507069800000000" Dst="0" />
 <file name="jquery.powertip-light.min.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130506893718800000" remote="130506893710000000" Dst="0" />
+<file name="ui-selectmenu.css" server="C:/Users/staff001/Documents/masuda/dwcs6/DDthink/" local="130507333375075441" remote="130507333370000000" Dst="0" />
+<file name="ui-selectmenu.css" server="ddthink.com//var/www/html/test/borgsystem/" local="130507333375075441" remote="130507574400000000" Dst="0" />
 </dwsync>

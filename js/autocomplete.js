@@ -19,7 +19,7 @@
           .appendTo( this.wrapper )
           .val( value )
           .attr( "title", "" )
-          .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
+          .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-all" )
           .autocomplete({
             delay: 0,
             minLength: 0,
@@ -48,7 +48,7 @@
  
         $( "<button>" )
           .attr( "tabIndex", -1 )
-          .appendTo( this.wrapper )
+          .insertAfter(this.wrapper)
           .button({
             icons: {
               primary: "ui-icon-triangle-1-s"

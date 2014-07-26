@@ -111,22 +111,28 @@
   			</div>
 			<div class="line half_line parallel-text variable-height left">
  				<label for="textfield">担当者</label>
-  				<input type="text" name="charger" id="charger" class="textbox_S default_textbox pulldown-menu person" readonly>
+  				<select name="charger" id="charger" class="textbox_S default_textbox pulldown-menu person" readonly>
+                </select>
   			</div>
   			<div class="parallel-text variable-height right">
   				<label for="textfield2">作成者</label>
-  				<input type="text" name="writer" id="writer" class="textbox_S default_textbox pulldown-menu person" readonly>
+  				<select name="writer" id="writer" class="textbox_S default_textbox pulldown-menu person" readonly>
+			    	<option value="">入力、または選択してください</option>
+                </select>
   			</div>
   
 			<div class="line parallel-text variable-height left product-category">
 				<label for="textfield10">種別</label>
-				<input type="text" name="product_category" id="product_category"  class="textbox_S default_textbox pulldown-menu categories parts_height select-category" readonly>
+				<select name="product_category" id="product_category"  class="textbox_S default_textbox pulldown-menu categories parts_height select-category" >
+			    	<option value="">入力、または選択してください</option>
+                </select>
 			</div>
 
 			<div class="single-line-text variable-height right product-select">
 				<label for="textfield9">製品名</label>
-				<input type="text" name="product" id="product"  class="textbox_L pulldown-menu product select-text-box default_textbox  parts_height">
-				<button name="select_button" class="button select-button" id="select_category_button" value="選択">
+				<select name="product" id="product"  class="textbox_L pulldown-menu product select-text-box default_textbox  parts_height">
+			    	<option value="">入力、または選択してください</option>
+                </select>
 			</div>
   			<div class="line half_line parallel-text variable-height last_line left">
   				<label for="textfield2">ロットNo</label>
@@ -147,17 +153,13 @@
 					<button name="normal_button" id="normal_button" class="button normal-button" title="選択した商品を通常状態にします。" value="ノーマル">ノーマル</button>
                </div>
             </div>
-            <!--div class="single-line-text variable-height right">
-            	<input type="text" name="ammount" class="parts_height right">
-            </div-->
-<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-<div class="wrap-list">
-<!-- JQ Gridによりリストを形成するtableタグ -->
-<table id="fig3-1-list" class="list"></table>
-</div>
+			<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+			<div class="wrap-list">
+				<!-- JQ Gridによりリストを形成するtableタグ -->
+				<table id="fig3-1-list" class="list"></table>
+			</div>
 
 		</div>
-
 	</div>
 </div>
 </body>

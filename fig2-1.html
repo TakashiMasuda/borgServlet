@@ -114,12 +114,16 @@ $(document).ready(function(){
             
 			<div class="line half_line parallel-text variable-height left">
 				<label for="textfield5">担当者</label>
-				<input type="text" name="charger" id="padd_charger"  class="textbox_S pulldown-menu person default_textbox  parts_height" readonly>
+				<select name="charger" id="padd_charger"  class="textbox_S pulldown-menu person default_textbox  parts_height" >
+    	<option value="">入力、または選択してください</option>
+                </select>
 			</div>
             
 			<div class="half_line parallel-text variable-height right">
 				<label for="textfield6">作成者</label>
-				<input type="text" name="writer" id="padd_writer"  class="textbox_S pulldown-menu person default_textbox  parts_height" readonly>
+				<select name="writer" id="padd_writer"  class="textbox_S pulldown-menu person default_textbox  parts_height" >
+    	<option value="">入力、または選択してください</option>
+                </select>
 			</div>
             
 			<div class="line half_line parallel-text variable-height left">
@@ -134,13 +138,16 @@ $(document).ready(function(){
 
 			<div class="line parallel-text variable-height left product-category">
 				<label for="textfield10">種別</label>
-				<input type="text" name="product_category" id="product_category"  class="textbox_S default_textbox pulldown-menu categories parts_height select-category" readonly>
+				<select name="product_category" id="product_category"  class="textbox_S default_textbox pulldown-menu categories parts_height select-category" >
+    	<option value="">入力、または選択してください</option>
+                </select>
 			</div>
 
 			<div class="single-line-text variable-height right product-select">
 				<label for="textfield9">製品名</label>
-				<input type="text" name="product" id="product"  class="textbox_L pulldown-menu product select-text-box default_textbox  parts_height">
-				<button name="select_button" class="parts_height button select-button" id="select_category_button" value="選択">
+				<select name="product" id="product"  class="textbox_L pulldown-menu product select-text-box default_textbox  parts_height">
+    	<option value="">入力、または選択してください</option>
+                </select>
 			</div>
             
 			<div class="line a_line before_list_line variable-height">
@@ -153,17 +160,16 @@ $(document).ready(function(){
 					<option value="1">--</option>
 				</select>
 			</div>
-<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-<div class="wrap-list">
-<!-- JQ Gridによりリストを形成するtableタグ -->
-<table id="fig2-1-list" class="list"></table>
-</div>
+			<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+			<div class="wrap-list">
+				<!-- JQ Gridによりリストを形成するtableタグ -->
+				<table id="fig2-1-list" class="list"></table>
+			</div>
 
-<!-- fig2-1を閉じる -->
-</div>
-
-<!-- mainを閉じる -->
-</div>
+		<!-- fig2-1を閉じる -->
+		</div>
+	<!-- mainを閉じる -->
+	</div>
 <!-- containerを閉じる -->
 </div>
 </body>

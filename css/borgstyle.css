@@ -1083,18 +1083,18 @@ th.fig9_content_header{
 /* single-line-textでは、9.3が3文字用、18.5が4文字用 */
 
 /* 2段組みテキストボックス横のボタン */
-.parallel-text button.button.ui-button{
+.parallel-text button.ui-button{
 	width: 8.49%;		/* 幅10% */
 	display: inline;	/* インライン要素として扱う */
 }
 /* 2段組でないテキストボックスの横のボタン */
-.single-line-text button.button.ui-button{
+.single-line-text button.ui-button{
 	width: 4.245%;		/* 2段組の半分の幅 */
-	margin-left: 0.2%; /* 左marginを少々 */
+	margin-left: 1%; /* 左marginを少々 */
 }
 /* 2段組のテキストボックスの横のボタン */
-.parallel-text button.button.ui-button{
-	margin-left: 1%;	/* コンテンツの外枠のpaddingと同じだけの右margin */
+.parallel-text button.ui-button{
+	margin-left: 2%;	/* 左margin */
 }
 /* 2段組のテキストボックス横のdatepickerのボタン */
 .parallel-text button.ui-datepicker-trigger.ui-button{
@@ -1120,23 +1120,22 @@ th.fig9_content_header{
 /* Fig2.1についての追加CSS */
 /* 製品名の項目を囲むdivタグについて */
 
-/* 製品名のテキストボックス */
+/* 製品名のテキストボックスの外枠 */
 .single-line-text.right.product-select{
-	/* 種別、製品名を並べるにあたって幅の配分をする必要があり、製品名は82%に設定 */
-	width: 75%;			/* 種別とあわせて100%の幅を取るようにし、こちらは80%を取る */
+	width: 70%;			/* 種別とあわせて100%の幅を取るようにし、こちらは70%を取る */
 	float: left;		/* 左に寄せる */
 	clear: none;		/* 回り込みを許可する */
 	text-align: left;	/* 左に寄せる */
 }
-/* 製品名のテキストボックスのボタン */
-.single-line-text.right.product-select button.button.ui-button{
-	width: 5.7%;	/* 他のボタンと合う幅に指定。親要素の幅に注意 */
-	margin-left: 0.3%;	/* 左margin */
+/* 製品名のテキストボックス */
+.single-line-text.right.product-select input{
+	/* 種別、製品名を並べるにあたって幅の配分をする必要があり、製品名は82%に設定 */
+	width: 74.5%;			/* 幅 */
 }
-/* 製品名のテキストボックスについて */
-.pulldown-menu.product{
-	width: 75.0%;		/* 幅を78.5%分取る */
-	text-align:left;	/* 左詰 */
+/* 製品名のテキストボックスのボタン */
+.single-line-text.right.product-select button.ui-button{
+	width: 6.1%;	/* 他のボタンと合う幅に指定。親要素の幅に注意 */
+	margin-left: 1.4%;	/* 左margin */
 }
 /* 製品名の項目の文字について */
 .single-line-text.right.product-select label{
@@ -1147,13 +1146,23 @@ th.fig9_content_header{
 
 /* 種別の項目を囲むdivタグについて */
 .parallel-text.left.product-category{
-	width: 25%;		/* 幅を20%に設定 */
+	width: 30%;		/* 幅を20%に設定 */
 }
 /* 種別の項目の文字について */
 .parallel-text.left.product-category label{
 	width: 35%;		/* 幅を35%分取る */
 	display: inline;	/* インライン要素にする */
 	margin-right: 5%;	/* 右に5%のmargin */
+}
+/* 種別のボタン */
+.parallel-text.left.product-category button.ui-button{
+	width: 14.3%;	/* 幅 */
+	margin-left: 3%;	/* 左margin */
+}
+/* 種別のテキストボックス */
+.parallel-text.left.product-category input{
+	width: 45.0%;	/* 幅 */
+	
 }
 /* 種別のテキストボックスについて */
 #product_category.pulldown-menu.categories.select-category{
@@ -1247,7 +1256,6 @@ th.fig9_content_header{
 }
 .single-line-text.patch{
 	height: 0;
-	
 }
 /*
  * クラス:divide-line
@@ -1304,7 +1312,7 @@ th.fig9_content_header{
 	cursor: pointer;		/* ボタンは指で指す */
 }
 /* ボタンをJQuery UIのボタンにした場合 */
-button.button.ui-button{
+button.ui-button{
 	width: 8.49%;			/* 高さを30pxにする */
 	height: 100%;			/* 幅も100%にする */
 	vertical-align: middle;	/* 縦方向の真ん中に置く */
@@ -1664,12 +1672,12 @@ label div {
 .a_line{
 }
 /* 1行1項目のタグの中のボタン */
-.a_line button.button.ui-button{
+.a_line button.ui-button{
 	width: 4.245%;	/* 1/20の幅 */
 	margin-right: 1%;	/* 右に1%のmargin */
 }
 /* 1行1項目のタグの中のボタン */
-.a_line.single-line-text button.button.ui-button{
+.a_line.single-line-text button.ui-button{
 	margin-right: 0%;	/* 右marginが余分となるのでなくす */
 }
  /*
@@ -1679,16 +1687,16 @@ label div {
  * 作成者:T.M
  */
 /* 1行2項目のタグの中のボタン */
-.half_line  button.button.ui-button{
+.half_line  button.ui-button{
 	width: 8.49%;	/* 1/10の幅 */
 	margin-right: 1%;	/* 右に2%のmargin */
 }
 /* 1行2項目のタグの中のボタン。テキストボックス入り */
-.half_line.parallel-text  button.button.ui-button{
+.half_line.parallel-text  button.ui-button{
 	margin-right: 0;	/* 右に2%のmargin */
 }
 /* ボタン用tdタグのボタン */
-.button-col button.button.ui-button{
+.button-col button.ui-button{
 	width: 100%;	/* 枠に幅を合わせる */
 	height: 100%;	/* 枠に高さを合わせる */
 }
@@ -1769,4 +1777,37 @@ button.ui-button{
 /* リスト内のparamタグ。カテゴリ名を表す */
 .list .category-name{
 	display: none;	/* 非表示 */
+}
+ /*
+ * クラス:custom-combobox
+ * 概要  :jQuery UIによるオートコンプリート付きコンボボックス
+ * 作成日:2014.07.26
+ * 作成者:T.M
+ */
+.custom-combobox{
+	height: 100%;	/* 外枠に高さをあわせる */
+}
+/* コンボボックス内のテキストボックス */
+.custom-combobox input{
+	background: #FFF;	/* 他のテキストボックスと同じく白にする */
+}
+/* 2段組レイアウトに入るコンボボックス */
+.parallel-text .custom-combobox input{
+	width: 55.0%;	/* 幅 */
+	padding: 0 1%;	/* 左右にpadding */
+}/* 1段組レイアウトに入るコンボボックス */
+.single-line-text .custom-combobox input{
+	width: 76.5%;	/* 幅 */
+	padding: 0 1%;	/* 左右にpadding */
+}
+ /*
+ * クラス:ui-autocomplete
+ * 概要  :プルダウンメニュー(オートコンプリート)のリスト
+ * 作成日:2014.07.27
+ * 作成者:T.M
+ */
+.ui-autocomplete{
+	max-height: 50%;	/* 最大表示領域。JavaScriptで上書きされる */
+	overflow-x: hidden;	/* テキストが横に飛び出したら表示しない */
+	overflow-y: auto;	/* 表示しきれない項目はスクロール */
 }

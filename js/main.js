@@ -4,18 +4,19 @@
 	buttonWidthRatio = 2;	//ボタンの縦横比。縦1に対しての横の比率
 	maxHeight = 1024;	//最大の高さ
 	maxWidth = 768;		//最大の幅
-	aLineHeight = 3.61;	//テキストボックス等の1行分の高さの割合
-	heightRatio = 12;	//divタグとテキストボックスの高さの縦横比の横の比率
+	aLineHeight = 3.61;			//テキストボックス等の1行分の高さの割合
+	heightRatio = 12;			//divタグとテキストボックスの高さの縦横比の横の比率
 	contentWidthParcent = 0.98;	//marginを抜いた画面幅の割合
-	baseFontSize = 100;	//タグに設定されたフォントサイズのデフォルトの割合
-	fontRatio = 12.0;	//画面縮小時に行うフォントサイズの縮小度合いを決める変数
-	spRatio	= 1.5;		//スマホ横幅用比率
-	tbRatio	= 2.0;		//タブレット横幅用比率
-	spWidth = 480;		//スマホ用レイアウトになる幅
-//	spWidth = 630;		//スマホ用レイアウトになる幅
-	strechFix1 = 20;	//文字伸縮の修正値1
-	strechFix2 = 2.0;	//文字伸縮の修正値2
-	strechFix3 = 2.0;	//Fig.1のボタンの高さ用修正値
+	baseFontSize = 100;			//タグに設定されたフォントサイズのデフォルトの割合
+	fontRatio = 12.0;			//画面縮小時に行うフォントサイズの縮小度合いを決める変数
+	spRatio	= 1.5;				//スマホ横幅用比率
+	tbRatio	= 2.0;				//タブレット横幅用比率
+	spWidth = 480;				//スマホ用レイアウトになる幅
+//	spWidth = 630;				//スマホ用レイアウトになる幅
+	strechFix1 = 20;			//文字伸縮の修正値1
+	strechFix2 = 2.0;			//文字伸縮の修正値2
+	strechFix3 = 2.0;			//Fig.1のボタンの高さ用修正値
+	pulldownRatio = 2.0;		//プルダウンメニューの高さの画面に対する割合
 	
 	/*
 	 * 関数名:setContentHeight
@@ -40,7 +41,8 @@
 //		 $('.fig1_buttons.first').css('height', divHeight * strechFix2 * strechFix3);	//トップページの1行目ボタンの高さを設定
   		 $('.users_table th').css('height', divHeight - 1);	
 //		 $('.variable-height').css('height', divHeight);	//高さを設定
-
+		 //プルダウンメニューの高さを指定。画面の高さの半分程度
+		 $('.ui-autocomplete').css('max-height', $(window).height() / pulldownRatio);
 	}
 	/*
 	 * 関数名:setButtonSize()
@@ -102,6 +104,8 @@
 		$('.space_width_syubetu label').css('font-size',  newFontSize + '%');
 		//ユーザー編集画面の表
 		$('.line_table td').css('font-size',  newFontSize + '%');	
+		//プルダウンメニュー
+		$('.ui-autocomplete').css('font-size',  newFontSize + '%');	
 		//$('input:text').css('font-size',  newFontSize + '%');					//テキストボックス内
 	}
 
@@ -1018,9 +1022,14 @@ $(document).on('click', 'select', function(){
 	*/	
 	function disappearPage(){
 			$(function(){
-				$('.pulldown-menu-list').css('display', 'none');
+				//表示しているプルダウンメニューを消す
+				$('.ui-autocomplete').css('display', 'none');
+				//今表示しているページを消す
 				$('.page:first', document).remove();
+				//新たに最前に出てきたページを表示する
 				$('.page:first', document).css('display', 'block');
+				setContentHeight();	//高さを調整する
+				changeFontSize();	//フォントの大きさを直す
 			});
 	}
 
@@ -1145,40 +1154,14 @@ $(function() {
 									//種別名の表のベースを作る
 									pulldowncategories[pulldowncontents[i]] = new Array();
 								}
-								//プルダウンメニューの呼び出し元となるタグをspanタグで囲む
-								$(this).wrap($('<span></span>')
-								.addClass('pulldown-out'));		//囲むspanタグにはpulldown-outクラスを追加
-								$(this).after($('<ul></ul>')	//プルダウンメニューの呼び出し元の後にリストを追加
-								.addClass('pulldown-menu-list'));	//pulldown-menu-listクラスを追加
-								//追加されたリストを指すセレクターをpulldownselectorに格納
-								pulldownselector = $(this).next();	
+								var thisSelect = $(this);	//現在指しているselectタグを変数に格納
+								//xmlのコンテンツデータを1件ずつ処理
 								$(xml).find('content').each(function(i){
-									var thiscontent = $(this);
-          				//    	    $(pulldownselector).append($('<li></li>')		
-						//			.append($(this).find('name').text())
-						//			);
-          				    	    $(pulldownselector).append($('<li></li>')
-										.append($('<span></span>')
-											.addClass('list-name')
-											.text($(thiscontent).find('name').text())
-										)
+									//今指しているselectタグにoptionタグを追加	
+          				    	    $(thisSelect).append($('<option></option>')
+											.attr('value', i)	//value属性に順番に数値を与える
+											.text($(this).find('name').text()) //名前を書き込む
 									);	
-									$.each($('*',thiscontent), function(){
-										var nodeName = $(this).get(0).nodeName;
-										var num = i + 1;
-										$(' > li:nth-child('+ num +')' ,pulldownselector).append($('<param></param>')
-										.css('display', 'none')
-										.attr('name', nodeName)
-										.text($(this).text())
-										);
-										//連想配列にXMLから取得した種別名を格納する
-										//ノード名がcategoryかつ、pulldowncategories内の該当する種別名がなければ
-//										if(nodeName == 'category'){
-											//pulldowncategoriesに種別名を登録する
-//											pulldowncategories[pulldowncontents[i]][$(this).text()]　= $(this).text();
-//											alert(pulldowncategories[pulldowncontents[i]][$(this).text()]);
-//										}
-									})
                					 });
 							});
 				},
@@ -1423,8 +1406,8 @@ $(function() {
 	 * 作成者:T.M
 	*/
 	var callPage = function(e){
-		//表示されているプルダウンメニューをしまう
-		$('.pulldown-menu-list').css('display', 'none');
+		//表示しているプルダウンメニューを消す
+		$('.ui-autocomplete').css('display', 'none');
 		var pushedbutton = $(this);	//押されたリンクのボタンのセレクタを格納する変数	
 		//ページのアドレスを取得
 		contentUrl = $(this).attr('name');
@@ -1458,7 +1441,8 @@ $(function() {
 					loadList(contentUrl);				//wrapPulldownを呼び出しプルダウンメニューを配置
 				}
 				if($('.page:first .pulldown-menu').length > 0){	//pulldown-menuクラスの要素があれば
-					wrapPulldown();				//wrapPulldownを呼び出しプルダウンメニューを配置
+					wrapPulldown();						//wrapPulldownを呼び出しプルダウンメニューを配置
+				    $( ".pulldown-menu" ).combobox();	//プルダウンメニューをコンボボックスにする
 				}
 				if($('.page:first #tab-container').length > 0){	//タブのあるページが呼び出されたら
 					//タブの幅を取得。パーセンテージ調整後リストの幅設定に使う
@@ -2089,7 +2073,8 @@ $(document).on('easytabs:after', function(){
 var widthSum = [
 				[0.01, 0.01, 0.27, 0.0849, 0.07],
 				[0.01, 0.01, 0.145, 0.0245, 0.04],
-				[0.01, 0.01, 0.11, 0.052741, 0.06]
+				[0.01, 0.01, 0.11, 0.052741, 0.075],
+				[0.01, 0.01, 0.11, 0.052741, 0.35]
 				];
 //現状画面崩れが起こる幅を格納する変数
 var borderWidth = 388;
@@ -2129,9 +2114,10 @@ function textBoxResize(selector, index){
  * 作成者:T.M
 */ 
 function removeTextBoxResize(){
-	$('.parallel-text input.textbox_S').css('width', '');
-	$('.single-line-text input.textbox_L').css('width', '');
-	$('.pulldown-menu.product').css('width', '');
+	$('.parallel-text input').css('width', '');
+	$('.single-line-text input').css('width', '');
+	$('.product-select input').css('width', '');
+	$('.product-category input').css('width', '');
 };
 /* 
  * 関数名:executeTextBoxResize()
@@ -2144,9 +2130,10 @@ function removeTextBoxResize(){
 function executeTextBoxResize(){
 	//画面の幅がborderWidth以下であれば
 	if($(window).width() <= borderWidth){
-		textBoxResize('.parallel-text input.textbox_S', 0);	//テキストボックスのサイズを修正する
-		textBoxResize('.single-line-text input.textbox_L', 1);	//テキストボックスのサイズを修正する
-		textBoxResize('.pulldown-menu.product', 2);	//テキストボックスのサイズを修正する
+		textBoxResize('.parallel-text input', 0);	//テキストボックスのサイズを修正する
+		textBoxResize('.single-line-text input', 1);	//テキストボックスのサイズを修正する
+		textBoxResize('.product-select input', 2);	//テキストボックスのサイズを修正する
+		textBoxResize('.product-category input', 3);	//テキストボックスのサイズを修正する
 	} else{
 		removeTextBoxResize();	//textBoxResizeで付与された幅を消去する
 	}

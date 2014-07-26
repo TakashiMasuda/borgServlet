@@ -103,15 +103,21 @@ $(document).ready(function(){
 
 <div class="parallel-text variable-height left">
   <label for="textfield3">担当者</label>
-  <input type="text" name="charger" id="charger"  class="textbox_S pulldown-menu person default_textbox" readonly>
+  <select name="charger" id="charger"  class="textbox_S pulldown-menu person default_textbox" >
+    	<option value="">入力、または選択してください</option>
+	</select>
 </div>
 <div class="parallel-text variable-height right">
 <label for="textfield4">作成者</label>
-<input type="text" name="writer" id="writer"  class="textbox_S pulldown-menu person default_textbox" readonly>
+<select name="writer" id="writer"  class="textbox_S pulldown-menu person default_textbox" >
+    	<option value="">入力、または選択してください</option>
+</select>
 </div>
 <div class="single-line-text variable-height">
     <label for="textfield9">取引先名</label>
-    <input type="text" name="account_name" id="account_name"  class="textbox_L pulldown-menu customer default_textbox">
+    <select name="account_name" id="account_name"  class="textbox_L pulldown-menu customer default_textbox">
+    	<option value="">入力、または選択してください</option>
+    </select>
 </div>
 
 <div class="margin_top clearfix">

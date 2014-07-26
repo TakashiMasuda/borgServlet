@@ -1,11 +1,9 @@
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/base.dwt" codeOutsideHTMLIsLocked="false" -->
+<html>
 <head>
 <meta charset="utf-8">
-<!-- InstanceBeginEditable name="doctitle" -->
 <!-- タイトル -->
 <title>受注伝票</title>
-<!-- InstanceEndEditable -->
 <!-- ウェブアプリケーション全体を対象とするスタイルシート -->
 <link href="css/borgstyle.css" rel="stylesheet" type="text/css">
 <!-- JQueryのグラフ作成プラグインを読み込む -->
@@ -24,14 +22,12 @@
 <!--[if lt IE 9]>
     <script language="javascript" type="text/javascript" src="../js/excanvas.min.js"></script>
 <![endif]-->
-<!-- InstanceBeginEditable name="head" -->
-<!-- InstanceEndEditable -->
 </head>
 <body>
 <!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
 <div id = "container">
 <!-- コンテンツ領域となるdivタグmain -->
-<div class = "main"><!-- InstanceBeginEditable name="fig" -->
+<div class = "main">
 <!-- JavaScriptのコードを記述 -->
 <script type='text/javascript'>
 //ページの読み込みが終わった後の処理
@@ -88,9 +84,9 @@ $(document).ready(function(){
 </script>
 <!-- 見出し部を開始 -->
 <div id="header" class="has_voucher_status clearfix">
-	<!-- ヘッダーのタイトル部分 -->
-    <!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
-	<div id="header-title"
+  <!-- ヘッダーのタイトル部分 -->
+  <!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
+  <div id="header-title"
     ><!-- このページの要旨 --><h1>受注伝票</h1
     ><!-- ヘッダーのタイトル部分を閉じる --></div
     ><!-- 伝票ステータス部分 --><div id="header-voucher-status"
@@ -113,52 +109,57 @@ $(document).ready(function(){
             ><!-- ヘッダー部分を終える --></div>
 <!-- fig2独自の記述を開始 -->
 <div id = "fig2" class="figs">
-	<!-- 受注Noを記入する左寄せの枠 -->
-	<div class="line half_line parallel-text variable-height left">
-  		<!-- 項目名 -->
-  		<label for="textfield">受注No</label>
-  		<!-- 受注Noを格納するテキストボックス -->
-  		<input type="text" name="orderNo" id="orderNo" class="textbox_S default_textbox parts_height" value="00001">
-	</div>
-	<!-- 日付を入力する右寄せの枠 -->  
-	<div class="half_line parallel-text variable-height right">
-  		<!-- 項目名 -->
-  		<label for="textfield2">日付</label>
-  		<!-- 日付を入力するテキストボックス。カレンダーを呼び出して日付選択 -->
-  		<input type="text" name="date" id="date" class="textbox_S date default_textbox parts_height" readonly>
-	</div>
-
-	<div class="line half_line parallel-text variable-height left">
-  		<label for="textfield3">納品希望日</label>
-  		<input type="text" name="wish_date" id="wish_date"  class="textbox_S date default_textbox parts_height"  readonly="readonly">
-	</div>
-	<div class="half_line parallel-text variable-height right">
-		<label for="textfield4">発注日</label>
-		<input type="text" name="parchase_date" id="parchase_date"  class="textbox_S date default_textbox parts_height  parts_height"  readonly="readonly">
-	</div>
-	<div class="line half_line parallel-text variable-height left">
-  		<label for="textfield5">担当者</label>
-  		<input type="text" name="charger" id="charger"  class="textbox_S pulldown-menu person default_textbox parts_height" readonly>
-	</div>
-	<div class="half_line parallel-text variable-height right">
-		<label for="textfield6">作成者</label>
-		<input type="text" name="writer" id="writer"  class="textbox_S pulldown-menu person default_textbox parts_height" readonly>
-	</div>
-	<div class="line half_line parallel-text variable-height left">
-  		<label for="textfield7">入金予定日</label>
-  		<input type="text" name="scheduled_payment" id="scheduled_payment"  class="textbox_S date default_textbox parts_height"  readonly="readonly">
-	</div>
-  	<div class="half_line parallel-text variable-height right">
-		<label for="textfield8">入金日</label>
-		<input type="text" name="fixed_payment" id="fixed_payment" class="textbox_S date default_textbox parts_height" readonly>
-  	</div>
-	<div class="line a_line single-line-text variable-height">
-  		<label for="textfield9">顧客名</label>
-  		<input type="text" name="customer" id="customer"  class="textbox_L  pulldown-menu customer select-text-box default_textbox parts_height">
-  		<button name="select_button" id="select_button" value="選択" class="button select-button" />
-	</div>
-	<div class="line before_list_line variable-height">
-<!-- 
+  <!-- 受注Noを記入する左寄せの枠 -->
+  <div class="line half_line parallel-text variable-height left">
+    <!-- 項目名 -->
+    <label for="textfield">受注No</label>
+    <!-- 受注Noを格納するテキストボックス -->
+    <input type="text" name="orderNo" id="orderNo" class="textbox_S default_textbox parts_height" value="00001">
+    </div>
+  <!-- 日付を入力する右寄せの枠 -->  
+  <div class="half_line parallel-text variable-height right">
+    <!-- 項目名 -->
+    <label for="textfield2">日付</label>
+    <!-- 日付を入力するテキストボックス。カレンダーを呼び出して日付選択 -->
+    <input type="text" name="date" id="date" class="textbox_S date default_textbox parts_height" readonly>
+    </div>
+  
+  <div class="line half_line parallel-text variable-height left">
+    <label for="textfield3">納品希望日</label>
+    <input type="text" name="wish_date" id="wish_date"  class="textbox_S date default_textbox parts_height"  readonly="readonly">
+    </div>
+  <div class="half_line parallel-text variable-height right">
+    <label for="textfield4">発注日</label>
+    <input type="text" name="parchase_date" id="parchase_date"  class="textbox_S date default_textbox parts_height  parts_height"  readonly="readonly">
+    </div>
+  <div class="line half_line parallel-text variable-height left">
+    <label for="textfield5">担当者</label>
+    <select name="charger" id="charger"  class="textbox_S pulldown-menu person default_textbox parts_height">
+    	<option value="">入力、または選択してください</option>
+      </select>
+    </div>
+  <div class="half_line parallel-text variable-height right">
+    <label for="textfield6">作成者</label>
+    <select name="writer" id="writer"  class="textbox_S pulldown-menu person default_textbox parts_height">
+    <option value="">入力、または選択してください</option>
+      </select>
+    </div>
+  <div class="line half_line parallel-text variable-height left">
+    <label for="textfield7">入金予定日</label>
+    <input type="text" name="scheduled_payment" id="scheduled_payment"  class="textbox_S date default_textbox parts_height"  readonly="readonly">
+    </div>
+  <div class="half_line parallel-text variable-height right">
+    <label for="textfield8">入金日</label>
+    <input type="text" name="fixed_payment" id="fixed_payment" class="textbox_S date default_textbox parts_height" readonly>
+    </div>
+  <div class="line a_line single-line-text variable-height">
+    <label for="textfield9">顧客名</label>
+    <select name="customer" id="customer"  class="textbox_L  pulldown-menu customer select-text-box default_textbox parts_height">
+    	<option value="">入力、または選択してください</option>
+      </select>
+    </div>
+  <div class="line before_list_line variable-height">
+  <!-- 
      @mod
 	 6/21 11:20
      callpagesと請求額をbefore_list_line variable-heightで囲む
@@ -167,27 +168,27 @@ $(document).ready(function(){
      6/25 17:00
      before_list_line variable-heightの中に消費税と合計の欄を追加。
      -->
-		<div class="edit_buttons margin-bottom">
-  			<button name="fig2-1" id="add_button" class="callpage button add-button" value="追加" />
- 			<button name="fig2-1" id="edit_button" class="callpage button edit-button" value="編集" />
-  			<button name="delete_button" id="delete_button" class="button delete-button" value="削除" />
-  		</div>
-  		<div class="parallel-text variable-height right textbox_M bill margin-bottom">
-  			<label for="textfield8">請求額</label>
-			<input type="text" readonly name="bill" id="bill"  value="\135,432-" class="textbox_S default_textbox">
-  		</div>
-  		<div class="parallel-text variable-height right textbox_M bill margin-bottom">
-  			<label for="textfield8">消費税</label>
-			<input type="text" readonly name="bill" id="bill"  value="\10,032-" class="textbox_S default_textbox">
-  		</div>
-	</div>
-	<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-	<div class="wrap-list">
-		<!-- JQ Gridによりリストを形成するtableタグ -->
-		<table id="fig2-list" class="list"></table>
-	</div>
+    <div class="edit_buttons margin-bottom">
+      <button name="fig2-1" id="add_button" class="callpage button add-button" value="追加" />
+      <button name="fig2-1" id="edit_button" class="callpage button edit-button" value="編集" />
+      <button name="delete_button" id="delete_button" class="button delete-button" value="削除" />
+      </div>
+    <div class="parallel-text variable-height right textbox_M bill margin-bottom">
+      <label for="textfield8">請求額</label>
+      <input type="text" readonly name="bill" id="bill"  value="\135,432-" class="textbox_S default_textbox">
+      </div>
+    <div class="parallel-text variable-height right textbox_M bill margin-bottom">
+      <label for="textfield8">消費税</label>
+      <input type="text" readonly name="bill" id="bill"  value="\10,032-" class="textbox_S default_textbox">
+      </div>
+    </div>
+  <!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+  <div class="wrap-list">
+    <!-- JQ Gridによりリストを形成するtableタグ -->
+    <table id="fig2-list" class="list"></table>
+    </div>
 </div>
-<!-- InstanceEndEditable --></div>
+</div>
 </div>
 </body>
-<!-- InstanceEnd --></html>
+</html>

@@ -59,16 +59,21 @@ $(document).ready(function(){
 
 <div class="parallel-text variable-height left">
   <label for="textfield3">担当者</label>
-  <input type="text" name="charger" id="charger"  class="textbox_S pulldown-menu person default_textbox" readonly>
+  <select name="charger" id="charger"  class="textbox_S pulldown-menu person default_textbox" readonly>
+    	<option value="">入力、または選択してください</option>
+  </select>
 </div>
 <div class="parallel-text variable-height right">
   <label for="textfield4">作成者</label>
-<input type="text" name="writer" id="writer"  class="textbox_S pulldown-menu person default_textbox" readonly>
+<select name="writer" id="writer"  class="textbox_S pulldown-menu person default_textbox" readonly>
+    	<option value="">入力、または選択してください</option>
+</select>
 </div>
 <div class="single-line-text variable-height">
   <label for="textfield9">分類</label>
-  <input type="text" name="categories" id="categories"  class="textbox_L pulldown-menu categories default_textbox  parts_height select-text-box">
-    <button name="select-button" class="button select-button " id="select-button" value="選択">
+  <select name="categories" id="categories"  class="textbox_L pulldown-menu categories default_textbox  parts_height select-text-box">
+    	<option value="">入力、または選択してください</option>
+  </select>
 </div>
 <div class="single-line-text variable-height">
   <label for="textfield9">製品名</label>
@@ -76,8 +81,9 @@ $(document).ready(function(){
 </div>
 <div class="single-line-text variable-height">
   <label for="textfield9">メーカー</label>
-  <input type="text" name="maker" id="maker"  class="textbox_L  pulldown-menu customer select-text-box default_textbox parts_height">
-  <button name="select_button" id="select_button" value="選択" class="button select-button" />
+  <select name="maker" id="maker"  class="textbox_L  pulldown-menu customer select-text-box default_textbox parts_height">
+    	<option value="">入力、または選択してください</option>
+  </select>
 </div>
 </div>
 </div>
