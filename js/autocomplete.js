@@ -123,7 +123,7 @@
         this._delay(function() {
           this.input.tooltip( "close" ).attr( "title", "" );
         }, 2500 );
-        this.input.autocomplete( "instance" ).term = "";
+//        this.input.autocomplete( "instance" ).term = "";
       },
  
       _destroy: function() {

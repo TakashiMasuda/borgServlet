@@ -1126,9 +1126,10 @@ $(function() {
 						 product:'断熱二重管用支持部材':product:'断熱二重管用支持部材', product:'シングル管用支持部材': product:'シングル管用支持部材',
 						  'フラッシング・角トップ等': 'フラッシング・角トップ等'};
 */	
-	var pulldownselector;	//プルダウンメニュー本体のリストのセレクターを格納する
 	var xmlselector;		//xmlのセレクターを保存する変数
-	
+	var xmls;				//xmlのデータを保存する
+	xmls = new Array();		//xmlsを配列にする
+			
 	/*
 	 * 関数　: wrapPulldown = function()
 	 * 引数　: なし
@@ -1147,6 +1148,7 @@ $(function() {
 					type: 'get',
 					dataType: 'xml',
 					success: function(xml){	//通信に成功した場合
+							xmls[i] = xml;
 							//pulldown-menuとプルダウンメニューの項目名をクラスに持つタグを対象に処理する
 							$.each($('.pulldown-menu.' + pulldowncontents[i]), function(){
 								//種別名の表が作成されていなければ
@@ -1173,6 +1175,92 @@ $(function() {
 				}
 			});
 	};
+
+	/*
+	 * 関数　: fillterPulldown = function(pulldownType, categoryName, openingList)
+	 * 引数　: var pulldownType, var categoryName, var openingList
+	 * 戻り値: なし
+	 * 概要  : 種別に対応したプルダウンメニューの項目を絞り込む
+	 * 作成日:14.07.27
+	 * 作成者:T.M
+	*/
+	var fillterPulldown = function(pulldownType, categoryName, openingList){
+		//種別が空白でなければ
+		if(categoryName != ""){
+			//プルダウンメニューの番号を格納する変数を宣言
+			var pulldownNumber = '';
+			//製品名のプルダウンメニューなら
+			if(pulldownType = 'product'){
+				pulldownNumber = 2;	//プルダウンメニューの番号を格納
+			}
+			//xmlの中からこのプルダウンメニューのデータを取得
+			var thisContent = $(xmls[pulldownNumber]).find('content');
+			//絞られた項目を格納する配列を宣言
+			var filltered = new Array();
+			//配列のカウンター変数を0で初期化
+			var counter = 0;
+			//プルダウンメニューのデータを走査
+			$(thisContent).each(function(){
+				//カテゴリー名が一致していれば
+				if($(this).find('category').text() == categoryName){
+					//配列に名前を加える。カウンターにも1加える
+					filltered[counter++] = $(this).find('name').text();
+				}
+			});
+			//リストを全て非表示にしておく
+			$('ul.ui-autocomplete:eq(' + openingList + ') li').css('display' ,'none');
+			//リストを走査する
+			$('ul.ui-autocomplete:eq(' + openingList + ') li').each(function(){
+				//リストのテキストを取得
+				var contentName = $('a' , this).text();
+				//絞られた項目の中に現在対象としているリストがあるか調べる
+				for(var i = 0; i < filltered.length; i++){
+					//項目が存在していたら
+					if(contentName == filltered[i]){
+						//表示する
+						$(this).css('display', 'block');
+						break;	//このリストの走査を終える
+					}
+				}
+			});	
+		//種別が選択されていなければ
+		} else{
+			//種別が選択されてなければ全ての項目を表示
+			$('ul.ui-autocomplete:eq(' + openingList + ') li').css('display', 'block');
+		}
+	}
+	
+	
+	//選択した種別を格納する変数
+	var selectedCategory = '';
+	
+	//種別の値が変わったら
+	$(document).on('autocompletechange', '.product-category input:text', function(){
+		//選択された種別が変わっていれば
+		if($(this).val() != selectedCategory){
+			//選択中の製品名を消す
+			$('.page:first .product-select input:text').val('');
+		}
+		//選択された種別を更新
+		selectedCategory = $(this).val() != selectedCategory;
+	});
+	//製品名のボタンが押されたら
+	$(document).on('autocompleteopen', '.product-select', function(event, ui){
+		//種別の値を取得
+		var categoryValue = $('.page:first .product-category input:text').val();
+		//コンボボックスの全体の数を取得
+		var comboboxies = $('.custom-combobox-input').length;
+		//現在表示されているコンボボックスの数を取得
+		var visibleComboboxies = $('.page:first .custom-combobox-input').length;
+		//今のコンボボックスが現在のページでは何番目かを取得
+		var thisCombobox = $('.custom-combobox-input').index(event.target);
+		//処理の対象とすべきプルダウンメニューのリストの番号を計算
+		var openingList = comboboxies - visibleComboboxies + thisCombobox;
+		//そのその値で対応するプルダウンメニューの項目を絞り込む
+		fillterPulldown('product', categoryValue, openingList);
+	});
+
+	
 
 	//表示したプルダウンメニューのテキストボックスを記録するための変数lastpulldown
 	var lastpulldown;
@@ -1287,8 +1375,6 @@ $(function() {
 		if($(this).parent().prev().attr('class').indexOf('categories') != -1){
 			//フィルタリングするプルダウンメニューの祖先となるdivタグを変数に格納
 			var fillteringPulldown = $(this).parent().parent().parent().next();
-			//対応するプルダウンメニューをフィルタリングする
-			fillterPulldown(fillteringPulldown, categoryName);	//製品名を絞る
 			//製品名のdivタグのセレクタを取得
 			var producttb = $(this).parent().parent().parent().next();	
 			//製品名のテキストボックスを空にする
@@ -1303,29 +1389,6 @@ $(function() {
 			//製品名、顧客名のプルダウンメニューを表示する
 //			appearPulldown(nextPulldown);
 //	}
-	}
-	/*
-	 * 関数　: fillterPulldown = function(pulldown category)
-	 * 引数　: jQuery pulldown, var category
-	 * 戻り値: なし
-	 * 概要  : 種別に対応したプルダウンメニューの項目を絞り込む
-	 * 作成日:14.07.11
-	 * 作成者:T.M
-	*/
-	var fillterPulldown = function(pulldown, category){
-		//引数に取った親要素からプルダウンメニューを見つける
-		var pulldownMenuList = $('.pulldown-menu-list', pulldown);
-		//表示される項目のセレクタを変数に格納
-		var displayElem = $('li:has(param[name="category"]:contains(' + category + '))', pulldownMenuList);
-		//はじめに全項目を非表示にする
-		$('li', pulldownMenuList).css('display', 'none');
-		//カテゴリー名が一致した項目について
-		$(displayElem).css('display', 'block');	//表示を行う
-		//1件も表示されない場合は
-		if($(displayElem).length == 0 && isCategorySelect == true){
-			alert('選択した種別の製品が登録されていません。');
-		}
-
 	}
 	
 	//プルダウンメニューの出現、消滅、選択についての一連のイベント登録
@@ -1442,7 +1505,7 @@ $(function() {
 				}
 				if($('.page:first .pulldown-menu').length > 0){	//pulldown-menuクラスの要素があれば
 					wrapPulldown();						//wrapPulldownを呼び出しプルダウンメニューを配置
-				    $( ".pulldown-menu" ).combobox();	//プルダウンメニューをコンボボックスにする
+				    $( ".pulldown-menu" ).combobox({ appendTo: "#container" });	//プルダウンメニューをコンボボックスにする
 				}
 				if($('.page:first #tab-container').length > 0){	//タブのあるページが呼び出されたら
 					//タブの幅を取得。パーセンテージ調整後リストの幅設定に使う
