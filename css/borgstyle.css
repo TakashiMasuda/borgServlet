@@ -1311,8 +1311,9 @@ th.fig9_content_header{
 	vertical-align: middle;	/* 縦方向の真ん中に置く */
 	cursor: pointer;		/* ボタンは指で指す */
 }
-/* ボタンをJQuery UIのボタンにした場合 */
-button.ui-button{
+/* ボタンをJQuery UIのボタンにした場合。モーダルダイアログ
+のボタンまで変更しないように.mainも加える指定。mod 14.07.28 T.M */
+.main button.ui-button{
 	width: 8.49%;			/* 高さを30pxにする */
 	height: 100%;			/* 幅も100%にする */
 	vertical-align: middle;	/* 縦方向の真ん中に置く */
@@ -1737,7 +1738,8 @@ button.button.ui-button.summary-button{
 }
 /* parallel-textのlabel */
 .parallel-text label{
-	min-width: 52.38px;	/* 最小幅 */
+	/* min-width: 52.38px; */	
+	min-width: 53.38px;	/* 最小幅。14.07.28に更新 */
 }
 /* parallel-textのボタン */
 button.ui-button{
@@ -1810,4 +1812,8 @@ button.ui-button{
 	max-height: 50%;	/* 最大表示領域。JavaScriptで上書きされる */
 	overflow-x: hidden;	/* テキストが横に飛び出したら表示しない */
 	overflow-y: auto;	/* 表示しきれない項目はスクロール */
+}
+/* readonly指定したテキストボックスについて */
+input[readonly]{
+	background: #FFF;	/* 灰色になる場合があるので白くする */
 }

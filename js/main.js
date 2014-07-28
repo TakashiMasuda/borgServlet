@@ -604,6 +604,9 @@
 	 * 概要  :リストの中の製品名を種別で絞る
 	 * 作成日:14.07.25
 	 * 作成者:T.M
+	 * 修正日:14.07.28
+	 * 修正者:T.M
+	 * 内容  :スマホでは絞込みが機能しない問題についての修正
 	*/	
 	function sortProductsInList(cellname, table, rowid){
 		//指す列が製品名であれば
@@ -614,17 +617,17 @@
 			var categoryName = ' ' + $('#'+ rowid +' td[aria-describedby="' + thisfig + '-list_product_category"]', table).text();
 			//このセルのセレクタを取得
 			var listOut = $('#'+ rowid +' td[aria-describedby="' + thisfig + '-list_product"]', table);
-			//プルダウンメニューの項目を一旦非表示にする
-			$('option', listOut).css('display', 'none');
 			//リストの項目を全てチェックする
 			$('option', listOut).each(function(){
 				//直接入力か種別にあう製品名であれば
 				if($('span:first', this).attr('class').indexOf('direct-input') != -1 ||
 					$('span:last',this).text().indexOf(categoryName) != -1){
-					//表示する
-					$(this).css('display', 'block');
 					//種別名を抜く
 					$('span:last',this).text($('span:last',this).text().replace(categoryName, ''));
+				//除外されるべき製品名であれば
+				}else{
+					//削除する
+					$(this).remove();
 				}
 			});
 		}	
@@ -1078,7 +1081,7 @@ $(function() {
     	$("#" + id).datepicker('option', 'changeMonth', true);
 		//プルダウンメニューで月を変更できるようにする	
     	$("#" + id).datepicker('option', 'dateFormat', 'y/mm/dd');
-//    	$("#" + id).datepicker('option', 'showOn', 'both');	
+//    	$("#" + id).datepicker('option', 'showOn', 'both');
 //		$("#" + id).datepicker('option', 'buttonImage', 'images/calendar.gif');		//カレンダーアイコンのボタンを設置
 //		$("#" + id).datepicker('option', 'buttonImageOnly', true);	
 		});
@@ -1087,7 +1090,7 @@ $(function() {
 	//グラフを表示する領域に対するスタイルシートの設定を行う
 	$('#graph').css({
 		//JQueryプラグインによるグラフの表示で幅のずれを起こすため、幅をごくわずか狭める
-		width: '99.9%',				
+		width: '99.9%',				//幅を設定
 		height: '400px',			//グラフとの高さを合わせる
 		border: 'solid 1px #000',	//極細の黒の実線で囲む
 		borderTopStyle: 'none'		//上の罫線を描画しない
@@ -1175,7 +1178,7 @@ $(function() {
 				}
 			});
 	};
-
+	
 	/*
 	 * 関数　: fillterPulldown = function(pulldownType, categoryName, openingList)
 	 * 引数　: var pulldownType, var categoryName, var openingList
@@ -1234,16 +1237,51 @@ $(function() {
 	//選択した種別を格納する変数
 	var selectedCategory = '';
 	
-	//種別の値が変わったら
-	$(document).on('autocompletechange', '.product-category input:text', function(){
+	//種別の値が変わったら製品名をチェックし、種別が違ったら製品名をクリアする
+	$(document).on('autocompleteselect', '.product-category input:text', function(event, ui){
+		//変更された値を取得
+		var thisVal = ui.item.value;
+		//製品名を取得
+		var itemVal = $('.product-select input').val();
+		//製品名の欄を空白にするかどうかの判断を真理値で表現するため、入れ物の変数を用意。
+		//trueで初期化
+		var needChange = true;
+		
+		//種別が空白でなければ
+		if(thisVal != null){
+			//プルダウンメニューの番号を格納する変数を宣言
+			var pulldownNumber = 2;
+			//xmlの中からこのプルダウンメニューのデータを取得
+			var thisContent = $(xmls[pulldownNumber]).find('content');
+			//絞られた項目を格納する配列を宣言
+			var filltered = new Array();
+			//配列のカウンター変数を0で初期化
+			var counter = 0;
+			//プルダウンメニューのデータを走査
+			$(thisContent).each(function(){
+				//カテゴリー名が一致していれば
+				if($(this).find('category').text() == thisVal){
+					//配列に名前を加える。カウンターにも1加える
+					filltered[counter++] = $(this).find('name').text();
+				}
+			});
+			//絞られた項目の中に現在対象としているリストがあるか調べる
+			for(var i = 0; i < filltered.length; i++){
+				//項目が存在していたらチェック終了
+				if(itemVal == filltered[i]){
+					//needChangeをfalseにする
+					needChange = false;
+					break;	//このリストの走査を終える
+				}
+			}
+		}
 		//選択された種別が変わっていれば
-		if($(this).val() != selectedCategory){
+		if(needChange){
 			//選択中の製品名を消す
 			$('.page:first .product-select input:text').val('');
 		}
-		//選択された種別を更新
-		selectedCategory = $(this).val() != selectedCategory;
 	});
+	
 	//製品名のボタンが押されたら
 	$(document).on('autocompleteopen', '.product-select', function(event, ui){
 		//種別の値を取得
@@ -1259,8 +1297,6 @@ $(function() {
 		//そのその値で対応するプルダウンメニューの項目を絞り込む
 		fillterPulldown('product', categoryValue, openingList);
 	});
-
-	
 
 	//表示したプルダウンメニューのテキストボックスを記録するための変数lastpulldown
 	var lastpulldown;
@@ -1286,30 +1322,15 @@ $(function() {
 		}
 		var pulldownlist = '';							//プルダウンメニューの本体のセレクタを格納する変数
 		if($(pulldown).attr('class').indexOf('select-button') != -1){	//選択ボタンで呼ばれたなら
-			//種別プルダウンとセットになっていたら
-//			if($(this).parent().prev().attr('class').indexOf('product-category') != -1){
-				//カテゴリーのプルダウンメニューを開くようにする
-//				pulldown = $(this).parent().prev().find('span');
-				//種別選択のフラグを立てる
-//				isCategorySelect = true;
-				//プルダウンメニューを出現させ、重なる要素の一番上に表示する。
-//				pulldownlist = $('ul',pulldown);		//プルダウンメニューのリスト本体をpulldownlistに格納
-				//右paddingは現在ベタ打ちのため、修正の必要あり
-//				$(pulldownlist).css('display', 'block').css('z-index', '200').css('padding-right','50px');
-//				lastpulldown = $('input',pulldown);			//テキストボックスをlastpulldownに記憶させる
-//				$(pulldown).css('position', 'relative');	//spanの位置をを表示の基準にする
-//			} else {
-				pulldown = $($(this).prev());			//プルダウンメニュー本体のspanタグのセレクタを保存
-				//プルダウンメニューを出現させ、重なる要素の一番上に表示する。
-				pulldownlist = $('ul',pulldown);		//プルダウンメニューのリスト本体をpulldownlistに格納
-				//右paddingは現在ベタ打ちのため、修正の必要あり
-				$(pulldownlist).css('display', 'block').css('z-index', '200').css('padding-right','50px');
-				lastpulldown = $('input',pulldown);			//テキストボックスをlastpulldownに記憶させる
-				$(pulldown).css('position', 'relative');	//spanの位置をを表示の基準にする
-				//種別選択のフラグを下ろす
-				isCategorySelect = false;
-//			}
-
+			pulldown = $($(this).prev());			//プルダウンメニュー本体のspanタグのセレクタを保存
+			//プルダウンメニューを出現させ、重なる要素の一番上に表示する。
+			pulldownlist = $('ul',pulldown);		//プルダウンメニューのリスト本体をpulldownlistに格納
+			//右paddingは現在ベタ打ちのため、修正の必要あり
+			$(pulldownlist).css('display', 'block').css('z-index', '200').css('padding-right','50px');
+			lastpulldown = $('input',pulldown);			//テキストボックスをlastpulldownに記憶させる
+			$(pulldown).css('position', 'relative');	//spanの位置をを表示の基準にする
+			//種別選択のフラグを下ろす
+			isCategorySelect = false;
 		} else{
 			pulldownlist = $(pulldown).next();		//プルダウンメニューのリスト本体をpulldownlistに格納
 			//プルダウンメニューを出現させ、重なる要素の一番上に表示する
@@ -2132,12 +2153,13 @@ $(document).on('easytabs:after', function(){
 });
 
 
-//テキストボックスの各要素の幅(%指定)の値を格納する配列
+//テキストボックスの各要素の幅(%指定)の値を格納する配列。
+//1 - それぞれの配列の合計でテキストボックスの取れる割合を算出する
 var widthSum = [
-				[0.01, 0.01, 0.27, 0.0849, 0.07],
-				[0.01, 0.01, 0.145, 0.0245, 0.04],
-				[0.01, 0.01, 0.11, 0.052741, 0.075],
-				[0.01, 0.01, 0.11, 0.052741, 0.35]
+				[0.01, 0.01, 0.27, 0.0849, 0.07],		//2段組テキストボックス
+				[0.01, 0.01, 0.145, 0.0245, 0.04],		//1段組テキストボックス
+				[0.01, 0.01, 0.11, 0.052741, 0.070],	//種別とセットの製品名
+				[0.01, 0.01, 0.11, 0.052741, 0.35]		//製品名とセットの種別
 				];
 //現状画面崩れが起こる幅を格納する変数
 var borderWidth = 388;
