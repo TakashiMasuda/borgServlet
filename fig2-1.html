@@ -28,56 +28,50 @@
 <div id = "container">
 	<div class = "main">
     <script type='text/javascript'>
-//ページの読み込みが終わった後の処理
-$(document).ready(function(){
-	//JQueryプラグインPopBoxの関数でポップアップするメニューを作成	
-	setButtons();	//JQuery UIのボタンを配置する
-//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
-//の高さ分リストの高さを取る
-//読み込み後
-$(document).ready(function(){
-	//ボタンが押されたら一度だけ計算を行う
-	$('.page:first .main h1').one('click', function(){
-		//リストの高さを取得
-		listHeight = $('.page:first .ui-jqgrid-bdiv').height();
-		//全てのテキストボックスが取っている高さを格納する変数textBoxsHeight
-		textBoxsHeight = 0;
-		//each関数で高さを取っている全てのテキストボックスの高さを合計する
-		$('.page:first .line').each(function(){
-			//テキストボックスの高さをtextBoxsHeightに加える
-			textBoxsHeight += $(this).outerHeight();
-		});
-		//テキストボックス等を非表示にした際にリストが取る高さを変数
-		//newListHeightに格納する
-		newListHeight = listHeight + textBoxsHeight;
-	});
-	
-	$('.page:first .main h1').click(function(){
-	// 引数には開閉する速度を指定します
-	var divs = 0;
-	
-	//リストのみ表示されている状態であれば
-	if($('.page:first .ui-jqgrid-bdiv').height() != listHeight){
-	//リストの高さを戻す
-		$('.page:first .list').setGridHeight(listHeight);
-	}
-	$('.page:first .figs > div').not('.wrap-list').slideToggle('slow', function(){
-		//divsをカウントアップしていく
-		divs++;
-		//最後の処理であれば
-		if(divs >= $('.page:first .figs > div').not('.wrap-list').length){
-			//テキストボックス等が表示いなければ
-			if($(this).css('display') == 'none'){
-				//リストの高さをのばす
-				$('.page:first .list').setGridHeight(newListHeight);
-				divs = 0;	//divsの値をリセット
+		//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
+		//の高さ分リストの高さを取る
+		//読み込み後
+		$(document).ready(function(){
+			//ボタンが押されたら一度だけ計算を行う
+			$('.page:first .main h1').one('click', function(){
+				//リストの高さを取得
+				listHeight = $('.page:first .ui-jqgrid-bdiv').height();
+				//全てのテキストボックスが取っている高さを格納する変数textBoxsHeight
+				textBoxsHeight = 0;
+				//each関数で高さを取っている全てのテキストボックスの高さを合計する
+				$('.page:first .line').each(function(){
+					//テキストボックスの高さをtextBoxsHeightに加える
+					textBoxsHeight += $(this).outerHeight();
+				});
+				//テキストボックス等を非表示にした際にリストが取る高さを変数
+				//newListHeightに格納する
+				newListHeight = listHeight + textBoxsHeight;
+			});
+			
+			$('.page:first .main h1').click(function(){
+			// 引数には開閉する速度を指定します
+			var divs = 0;
+			
+			//リストのみ表示されている状態であれば
+			if($('.page:first .ui-jqgrid-bdiv').height() != listHeight){
+			//リストの高さを戻す
+				$('.page:first .list').setGridHeight(listHeight);
 			}
-		}
-	});
-  });
-});
-
-});
+			$('.page:first .figs > div').not('.wrap-list').slideToggle('slow', function(){
+				//divsをカウントアップしていく
+				divs++;
+				//最後の処理であれば
+				if(divs >= $('.page:first .figs > div').not('.wrap-list').length){
+					//テキストボックス等が表示いなければ
+					if($(this).css('display') == 'none'){
+						//リストの高さをのばす
+						$('.page:first .list').setGridHeight(newListHeight);
+						divs = 0;	//divsの値をリセット
+					}
+				}
+			});
+		  });
+		});
 </script>
 <!-- 見出し部を開始 -->
 <div id="header" class="clearfix">

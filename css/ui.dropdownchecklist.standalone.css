@@ -9,7 +9,6 @@
 .ui-dropdownchecklist-selector {
 	height: 20px;
 	border: 1px solid #ddd;
-	background: #fff;
 }
 .ui-state-hover, .ui-state-active {
 }
@@ -42,6 +41,7 @@
 .ui-dropdownchecklist-selector {
 	padding: 1px 2px 2px 2px;
 	font-size: 16px;
+	background: #FFF !important;
 }
 /*.ui-dropdownchecklist-text {
 	font-size: 14px;*?
@@ -49,4 +49,7 @@
 /*}*/
 .ui-dropdownchecklist-group {
 	padding: 1px 2px 2px 2px;
+}
+.ui-dropdownchecklist-text{
+	background: #FFF;
 }

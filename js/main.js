@@ -61,23 +61,10 @@
 		//新たなフォントサイズを算出
 		var newFontSize = (baseFontSize - ((maxWidth - $('.main').width()) / fontRatio));
 
-		if($('.figs .parallel-text').css('clear') == 'both'){	//段組レイアウトが解除されていれば
-			//新たなフォントサイズを算出
-			var newFontSizeSP = (baseFontSize - ((maxWidth - $('.main').width()) / (fontRatio * strechFix2)));
-			//テキストボックスのサイズに合わせてフォントのサイズを調整する
-			$('.parallel-text').css('font-size',  newFontSizeSP + '%');		//2段組テキストボックス
-			$('.single-line-text').css('font-size',  newFontSizeSP + '%');	//1段組テキストボックス
-		} else {
-			//テキストボックスのサイズに合わせてフォントのサイズを調整する
-			$('.parallel-text').css('font-size',  newFontSize + '%');		//2段組テキストボックス
-			$('.single-line-text').css('font-size',  newFontSize + '%');	//1段組テキストボックス
-		}
-
-		//ボタンのサイズを変更
-		$('#header-title').css('font-size',  newFontSize + '%');			//タイトル
-		$('.voucher-status-text').css('font-size',  newFontSize + '%');		//ステータスの文字
+		//フォントのサイズを調整する
+		$('.parallel-text,.single-line-text,#header-title,.voucher-status-text,.ui-dropdownchecklist-text,.space_width,.ui-autocomplete ').css('font-size',  newFontSize + '%');		//2段組テキストボックス
+		$('').css('font-size',  newFontSize + '%');	//1段組テキストボックス
 		//ステータスのテキストボックスの文字
-		$('.ui-dropdownchecklist-text').css('font-size',  newFontSize + '%');		
 		$('.before_list_line label').css('font-size',  newFontSize + '%');		//リスト前行のラベル
 		//Fig.3-1のボタンのフォントサイズ
 		$('.normal-button').css('font-size',  newFontSize - strechFix1 + '%');
@@ -87,14 +74,10 @@
 		$('#tab-container ul li').css('font-size',  newFontSize + '%');	
 		//タブ内の文字ボタン
 		$('#tab-container .edit_buttons .normal-button').css('font-size',  newFontSize + '%');		
-		//顧客種別チェックボックスのラベル
-		$('.space_width').css('font-size',  newFontSize + '%');					
 		//顧客種別のラベル
 		$('.space_width_syubetu label').css('font-size',  newFontSize + '%');
 		//ユーザー編集画面の表
-		$('.line_table td').css('font-size',  newFontSize + '%');	
-		//プルダウンメニュー
-		$('.ui-autocomplete').css('font-size',  newFontSize + '%');	
+		$('.line_table td').css('font-size',  newFontSize + '%');
 	}
 
 	var dropdownPerMain = 0.33;	//ドロップダウンチェックリストの幅の割合
@@ -128,7 +111,7 @@
 		dropdownResize();
 	});
 	
-	changeFontSize();
+	changeFontSize();	//初回読み込みでフォントサイズを調整
 	setContentHeight();	//初回読み込み時に高さを合わせる実行
 	setButtonSize();	//ボタンのサイズを調整する
 	
@@ -1058,20 +1041,17 @@ $(function() {
 	$.each($('.date'), function(){		//dateクラスを持つ全ての要素を処理
 		var id = $(this).attr('id');		//テキストボックスのIDを取得してidに格納
 		//テキストボックスをdatepickerの処理対象にする。また、日本語設定をする
-   		$("#" + id).datepicker($.datepicker.regional['ja']);		
+   		$(".page:first #" + id).datepicker($.datepicker.regional['ja']);		
 		//ボタン、テキストボックスのどちらを押してもカレンダーが出るようにする
-    	$("#" + id).datepicker('option', 'showOn', 'both');	
+    	$(".page:first #" + id).datepicker('option', 'showOn', 'both');	
 		//ボタンのテキストをなくす
-    	$("#" + id).datepicker('option', 'buttonText', '');	
+    	$(".page:first #" + id).datepicker('option', 'buttonText', '');	
 		//プルダウンメニューで年を変更できるようにする
-    	$("#" + id).datepicker('option', 'changeYear', true);
+    	$(".page:first #" + id).datepicker('option', 'changeYear', true);
 		//プルダウンメニューで月を変更できるようにする	
-    	$("#" + id).datepicker('option', 'changeMonth', true);
+    	$(".page:first #" + id).datepicker('option', 'changeMonth', true);
 		//プルダウンメニューで月を変更できるようにする	
-    	$("#" + id).datepicker('option', 'dateFormat', 'y/mm/dd');
-//    	$("#" + id).datepicker('option', 'showOn', 'both');
-//		$("#" + id).datepicker('option', 'buttonImage', 'images/calendar.gif');		//カレンダーアイコンのボタンを設置
-//		$("#" + id).datepicker('option', 'buttonImageOnly', true);	
+    	$(".page:first #" + id).datepicker('option', 'dateFormat', 'y/mm/dd');
 		});
 	};
 	
@@ -1428,9 +1408,7 @@ $(function() {
 	 * 作成者:T.M
 	*/
 	$(document).ajaxStop(function(){
-		setButtons();	//JQueryUIのボタンを配置する
 		if($('.page:first .list').length > 0){	//リストがあれば
-			gridResize();							//幅を調整する
 		}
 		//GoogleChartToolsのグラフを描画するタグがあれば
 		if($('.page:first .google-chart').length > 0){
@@ -1440,8 +1418,6 @@ $(function() {
 			drawChartInFig(figName);
 			drawChartInFig(figName);
 		}
-		setContentHeight();	//setContentHeightを呼び出し高さを修正
-		changeFontSize();	//フォントサイズを調整する
 	});
 
 	/* 関数名  : addCSSRule(selector, css)
@@ -1505,6 +1481,7 @@ $(function() {
 				}
 				if($('.page:first .list').length > 0){	//pulldown-menuクラスの要素があれば
 					loadList(contentUrl);				//wrapPulldownを呼び出しプルダウンメニューを配置
+					gridResize();							//幅を調整する
 				}
 				if($('.page:first .pulldown-menu').length > 0){	//pulldown-menuクラスの要素があれば
 					wrapPulldown();						//wrapPulldownを呼び出しプルダウンメニューを配置
@@ -1524,6 +1501,10 @@ $(function() {
 					$('#voucher-status-order:last', document).dropdownchecklist
 					({ width: ($('.main').width() / 3) , forceMultiple: true, emptyText: '-----'});
 				}
+				setButtons();				//ボタンを配置
+				setContentHeight();	//setContentHeightを呼び出し高さを修正
+				changeFontSize();	//フォントサイズを調整する
+
 				executeTextBoxResize();	/* テキストボックスのリサイズを行う */
 			  },
 				  error : function(){					//データの取得に失敗したら
@@ -1602,7 +1583,7 @@ function setButtons(){
 		 navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
 			 isTouchDevice = true;	//isTouchDeviceにtrueを格納してタッチ端末であること確定
 		}else{
-				$('button.button').powerTip({						//ツールチップをセット
+				$('.page:first button.button').powerTip({						//ツールチップをセット
 				placement: 'n',				//上に表示
 				followMouse: true,			//マウスについてくる
 				smartPlacement: true,		//画面外に出たら戻ってくる
@@ -1611,13 +1592,10 @@ function setButtons(){
 				})
 		}
 
-
-
-
 		//追加ボタンがあれば
 		if($('.page:first button.add-button').length >= 1){
 			//追加ボタンのレイアウトを変更
-			$('.add-button').button({
+			$('.page:first .add-button').button({
 				icons: {					//ボタンの画像を設定
 					primary: 'ui-icon-plus'	//ボタンの画像を＋マークにする
 				},
@@ -1630,7 +1608,7 @@ function setButtons(){
 		//編集ボタンがあれば
 		if($('.page:first button.edit-button').length >= 1){
 			//編集ボタンのレイアウトを変更
-			$('.edit-button').button({
+			$('.page:first .edit-button').button({
 				icons: {					//ボタンの画像を設定
 				primary: 'ui-icon-pencil'	//ボタンの画像を鉛筆マークにする
 				},
@@ -1642,7 +1620,7 @@ function setButtons(){
 		//削除ボタンがあれば
 		if($('.page:first button.delete-button').length >= 1){
 			//選択ボタンのレイアウトを変更
-			$('.delete-button').button({
+			$('.page:first .delete-button').button({
 				icons: {					//ボタンの画像を設定
 				primary: 'ui-icon-trash'	//ボタンの画像をゴミ箱マークにする
 				},
@@ -1655,7 +1633,7 @@ function setButtons(){
 		//選択ボタンがあれば
 		if($('.page:first button.select-button').length >= 1){
 			//選択ボタンのレイアウトを変更
-			$('.select-button').button({
+			$('.page:first .select-button').button({
 				icons: {					//ボタンの画像を設定
 				primary: 'ui-icon-arrowthick-1-s'	//ボタンの画像を下矢印にする
 				},
@@ -1667,7 +1645,7 @@ function setButtons(){
 		//クローズボックスがあれば
 		if($('.page:first button.close-button').length >= 1){
 			//まとめボタンのレイアウトを変更
-			$('.close-button').button({
+			$('.page:first .close-button').button({
 				icons: {					//ボタンの画像を設定
 				primary: 'ui-icon-close'	//ボタンの画像を×マークにする
 			},
@@ -1679,7 +1657,7 @@ function setButtons(){
 		//まとめボタンがあれば
 		if($('.page:first button.summary-button').length >= 1){
 			//まとめボタンのレイアウトを変更
-			$('.summary-button').button({
+			$('.page:first .summary-button').button({
 				icons: {					//ボタンの画像を設定
 				primary: 'ui-icon-document'	//ボタンの画像を文書マークにする
 			},
@@ -1691,7 +1669,7 @@ function setButtons(){
 		//入庫ボタンがあれば
 		if($('.page:first button.stock-button').length >= 1){
 			//入庫ボタンのレイアウトを変更
-			$('.stock-button').button({
+			$('.page:first .stock-button').button({
 				icons: {					//ボタンの画像を設定
 				primary: 'ui-icon-plus'	//ボタンの画像を下向きプラスマークにする
 			},
@@ -1703,7 +1681,7 @@ function setButtons(){
 		//連結ボタンがあれば
 		if($('.page:first button.connect-button').length >= 1){
 			//連結ボタンのレイアウトを変更
-			$('.connect-button').button({
+			$('.page:first .connect-button').button({
 				icons: {					//ボタンの画像を設定
 				primary: 'ui-icon-link'		//ボタンの画像を連結マークにする
 			},
@@ -1715,7 +1693,7 @@ function setButtons(){
 		//カレンダーボタンがあれば
 		if($('.page:first button.ui-datepicker-trigger').length >= 1){
 			//カレンダーボタンのレイアウトを変更
-			$('.ui-datepicker-trigger').button({
+			$('.page:first .ui-datepicker-trigger').button({
 				icons: {					//ボタンの画像を設定
 				primary: 'ui-icon-calendar'	//ボタンの画像をカレンダーマークにする
 			},
@@ -1723,7 +1701,7 @@ function setButtons(){
 			})			//ツールチップ用のテキストを追加
 			.attr('title', toolTipText['calendar']);
 			if(!(isTouchDevice)){				//タッチ端末でなければ
-				$('.ui-datepicker-trigger')
+				$('.page:first .ui-datepicker-trigger')
 					.powerTip({						//ツールチップをセット
 						placement: 'n',				//上に表示
 						followMouse: true,			//マウスについてくる
@@ -1737,7 +1715,7 @@ function setButtons(){
 		//設定ボタンがあれば
 		if($('.page:first button.setting-button').length >= 1){
 			//設定ボタンのレイアウトを変更
-			$('.setting-button').button({
+			$('.page:first .setting-button').button({
 				icons: {					//ボタンの画像を設定
 				primary: 'ui-icon-gear'		//ボタンの画像を歯車マークにする
 			},
@@ -1748,7 +1726,7 @@ function setButtons(){
 		}
 		
 		//ボタンをJQuery UIで用意されたものにする
-		$('button.button').button()
+		$('.page:first button.button').button()
 			.powerTip({						//ツールチップをセット
 				placement: 'n',					//上に表示
 				followMouse: true,				//マウスについてくる
