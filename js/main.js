@@ -12,7 +12,6 @@
 	spRatio	= 1.5;				//スマホ横幅用比率
 	tbRatio	= 2.0;				//タブレット横幅用比率
 	spWidth = 480;				//スマホ用レイアウトになる幅
-//	spWidth = 630;				//スマホ用レイアウトになる幅
 	strechFix1 = 20;			//文字伸縮の修正値1
 	strechFix2 = 2.0;			//文字伸縮の修正値2
 	strechFix3 = 2.0;			//Fig.1のボタンの高さ用修正値
@@ -29,18 +28,8 @@
 	function setContentHeight(){
 		//テキストボックスを含むdivタグの高さと幅の割合から妥当な高さを割り出す
 		 var divHeight = $('.main').width() / (heightRatio * tbRatio);	
-		 $('.parallel-text').css('height', divHeight);		//2段組テキストボックスのdivタグに高さを設定
-		 $('.single-line-text').css('height', divHeight);	//1段組テキストボックスのdivタグに高さを設定
-		 $('.before_list_line').css('height', divHeight);	//リスト前の段落のdivタグに高さを設定
- 		 $('.line.edit_buttons').css('height', divHeight);	//1行で書かれるボタン群の高さを設定 
-		 $('.line_table tr').css('height', divHeight);	//1行で書かれるボタン群の高さを設定
-		 $('#header-buttons').css('height', divHeight);	//1行で書かれるボタン群の高さを設定
-		 $('#header-title').css('font-size', divHeight);	//トップページのボタンの高さを設定
-// 		 $('.ui-dropdownchecklist-selector').css('height', divHeight);	//トップページのボタンの高さを設定
-// 		 $('.ui-dropdownchecklist').css('height', divHeight);	//トップページのボタンの高さを設定
-//		 $('.fig1_buttons.first').css('height', divHeight * strechFix2 * strechFix3);	//トップページの1行目ボタンの高さを設定
-  		 $('.users_table th').css('height', divHeight - 1);	
-//		 $('.variable-height').css('height', divHeight);	//高さを設定
+		 $('.variable-height').css('height', divHeight);	//高さを設定
+		 $('#header-title').css('font-size', divHeight);	//タイトルのフォントサイズを設定
 		 //プルダウンメニューの高さを指定。画面の高さの半分程度
 		 $('.ui-autocomplete').css('max-height', $(window).height() / pulldownRatio);
 	}
@@ -106,7 +95,6 @@
 		$('.line_table td').css('font-size',  newFontSize + '%');	
 		//プルダウンメニュー
 		$('.ui-autocomplete').css('font-size',  newFontSize + '%');	
-		//$('input:text').css('font-size',  newFontSize + '%');					//テキストボックス内
 	}
 
 	var dropdownPerMain = 0.33;	//ドロップダウンチェックリストの幅の割合
@@ -1124,11 +1112,6 @@ $(function() {
 	//プルダウンメニューの項目のカテゴリーを格納する2次連想配列
 	var pulldowncategories = {};
 	
-	//製品データの種別絞り込み用データを連想配列に格納
-/*	pulldowncategories['product'] = { product:'断熱二重管部材': product:'断熱二重管部材' , product:'シングル管部材': product:'シングル管部材',
-						 product:'断熱二重管用支持部材':product:'断熱二重管用支持部材', product:'シングル管用支持部材': product:'シングル管用支持部材',
-						  'フラッシング・角トップ等': 'フラッシング・角トップ等'};
-*/	
 	var xmlselector;		//xmlのセレクターを保存する変数
 	var xmls;				//xmlのデータを保存する
 	xmls = new Array();		//xmlsを配列にする
@@ -1232,7 +1215,6 @@ $(function() {
 			$('ul.ui-autocomplete:eq(' + openingList + ') li').css('display', 'block');
 		}
 	}
-	
 	
 	//選択した種別を格納する変数
 	var selectedCategory = '';
@@ -1583,14 +1565,7 @@ $(function() {
 	 * 作成者:T.M
 	*/	
 	function saveList(){
-//		$('body' ,document).append($('<div></div>')		//ダイアログの内容を作る
-//			.attr('id', 'chooseListSave')				//IDを設定
-//			.append($('<p></p>')						//文章のタグを追加
-//			.text('aaaaaa')									//文章を記述
-//			)
-//		);
 		$('#chooseListSave', document).dialog('open');	//ダイアログを表示する
-//		$('#chooseListSave', document).remove();			//ダイアログを消す
 	}
 
 	//ツールチップ用のテキストを格納する配列
@@ -1973,8 +1948,6 @@ $(function(){
 google.load('visualization', '1', {packages:['corechart']});
 //Googleから表出力のAPIを呼び出す
 google.load('visualization', '1', {packages:['table']});
-//関数をよみこむ
-//google.setOnLoadCallback(drawChart);
 
 //グラフに使うデータを定義
 var chartData = new Array();
@@ -2156,9 +2129,10 @@ $(document).on('easytabs:after', function(){
 //テキストボックスの各要素の幅(%指定)の値を格納する配列。
 //1 - それぞれの配列の合計でテキストボックスの取れる割合を算出する
 var widthSum = [
-				[0.01, 0.01, 0.27, 0.0849, 0.07],		//2段組テキストボックス
+//				tb左pad 右pad ラベル ボタン ボタン左margin+余白
+				[0.01, 0.01, 0.274, 0.0849, 0.07],		//2段組テキストボックス
 				[0.01, 0.01, 0.145, 0.0245, 0.04],		//1段組テキストボックス
-				[0.01, 0.01, 0.11, 0.052741, 0.070],	//種別とセットの製品名
+				[0.01, 0.01, 0.11, 0.052741, 0.074],	//種別とセットの製品名
 				[0.01, 0.01, 0.11, 0.052741, 0.35]		//製品名とセットの種別
 				];
 //現状画面崩れが起こる幅を格納する変数
@@ -2246,3 +2220,134 @@ function changeGridHeight(newGridHeight){
 function streachList(newListHeight){
 	$('.list', document).setGridHeight(newListHeight);
 }
+
+//オートコンプリート機能を持ったコンボボックスの初期化の記述。
+  (function( $ ) {
+    $.widget( "custom.combobox", {
+      _create: function() {
+        this.wrapper = $( "<span>" )
+          .addClass( "custom-combobox" )
+          .insertAfter( this.element );
+ 
+        this.element.hide();
+        this._createAutocomplete();
+        this._createShowAllButton();
+      },
+ 
+      _createAutocomplete: function() {
+        var selected = this.element.children( ":selected" ),
+          value = selected.val() ? selected.text() : "";
+ 
+        this.input = $( "<input>" )
+          .appendTo( this.wrapper )
+          .val( value )
+          .attr( "title", "" )
+          .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-all" )
+          .autocomplete({
+            delay: 0,
+            minLength: 0,
+            source: $.proxy( this, "_source" )
+          })
+          .tooltip({
+            tooltipClass: "ui-state-highlight"
+          });
+ 
+        this._on( this.input, {
+          autocompleteselect: function( event, ui ) {
+            ui.item.option.selected = true;
+            this._trigger( "select", event, {
+              item: ui.item.option
+            });
+			$('.custom-combobox-toggle').focus();
+			$('.custom-combobox-toggle').blur();
+          },
+ 
+          autocompletechange: "_removeIfInvalid"
+        });
+      },
+      _createShowAllButton: function() {
+        var input = this.input,
+          wasOpen = false;
+ 
+        $( "<button>" )
+          .attr( "tabIndex", -1 )
+          .insertAfter(this.wrapper)
+          .button({
+            icons: {
+              primary: "ui-icon-triangle-1-s"
+            },
+            text: false
+          })
+          .addClass( "custom-combobox-toggle" )
+          .mousedown(function() {
+            wasOpen = input.autocomplete( "widget" ).is( ":visible" );
+          })
+          .click(function() {
+//            input.focus();
+
+ 
+            // Close if already visible
+            if ( wasOpen ) {
+				//表示されていれば消す
+				input.autocomplete( "widget" ).css( "display" , 'none');
+              return;
+  
+            }
+ 
+            // Pass empty string as value to search for, displaying all results
+            input.autocomplete( "search", "" );
+          });
+      },
+ 
+      _source: function( request, response ) {
+        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+        response( this.element.children( "option" ).map(function() {
+          var text = $( this ).text();
+          if ( this.value && ( !request.term || matcher.test(text) ) )
+            return {
+              label: text,
+              value: text,
+              option: this
+            };
+        }) );
+      },
+ 	   select : function(){
+		   alert('a');
+	   },
+      _removeIfInvalid: function( event, ui ) {
+ 
+        // Selected an item, nothing to do
+        if ( ui.item ) {
+          return;
+        }
+ 
+        // Search for a match (case-insensitive)
+        var value = this.input.val(),
+          valueLowerCase = value.toLowerCase(),
+          valid = false;
+        this.element.children( "option" ).each(function() {
+          if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+            this.selected = valid = true;
+            return false;
+          }
+        });
+ 
+        // Found a match, nothing to do
+        if ( valid ) {
+          return;
+        }
+ 
+        // Remove invalid value
+        this.input
+        this._delay(function() {
+          this.input.tooltip( "close" ).attr( "title", "" );
+        }, 2500 );
+      },
+ 
+      _destroy: function() {
+        this.wrapper.remove();
+        this.element.show();
+      }
+    });
+  })( jQuery );
+//ここまでコンボボックスの記述

@@ -1130,7 +1130,7 @@ th.fig9_content_header{
 /* 製品名のテキストボックス */
 .single-line-text.right.product-select input{
 	/* 種別、製品名を並べるにあたって幅の配分をする必要があり、製品名は82%に設定 */
-	width: 74.5%;			/* 幅 */
+	width: 74.3%;			/* 幅 */
 }
 /* 製品名のテキストボックスのボタン */
 .single-line-text.right.product-select button.ui-button{
@@ -1813,7 +1813,7 @@ button.ui-button{
 	overflow-x: hidden;	/* テキストが横に飛び出したら表示しない */
 	overflow-y: auto;	/* 表示しきれない項目はスクロール */
 }
-/* readonly指定したテキストボックスについて */
-input[readonly]{
+/* テキストボックスについて */
+input{
 	background: #FFF;	/* 灰色になる場合があるので白くする */
 }
