@@ -8,30 +8,7 @@
 <body>
 <div id = "container">
 	<div class = "main">
-        <!-- リストのプラグインJQ Gridを読み込む -->
-        <script src="js/jquery.jqGrid.min.js"></script>
-        <!-- JQ Gridの日本語訳ファイル -->
-        <script type="text/javascript" src="js/grid.locale-en.js"></script>
-        <!-- 表のプラグインJQ Grid -->
-        <script type="text/javascript" src="js/jquery.jqGrid.min.js"></script>
-        <!-- JQ Gridでセルの編集を可能にするプラグイン -->
-        <script type="text/javascript" src="js/grid.celledit.js"></script>
-        <!-- リストを操作するJS -->
-        <script type="text/javascript" src="js/grid.js"></script>
-        <!-- リストを操作するJS -->
-        <script type="text/javascript" src="js/pulldown.js"></script>
-        <!-- ドロップダウンメニュー内でチェックボックスを使うプラグインdropdown check listを読み込む -->
-		<script language="javascript" type="text/javascript" src="js/ui.dropdownchecklist-1.4-min.js"></script>
-        <!-- JavaScriptの記述を開始 -->
 		<script type='text/javascript'>
-			loadList('fig3');				//リストを呼び出す
-			gridResize();					//幅を調整する
-			$('#voucher-status-order:last', document).dropdownchecklist
-			({ width: ($('.main').width() / 3) , forceMultiple: true, emptyText: '-----'});
-			wrapPulldown();					//プルダウンメニューを作る
-			setCalendar();					//カレンダーを配置する
-			setButtons();					//ボタンを配置
-			$( ".page:first .pulldown-menu" ).combobox({ appendTo: "#container" });	//プルダウンメニューをコンボボックスにする
 			//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
 			//の高さ分リストの高さを取る
 			//読み込み後

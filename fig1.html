@@ -9,74 +9,48 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <!-- メディアクエリーの記述 -->
-<!-- 全体に適用するスタイルシート -->
-<link href="css/borgstyle.css" rel="stylesheet">
 <!-- viewportの設定により、端末の幅を初期解像度とする -->
 <meta name="viewport" content="width=device-width">
 <!-- メディアクエリーの記述終了 -->
-<!-- 吹き出しツールチップのCSS -->
-<link href="css/jquery.powertip-light.min.css" rel="stylesheet">
-<!-- ドロップダウンメニュー内でチェックボックスを使うプラグインdropdown check listのCSSを読み込む -->
-<link href="css/ui.dropdownchecklist.standalone.css" rel="stylesheet" type="text/css">
-<!-- ウェブからjQuery UIのCSSを取得 -->
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" />
-<!-- フォームの一括レイアウトを行うプラグインFormlyのCSSを読み込む -->
-<link rel="stylesheet" type="text/css" media="screen" href="css/formly.css" />
-<!-- タブを生成するプラグインのスタイルシート -->
-<link href='css/easytabs.css' rel='stylesheet' type='text/css'-->
-<!-- JQ GridのCSS -->
-<link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
-
-<!-- jQueryの本体 -->
-<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-<!-- jQueryの本体 -->
-<!--script type="text/javascript" src="js/jquery-1.11.0.min.js"></script-->
-
-<!-- ウェブからjQuery UIの本体を取得 -->
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-
-<!-- jQuery UIの補助となるJS -->
-<script language="javascript" type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
-
-<!-- IEならcanvasを使えるようにするJSファイルを読み込む -->
-<!--[if lt IE 9]>
-    <script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script>
-<![endif]-->
-<!-- フォームを整形するJS -->
-<script type="text/javascript" src="js/formly.js"></script>
-<!-- タブを生成するプラグイン -->
-<script src="js/jquery.easytabs.js" type="text/javascript"></script>
-<!-- 表やグラフの生成のためにGoogleのAPIを読み込む -->
-<script src="https://www.google.com/jsapi"></script>
-<!-- 吹き出しツールチップのjQueryプラグイン -->
-<script type="text/javascript" src="js/jquery.powertip.min.js"></script>
-<!-- 表やグラフの生成のためにGoogleのAPIを読み込む -->
-<script src="https://www.google.com/jsapi"></script>
-<!-- このウェブアプリケーションに必要な処理をまとめたJSファイル -->
-<script type="text/javascript" src="js/main.js"></script>
-
-<!-- JavaScriptのコードを記述 -->
-<script type='text/javascript'>
-//ページの読み込みが終わった後の処理
-$(document).ready(function(){
-
-	var parcentHeight	= 0.95;					//高さの倍率
-	var windowHeight 	= $(window).height();	//画面の高さを求める
-	//実際にセットする高さを求める
-	var setHeight		= windowHeight * parcentHeight;
-	//コンテンツ部分の高さを設定
-	$('#fig1').css('height', setHeight);
-	$('#fig1 button').button();		//JQuery UIのボタンを配置する
-});	
-//JavaScriptのコード記述を終える
-</script>
+<!-- 直接スタイルシートを記述 -->
+<style>
+/* ローディング画面のタグ */
+#loading {
+    width: 96px; /* gif画像の幅 */
+    height: 96px; /* gif画像の高さ */
+    margin: -68px 0 0 -68px; /* gif画像を画面中央に */
+    padding: 20px; /* gif画像を大きく */
+    background: #BABABA; /* gif画像の背景色 */
+    opacity: 0.5; /* 透過させる */
+    border-radius: 15px; /* 丸角 */
+    position: fixed; /* gif画像をスクロールさせない */
+    left: 50%; /* gif画像を画面横中央へ */
+    top: 50%; /* gif画像を画面縦中央へ */
+}
+ /*
+ * クラス:modal
+ * 概要  :モーダルダイアログ
+ * 作成日:2014.07.11
+ * 作成者:T.M
+ */
+.modal{
+	display: none;	/* 非表示にしておく */
+}
+/* スタイルシートの記述終了 */
+</style>
 </head>
 <body>
-<div id = "container">
+<!-- 初期ロード時はcontainerを非表示にしておく -->
+<div id = "container" style="visibility: hidden">
+	<!-- 後に呼ばれる各ページと同じく、main以下をpageで囲む -->
 	<div class="page">
+    	<!-- コンテンツの記述が始まるmainのタグ -->
 		<div class = "main">
+        	<!-- fig1の記述を開始 -->
 			<div id = "fig1" class="figs">
+            	<!-- タイトル -->
 				<h1>ボルグシステム</h1>
+                <!-- 1行目のボタン群。他より大きくなる -->
 				<div class="fig1_buttons first">
 					<button value= "受注" class = "submit_L top_page_button left callpage button button_fontsize" name="fig2">受注</button>
 					<button value= "発注" class = "submit_L top_page_button right callpage button button_fontsize" name="fig3">発注</button>
@@ -122,5 +96,93 @@ $(document).ready(function(){
 <div id="chooseListSave" class="modal">
 <!-- ダイアログの記述を終了 -->
 </div>
+<!-- ローディング画面用の画像のためのタグ -->
+<div id="loading">
+	<!-- ローディング画面用gif画像 -->
+	<img src="images/gif-load.gif" />
+</div>
+<!-- jQueryの本体 -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<!-- 表やグラフの生成のためにGoogleのAPIを読み込む -->
+<script src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">	
+
+	//GoogleからGoogleChartのコアを呼び出す
+	google.load('visualization', '1', {packages:['corechart']});
+	//Googleから表出力のAPIを呼び出す
+	google.load('visualization', '1', {packages:['table']});
+	
+	//読み込むJavaScriptファイルのパスを格納する配列
+	var jsFiles = new Array();
+	//配列にJavaScriptファイルのパスを格納する。全10個
+	jsFiles = [
+		'js/jquery-ui-1.9.2.custom.min.js',
+		'js/ui.dropdownchecklist-1.4-min.js',
+		'js/jquery.jqGrid.min.js',
+		'js/grid.locale-en.js',
+		'js/grid.celledit.js',
+		'js/formly.js',
+		'js/jquery.easytabs.js',
+		'js/jquery.powertip.min.js',
+		'js/jquery-ui-i18n.js',
+		'js/main.js'
+	];
+	
+	//読み込むCSSファイルのパスを格納する配列
+	var cssFiles = new Array();
+	//配列にCSSファイルのパスを格納する。全7個
+	cssFiles = [
+		'css/borgstyle.css',
+		'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css',
+		'css/jquery.powertip-light.min.css',
+		'css/ui.dropdownchecklist.standalone.css',
+		'css/easytabs.css',
+		'css/formly.css',
+		'css/ui.jqgrid.css'
+	];
+	
+	//headタグをjQueryオブジェクトとして変数に格納	
+	var $head = $('head');
+		
+
+	$(window).load(function(){
+		
+		//for文でcssの配列のパスを読み出しながらcssファイルを全部読み込む
+		for(var i = 0; i < cssFiles.length; i++){
+			//linkタグを生成し、必要な属性と値を設定してheadタグに追加する
+			$head.append($('<link />')
+				.attr('rel', 'stylesheet')
+				.attr('type', 'text/css')
+				.attr('href', cssFiles[i])
+			)
+		}
+
+		//for文でJavaScriptファイルの配列のパスをを読み出しながらファイルを全部読み込む
+		for(var i = 0; i < jsFiles.length; i++){
+			//Ajax通信
+			$.ajax({
+				async: false,		//同期通信を行いファイルを同時に読み込まないようにする
+				dataType: 'script',	//JavaScriptファイルを読み込む
+				url: jsFiles[i],	//配列のソースを使う
+				cache: true,		//キャッシュを有効にする
+			});
+		}
+
+		setButtons();								//ボタンをセットする
+		var parcentHeight	= 0.95;					//高さの倍率
+		var windowHeight 	= $(window).height();	//画面の高さを求める
+		//実際にセットする高さを求める
+		var setHeight		= windowHeight * parcentHeight;
+		//コンテンツ部分の高さを設定
+		$('#fig1').css('height', setHeight);
+		
+		//最後にコンテンツを表示する
+		$('#container').css('visibility', 'visible');
+		//ローディング画像を隠す
+		jQuery("#loading").hide();
+	});
+//JavaScriptのコード記述を終える
+</script>
 </body>
 </html>

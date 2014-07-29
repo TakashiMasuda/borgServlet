@@ -6,10 +6,18 @@
 <title>受注伝票</title>
 <!-- ウェブアプリケーション全体を対象とするスタイルシート -->
 <link href="css/borgstyle.css" rel="stylesheet" type="text/css">
+<!-- JQueryのグラフ作成プラグインを読み込む -->
+<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
+<!-- JQueryの本体を読み込む -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 <!-- JQueryの外部プラグインセット、JQuery UIを読み込む -->
 <link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
+<!-- 必要となるJavaScriptの処理をまとめたjsファイルを読み込む -->
+<script type="text/javascript" src="js/main.js"></script>
 <!-- JQuery UIの使用に必要となるJSファイル -->
 <script language="javascript" type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
+<!-- グラフ描画に必要となるJSファイル -->
+<script language="javascript" type="text/javascript" href="../js/jqplot.categoryAxisRenderer.min.js"></script>
 <!-- グラフのプラグインのIE9対応JSの読み込み -->
 <!--[if lt IE 9]>
     <script language="javascript" type="text/javascript" src="../js/excanvas.min.js"></script>
@@ -20,30 +28,8 @@
 <div id = "container">
 <!-- コンテンツ領域となるdivタグmain -->
 <div class = "main">
-<!-- リストのプラグインJQ Gridを読み込む -->
-<script src="js/jquery.jqGrid.min.js"></script>
-<!-- JQ Gridの日本語訳ファイル -->
-<script type="text/javascript" src="js/grid.locale-en.js"></script>
-<!-- 表のプラグインJQ Grid -->
-<script type="text/javascript" src="js/jquery.jqGrid.min.js"></script>
-<!-- JQ Gridでセルの編集を可能にするプラグイン -->
-<script type="text/javascript" src="js/grid.celledit.js"></script>
-<!-- リストを操作するJS -->
-<script type="text/javascript" src="js/grid.js"></script>
-<!-- リストを操作するJS -->
-<script type="text/javascript" src="js/pulldown.js"></script>
-<!-- ドロップダウンメニュー内でチェックボックスを使うプラグインdropdown check listを読み込む -->
-<script language="javascript" type="text/javascript" src="js/ui.dropdownchecklist-1.4-min.js"></script>
 <!-- JavaScriptのコードを記述 -->
 <script type='text/javascript'>
-		loadList('fig2');				//リストを呼び出す
-		gridResize();					//幅を調整する
-		$('#voucher-status-order:last', document).dropdownchecklist
-		({ width: ($('.main').width() / 3) , forceMultiple: true, emptyText: '-----'});
-		wrapPulldown();					//プルダウンメニューを作る
-		setCalendar();					//カレンダーを配置する
-		setButtons();					//ボタンを配置
-		$( ".page:first .pulldown-menu" ).combobox({ appendTo: "#container" });	//プルダウンメニューをコンボボックスにする	
 //テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
 //の高さ分リストの高さを取る
 //読み込み後
@@ -150,8 +136,8 @@ $(document).ready(function(){
   <div class="half_line parallel-text variable-height right">
     <label for="textfield6">作成者</label>
     <select name="writer" id="writer"  class="textbox_S pulldown-menu person default_textbox parts_height">
-    	<option value="">入力、または選択してください</option>
-    </select>
+    <option value="">入力、または選択してください</option>
+      </select>
     </div>
   <div class="line half_line parallel-text variable-height left">
     <label for="textfield7">入金予定日</label>

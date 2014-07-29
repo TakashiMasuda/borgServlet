@@ -1605,6 +1605,7 @@ input{
  * 作成者:T.M
  */
 .modal{
+	display: none;	/* 非表示にしておく */
 }
  /*
  * クラス:ui-dialog

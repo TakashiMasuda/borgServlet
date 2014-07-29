@@ -55,9 +55,3 @@
 #tab-container ul li a{
 	text-decoration: none;			/* 下線を消す */
 }
-/* Fig.6用タブ用の記述 */
-/* panel-conainerの子要素 */
-#fig6 .panel-container > *{
-/*	padding-bottom: 0px;*/	/* 下paddingを消す */
-}
-/* Fig.6用タブの記述終了 */
