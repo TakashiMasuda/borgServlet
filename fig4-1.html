@@ -28,7 +28,25 @@
 <body>
 <div id = "container">
 <div class = "main">
-<script type='text/javascript'>
+        <!-- リストのプラグインJQ Gridを読み込む -->
+        <script src="js/jquery.jqGrid.min.js"></script>
+        <!-- JQ Gridの日本語訳ファイル -->
+        <script type="text/javascript" src="js/grid.locale-en.js"></script>
+        <!-- 表のプラグインJQ Grid -->
+        <script type="text/javascript" src="js/jquery.jqGrid.min.js"></script>
+        <!-- JQ Gridでセルの編集を可能にするプラグイン -->
+        <script type="text/javascript" src="js/grid.celledit.js"></script>
+        <!-- リストを操作するJS -->
+        <script type="text/javascript" src="js/grid.js"></script>
+        <!-- リストを操作するJS -->
+        <script type="text/javascript" src="js/pulldown.js"></script>
+		<script type='text/javascript'>
+			loadList('fig4-1');				//リストを呼び出す
+			gridResize();					//幅を調整する
+			wrapPulldown();					//プルダウンメニューを作る
+			setCalendar();					//カレンダーを配置する
+			setButtons();					//ボタンを配置			
+			$( ".page:first .pulldown-menu" ).combobox({ appendTo: "#container" });	//プルダウンメニューをコンボボックスに
 	//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
 	//の高さ分リストの高さを取る
 	//読み込み後
@@ -73,8 +91,6 @@
 		});
 	  });
 	});
-
-});
 </script>
 <!-- 見出し部を開始 -->
 <div id="header" class="clearfix">

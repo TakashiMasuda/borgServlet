@@ -9,7 +9,21 @@
 <body>
 <div id = "container">
 <div class = "main">
-</script>
+        <!-- リストのプラグインJQ Gridを読み込む -->
+        <script src="js/jquery.jqGrid.min.js"></script>
+        <!-- JQ Gridの日本語訳ファイル -->
+        <script type="text/javascript" src="js/grid.locale-en.js"></script>
+        <!-- 表のプラグインJQ Grid -->
+        <script type="text/javascript" src="js/jquery.jqGrid.min.js"></script>
+        <!-- JQ Gridでセルの編集を可能にするプラグイン -->
+        <script type="text/javascript" src="js/grid.celledit.js"></script>
+        <!-- リストを操作するJS -->
+        <script type="text/javascript" src="js/grid.js"></script>
+		<script type='text/javascript'>
+			loadList('fig7');				//リストを呼び出す
+			gridResize();					//幅を調整する
+			setButtons();					//ボタンを配置			
+		</script>
 <!-- 見出し部を開始 -->
 <div id="header" class="clearfix">
 	<!-- ヘッダーのタイトル部分 -->
