@@ -63,14 +63,34 @@
 					[0.01, 0.01, 0.145, 0.0245, 0.04],		//1段組テキストボックス
 					[0.01, 0.01, 0.11, 0.052741, 0.074],	//種別とセットの製品名
 					[0.01, 0.01, 0.11, 0.052741, 0.35],		//製品名とセットの種別
-					[0],
 					['label:first', 'button:first', 10.00],					//左列のもの
 					['label:first', 'button:first', 14.00],					//右列のもの
 					['label:first', 'button:first', 8.00],					//右列のもの
 					['label:first', 'button:first', 12.00]					//右列のもの
 					];
+
+	//リサイズを行う要素のセレクタを配列に格納する。
+	tbResizeArray = [
+	                 	'.parallel-text input',
+	                 	'.single-line-text input',
+	                 	'.product-select input',
+	                 	'.product-category input'
+	                 ];
+
+	//固定値計算でリサイズを行う要素のセレクタを配列に格納する。
+	tbResizeOnFixedArray = [
+	                        '.page:first #fig7-1 .parallel-text.left,.page:first .label_max2:visible .parallel-text.left,.page:first .label_max5:visible .parallel-text.left,.page:first .label_max6:visible .parallel-text.left',
+	                        '.page:first #fig7-1 .parallel-text.right', 
+	                        '.page:first .label_max5:visible .parallel-text.right,.page:first .label_max6:visible .parallel-text.right',
+	                        '.page:first #fig5.label_max2:visible .parallel-text.right'
+	                      ];
+
+	//tbResizeArrayの要素数をグローバル変数に格納する。
+	var tbResizeArrayLength = tbResizeArray.length;
+	//リサイズを行うセレクタ文字列の数全体をグローバル変数に格納する。widthSumの要素数と一致する。
+	var tbResizeOnFixedArrayLength = tbResizeOnFixedArray.length + tbResizeArrayLength;
+	
 	//現状画面崩れが起こる幅を格納する変数
-	//var borderWidth = 388;
 	var borderWidth = [];
 		borderWidth[0] = 528; 
 		borderWidth[1] = 1000;
@@ -1354,148 +1374,147 @@ function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
 		 * 作成日:2015.04.25
 		 * 作成者:T.Masuda
 		*/
-		function billButtonsResize(){
-			billbuttonsWidth = 0; 		// 伝票ボタンの幅を計算する前にリセットする
-			// 伝票出力ボタンの親タグのjQueryオブジェクトを変数に格納
-			var $billbuttonsParents = $('.page:first .bill_buttons:visible .two-str-button');
+function billButtonsResize(){
+	billbuttonsWidth = 0; 		// 伝票ボタンの幅を計算する前にリセットする
+	// 伝票出力ボタンの親タグのjQueryオブジェクトを変数に格納
+	var $billbuttonsParents = $('.page:first .bill_buttons:visible .two-str-button');
 
-			// 伝票出力ボタンの幅の合計を求める
-			for(var i = 0; i < $billbuttonsParents.length; i++){
-				billbuttonsWidth += $billbuttonsParents.eq(i).outerWidth(); // ボタンの幅合計を算出
-			}
+	// 伝票出力ボタンの幅の合計を求める
+	for(var i = 0; i < $billbuttonsParents.length; i++){
+		billbuttonsWidth += $billbuttonsParents.eq(i).outerWidth(); // ボタンの幅合計を算出
+	}
 			
-			// 伝票出力ボタンの親タグのさらに祖父要素の幅を取得
-			var contentWidth = $billbuttonsParents.parent().parent().outerWidth();
+	// 伝票出力ボタンの親タグのさらに祖父要素の幅を取得
+	var contentWidth = $billbuttonsParents.parent().parent().outerWidth();
 			
-			// 表示領域が一定サイズをきれば
-			if(contentWidth / 2 <= billbuttonsWidth){
-				// 左側の幅を切り詰める
-				$('.bill_buttons.left').css('width', contentWidth / 2
-						- (billbuttonsWidth - contentWidth / 2) - 1);
-				// 右側の不足している幅を足す
-				$('.bill_buttons.right').css('width', contentWidth / 2
-						+ (billbuttonsWidth - contentWidth / 2) + 1);
-			} else {
-				$('.bill_buttons').css({width: '50%'});			//変化させた幅を元に戻す
-			}
-		}
+	// 表示領域が一定サイズをきれば
+	if(contentWidth / 2 <= billbuttonsWidth){
+		// 左側の幅を切り詰める
+		$('.bill_buttons.left').css('width', contentWidth / 2
+			- (billbuttonsWidth - contentWidth / 2) - 1);
+		// 右側の不足している幅を足す
+		$('.bill_buttons.right').css('width', contentWidth / 2
+			+ (billbuttonsWidth - contentWidth / 2) + 1);
+	} else {
+		$('.bill_buttons').css({width: '50%'});			//変化させた幅を元に戻す
+	}
+}
 	
-	
-	/*
-	 * 関数名:setContentHeight
-	 * 引数  :なし
-	 * 戻り値:なし
-	 * 概要  :画面の高さを取得してコンテンツの高さにする
-	 * 作成日:2014.07.16
-	 * 作成者:T.Masuda
-	*/
-	function setContentHeight(){
-		//テキストボックスを含むdivタグの高さと幅の割合から妥当な高さを割り出す
-		 $('.variable-height').css('height', tbHeight);	//高さを設定
-		 
-		 //現在の画面のラベルの最大幅がグリッド2個なら
-		 if($('.label_max2:visible').length){
-			 //1ブロックにテキストボックス2個のブロックのレイアウト変更の関数をコールする。
-			 labelMax2Resize($('.label_max2:visible div.variable-height.two-tb:visible').width());
-		 } else if(($('.label_max2:visible').length)){
-			 //1ブロックにテキストボックス2個のブロックのレイアウト変更の関数をコールする。
-			 labelMax6Resize($('.label_max2:visible div.variable-height.two-tb:visible').width());
-		 }
+/*
+ * 関数名:setContentHeight
+ * 引数  :なし
+ * 戻り値:なし
+ * 概要  :画面の高さを取得してコンテンツの高さにする
+ * 作成日:2014.07.16
+ * 作成者:T.Masuda
+*/
+function setContentHeight(){
+	//テキストボックスを含むdivタグの高さと幅の割合から妥当な高さを割り出す
+	 $('.variable-height').css('height', tbHeight);	//高さを設定
+	 
+	 //現在の画面のラベルの最大幅がグリッド2個なら
+	 if($('.label_max2:visible').length){
+		 //1ブロックにテキストボックス2個のブロックのレイアウト変更の関数をコールする。
+		 labelMax2Resize($('.label_max2:visible div.variable-height.two-tb:visible').width());
+	 } else if(($('.label_max6:visible').length)){
+		 //1ブロックにテキストボックス2個のブロックのレイアウト変更の関数をコールする。
+		 labelMax6Resize($('.label_max6:visible div.variable-height.two-tb:visible').width());
+	 }
 		
-		//伝票出力ボタンがあるページが表示されているならであれば
-		if($('.page:first .bill_buttons:visible').length > 0){
-			billButtonsResize();
-		}
-
-		 //プルダウンメニューの高さを指定。画面の高さの半分程度
-		 $('.ui-autocomplete').css('max-height', $(window).height() / pulldownRatio);
+	//伝票出力ボタンがあるページが表示されているならであれば
+	if($('.page:first .bill_buttons:visible').length > 0){
+		billButtonsResize();	//伝票出力ボタン群をリサイズする。
 	}
 
-	/*
-	 * 関数名:setButtonSize()
-	 * 引数  :なし
-	 * 戻り値:なし
-	 * 概要  :ボタンの大きさを修正する
-	 * 作成日:2014.07.16
-	 * 作成者:T.Masuda
-	*/
-	function setButtonSize(){
-		//ボタンのサイズを変更
-		$('.main button.ui-button').each(function(){
-			//ボタンの幅を縦に対する比率に合わせる
-			$(this).css('width', ($('button.ui-button').height() * buttonWidthRatio) + 'px');
-		})
-	}
+	 //プルダウンメニューの高さを指定。画面の高さの半分程度
+	 $('.ui-autocomplete').css('max-height', $(window).height() / pulldownRatio);
+}
 
-	/*
-	 * 関数名:changeNormalFontSize
-	 * 引数  :String selectors:フォントサイズの変更の対象となる要素のセレクタの配列。
-	 * 		:int newFontSize:新しいフォントサイズ。パーセントで指定する。
-	 * 戻り値:なし
-	 * 概要  :フォントの大きさを変える関数をコールする。
-	 * 作成日:2015.04.25
-	 * 作成者:T.Masuda
-	*/
-	function changeNormalFontSize(selectors, newFontSize){
-		var selectorsLength = selectors.length;	//走査前に配列の要素数を取得する。
-		
-		//selectorsを走査して処理する。
-		for(var i = 0; i < selectorsLength; i++){
-			//対象のフォントサイズを指定する。
-			$(selectors[i]).css('font-size',  newFontSize + '%')
-		}
-	}
-	
-	/*
-	 * 関数名:function changeFixFontSize(selectors, newFontSize, fixSize)
-	 * 引数  :String selectors:フォントサイズの変更の対象となる要素のセレクタの配列。
-	 * 		:int newFontSize:新しいフォントサイズ。パーセントで指定する。
-	 * 		:int fixSize:サイズの補正値。
-	 * 戻り値:なし
-	 * 概要  :フォントの大きさを変える関数をコールする。
-	 * 作成日:2015.04.25
-	 * 作成者:T.Masuda
-	*/
-	function changeFixFontSize(selectors, newFontSize, fixSize){
-		var selectorsLength = selectors.length;	//走査前に配列の要素数を取得する。
-		
-		//selectorsを走査して処理する。
-		for(var i = 0; i < selectorsLength; i++){
-			//対象のフォントサイズを補正値の計算を含めて指定する。
-			$(selectors[i]).css('font-size',  newFontSize - fixSize + '%')
-		}
-	}
-	
-	/*
-	 * 関数名:changeFontSize
-	 * 引数  :なし
-	 * 戻り値:なし
-	 * 概要  :動的にフォントの大きさを変える
-	 * 作成日:2014.07.17
-	 * 作成者:T.Masuda
-	*/
-	function changeFontSize(){
-		//新たなフォントサイズを算出
-		var newFontSize = (baseFontSize - ((maxWidth - $('.main').width()) / fontRatio));
-		
-		//フォントサイズをリサイズする各関数をコールする。
-		changeNormalFontSize(fontResizeTargets, newFontSize);
-		changeFixFontSize(fontResizeTargetsWithFix, newFontSize, strechFix1);
-	}
+/*
+ * 関数名:setButtonSize()
+ * 引数  :なし
+ * 戻り値:なし
+ * 概要  :ボタンの大きさを修正する
+ * 作成日:2014.07.16
+ * 作成者:T.Masuda
+*/
+function setButtonSize(){
+	//ボタンのサイズを変更
+	$('.main button.ui-button').each(function(){
+		//ボタンの幅を縦に対する比率に合わせる
+		$(this).css('width', ($('button.ui-button').height() * buttonWidthRatio) + 'px');
+	})
+}
 
-	/* 関数名:dropdownResize()
-	 * 引数　:なし
-	 * 戻り値:なし
-	 * 概要  :ドロップダウンチェックリストのレスポンシブ対応関数
-	 * 作成日:14.07.21
-	 * 作成者:T.Masuda
-	*/
-	function dropdownResize(){
-		//ドロップダウンチェックリストのテキストボックスの外側をリサイズ
-		$('.ui-dropdownchecklist-selector').css('width', $('.main').width() * dropdownPerMain);
-		//ドロップダウンチェックリストのドロップダウンをリサイズ
-		$('.ui-dropdownchecklist').css('width', $('.main').width() * dropdownPerMain);		
+/*
+ * 関数名:changeNormalFontSize
+ * 引数  :String selectors:フォントサイズの変更の対象となる要素のセレクタの配列。
+ * 		:int newFontSize:新しいフォントサイズ。パーセントで指定する。
+ * 戻り値:なし
+ * 概要  :フォントの大きさを変える関数をコールする。
+ * 作成日:2015.04.25
+ * 作成者:T.Masuda
+*/
+function changeNormalFontSize(selectors, newFontSize){
+	var selectorsLength = selectors.length;	//走査前に配列の要素数を取得する。
+	
+	//selectorsを走査して処理する。
+	for(var i = 0; i < selectorsLength; i++){
+		//対象のフォントサイズを指定する。
+		$(selectors[i]).css('font-size',  newFontSize + '%')
 	}
+}
+	
+/*
+ * 関数名:function changeFixFontSize(selectors, newFontSize, fixSize)
+ * 引数  :String selectors:フォントサイズの変更の対象となる要素のセレクタの配列。
+ * 		:int newFontSize:新しいフォントサイズ。パーセントで指定する。
+ * 		:int fixSize:サイズの補正値。
+ * 戻り値:なし
+ * 概要  :フォントの大きさを変える関数をコールする。
+ * 作成日:2015.04.25
+ * 作成者:T.Masuda
+*/
+function changeFixFontSize(selectors, newFontSize, fixSize){
+	var selectorsLength = selectors.length;	//走査前に配列の要素数を取得する。
+	
+	//selectorsを走査して処理する。
+	for(var i = 0; i < selectorsLength; i++){
+		//対象のフォントサイズを補正値の計算を含めて指定する。
+		$(selectors[i]).css('font-size',  newFontSize - fixSize + '%')
+	}
+}
+	
+/*
+ * 関数名:changeFontSize
+ * 引数  :なし
+ * 戻り値:なし
+ * 概要  :動的にフォントの大きさを変える
+ * 作成日:2014.07.17
+ * 作成者:T.Masuda
+*/
+function changeFontSize(){
+	//新たなフォントサイズを算出
+	var newFontSize = (baseFontSize - ((maxWidth - $('.main').width()) / fontRatio));
+	
+	//フォントサイズをリサイズする各関数をコールする。
+	changeNormalFontSize(fontResizeTargets, newFontSize);
+	changeFixFontSize(fontResizeTargetsWithFix, newFontSize, strechFix1);
+}
+
+/* 関数名:dropdownResize()
+ * 引数　:なし
+ * 戻り値:なし
+ * 概要  :ドロップダウンチェックリストのレスポンシブ対応関数
+ * 作成日:14.07.21
+ * 作成者:T.Masuda
+*/
+function dropdownResize(){
+	//ドロップダウンチェックリストのテキストボックスの外側をリサイズ
+	$('.ui-dropdownchecklist-selector').css('width', $('.main').width() * dropdownPerMain);
+	//ドロップダウンチェックリストのドロップダウンをリサイズ
+	$('.ui-dropdownchecklist').css('width', $('.main').width() * dropdownPerMain);		
+}
 
 	/* 関数名:function itemResize()
 	 * 引数　:なし
@@ -1931,7 +1950,6 @@ function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
 				var figName = $('.page:first div[id *= "fig"]:first', document).attr('id');
 				//figのグラフを描画する関数drawChartInFigを呼ぶ
 				drawChartInFig(figName);
-				drawChartInFig(figName);
 			}
 		});
 	}
@@ -1958,7 +1976,97 @@ function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
 	 }
 	}
 
-	/* 関数名:callPage = function(e)
+	/* 関数名  :function writePage(html)
+	 * 引数　  : String html:Ajax通信で取得した画面のHTMLデータ。
+	 * 戻り値  : なし
+	 * 概要    : 新たな画面を書き出す。
+	 * 作成者  : T.Masuda
+	 */
+	function writePage(html){
+		//ページを書き出す領域を作成
+		$('#container').prepend($('<div></div>')
+				.addClass('page'));
+		//用意した領域に書き出す
+		$('.page:first').html($(html).find('.main'));
+		//ひとつ前のページを非表示にする
+		$('.page:first').next().css('display', 'none');
+	}
+
+	
+	/* 関数名:function afterCallPage()
+	 * 引数　:なし
+	 * 戻り値:なし
+	 * 概要  :callPage後の処理を行う。
+	 * 作成者:T.Masuda
+	*/
+	function afterCallPage(){
+		afterCallPageSetContent();			//設置されたタグに対応するコンテンツを生成する。
+		afterCallPageEachPages(contentUrl);	//callPage後のページごとの処理を行う。
+		afterCallPageLayoutFix();			//動的に寸法がかわるパーツの初期の調整を行う。
+	}
+	
+	/* 関数名:function afterCallPageSetContent()
+	 * 引数　:なし
+	 * 戻り値:なし
+	 * 概要  :callPage後、設置されたタグに対応するコンテンツを生成する。
+	 * 作成者:T.Masuda
+	 */
+	function afterCallPageSetContent(){
+		if($('.page:first .date').length){		//dateクラスの要素があれば
+			setCalendar();				//setCalendarを呼び出しカレンダーボタンを配置
+		}
+		if($('.page:first .list').length){	//pulldown-menuクラスの要素があれば
+			loadList(contentUrl);				//wrapPulldownを呼び出しプルダウンメニューを配置
+		}
+		if($('.page:first .pulldown-menu').length){	//pulldown-menuクラスの要素があれば
+			wrapPulldown();						//wrapPulldownを呼び出しプルダウンメニューを配置
+			$( ".pulldown-menu" ).combobox({ appendTo: "#container" });	//プルダウンメニューをコンボボックスにする
+			$('li ') // コンボボックスの項目にvalue属性を設定
+		}
+		if($('.page:first #tab-container').length){	//タブのあるページが呼び出されたら
+			//タブの幅を取得。パーセンテージ調整後リストの幅設定に使う
+			tabContainerWidth = $('#tab-container').width() * tabContainerPercent;
+		}
+	}
+	
+	/* 関数名:function afterCallPageEachPages(contentUrl)
+	 * 引数　:String contentUrl:コンテンツ名。
+	 * 戻り値:なし
+	 * 概要  :callPage後に各コンテンツ毎の処理を行う。
+	 * 作成者:T.Masuda
+	*/
+	function afterCallPageEachPages(contentUrl){
+		//formlyで画面レイアウトを整える
+		$('#' + contentUrl).formly({	//formlyでページのレイアウトを調節する
+			'onBlur':false //マウスオーバーでダイアログを出すか
+		});
+		//DROPDOWN CHECK LISTを使いチェックリストを持ったドロップダウンメニューを生成する
+		if(contentUrl == 'fig2'){	//fig2を読み込んだなら
+			//チェックリストを持ったドロップダウンメニューを生成する
+			$('#voucher-status-order:last', document).dropdownchecklist
+			({ width: ($('.main').width() / 3) , forceMultiple: true, emptyText: '-----'});
+		} else if(contentUrl == 'fig3'){	//fig3を読み込んだなら
+			//チェックリストを持ったドロップダウンメニューを生成する
+			$('#voucher-status-order:last', document).dropdownchecklist
+			({ width: ($('.main').width() / 3) , forceMultiple: true, emptyText: '-----'});
+		}
+	}
+
+	/* 関数名:function afterCallPageLayoutFix()
+	 * 引数　:なし
+	 * 戻り値:なし
+	 * 概要  :callPage後に、読み込んだ画面のレイアウトの調整を行う。
+	 * 作成者:T.Masuda
+	 */
+	function afterCallPageLayoutFix(){
+		setButtons(false);		//ボタンを配置する
+		setContentHeight();		//setContentHeightを呼び出し高さを修正
+		changeFontSize();		//フォントサイズを調整する
+		executeTextBoxResize();	//テキストボックスのリサイズを行う
+		gridResize();			//念のためもう一度グリッドの幅を直す
+	}
+	
+	/* 関数名: function callPage(name)
 	 * 引数　:String name:画面名。HTMLファイルの名前と合致する。
 	 * 戻り値:なし
 	 * 概要  :ページを呼び出し表示する
@@ -1973,7 +2081,7 @@ function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
 		}
 		//表示しているプルダウンメニューを消す
 		$('.ui-autocomplete').css('display', 'none');
-		//ページのアドレスを取得
+		//ページのアドレスを取得してグローバル変数contentUrlに格納する。
 		contentUrl = name;
 		//ajax通信でページのHTMLを呼び出す
 		$.ajax({
@@ -1982,54 +2090,13 @@ function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
 			type: 'get',
 		//成功したら
 			success: function(html){
-				//ページを書き出す領域を作成
-				$('#container').prepend($('<div></div>')
-				.addClass('page'));
-				//用意した領域に書き出す
-				$('.page:first').html($(html).find('.main'));
-				//ひとつ前のページを非表示にする
-				$('.page:first').next().css('display', 'none');
-				//入庫画面から製品追加編集画面を出す場合
-				$('#' + contentUrl).formly({	//formlyでページのレイアウトを調節する
-					'onBlur':false //マウスオーバーでダイアログを出すか
-				});
-				if($('.page:first .date').length > 0){		//dateクラスの要素があれば
-	        		setCalendar();				//setCalendarを呼び出しカレンダーボタンを配置
-				}
-				if($('.page:first .list').length > 0){	//pulldown-menuクラスの要素があれば
-					loadList(contentUrl);				//wrapPulldownを呼び出しプルダウンメニューを配置
-					gridResize();							//幅を調整する
-				}
-				if($('.page:first .pulldown-menu').length > 0){	//pulldown-menuクラスの要素があれば
-					wrapPulldown();						//wrapPulldownを呼び出しプルダウンメニューを配置
-				    $( ".pulldown-menu" ).combobox({ appendTo: "#container" });	//プルダウンメニューをコンボボックスにする
-				    $('li ') // コンボボックスの項目にvalue属性を設定
-				}
-				if($('.page:first #tab-container').length > 0){	//タブのあるページが呼び出されたら
-					//タブの幅を取得。パーセンテージ調整後リストの幅設定に使う
-					tabContainerWidth = $('#tab-container').width() * tabContainerPercent;
-				}
-				//DROPDOWN CHECK LISTを使いチェックリストを持ったドロップダウンメニューを生成する
-				if(contentUrl == 'fig2'){	//fig2を読み込んだなら
-					//チェックリストを持ったドロップダウンメニューを生成する
-					$('#voucher-status-order:last', document).dropdownchecklist
-					({ width: ($('.main').width() / 3) , forceMultiple: true, emptyText: '-----'});
-				} else if(contentUrl == 'fig3'){	//fig3を読み込んだなら
-					//チェックリストを持ったドロップダウンメニューを生成する
-					$('#voucher-status-order:last', document).dropdownchecklist
-					({ width: ($('.main').width() / 3) , forceMultiple: true, emptyText: '-----'});
-				}
-				setButtons(false);				//ボタンを配置
-				setContentHeight();	//setContentHeightを呼び出し高さを修正
-				changeFontSize();	//フォントサイズを調整する
-
-				executeTextBoxResize();	/* テキストボックスのリサイズを行う */
+				writePage(html);	//新たな画面を表示する。
+				afterCallPage();	//callPage後の処理をまとめて行う。
 			  },
 				  error : function(){					//データの取得に失敗したら
 					  alert('申し訳ありません。ご指定されたページは現在製作中となっております。');	//その旨をalertで伝える
 			  }
 		});
-		//下にあるページを隠す
 	}
 
 	
@@ -2091,44 +2158,31 @@ function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
 		disappearPage();
 	}
 
-
-/* 関数名:setButtons(isTopPage)
- * 引数　:Boolean isTopPage:トップページでの読み込みかどうかの判定。
- * 戻り値:なし
- * 概要  :ボタンをJQuery UIのものに置き換える
- * 作成日:14.07.01
- * 作成者:T.Masuda
- * 修正日:14.07.25
- * 修正者:T.Masuda
- * 内容  :ツールチップ対応
- * 修正日:14.07.30
- * 修正者:T.Masuda
- * 内容  :トップページでの読み込み時の記述追加
-*/	
-function setButtons(isTopPage){
-	//JQueryの記述を開始
-	$(function(){
-		//タッチ端末かの判定を格納する変数
-		var isTouchDevice = false;
-		//タッチ端末であれば
-		if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iPad') > 0 ||
-		 navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
-			 isTouchDevice = true;	//isTouchDeviceにtrueを格納してタッチ端末であること確定
-		}else{
-				$('.page:first button.button').powerTip({						//ツールチップをセット
-				placement: 'n',				//上に表示
-				followMouse: true,			//マウスについてくる
-				smartPlacement: true,		//画面外に出たら戻ってくる
-				intentPollInteterval: 0,	//表示は早めに
-				intentSensitivity: 10		//表示されるまでの距離制限
-				})
-		}
-
-		//buttonクラスを持つボタンをjQuery UIのボタンに置き換える
-		$('.page:first button.button').button({
-				text: true					//テキストだけ表示する
-		});
+	/* 関数名:isTouchDevice()
+	 * 引数　:なし
+	 * 戻り値:boolean:判定結果を返す。
+	 * 概要  :ユーザの端末がタッチ端末かどうかを判定して返す。
+	 * 作成者:T.Masuda
+	*/	
+	function isTouchDevice(){
+		var retBoo = false;		//判定を格納する変数を宣言、falseで初期化する。
 		
+		//UAがタッチ端末であれば
+		if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iPad') > 0 ||
+				 navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+			retBoo = true;	//trueを返すようにする。
+		}
+		
+		return retBoo; //判定結果を返す。
+	}
+
+	/* 関数名:setListEditButtons()
+	 * 引数　:なし
+	 * 戻り値:なし
+	 * 概要  :リスト編集の汎用的なボタンをjQueryUIのボタンに置き換える。
+	 * 作成者:T.Masuda
+	*/	
+	function setListEditButtons(){
 		//追加ボタンがあれば
 		if($('.page:first button.add-button').length >= 1){
 			//追加ボタンのレイアウトを変更
@@ -2163,37 +2217,16 @@ function setButtons(isTopPage){
 			text: false					//テキストを非表示にする
 			})			//ツールチップ用のテキストを追加
 			.attr('title', toolTipText['delete']);		
-
 		}
-		//選択ボタンがあれば
-		if($('.page:first button.ui-button.custom-combobox-toggle').length >= 1){
-			//選択ボタンのレイアウトを変更
-			$('.page:first button.ui-button.custom-combobox-toggle')
-			.attr('title', toolTipText['select']);
-			if(!(isTouchDevice)){				//タッチ端末でなければ
-				$('.page:first button.ui-button.custom-combobox-toggle')
-					.powerTip({						//ツールチップをセット
-						placement: 'n',				//上に表示
-						followMouse: true,			//マウスについてくる
-						smartPlacement: true,		//画面外に出たら戻ってくる
-						intentPollInteterval: 0,	//表示は早めに
-						intentSensitivity: 10		//表示されるまでの距離制限			
-				});
-			}
+	}
 
-		}
-		//クローズボックスがあれば
-		if($('.page:first button.close-button').length >= 1){
-			//まとめボタンのレイアウトを変更
-			$('.page:first .close-button').button({
-				icons: {					//ボタンの画像を設定
-				primary: 'ui-icon-close'	//ボタンの画像を×マークにする
-			},
-			text: false						//テキストを非表示にする
-			})			//ツールチップ用のテキストを追加
-			.attr('title', toolTipText['close']);
-
-		}
+	/* 関数名:setListEditSpecialButtons()
+	 * 引数　:なし
+	 * 戻り値:なし
+	 * 概要  :リスト編集の特殊なボタンをjQueryUIのボタンに置き換える。
+	 * 作成者:T.Masuda
+	*/	
+	function setListEditSpecialButtons(){
 		//まとめボタンがあれば
 		if($('.page:first button.summary-button').length >= 1){
 			//まとめボタンのレイアウトを変更
@@ -2204,8 +2237,8 @@ function setButtons(isTopPage){
 			text: false						//テキストを非表示にする
 			})			//ツールチップ用のテキストを追加
 			.attr('title', toolTipText['summary']);
-
 		}
+		
 		//入庫ボタンがあれば
 		if($('.page:first button.stock-button').length >= 1){
 			//入庫ボタンのレイアウトを変更
@@ -2216,8 +2249,8 @@ function setButtons(isTopPage){
 			text: false						//テキストを非表示にする
 			})			//ツールチップ用のテキストを追加
 			.attr('title', toolTipText['stock']);
-
 		}
+		
 		//連結ボタンがあれば
 		if($('.page:first button.connect-button').length >= 1){
 			//連結ボタンのレイアウトを変更
@@ -2228,30 +2261,28 @@ function setButtons(isTopPage){
 			text: false						//テキストを非表示にする
 			})			//ツールチップ用のテキストを追加
 			.attr('title', toolTipText['connect']);
-
 		}
-		//カレンダーボタンがあれば(datapicker)
-		if($('.page:first button.ui-datepicker-trigger').length >= 1){
-			//カレンダーボタンのレイアウトを変更
-			$('.page:first .ui-datepicker-trigger').button({
+	}
+	
+	/* 関数名:setCommonButtons()
+	 * 引数　:なし
+	 * 戻り値:なし
+	 * 概要  :使用頻度が高いボタンをまとめてjQueryUIのボタンに置き換える。
+	 * 作成者:T.Masuda
+	*/	
+	function setCommonButtons(){
+		//クローズボックスがあれば
+		if($('.page:first button.close-button').length >= 1){
+			//まとめボタンのレイアウトを変更
+			$('.page:first .close-button').button({
 				icons: {					//ボタンの画像を設定
-				primary: 'ui-icon-calendar'	//ボタンの画像をカレンダーマークにする
+				primary: 'ui-icon-close'	//ボタンの画像を×マークにする
 			},
 			text: false						//テキストを非表示にする
 			})			//ツールチップ用のテキストを追加
-			.attr('title', toolTipText['calendar']);
-			if(!(isTouchDevice)){				//タッチ端末でなければ
-				$('.page:first .ui-datepicker-trigger')
-					.powerTip({						//ツールチップをセット
-						placement: 'n',				//上に表示
-						followMouse: true,			//マウスについてくる
-						smartPlacement: true,		//画面外に出たら戻ってくる
-						intentPollInteterval: 0,	//表示は早めに
-						intentSensitivity: 10		//表示されるまでの距離制限			
-				});
-			}
-
+			.attr('title', toolTipText['close']);
 		}
+		
 
 		//設定ボタンがあれば
 		if($('.page:first button.setting-button').length >= 1){
@@ -2264,6 +2295,7 @@ function setButtons(isTopPage){
 			})			//ツールチップ用のテキストを追加
 			.attr('title', toolTipText['setting']);
 		}
+		
 		// 検索ボタンがあれば
 		if($('.page:first button.on-search').length >= 1){
 			//検索ボタンのレイアウトを変更
@@ -2275,12 +2307,22 @@ function setButtons(isTopPage){
 			})			//ツールチップ用のテキストを追加
 			.attr('title', toolTipText['search']);
 		}
+		
+	}
+	
+	/* 関数名:setRegistCancelButtons()
+	 * 引数　:なし
+	 * 戻り値:なし
+	 * 概要  :登録ボタン、キャンセルボタンをjQueryUIのボタンに置き換える。
+	 * 作成者:T.Masuda
+	*/	
+	function setRegistCancelButtons(){
 		// 登録ボタンがあれば
 		if($('.page:first button.register_button').length >= 1){
-			//検索ボタンのレイアウトを変更
+			//登録ボタンのレイアウトを変更
 			$('.page:first .register_button').button({
 				icons: {						//ボタンの画像を設定
-					primary: 'ui-icon-check'	//ボタンの画像を虫眼鏡マークにする
+					primary: 'ui-icon-check'	//ボタンの画像をチェックマークにする
 				},
 				text: false						//テキストを非表示にする
 			})			//ツールチップ用のテキストを追加
@@ -2288,27 +2330,121 @@ function setButtons(isTopPage){
 		}
 		// キャンセルボタンがあれば
 		if($('.page:first button.cancel-button').length >= 1){
-			//検索ボタンのレイアウトを変更
+			//キャンセルボタンのレイアウトを変更
 			$('.page:first .cancel-button').button({
 				icons: {						//ボタンの画像を設定
-					primary: 'ui-icon-cancel'	//ボタンの画像を虫眼鏡マークにする
+					primary: 'ui-icon-cancel'	//ボタンの画像をキャンセルマークにする
 				},
 				text: false						//テキストを非表示にする
 			})			//ツールチップ用のテキストを追加
 			.attr('title', toolTipText['cancel']);
 		}
+	}
+	
+	/* 関数名:setToolTipAlterButtons(touchDevice)
+	 * 引数　:Boolean isTouchDevice:タッチ端末かどうかの判定。
+	 * 戻り値:なし
+	 * 概要  :タッチ端末かどうかでツールチップを配置するかどうかを変えるボタン群を、jQueryUIのボタンに置き換える。
+	 * 作成者:T.Masuda
+	*/	
+	function setToolTipAlterButtons(touchDevice){
+		//カレンダーボタンがあれば(datapicker)
+		if($('.page:first button.ui-datepicker-trigger').length >= 1){
+			//カレンダーボタンのレイアウトを変更
+			$('.page:first .ui-datepicker-trigger').button({
+				icons: {					//ボタンの画像を設定
+				primary: 'ui-icon-calendar'	//ボタンの画像をカレンダーマークにする
+			},
+			text: false						//テキストを非表示にする
+			})			//ツールチップ用のテキストを追加
+			.attr('title', toolTipText['calendar']);
+			if(!(touchDevice)){				//タッチ端末でなければ
+				$('.page:first .ui-datepicker-trigger')
+					.powerTip({						//ツールチップをセット
+						placement: 'n',				//上に表示
+						followMouse: true,			//マウスについてくる
+						smartPlacement: true,		//画面外に出たら戻ってくる
+						intentPollInteterval: 0,	//表示は早めに
+						intentSensitivity: 10		//表示されるまでの距離制限			
+				});
+			}
+		}
+		
+		//選択ボタンがあれば
+		if($('.page:first button.ui-button.custom-combobox-toggle').length >= 1){
+			//選択ボタンのレイアウトを変更
+			$('.page:first button.ui-button.custom-combobox-toggle')
+			.attr('title', toolTipText['select']);
+			if(!(touchDevice)){				//タッチ端末でなければ
+				$('.page:first button.ui-button.custom-combobox-toggle')
+					.powerTip({						//ツールチップをセット
+						placement: 'n',				//上に表示
+						followMouse: true,			//マウスについてくる
+						smartPlacement: true,		//画面外に出たら戻ってくる
+						intentPollInteterval: 0,	//表示は早めに
+						intentSensitivity: 10		//表示されるまでの距離制限			
+				});
+			}
+		}
+		
+	}
+
+	/* 関数名:setButtonsEachGroup(isTopPage)
+	 * 引数　:Boolean isTouchDevice:タッチ端末かどうかの判定。
+	 * 戻り値:なし
+	 * 概要  :ボタンのグループごとにjQueryUIのボタンを置き換える。
+	 * 作成者:T.Masuda
+	*/	
+	function setButtonsEachGroup(touchDevice){
+		
+		//引数の入力がなければタッチ端末ではないことにする。
+		touchDevice = touchDevice === void(0)? false: true;
+		
+		//各グループごとのボタンレイアウト変更関数をコールする。
+		setListEditButtons();
+		setListEditSpecialButtons();
+		setCommonButtons();
+		setRegistCancelButtons();
+		setToolTipAlterButtons(isTouchDevice);
+	}
+	
+	
+/* 関数名:setButtons(isTopPage)
+ * 引数　:Boolean isTopPage:トップページでの読み込みかどうかの判定。
+ * 戻り値:なし
+ * 概要  :ボタンをJQuery UIのものに置き換える
+ * 作成日:14.07.01
+ * 作成者:T.Masuda
+ * 修正日:14.07.25
+ * 修正者:T.Masuda
+ * 内容  :ツールチップ対応
+ * 修正日:14.07.30
+ * 修正者:T.Masuda
+ * 内容  :トップページでの読み込み時の記述追加
+*/	
+function setButtons(isTopPage){
+	//JQueryの記述を開始
+	$(function(){
+		//タッチ端末かの判定を格納する変数
+		var touchDevice = isTouchDevice();
+
+		//buttonクラスを持つボタンをjQuery UIのボタンに置き換える
+		$('.page:first button.button').button({
+				text: true					//テキストだけ表示する
+		});
+		
+		setButtonsEachGroup(isTouchDevice);	//各ボタンのグループごとにまとめてボタンを置き換える。
 		
 		//タッチ端末でなければ
-		if(!(isTouchDevice)){
-			//ボタンをJQuery UIで用意されたものにする
-			$('.page:first button.button')
-				.powerTip({						//ツールチップをセット
-					placement: 'n',					//上に表示
-					followMouse: true,				//マウスについてくる
-					smartPlacement: true,			//画面外に出たら戻ってくる
-					intentPollInteterval: 0,		//表示は早めに
-					intentSensitivity: 10			//表示されるまでの距離制限
-			});			
+		if(!touchDevice){
+			//ツールチップをセット
+			$('.page:first button.button').powerTip({
+				placement: 'n',				//上に表示
+				followMouse: true,			//マウスについてくる
+				smartPlacement: true,		//画面外に出たら戻ってくる
+				intentPollInteterval: 0,	//表示は早めに
+				intentSensitivity: 10		//表示されるまでの距離制限
+			});
 		}
 	});
 	//トップページからの呼び出しなら
@@ -2385,21 +2521,59 @@ function createLinkListDialog(){
 	});
 }
  
-//ドキュメント配置後のイベント。
-$(document).ready(function(){
-	createLinkListDialog();	//リンクリストを作る。
+/* 
+ * 関数名:function addResizeEvents()
+ * 引数  :なし
+ * 戻り値:なし
+ * 概要  :画面アイテムのリサイズのイベントを一斉に登録する。
+ * 作成者:T.Masuda
+*/
+function addResizeEvents(){
 	addChartResizeEvent();	//グラフのリサイズイベントを登録する。
-	addAfterShowTabEvent()	//タブが切り替わった後のイベントを登録する。
 	addExecuteTextBoxResizeEvent();	//テキストボックスのリサイズイベントを登録する。
+	addGridResizeEvent();		//表のリサイズイベントを登録する。
+}
+
+/* 
+ * 関数名:function addButtonEvents()
+ * 引数  :なし
+ * 戻り値:なし
+ * 概要  :ボタンのイベントを一斉に登録する。
+ * 作成者:T.Masuda
+*/
+function addButtonEvents(){
 	addAddConfirmButtonEvent();		//登録ボタンのイベントを登録する。
 	addEditConfirmButtonEvent();	//編集ボタンのイベントを登録する。
 	addRegistRecordButtonEvent();	//レコード登録ボタンのイベントを登録する。
 	addNodeDevideButtonEvent();		//ノード分割ボタンのイベントを登録する。
-	addComboBoxCloseEvent();		//コンボボックスを閉じるイベントを登録する。
+}
+
+/* 
+ * 関数名:function addGridEditEvents()
+ * 引数  :なし
+ * 戻り値:なし
+ * 概要  :リスト関連のイベントを一斉に登録する。
+ * 作成者:T.Masuda
+*/
+function addGridEditEvents(){
 	addShowAddDialogEvent();	//追加ダイアログを表示するイベントを設定する。
 	addShowEditDialogEvent();	//追加ダイアログを表示するイベントを設定する。
 	addDeleteRecordEvent();		//レコード削除ボタンのイベントを登録する。
-	addGridResizeEvent();		//表のリサイズイベントを登録する。
+}
+
+
+
+//ドキュメント配置後のイベント。
+$(document).ready(function(){
+	createLinkListDialog();		//リンクリストを作る。
+	
+	addAfterShowTabEvent()		//タブが切り替わった後のイベントを登録する。
+	
+	addComboBoxCloseEvent();	//コンボボックスを閉じるイベントを登録する。
+
+	addResizeEvents();			//リサイズ系のイベントを一斉に登録する。
+	addButtonEvents();			//ボタン押下のイベントを一斉に登録する。
+	addGridEditEvents();		//リスト編集関連のイベントを一斉に登録する。
 });
 
 /* 
@@ -2523,6 +2697,25 @@ function getChartDataFromMap(contentName, unit){
 	 return retMap;	//取得したデータを返す。
 }
 
+/* 
+ * 関数名:writeTable(contentName, data, existTable)
+ * 引数　:String contentName:コンテンツ(画面)名。
+ *      :map data:表のデータ。グラフと共通する。
+ * 　　  :boolean existTable:テーブルを書くかどうかの判定。
+ * 戻り値:なし
+ * 概要  :Google Chart Toolsの表を書く。
+ * 作成者:T.Masuda
+*/ 
+function writeTable(contentName, data, existTable){
+	//表を書かない場合は
+	if(existTable === void(0) || !existTable){
+		return;	//ここで処理を終える
+	}
+	//表の場所を準備する
+	var table = new google.visualization.Table(document.getElementById(contentName + '-table'));
+	//所定の場所に表を描く
+	table.draw(data, tableOptions[contentName]);
+}
 
 
 /* 
@@ -2562,15 +2755,9 @@ function drawChart(contentName, graphType, existTable, unit) {
 	
 	//データと追加設定を引数にして所定の場所にグラフを描く
 	chart.draw(data,chartOptions[contentName]);
-  
-	//表も書く場合
-	if(existTable){
-		//表の場所を準備する
-		table = new google.visualization.Table(document.getElementById(contentName + '-table'));
-		//所定の場所に表を描く
-		table.draw(data, tableOptions[contentName]);
-	}
+	writeTable(contentName, data, existTable);	//テーブルがあれば描画する。
 }
+
 
 /* 
  * 関数名:function drawChartInFig(figName)
@@ -2785,27 +2972,22 @@ function removeTextBoxResize(){
  * 作成者:T.Masuda
 */ 
 function executeTextBoxResize(){
+	
 	//画面の幅がborderWidthに設定された値以下であれば
 	if($(window).width() <= borderWidth[0]){
-		textBoxResize('.parallel-text input', 0);	//テキストボックスのサイズを修正する
-		textBoxResize('.single-line-text input', 1);	//テキストボックスのサイズを修正する
-		textBoxResize('.product-select input', 2);	//テキストボックスのサイズを修正する
-		textBoxResize('.product-category input', 3);	//テキストボックスのサイズを修正する
+		for(var i = 0; i < tbResizeArrayLength; i++){
+			textBoxResize(tbResizeArray[i], i);	//テキストボックスのサイズを修正する
+		}
 	//そうでなければ
 	} else{
 		removeTextBoxResize();	//textBoxResizeで付与された幅を消去する
 	}
+	
 	//2つ目の設定値を画面幅が下回ったら
 	if($('.main:first').width() <= borderWidth[1]){
-		textBoxResizeOnFixed($('.page:first #fig7-1 .parallel-text.left'), 5);	//テキストボックスのサイズを修正する
-		textBoxResizeOnFixed($('.page:first #fig7-1 .parallel-text.right'), 6);	//テキストボックスのサイズを修正する
-		textBoxResizeOnFixed($('.page:first .label_max2:visible .parallel-text.left'), 5);	//テキストボックスのサイズを修正する
-		textBoxResizeOnFixed($('.page:first .label_max2:visible .parallel-text.right'), 5);	//テキストボックスのサイズを修正する
-		textBoxResizeOnFixed($('.page:first #fig5.label_max2:visible .parallel-text.right'), 8);	//テキストボックスのサイズを修正する
-		textBoxResizeOnFixed($('.page:first .label_max5:visible .parallel-text.left'), 5);	//テキストボックスのサイズを修正する
-		textBoxResizeOnFixed($('.page:first .label_max5:visible .parallel-text.right'), 7);	//テキストボックスのサイズを修正する
-		textBoxResizeOnFixed($('.page:first .label_max6:visible .parallel-text.left'), 5);	//テキストボックスのサイズを修正する
-		textBoxResizeOnFixed($('.page:first .label_max6:visible .parallel-text.right'), 7);	//テキストボックスのサイズを修正する
+		for(var i = tbResizeArrayLength; i < tbResizeOnFixedArrayLength; i++){
+			textBoxResizeOnFixed($(tbResizeOnFixedArray[i - tbResizeArrayLength]), i);	//テキストボックスのサイズを修正する
+		}
 	}
 };
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<content>
+		<name>東京都</name>
+		<prefecture>東京都</prefecture>
+	</content>
+	<content>
+		<name></name>
+		<prefecture></prefecture>
+	</content>
+	<content>
+		<name>神奈川県</name>
+		<prefecture></prefecture>
+	</content>
+	<content>
+		<name>千葉県</name>
+		<prefecture></prefecture>
+	</content>
+	<content>
+		<name>埼玉県</name>
+		<prefecture></prefecture>
+	</content>
+	<content>
+		<name>茨城県</name>
+		<prefecture>茨城県</prefecture>
+	</content>
+	<content>
+		<name>栃木県</name>
+		<prefecture>栃木県</prefecture>
+	</content>
+	<content>
+		<name>群馬県</name>
+		<prefecture>群馬県</prefecture>
+	</content>
+	<content>
+		<name>群馬県</name>
+		<prefecture>群馬県</prefecture>
+	</content>
+</root>
