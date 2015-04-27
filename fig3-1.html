@@ -1,167 +1,99 @@
-<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>製品　追加、編集画面</title>
+<!-- タイトル -->
+<title>発注伝票 商品登録・編集</title>
+<!-- ウェブアプリケーション全体を対象とするスタイルシート -->
 <link href="css/borgstyle.css" rel="stylesheet" type="text/css">
-<!--link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css"-->
-<link href="css/pqgrid.min.css" rel="stylesheet" type="text/css">
-
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<!--script language="javascript" type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js" charset="utf-8"></script-->
-<script language="javascript" type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-
-<!--[if lt IE 9]>
-    <script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script>
-<![endif]-->
-<script language="javascript" type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+<!-- JQueryのグラフ作成プラグインを読み込む -->
 <link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
-<script language="javascript" type="text/javascript" href="js/jqplot.categoryAxisRenderer.min.js"></script>
-
-<link href="css/pqgrid.min.css" rel="stylesheet" type="text/css">
-<script language="javascript" type="text/javascript" src="js/pqgrid.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/rainbow.min.js"></script>
-
+<!-- JQueryの本体を読み込む -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<!-- JQueryの外部プラグインセット、JQuery UIを読み込む -->
+<link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
+<!-- 必要となるJavaScriptの処理をまとめたjsファイルを読み込む -->
+<script type="text/javascript" src="js/main.js"></script>
+<!-- JQuery UIの使用に必要となるJSファイル -->
+<script type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
+<!-- グラフ描画に必要となるJSファイル -->
+<script type="text/javascript" src="js/jqplot.categoryAxisRenderer.min.js"></script>
+<!-- グラフのプラグインのIE9対応JSの読み込み -->
+<!--[if lt IE 9]>
+    <script language="javascript" type="text/javascript" src="../js/excanvas.min.js"></script>
+<![endif]-->
 </head>
 <body>
+<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
 <div id = "container">
-	<div class = "main">
-   		<script type='text/javascript'>
-			//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
-			//の高さ分リストの高さを取る
-			//読み込み後
-			$(document).ready(function(){
-				//ボタンが押されたら一度だけ計算を行う
-				$('.page:first .main h1').one('click', function(){
-					//リストの高さを取得
-					listHeight = $('.page:first .ui-jqgrid-bdiv').height();
-					//全てのテキストボックスが取っている高さを格納する変数textBoxsHeight
-					textBoxsHeight = 0;
-					//each関数で高さを取っている全てのテキストボックスの高さを合計する
-					$('.page:first .line').each(function(){
-						//テキストボックスの高さをtextBoxsHeightに加える
-						textBoxsHeight += $(this).outerHeight();
-					});
-					//テキストボックス等を非表示にした際にリストが取る高さを変数
-					//newListHeightに格納する
-					newListHeight = listHeight + textBoxsHeight;
-				});
-				
-				$('.page:first .main h1').click(function(){
-				// 引数には開閉する速度を指定します
-				var divs = 0;
-				
-				//リストのみ表示されている状態であれば
-				if($('.page:first .ui-jqgrid-bdiv').height() != listHeight){
-				//リストの高さを戻す
-					$('.page:first .list').setGridHeight(listHeight);
-				}
-				$('.page:first .figs > div').not('.wrap-list').slideToggle('slow', function(){
-					//divsをカウントアップしていく
-					divs++;
-					//最後の処理であれば
-					if(divs >= $('.page:first .figs > div').not('.wrap-list').length){
-						//テキストボックス等が表示いなければ
-						if($(this).css('display') == 'none'){
-							//リストの高さをのばす
-							$('.page:first .list').setGridHeight(newListHeight);
-							divs = 0;	//divsの値をリセット
-						}
-					}
-				});
-			  });
-			});
-		</script>
-        <!-- 見出し部を開始 -->
-        <div id="header" class="clearfix">
-            <!-- ヘッダーのタイトル部分 -->
-            <div id="header-title"
-                ><!-- このページの要旨 --><h1>製品　追加、編集画面</h1
-                ><!-- ヘッダーのタイトル部分を閉じる --></div
-            ><!-- ヘッダーのボタン群 --><div id="header-buttons"class="variable-height" class="half_line"
-                ><!-- 閉じるボタン --><button class="backbutton button close-button" value="戻る" name="fig1" /
-                ><!-- リンクのリストダイアログを出すボタン --><button class="button setting-button" /
-            ><!-- ヘッダーのボタン群を閉じる --></div>
-        <!-- ヘッダー部分を終える -->
-        </div>
-		<div id = "fig3-1" class="figs">
-			<div class="line half_line parallel-text variable-height left">
- 				<label for="textfield">日付</label>
-  				<input type="text" name="date" id="edit_date" class="textbox_S date default_textbox" readonly>
-  			</div>
-  			<div class="parallel-text variable-height right">
-  				<label for="textfield2">更新日</label>
-  				<input type="text" name="update" id="update_update" class="textbox_S date default_textbox" readonly>
-  			</div>
-			<div class="line half_line parallel-text variable-height left">
- 				<label for="textfield">発注日</label>
-  				<input type="text" name="purchase_order_date" id="purchase_order_date" class="textbox_S date default_textbox" readonly>
-  			</div>
-  			<div class="parallel-text variable-height right">
-  				<label for="textfield2">仕入日</label>
-  				<input type="text" name="purchase_update" id="edit_update" class="textbox_S date default_textbox" readonly>
-  			</div>
-			<div class="line half_line parallel-text variable-height left">
- 				<label for="textfield">担当者</label>
-  				<select name="charger" id="charger" class="textbox_S default_textbox pulldown-menu person" readonly>
-                </select>
-  			</div>
-  			<div class="parallel-text variable-height right">
-  				<label for="textfield2">作成者</label>
-  				<select name="writer" id="writer" class="textbox_S default_textbox pulldown-menu person" readonly>
-			    	<option value="">入力、または選択してください</option>
-                </select>
-  			</div>
-  
-			<div class="line parallel-text variable-height left product-category">
-				<label for="textfield10">種別</label>
-				<select name="product_category" id="product_category"  class="textbox_S default_textbox pulldown-menu categories parts_height select-category" >
-			    	<option value="">入力、または選択してください</option>
-                </select>
-			</div>
+<!-- コンテンツ領域となるdivタグmain -->
+<div class = "main">
+<!-- JavaScriptのコードを記述 -->
+<script type='text/javascript'>
+//読み込み後
+$(document).ready(function(){
+});
 
-			<div class="single-line-text variable-height right product-select">
-				<label for="textfield9">製品名</label>
-				<select name="product" id="product"  class="textbox_L pulldown-menu product select-text-box default_textbox  parts_height">
-			    	<option value="">入力、または選択してください</option>
-                </select>
-			</div>
-  			<div class="line half_line parallel-text variable-height last_line left">
-  				<label for="textfield2">ロットNo</label>
-  				<input type="text" name="lot_number" id="lot_number" class="textbox_S default_textbox">
-  			</div>
-
-			<div class="half_line parallel-text variable-height last_line right">
- 				<label for="textfield">発注伝票No</label>
-  				<input type="text" name="purchase_order_number" id="purchase_order_number" class="textbox_S default_textbox" >
-  			</div>
-            <div id="status_buttons" class="line a_line single-line-text variable-height serial-number">
-        	    <div class="edit_buttons">
-
-           	    	<button name="stock_button" id="stock_button" class="button normal-button" title="選択した製品を入庫状態にします。" value="入庫">入庫</button>
-           	    	<button name="status_b_button" id="status_b_button" class="button normal-button" title="選択した商品をステータスBに設定します。" value="ステータスB">ステータスB</button>
-           	    	<button name="status_a_button" id="status_a_button" class="button normal-button" title="選択した商品をステータスAに設定します。" value="ステータスA">ステータスA</button>
-        	   		<button name="not_deliveried_button" id="not_deliveried_button" class="button normal-button" title="選択した商品を未納状態にします。" value="未納">未納</button>
-					<button name="normal_button" id="normal_button" class="button normal-button" title="選択した商品を通常状態にします。" value="ノーマル">ノーマル</button>
-               </div>
-            </div>
-			<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-			<div class="wrap-list">
-				<!-- JQ Gridによりリストを形成するtableタグ -->
-				<table id="fig3-1-list" class="list"></table>
-			</div>
-
-		</div>
-	</div>
+//JavaScriptのコード記述を終える
+</script>
+<!-- 見出し部を開始 -->
+<div id="header" class="clearfix">
+  <!-- ヘッダーのタイトル部分 -->
+  <!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
+  <div id="header-title"
+    ><!-- このページの要旨 --><h1>発注 商品登録・編集</h1
+    ><!-- ヘッダーのタイトル部分を閉じる --></div
+    ><!-- ヘッダーのボタン群 --><div id="header-buttons" class="variable-height"
+        	><span id="disp"></span
+            ><!-- 閉じるボタン --><button class=" button close-button" value="戻る" name="fig1" /
+            ><!-- リンクのリストダイアログを出すボタン --><button class="button setting-button" /
+            ><!-- ヘッダーのボタン群を閉じる --></div
+            ><!-- ヘッダー部分を終える --></div>
+<!-- fig3独自の記述を開始 -->
+<div id = "fig3-1" class="figs clearfix label_max5" style="height: auto;">
+ 			<div class="line half_line parallel-text variable-height left"
+            ><label for="textfield"
+            >発注日</label
+            ><input type="text" name="date" id="edit_date" class="textbox_S date "
+            ></div
+            ><div class="parallel-text variable-height right"
+            ><label for="textfield2"
+            >発注先</label
+            ><input type="text" name="customer" id="update_update" class=" pulldown-menu customer textbox_S" readonly
+            ></div
+            ><div class="line half_line parallel-text variable-height left"
+            ><label for="deliverdate"
+            >納品希望日</label
+            ><input type="text" name="deliverdate" id="deliverdate" class="textbox_S date "
+            ></div
+            ><div class="parallel-text variable-height right"
+            ><label for="scribedby"
+            >記入者</label
+            ><input type="text" name="scribedby" id="scribedby" class=" pulldown-menu person textbox_S" readonly
+            ></div
+            ><div class="line half_line parallel-text variable-height left"
+            ><label for="ammout"
+            >合計金額</label
+            ><input type="text" name="ammout" id="ammout" class="textbox_S"
+            ></div
+            ><div class="line before_list_line variable-height">
+    <div class="edit_buttons  clearfix" style="width: 50%;height: auto; float: right;">
+      <button type="button" name="for_fig3_add" id="add_button" class="button normal-button add-confirm" value="登" style="float:right; : 5px; height: 32px;">登</button>
+    </div>
+ </div>
+ <!-- 編集領域についての境界線 -->
+ <hr class="content-border" />
+ <div class="line before_list_line variable-height">
+    <div class="edit_buttons  clearfix" style="width: 50%;height: auto; float: left;">
+      <button type="button" name="fig3-1_add" id="add_button" class="button add-button add-record" value="登" style="float:left; : 5px; height: 32px;">登</button>
+    </div>
+ </div>
+  <!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+  <div class="wrap-list clearfix">
+    <!-- JQ Gridによりリストを形成するtableタグ -->
+    <table id="fig3-1-list" class="list clearfix"></table>
+    </div>
+</div>
+</div>
 </div>
 </body>
 </html>
-
-<!-- mod
-	 6/20 19:00
-     図形を追加
-     H.U
-     -->

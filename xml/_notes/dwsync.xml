@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="categories - Copy.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130501256280000000" remote="130510924200000000" Dst="0" />
-<file name="category.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130501256300000000" remote="130510924200000000" Dst="0" />
-<file name="categories.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130501256300000000" remote="130510924200000000" Dst="0" />
-<file name="customer.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130501256300000000" remote="130510924200000000" Dst="0" />
-<file name="person.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130501256300000000" remote="130510924200000000" Dst="0" />
-<file name="custom-type.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130501256300000000" remote="130510924200000000" Dst="0" />
-<file name="product.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130501256300000000" remote="130510924200000000" Dst="0" />
-<file name="product - Copy.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130501256300000000" remote="130510924200000000" Dst="0" />
+<file name="categories.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130745779851290396" remote="130627511400000000" Dst="0" />
+<file name="customer.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130745779853590396" remote="130627511400000000" Dst="0" />
+<file name="person.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130745779854520396" remote="130627511400000000" Dst="0" />
+<file name="prefecture.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130745779856190396" remote="130627511400000000" Dst="0" />
+<file name="product.xml" server="ddthink.com//var/www/html/test/borgsystem/" local="130745779856320396" remote="130627511400000000" Dst="0" />
+<file name="categories.xml" server="ddthink.com//var/www/html/test/borgsystem/new/" local="130745779851290396" remote="130745783400000000" Dst="0" />
+<file name="customer.xml" server="ddthink.com//var/www/html/test/borgsystem/new/" local="130745779853590396" remote="130745783400000000" Dst="0" />
+<file name="person.xml" server="ddthink.com//var/www/html/test/borgsystem/new/" local="130745779854520396" remote="130745783400000000" Dst="0" />
+<file name="prefecture.xml" server="ddthink.com//var/www/html/test/borgsystem/new/" local="130745779856190396" remote="130745783400000000" Dst="0" />
+<file name="product.xml" server="ddthink.com//var/www/html/test/borgsystem/new/" local="130745779856320396" remote="130745783400000000" Dst="0" />
 </dwsync>

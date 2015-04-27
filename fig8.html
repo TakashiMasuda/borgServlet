@@ -1,167 +1,10 @@
+<%@ page pageEncoding="UTF-8" %>
 <!doctype html>
 <html>
 <head>
 <!-- 文字コードはUTF-8 -->
 <meta charset="utf-8">
-<title>EasyTabs</title>
-<script type="text/javascript" src="js/main.js"></script>
-<!-- 初期化CSS -->
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
-<!-- ウェブアプリケーション全体を対象とするスタイルシート -->
-<link href="css/borgstyle.css" rel="stylesheet" type="text/css">
-<!-- Webフォント -->
-<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-<!-- JQueryの本体 -->
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<!-- JQueryデザインパーツライブラリのグラフのサンプル用のCSS -->
-<link href="css/style02.css" rel="stylesheet" type="text/css" media="all" />
-<!-- csvファイルから表を作るJQueryプラグインcsv2table -->
-<script src="js/jquery.csv2table-0.02-b-4.3.js" type="text/javascript" charset="utf-8"></script>
-<!-- グラフを作るJS -->
-<script src="js/ccchart.js" type="text/javascript" charset="utf-8"></script>
-<!-- JQueryのUIプラグインのCSS -->
-<!-- link type="text/css" media="screen" href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" / -->
-<!-- リストのプラグインのCSS -->
-<link type="text/css" media="screen" href="css/ui.jqgrid.css" rel="stylesheet" />
-<!-- JQueryのUIプラグイン。リストの描画に使用する -->
-<script type="text/javascript" src="js/jquery-ui-1.10.4.custom.js"></script>
-<!-- リストのプラグイン -->
-<script type="text/javascript" src="js/jquery.jqGrid.min.js" ></script>
-<!-- リストの日本語化JS -->
-<script type="text/javascript" src="js/grid.locale-ja.js" ></script><script src="js/jquery.hashchange.min.js" type="text/javascript"></script>
-<!-- タブを生成するプラグインのスタイルシート -->
-<link href='css/easytabs.css' rel='stylesheet' type='text/css'>
-<!-- タブを生成するプラグイン -->
-<script src="js/jquery.easytabs.js" type="text/javascript"></script>
-<!-- GoogleChartを使用しグラフを描画するためにGoogleのAPIを読み込む -->
-<script src="https://www.google.com/jsapi"></script>
-<!-- JavaScriptの記述を開始。タブの生成を行う -->
-<script type="text/javascript"> 
-    $(document).ready(function(){
-		//idがtab-containerのタグを外枠にしてタブを生成
-        $('#tab-container').easytabs();
-    });
-//JavaScriptの記述を終了
-</script>
-
-
-<!-- JavaScriptの記述を開始 -->
-<script type="text/javascript">
-$(function(){
-	//表とグラフを作る
-	$('#table').csv2table('media/dete_2.csv',{
-		/* 棒グラフをキャンバスに描く */
-		use : 'ccchart:bar#canvas_area',
-		/* グラフのタイトル */
-		title : '企業別売上',
-		/* 幅設定 */
-		width: 500,
-		/* 右padding */
-		paddingRight: 150,
-		xScaleYOffset: 50
-	});
-});
-//JavaScriptの記述を終了
-</script>
-
-<!-- JavaScriptの記述を開始。リストを描画する -->
-<script type="text/javascript">
-//HTMLの読み込みが完了したときの処理
-jQuery(document).ready(function() {
-	<!-- リストのダミーデータ -->
-	var mydata = [
-		//1番目
-		{comp_code:"CD1", comp_name:"株式会社シー", comp_kana:"カブシキカイシャシー"},
-		//2番目
-		{comp_code:"CD2", comp_name:"ビー株式会社", comp_kana:"ビーカブシキカイシャ"},
-		//3番目
-		{comp_code:"CD3", comp_name:"有限会社エー", comp_kana:"ユウゲンガイシャエー"},
-		//4番目
-		{comp_code:"CD4", comp_name:"有限会社エー", comp_kana:"ユウゲンガイシャエー"},
-		//5番目
-		{comp_code:"CD5", comp_name:"有限会社エー", comp_kana:"ユウゲンガイシャエー"}
-	];
-	
-	//idがlistのタグにグラフの描画をする
-	jQuery("#list").jqGrid({
-		//ダミーデータを使用する
-		data: mydata,
-		//ローカルのデータを使用する
-		datatype: "local",
-		//列の表示名を設定
-		colNames:['コード', '会社名', 'カナ', '列1', '列2'],
-		//列の設定
-		colModel:[
-			//1列目
-			{index:'comp_code', name:'comp_code', editable: true, edittype:"select", editoptions:{value:"1:☆;2:☆☆;3:☆☆☆;4:☆☆☆☆"}},
-			//2列目
-			{index:'comp_name', name:'comp_name'},
-			//3列目
-			{index:'comp_kana', name:'comp_kana'},
-			//4列目
-			{index:'comp_kana', name:'comp_kana'},
-			//5列目
-			{index:'comp_kana', name:'comp_kana'}
-		],
-		//高さ
-		height: 'auto',
-		//幅
-		width: 500,
-		//初期のソートの条件指定
-		sortname: 'comp_code',
-		//ソート順
-		sortorder: "ASC",
-		//複数選択をしない
-		multiselect: false,
-		//キャプション -->
-		caption: '会社一覧',
-		//セルの編集を可能にする -->
-		cellEdit: true,
-		//セルの変更をしたらクライアント側の表示だけ変更する -->
-		cellsubmit: 'clientArray'
-	});
-//HTML読み込み時の処理の記述を終える
-}); 
-//JavaScriptの記述を終える
-</script>
-
-<!-- GoogleChartによるグラフ描画の記述 -->
-<script>
-//GoogleからGoogleChartのコアを呼び出す
-google.load('visualization', '1', {packages:['corechart']});
-//関数をよみこむ
-google.setOnLoadCallback(drawChart);
-
-//関数drawChartを呼び出しグラフを描画する
-function drawChart() {
-//グラフに使うデータを定義
-  var chartData = [
-    ["企業名","売上"],	//項目軸ラベルと値ラベル
-    ["A",13159388],		//東京の人口データ
-    ["B",8865245],		//大阪の人口データ
-    ["C",9048331]		//神奈川の人口データ
- //   ["メテオテクノロジー",7410719],		//愛知の人口データ
-//    ["新日本企画",5071968],		//福岡の人口データ
-//    ["関東総合建築",5506419],		//北海道の人口データ
-//    ["フューチャーアーキテクトテクノロジスト",7194556]		//埼玉の人口データ
-  ];
-  options = {
-    width:590, //横幅
-    height: 400, //高さ
-	title: '受注別',	//グラフのタイトル
-	'titleTextStyle': { fontName: 'Meiryo UI', fontSize: 26},
-	yAxis : {baseline: 3}
-  }
-  //chartDataをセット
-  data = google.visualization.arrayToDataTable(chartData);
-  //グラフを描き出す場所をセット
-  chart = new google.visualization.BarChart(document.getElementById('chartPNG'));
-  //セットしたデータを書き出す
-  chart.draw(data);
-  // オプション設定する場合、変数optionsに値を設定し下のコードを使用
- chart.draw(data,options); 
-}
-</script>
+<title>統計</title>
 </head>
 <body>
 <!-- container -->
@@ -172,7 +15,6 @@ function drawChart() {
 		<script type="text/javascript">
 			//HTMLの読み込みが完了したら
    			 $(document).ready(function(){
-				setButtons();	//JQuery UIのボタンを配置する
 				//idがtab-containerのタグを外枠にしてタブを生成
    		    	$('#tab-container').easytabs({
 					//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
@@ -180,6 +22,13 @@ function drawChart() {
 					animate: false,		
 					updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
 				});
+				
+				//fig8のプルダウンメニューが変更されたら
+				$(document).on('change', '#fig8-0 .choose_unit', function(){
+					//グラフを書き換える
+					drawChart('fig8-0', 'line_chart', false, $(this).val());
+				});
+				
    			 });
 		</script>
         <!-- 見出し部を開始 -->
@@ -189,7 +38,7 @@ function drawChart() {
                 ><!-- このページの要旨 --><h1>統計</h1
                 ><!-- ヘッダーのタイトル部分を閉じる --></div
             ><!-- ヘッダーのボタン群 --><div id="header-buttons"class="variable-height" class="half_line"
-                ><!-- 閉じるボタン --><button class="backbutton button close-button" value="戻る" name="fig1" /
+                ><!-- 閉じるボタン --><button class=" button close-button" value="戻る" name="fig1" /
                 ><!-- リンクのリストダイアログを出すボタン --><button class="button setting-button" /
             ><!-- ヘッダーのボタン群を閉じる --></div>
         <!-- ヘッダー部分を終える -->
@@ -201,11 +50,12 @@ function drawChart() {
 				<!-- タブメニュー -->
 				<ul>
 				    <!-- タブメニューのボタン5項目 -->
-					<li id="default"><a href="#fig8-0">統計</a></li>
-					<li ><a href="#fig8-1">受注別</a></li>
-					<li ><a href="#fig8-2">発注別</a></li>
-					<li ><a href="#fig8-3">企業別一覧</a></li>
-					<li ><a href="#fig8-4">製品別別一覧</a></li>
+					<li id="default"><a href="#fig8-0">まとめ</a></li>
+					<li ><a href="#fig8-1">仕入</a></li>
+					<li ><a href="#fig8-2">売上</a></li>
+					<li ><a href="#fig8-5">利益</a></li>
+					<li ><a href="#fig8-3">企業詳細</a></li>
+					<li ><a href="#fig8-4">商品詳細</a></li>
 				<!-- タブメニューを閉じる -->
 				</ul>
 				<!-- タブパネル -->
@@ -214,29 +64,104 @@ function drawChart() {
 					<div id="fig8-0">
 						<!-- GoogleChartによりグラフが描画されるタグ -->
    	  		       <div id="fig8-0-graph" class="google-chart line_chart"></div>
+   	    			     <!-- 改行 -->
+   	    			     <br />
+						<div class="line a_line edit_buttons variable-height">
+							<label>日付の単位選択</label>
+							<!-- 年月日表示選択 -->
+							<select id="choose_unit_8-0" class="choose_unit">
+								<!-- 3項目 -->
+								<option value="year">年</option>
+								<option value="month">月</option>
+								<option value="day">日</option>
+							</select>
+						</div>
 					<!-- Fig.8-0を終了 -->
 					</div>
 					<!-- Fig.8-1 -->
-					<div id="fig8-1">
-						<!-- GoogleChartによりグラフが描画されるタグ -->
-   	    			     <div id="fig8-1-graph" class="google-chart bar_chart"></div>
-					<!-- Fig.8-1を終了 -->
-					</div>
+					<div id="fig8-1" class="label_max2" style="position:relative">
+						<div class="half_line parallel-text two-tb variable-height right clearfix" style="position: absolute; z-index: 9999; right: 5;"
+                        ><label for="filter-list"
+                            >期間</label
+                            ><span class="date filter-list filter-list-after"
+                            ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
+                            ></span
+                            ><label class="from-to" style="margin: 0 auto 0;" 
+                            >〜</label
+                            ><span class=" filter-list filter-list-before"
+                            ><input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" /
+                            ></span
+                            ></div
+                            ><div id="fig8-1-graph" class="google-chart column_chart"
+                            ></div>
+                    </div>
 					<!-- Fig.8-2 -->
-					<div id="fig8-2">
-						<!-- GoogleChartによりグラフが描画されるタグ -->
-   				         <div id="fig8-2-graph" class="google-chart  bar_chart has-table"></div>
+					<div id="fig8-2"  class="label_max2" style="position:relative"
+                    ><div class="half_line parallel-text two-tb variable-height right clearfix" style="position: absolute; z-index: 9999; right: 5;"
+                    ><label for="filter-list"
+                    >期間</label
+                    ><span class="date filter-list filter-list-after"
+                    ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
+                    ></span
+                    ><label class="from-to" style="margin: 0 auto 0;" 
+                    >〜</label
+                    ><span class=" filter-list filter-list-before"
+                    ><input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" /
+                    ></span
+                    ></div><div id="fig8-2-graph" class="google-chart  column_chart has-table clearfix"></div>
 						<!-- GoogleChartにより表が描画されるタグ -->
-   				         <div class="table lower" id="fig8-2-table"></div>
+   				         <div class="table margin_top clearfix" id="fig8-2-table"></div>
+					<!-- タブパネル3つめを閉じる -->
+					</div>
+					<!-- Fig.8-5 -->
+					<div id="fig8-5" class="label_max2" style="position:relative"
+                    ><div class="half_line parallel-text two-tb variable-height right clearfix" style="position: absolute; z-index: 9999; right: 5;"
+                    ><label for="filter-list"
+                    >期間</label
+                    ><span class="date filter-list filter-list-after"
+                    ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
+                    ></span
+                    ><label class="from-to" style="margin: 0 auto 0;" 
+                    >〜</label
+                    ><span class=" filter-list filter-list-before"
+                    ><input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" /
+                    ></span
+                    ></div>
+						<!-- GoogleChartによりグラフが描画されるタグ -->
+   				         <div id="fig8-5-graph" class="google-chart  column_chart clearfix"></div>
+						<!-- GoogleChartにより表が描画されるタグ -->
+   				         <div class="table margin_top clearfix" id="fig8-2-table"></div>
 					<!-- タブパネル3つめを閉じる -->
 					</div>
 					<!-- Fig.8-3 -->
-					<div id="fig8-3">
-   		 		    	<!-- 見出し -->
-						<div id="sub_header" class="line a_line edit_buttons variable-height">
-							<button class="button  normal-button list-sort-button sort-by-year-button" value="年度別">年度別</button>			
-							<button class="button  normal-button list-sort-button sort-by-month-button" value="月別">月別</button>
-						</div>
+					<div id="fig8-3" style="position:relative" class="label_max6"
+                    ><div class="line half_line parallel-text variable-height left"
+            ><label for="deliverdate"
+            >都道府県絞込</label
+            ><input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu prefecture textbox_S"
+            ></div
+            ><div class="parallel-text variable-height right"
+            ><label for="deliverdate"
+            >種別絞込</label
+            ><input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu categories textbox_S"
+            ></div
+            ><div class="line half_line parallel-text variable-height left"
+            ><label for="scribedby"
+            >製品絞込</label
+            ><input type="text" name="scribedby" id="scribedby" class=" pulldown-menu product textbox_S"
+            ></div
+            ><div class="half_line parallel-text two-tb variable-height right"
+            ><label for="filter-list"
+            >期間</label
+            ><span class="date filter-list filter-list-after"
+            ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
+            ></span
+            ><label class="from-to" style="margin: 0 auto 0;" 
+            >〜</label
+            ><span class=" filter-list filter-list-before"
+            ><input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" /
+            ></span
+            ></div>
 						<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
 						<div class="wrap-list">
 							<!-- JQ Gridによりリストを形成するtableタグ -->
@@ -248,14 +173,35 @@ function drawChart() {
    					    <!-- Fig8-3を終える -->
 						</div>
 			   	    <!-- Fig8-4 -->
-					<div id="fig8-4">
-   			     	<!-- 見出し -->
-						<div id="sub_header" class="line a_line edit_buttons variable-height">
-							<button class="button  normal-button list-sort-button sort-by-year-button" value="年度別">年度別</button>			
-							<button class="button  normal-button list-sort-button sort-by-month-button" value="月別">月別</button>
-						</div>
-						<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-						<div class="wrap-list">
+					<div id="fig8-4" style="position:relative" class="label_max6"
+                    ><div class="line half_line parallel-text variable-height left"
+            ><label for="deliverdate"
+            >都道府県絞込</label
+            ><input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu prefecture textbox_S"
+            ></div
+            ><div class="parallel-text variable-height right"
+            ><label for="deliverdate"
+            >種別絞込</label
+            ><input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu categories textbox_S"
+            ></div
+            ><div class="line half_line parallel-text variable-height left"
+            ><label for="scribedby"
+            >製品絞込</label
+            ><input type="text" name="scribedby" id="scribedby" class=" pulldown-menu product textbox_S" readonly
+            ></div
+            ><div class="half_line parallel-text two-tb variable-height right"
+            ><label for="filter-list"
+            >期間</label
+            ><span class="date filter-list filter-list-after"
+            ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
+            ></span
+            ><label class="from-to" style="margin: 0 auto 0;" 
+            >〜</label
+            ><span class=" filter-list filter-list-before"
+            ><input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" /
+            ></span
+            ></div
+            ><div class="wrap-list">
 							<!-- JQ Gridによりリストを形成するtableタグ -->
 							<table id="fig8-4-list" class="list"></table>	
 						</div>

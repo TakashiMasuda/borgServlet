@@ -2,8 +2,9 @@
     We highly recommend using JQuery ThemeRoller instead  
 */
 .ui-dropdownchecklist {
-	font-size: medium;
-	color: black;
+	height: 25px;		/* フォントに合った高さにする */
+	font-size: 8pt;	/* フォントの大きさを8ptに設定 */
+	color: #888;	/* フォントの色を灰色にする */
 	border: solid 1px #eee;	/* 薄いグレーの罫線で囲む */
 }
 .ui-dropdownchecklist-selector {
@@ -43,10 +44,9 @@
 	font-size: 16px;
 	background: #FFF !important;
 }
-/*.ui-dropdownchecklist-text {
-	font-size: 14px;*?
-	/* line-height: 20px; */
-/*}*/
+.ui-dropdownchecklist-text {
+	color: #888;	/* フォントを灰色にする */
+}
 .ui-dropdownchecklist-group {
 	padding: 1px 2px 2px 2px;
 }

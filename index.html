@@ -1,28 +1,36 @@
 <!doctype html>
 <html>
 <head>
+<!-- 全体に適用されるCSS -->
 <link href="css/borgstyle.css" rel="stylesheet">
-<!-- スマートフォン -->
-<link href="css/smartphone.css" rel="stylesheet" type="text/css" media="only screen and (max-width:320px)">
-<!-- タブレット -->
-<link href="css/tablet.css" rel="stylesheet" type="text/css" media="only screen and (min-width:321px) and (max-width:768px)">
-<!-- デスクトップ -->
-<link href="css/desktop.css" rel="stylesheet" type="text/css" media="only screen and (min-width:769px)">
+<!-- UTF-8エンコード -->
 <meta charset="utf-8">
-<!--meta name="viewport" content="width=device-width"-->
+<!-- ビューポートを設定。端末の幅を取得して画面の幅をセットする -->
+<meta name="viewport" content="width=device-width">
+<!-- jQueryの本体 -->
 <script language="javascript" type="text/javascript" src="js/jquery-1.11.0.min.js" charset="utf-8"></script>
 <title>株式会社ボルグシステム</title>
 </head>
 <body>
+<!-- 画面の幅を取得するタグ -->
 <div id="container">
+<!-- コンテンツの幅を規定するタグ -->
 <div class="main">
+	<!-- ページ見出し -->
 	<h1>BORG SYSTEM</h1>
+	<!-- submitボタンを押すことでトップページへ遷移する -->
 	<form action="fig1.html">
-    	ID<input id="user-id" class="parts_height default_textbox"type="text"  />
-        パスワード<input id="user-password" class="parts_height default_textbox" type="text" />
-        <input type="submit" id="user-login" class="parts_height" value="ログイン" />
+		<!-- ID入力欄 -->
+    	ID<input id="user-id" class=" rounded_corners"type="text"  />
+		<!-- パスワード入力欄 -->
+        パスワード<input id="user-password" class=" rounded_corners" type="text" />
+		<!-- ログインボタン -->
+        <input type="submit" id="user-login" class="" value="ログイン" />
+	<!-- formを閉じる -->
     </form>
+<!-- mainを閉じる -->
 </div>
+<!-- containerを閉じる -->
 </div>
 </body>
 </html>
