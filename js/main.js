@@ -3192,7 +3192,6 @@ function endLoad(){
 		//最後にコンテンツを表示する
 		$('#container').css('visibility', 'visible');
 	 } );			
-
 }
 
 /* 

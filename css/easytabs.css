@@ -1,4 +1,6 @@
-/* EasyTabs蜈ｬ蠑上し繝ｳ繝励ΝCSS */
+@charset "utf-8";
+
+/* EasyTabs公式サンプルCSS */
 	#tab-container ul { margin: 0; padding: 0; }
 	#tab-container ul li { display: inline-block; background: #ccc; border: solid 1px; border-bottom: none; }
 	#tab-container ul li a { display: block; padding: 5px; outline: none; color: #000;}
@@ -6,52 +8,54 @@
 	#tab-container ul li.active { background: #fff; padding-top: 6px; position: relative; top: 1px; }
 	#tab-container ul li a.active { font-weight: bold; }
 	#tab-container .panel-container { border: solid 1px; padding: 0px; }
-/* 縺薙％縺ｾ縺ｧ蜈ｬ蠑上し繝ｳ繝励ΝCSS */
+/* ここまで公式サンプルCSS */
 
-/* 繧ｿ繝門�菴薙ｒ蛹��繧ｿ繧ｰ */
+/*
+ * クラス:#tab-container
+ * 概要  :タブ全体を包むタグ
+ * 作成者:T.M
+*/
 #tab-container{
-	width: 100%;		/* 蟷�*/
-	/*max-width: 600px;*/	/* 譛�､ｧ蟷�*/
-	/*min-width: 300px;*/	/* 譛�ｰ丞ｹ�*/
-	margin: 0 auto 0;	/* 荳ｭ螟ｮ蟇�○ */
-	padding: 0 0;		/* 蟾ｦ蜿ｳ0%縺ｮpadding */
+	width: 100%;		/* 幅を外枠一杯に取る */
+	margin: 0 auto 0;	/* 中央寄せにする */
+	padding: 0 0;		/* 余分なpaddingをなくす */
 }
 /*
- * 繧ｯ繝ｩ繧ｹ:panel-container
- * 讎りｦ� :繧ｿ繝悶�繝代ロ繝ｫ驛ｨ蛻�
- * 菴懈�譌･:2014.07.04
- * 菴懈�閠�T.M
+ * クラス:panel-container
+ * 概要  :タブのパネル部分
+ * 作成日:2014.07.04
+ * 作成者:T.M
 */
 .panel-container{
-	width: auto;		/* 蟷�*/
-	padding: 20px;		/* 譫��蜀��縺ｫ菴咏區 */
-	background: #FFF;	/* 閭梧勹濶ｲ繧堤區縺ｫ縺吶ｋ */
+	width: 100%;		/* 幅 */
+	padding: 20px;		/* 枠の内側に余白 */
+	background: #FFF;	/* 背景色を白にする */
 }
-/* 繝代ロ繝ｫ縺ｮ荳ｭ縺ｮ蜷��逶ｮ */
+
+/*
+ * クラス:.panel-container > *
+ * 概要  :タブのパネルの中の各項目(画面)
+ * 作成者:T.M
+*/
 .panel-container > *{
-	padding: 1% 0.5%;	/* 蜈ｨ菴鍋噪縺ｫ菴咏區 */
-	margin: 0 auto 0;	/* 荳ｭ螟ｮ蟇�○*/
+	padding: 1% 0.5%;	/* 全方向に余白を付ける */
+	margin: 0 auto 0;	/* 中央に寄せる */
+}
+
+/*
+ * クラス:.#tab-container ul li 
+ * 概要  :タブのメニューボタン(インデックス)
+ * 作成者:T.M
+*/
+#tab-container ul li {
+	border-top-left-radius: 5px 5px;/* 左上角を丸くする */
+	border-top-right-radius: 5px 5px;/* 右上角を丸くする */
 }
 /*
- * 繧ｯ繝ｩ繧ｹ:list-wrap
- * 讎りｦ� :繝ｪ繧ｹ繝医ｒ蝗ｲ繧�棧
- * 菴懈�譌･:2014.07.04
- * 菴懈�閠�T.M
+ * クラス:.#tab-container ul li a
+ * 概要  :タブのメニューボタンのテキスト部分
+ * 作成者:T.M
 */
-.list-wrap{
-	clear: both;	/* 蝗槭ｊ霎ｼ縺ｿ繧帝亟豁｢ */
-	width: 100%;	/* 蟷�*/
-}
-/* 繝ｪ繧ｹ繝�*/
-#gbox_list{
-	margin: 0 auto 0;	/* 荳ｭ螟ｮ縺ｫ蟇�○繧�*/
-}
-/* 繧ｿ繝悶�繝｡繝九Η繝ｼ繝懊ち繝ｳ */
-#tab-container ul li {
-	border-top-left-radius: 5px 5px;/* 蟾ｦ荳願ｧ偵ｒ荳ｸ縺上☆繧�*/
-	border-top-right-radius: 5px 5px;/* 蜿ｳ荳願ｧ偵ｒ荳ｸ縺上☆繧�*/
-}
-/* 繧ｿ繝悶�繝｡繝九Η繝ｼ繝懊ち繝ｳ縺ｮ繝�く繧ｹ繝磯Κ蛻�*/
 #tab-container ul li a{
-	text-decoration: none;			/* 荳狗ｷ壹ｒ豸医☆ */
+	text-decoration: none;			/* 下線を消す */
 }

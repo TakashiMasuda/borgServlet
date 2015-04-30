@@ -1,239 +1,136 @@
 
 <html>
-<head>
-<title>株式会社ボルグシステム</title>
-<meta charset="utf-8">
-<!-- iPhone、iPadを認識する -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<!-- メディアクエリーの記述 -->
-<!-- viewportの設定により、端末の幅を初期解像度とする -->
-<meta name="viewport" content="width=device-width">
-<!-- メディアクエリーの記述終了 -->
-<!-- 直接スタイルシートを記述 -->
-<style>
-/* ローディング画面のタグ */
-#loading {
-    width: 240px; /* gif画像の幅 */
-    height: 130px; /* gif画像の高さ */
-    margin: -85px 0 0 -140px; /* gif画像を画面中央に */
-    padding: 20px; /* gif画像を大きく */
-    background: #BABABA; /* gif画像の背景色 */
-    opacity: 0.9; /* 透過させる */
-    border-radius: 15px; /* 丸角 */
-    position: fixed; /* gif画像をスクロールさせない */
-    left: 50%; /* gif画像を画面横中央へ */
-    top: 50%; /* gif画像を画面縦中央へ */
-	text-align: center; /* 要素を皆中央に揃える */
-	font-family:sans-serif, Verdana;	/* フォントを設定 */
-}
-/* ロード画面の文章 */
-#loading p{
-	color: #FFF;			/* 白抜き文字 */
-	font-weight: bold;		/* ボールド */
-	font-size: 14px;		/* 標準より小さめのフォント */
-	margin-bottom: 0;		/* 下marginをなくす */
-}
-#loading #loading-notice{
-	font-size: 12px;		/*  */
-	font-weight: normal;	/*  */
-}
- /*
- * クラス:modal
- * 概要  :モーダルダイアログ
- * 作成日:2014.07.11
- * 作成者:T.M
- */
-.modal{
-	display: none;	/* 非表示にしておく */
-}
-/* スタイルシートの記述終了 */
-</style>
-<!-- JavaScriptの記述を開始 -->
-<script>
-//画像のオブジェクトを作成
-image = new Image();
-//ローディング画像をあらかじめロードする
-image.src = 'images/gif-load.gif';
-</script>
-</head>
-<body>
-<!-- 初期ロード時はcontainerを非表示にしておく -->
-<div id = "container" style="visibility: hidden">
-	<!-- 後に呼ばれる各ページと同じく、main以下をpageで囲む -->
-	<div class="page">
-    	<!-- コンテンツの記述が始まるmainのタグ -->
-		<div class = "main">
-        	<!-- fig1の記述を開始 -->
-			<div id = "fig1" class="figs">
-            	<!-- タイトル -->
-				<h1>ボルグシステム</h1>
-                <!-- 1行目のボタン群。他より大きくなる -->
-				<div class="fig1_buttons first">
-                	<!-- 受注伝票へリンクするボタン -->
-					<button value= "受注" class = "top_page_button left callpage button button_fontsize" name="fig2">受注</button>
-                	<!-- 発注伝票へリンクするボタン -->
-					<button value= "発注" class = "top_page_button right callpage button button_fontsize" name="fig3">発注</button>
-				</div>
-                <!-- 2行目のボタン群 -->
-				<div class="fig1_buttons">
-                	<!-- 在庫一覧へリンクするボタン -->
-					<button value= "在庫一覧" class = "top_page_button left callpage button button_fontsize" name="fig7">在庫一覧</button>
-                	<!-- 取引先登録へリンクするボタン -->
-					<button value= "取引先登録" class = "top_page_button right callpage button button_fontsize" name="fig4">取引先登録</button>
-				</div>
-               	<!-- 3行目のボタン -->
-				<div class="fig1_buttons">
-                	<!-- 製品登録へリンクするボタン -->
-					<button value= "製品登録" class = "top_page_button left callpage button button_fontsize" name="fig5">製品登録</button>
-                	<!-- 統計へリンクするボタン -->
-					<button value= "統計" class = "top_page_button right callpage button button_fontsize" name="fig8">統計</button>
-				</div>
-               	<!-- 4行目のボタン -->
-				<div class="fig1_buttons">
-                	<!-- 出入庫管理へリンクするボタン -->
-					<button value= "出入庫" class = "top_page_button left callpage button button_fontsize" name="fig12">出入庫</button>
-                	<!-- 出入金管理へリンクするボタン -->
-					<button value= "出入金" class = "top_page_button right callpage button button_fontsize" name="fig13">出入金</button>
-				</div>
-               	<!-- 4行目のボタン -->
-				<div class="fig1_buttons">
-                	<!-- クレーム管理へリンクするボタン -->
-					<button value= "クレーム管理" class = "top_page_button left callpage button button_fontsize" name="fig11">クレーム</button>
-					<div class="half_buttons top_page_button left">
-	                	<!-- 管理者画面へリンクするボタン -->
-						<button value= "管理者" class = "top_page_button left callpage button button_fontsize" name="fig9">管理者</button>
-	                	<!--メール機能へリンクするボタン -->
-						<button value= "メール機能" class = "top_page_button right callpage button button_fontsize" name="fig10">メール</button>
+	<head>
+		<title>株式会社ボルグシステム</title>
+		<meta charset="utf-8">
+		<!-- iPhone、iPadを認識する -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!-- メディアクエリーの記述 -->
+		<!-- viewportの設定により、端末の幅を初期解像度とする -->
+		<meta name="viewport" content="width=device-width">
+		<!-- メディアクエリーの記述終了 -->
+		<!-- ローディング画面用CSSファイルを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/preload.css" />
+		<!-- JavaScriptの記述を開始 -->
+		<script>
+			//画像のオブジェクトを作成
+			image = new Image();
+			//ローディング画像をあらかじめロードする
+			image.src = 'images/gif-load.gif';
+		</script>
+	</head>
+	<body>
+		<!-- 初期ロード時はcontainerを非表示にしておく -->
+		<div id="container">
+			<!-- 後に呼ばれる各ページと同じく、main以下をpageで囲む -->
+			<div class="page">
+		    	<!-- コンテンツの記述が始まるmainのタグ -->
+				<div class = "main">
+		        	<!-- fig1の記述を開始 -->
+					<div id = "fig1" class="figs">
+		            	<!-- タイトル -->
+						<h1>ボルグシステム</h1>
+		                <!-- 1行目のボタン群。他より大きくなる -->
+						<div class="fig1_buttons first">
+		                	<!-- 受注伝票へリンクするボタン -->
+							<button value= "受注" class = "top_page_button left callpage button" name="fig2">受注</button>
+		                	<!-- 発注伝票へリンクするボタン -->
+							<button value= "発注" class = "top_page_button right callpage button" name="fig3">発注</button>
+						</div>
+		                <!-- 2行目のボタン群 -->
+						<div class="fig1_buttons">
+		                	<!-- 在庫一覧へリンクするボタン -->
+							<button value= "在庫一覧" class = "top_page_button left callpage button" name="fig7">在庫一覧</button>
+		                	<!-- 取引先登録へリンクするボタン -->
+							<button value= "取引先登録" class = "top_page_button right callpage button" name="fig4">取引先登録</button>
+						</div>
+		               	<!-- 3行目のボタン -->
+						<div class="fig1_buttons">
+		                	<!-- 製品登録へリンクするボタン -->
+							<button value= "製品登録" class = "top_page_button left callpage button" name="fig5">製品登録</button>
+		                	<!-- 統計へリンクするボタン -->
+							<button value= "統計" class = "top_page_button right callpage button" name="fig8">統計</button>
+						</div>
+		               	<!-- 4行目のボタン -->
+						<div class="fig1_buttons">
+		                	<!-- 出入庫管理へリンクするボタン -->
+							<button value= "出入庫" class = "top_page_button left callpage button" name="fig12">出入庫</button>
+		                	<!-- 出入金管理へリンクするボタン -->
+							<button value= "出入金" class = "top_page_button right callpage button" name="fig13">出入金</button>
+						</div>
+		               	<!-- 5行目のボタン -->
+						<div class="fig1_buttons">
+		                	<!-- クレーム管理へリンクするボタン -->
+							<button value= "クレーム管理" class = "top_page_button left callpage button" name="fig11">クレーム</button>
+							<div class="half_buttons top_page_button right">
+			                	<!-- 管理者画面へリンクするボタン -->
+								<button value= "管理者" class = "top_page_button left callpage button" name="fig9">管理者</button>
+			                	<!--メール機能へリンクするボタン -->
+								<button value= "メール機能" class = "top_page_button right callpage button" name="fig10">メール</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<!-- モーダルダイアログの中身 -->
-<div id="modal" class="modal">
-	<!-- リンクのリスト -->
-    <ul id="link-list">
-    	<!-- リンクの項目 全8項目 -->
- 	   	<li name="fig2" class="callpage link-button"><span><nobr>受注伝票</nobr></span></li>
- 	   	<li name="fig3" class="callpage link-button"><span><nobr>発注伝票</nobr></span></li>
-	    <li name="fig7" class="callpage link-button"><span><nobr>在庫一覧</nobr></span></li>
-	    <li name="fig4" class="callpage link-button"><span><nobr>取引先登録</nobr></span></li>
-	    <li name="fig5" class="callpage link-button"><span><nobr>製品登録</nobr></span></li>
-	    <li name="fig8" class="callpage link-button"><span><nobr>統計</nobr></span></li>
-  	    <li name="fig9" class="callpage link-button"><span><nobr>管理者</nobr></span></li>
-  	    <li name="fig10" class="callpage link-button"><span><nobr>メール</nobr></span></li>
-  	    <li name="fig11" class="callpage link-button"><span><nobr>クレーム</nobr></span></li>
-  	    <li name="fig12" class="callpage link-button"><span><nobr>入出庫</nobr></span></li>
-  	    <li name="fig13" class="callpage link-button"><span><nobr>入出金</nobr></span></li>
-	<!-- リストの記述を終了 -->
-    </ul>
-<!-- リストの編集確認ダイアログ終了 -->
-</div>
-<!-- リストの直接入力ダイアログ -->
-<div id="direct-input-dialog" class="modal">
-	<input type="text" id="direct-input-text" />
-<!-- リストの直接入力ダイアログ -->
-</div>
-<div id="chooseListSave" class="modal">
-<!-- ダイアログの記述を終了 -->
-</div>
-<!-- リストの更新決定確認ダイアログ -->
-<div id="updateList" class="modal">
-<!-- ダイアログのメッセージ -->
-	<p>編集したリストの項目を保存します。</p>
-	<small>※現在編集中の行は保存されません。保存する場合はキャンセルを押して戻り、他の行をクリックしてください。</small>
-<!-- ダイアログの記述を終了 -->
-</div>
-<!-- ローディング画面用の画像のためのタグ -->
-<div id="loading">
-	<!-- ローディング画面用gif画像 -->
-	<img src="images/gif-load.gif" />
-    <p id="loading-title">ボルグシステム販売管理システム</p>
-    <p id="loading-notice">起動中です。</p>
-</div>
-<!-- jQueryの本体 -->
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<!-- 表やグラフの生成のためにGoogleのAPIを読み込む -->
-<script src="https://www.google.com/jsapi"></script>
+		<!-- リンクリストのモーダルダイアログの中身 -->
+		<div id="modal" class="modal">
+			<!-- リンクのリスト -->
+		    <ul id="link-list">
+		    	<!-- リンクの項目 全11項目 -->
+		 	   	<li name="fig2" class="callpage link-button"><span><nobr>受注伝票</nobr></span></li>
+		 	   	<li name="fig3" class="callpage link-button"><span><nobr>発注伝票</nobr></span></li>
+			    <li name="fig7" class="callpage link-button"><span><nobr>在庫一覧</nobr></span></li>
+			    <li name="fig4" class="callpage link-button"><span><nobr>取引先登録</nobr></span></li>
+			    <li name="fig5" class="callpage link-button"><span><nobr>製品登録</nobr></span></li>
+			    <li name="fig8" class="callpage link-button"><span><nobr>統計</nobr></span></li>
+		  	    <li name="fig9" class="callpage link-button"><span><nobr>管理者</nobr></span></li>
+		  	    <li name="fig10" class="callpage link-button"><span><nobr>メール</nobr></span></li>
+		  	    <li name="fig11" class="callpage link-button"><span><nobr>クレーム</nobr></span></li>
+		  	    <li name="fig12" class="callpage link-button"><span><nobr>入出庫</nobr></span></li>
+		  	    <li name="fig13" class="callpage link-button"><span><nobr>入出金</nobr></span></li>
+			<!-- リストの記述を終了 -->
+		    </ul>
+		<!-- リストの編集確認ダイアログ終了 -->
+		</div>
+		<div id="chooseListSave" class="modal">
+		<!-- ダイアログの記述を終了 -->
+		</div>
+		<!-- ローディング画面用の画像のためのタグ -->
+		<div id="loading">
+			<!-- ローディング画面用gif画像 -->
+			<img src="images/gif-load.gif" />
+		    <p id="loading-title">ボルグシステム販売管理システム</p>
+		    <p id="loading-notice">起動中です。</p>
+		</div>
+		<!-- jQueryの本体 -->
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<!-- 表やグラフの生成のためにGoogleのAPIを読み込む -->
+		<script src="https://www.google.com/jsapi"></script>
+		<!-- 多機能ライブラリ jQuery UIを読み込む -->
 		<script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
+		<!-- プルダウン形式のチェックボックスを実装するライブラリを読み込む -->
 		<script type="text/javascript" src="js/ui.dropdownchecklist-1.4-min.js"></script>
+		<!-- 表のプラグインjqGridを読み込む -->
 		<script type="text/javascript" src="js/jquery.jqGrid.src.js"></script>
+		<!-- jqGridの日本語ローカライズプラグインを読み込む -->
 		<script type="text/javascript" src="js/grid.locale-ja.js"></script>
+		<!-- jqGridのセル編集機能プラグインを読み込む -->
 		<script type="text/javascript" src="js/grid.celledit.js"></script>
+		<!-- jqGridのインライン編集機能プラグインを読み込む -->
 		<script type="text/javascript" src="js/grid.inlinedit.js"></script>
+		<!-- フォーム整形プラグインformlyを読み込む -->
 		<script type="text/javascript" src="js/formly.js"></script>
+		<!-- タブ作成プラグインeasytabsを読み込む -->
 		<script type="text/javascript" src="js/jquery.easytabs.js"></script>
+		<!-- ツールチップのプラグインpowertipを読み込む -->
 		<script type="text/javascript" src="js/jquery.powertip.min.js"></script>
+		<!-- jQuery UIの日本語ローカライズプラグインを読み込む -->
 		<script type="text/javascript" src="js/jquery-ui-i18n.js"></script>
+		<!-- 自己定義のデータをまとめたファイルを読み込む。 -->
 		<script type="text/javascript" src="js/main.js"></script>
-
-
-<script type="text/javascript">	
-
-	//GoogleからGoogleChartのコアを呼び出す
-	google.load('visualization', '1', {packages:['corechart']});
-	//Googleから表出力のAPIを呼び出す
-	google.load('visualization', '1', {packages:['table']});
-	
-	//読み込むJavaScriptファイルのパスを格納する配列
-	var jsFiles = new Array();
-	//配列にJavaScriptファイルのパスを格納する。全10個
-	jsFiles = [
-
-	];
-	
-	//読み込むCSSファイルのパスを格納する配列
-	var cssFiles = new Array();
-	//配列にCSSファイルのパスを格納する。全7個
-	cssFiles = [
-		'css/borgstyle.css',
-		'css/jquery-ui-1.9.2.custom.min.css',
-		'css/jquery.powertip-light.min.css',
-		'css/ui.dropdownchecklist.standalone.css',
-		'css/easytabs.css',
-		'css/formly.css',
-		'css/ui.jqgrid.css'
-	];
-	
-	//headタグをjQueryオブジェクトとして変数に格納	
-	var $head = $('head');
-		
-
-	$(window).load(function(){
-		
-		//for文でcssの配列のパスを読み出しながらcssファイルを全部読み込む
-		for(var i = 0; i < cssFiles.length; i++){
-			//linkタグを生成し、必要な属性と値を設定してheadタグに追加する
-			$head.append($('<link />')
-				.attr('rel', 'stylesheet')
-				.attr('type', 'text/css')
-				.attr('href', cssFiles[i])
-			)
-		}
-
-		//for文でJavaScriptファイルの配列のパスをを読み出しながらファイルを全部読み込む
-		for(var i = 0; i < jsFiles.length; i++){
-			//Ajax通信
-			$.ajax({
-				async: false,		//同期通信を行いファイルを同時に読み込まないようにする
-				dataType: 'script',	//JavaScriptファイルを読み込む
-				url: jsFiles[i],	//配列のソースを使う
-				cache: true			//キャッシュを有効にする
-			});
-		}
-
-		var parcentHeight	= 0.95;					//高さの倍率
-		var windowHeight 	= $(window).height();	//画面の高さを求める
-		//実際にセットする高さを求める
-		var setHeight		= windowHeight * parcentHeight;
-		//コンテンツ部分の高さを設定
-		//$('#fig1').css('height', setHeight);
-		//jQuery UIのボタンをセットする。同時ローディング画面も終了
-		setButtons(true);				
-	});
-//JavaScriptのコード記述を終える
-</script>
-</body>
+		<!-- トップページ読み込みの処理のファイルを読み込む -->
+		<script type="text/javascript" src="js/toppageload.js"></script>	
+	</body>
 </html>
