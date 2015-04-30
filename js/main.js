@@ -927,8 +927,11 @@
  * 作成者:T.Masuda
 */
 function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
-	var objRuleLength = hasObjRuleFigs.length;
+	//objRuleが必要な画面をリストアップした配列hasObjRuleFigsの要素数を取得する。
+	var objRuleLength = hasObjRuleFigs.length;	
+	//必要なだけのobjRuleができるまで繰り返す。
 	for(var i = 0; i < objRuleLength; i++){
+	　//各画面ごとのobjRuleを作成する。
 		objRule[hasObjRuleFigs[i]] = {
 				data: listData[hasObjRuleFigs[i]],
 				datatype: "local",
@@ -949,6 +952,7 @@ function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
 					editingCol = iCol;		//編集中のセルの列番号を保存
 					editingValue = value;	//編集中のセルの値を保存
 				},
+				//キー「ondblClickRow」の値にondblClickRowEventsに格納された各画面ごとの無名関数を登録する。
 				ondblClickRow:ondblClickRowEvents[hasObjRuleFigs[i]]
 			};
 	}
@@ -2004,7 +2008,7 @@ function dropdownResize(){
 		afterCallPageEachPages(contentUrl);	//callPage後のページごとの処理を行う。
 		afterCallPageLayoutFix();			//動的に寸法がかわるパーツの初期の調整を行う。
 	}
-	
+
 	/* 関数名:function afterCallPageSetContent()
 	 * 引数　:なし
 	 * 戻り値:なし
@@ -2106,13 +2110,14 @@ function dropdownResize(){
 	 * 概要  :クローズボックスが押されたときの処理
 	 * 作成日:14.07.10
 	 * 作成者:T.Masuda
-	*/	
-	var onPageClose = function(){
+	*/
+	  function onPageClose(){
+		 //現在表示中のページのIDを取得する。
 		var pageId = $('.page:first div[id *= "fig"]:first', document).attr('id');
 		if(isListChanged(isChange, pageId)){		//リストが編集されていたら
-			saveList();						//ダイアログを出し編集結果を保存するか選択
-		} else {
-			disappearPage();//ページをそのまま消す
+			saveList();			//ダイアログを出し編集結果を保存するか選択
+		} else {	//編集されていなければ
+			disappearPage();	//ページをそのまま消す
 		}
 	}
 	
@@ -2577,10 +2582,10 @@ $(document).ready(function(){
 });
 
 /* 
- * 関数名:function createChooseListDialog()
- * 引数  :なし
+ * 関数名:function closeChooseListSaveDialog(dialog)
+ * 引数  :Element dialog:ダイアログの要素。
  * 戻り値:なし
- * 概要  :リスト保存前に画面を閉じようとしたら表示される、保存ダイアログを作る。
+ * 概要  :レコード保存確認ダイアログを閉じる。
  * 作成者:T.Masuda
 */
 function closeChooseListSaveDialog(dialog){
@@ -2621,6 +2626,7 @@ function createChooseListSaveDialog(){
 			;},
 			buttons: {
 				"保存する": function(){
+					//保存処理を行う。
 					closeChooseListSaveDialog(this);	//ダイアログとページを閉じる。
 				},
 				"保存しない": function(){
@@ -2975,6 +2981,7 @@ function executeTextBoxResize(){
 	
 	//画面の幅がborderWidthに設定された値以下であれば
 	if($(window).width() <= borderWidth[0]){
+		//textBoxResize関数でリサイズを行う、配列に格納された対象のセレクタを走査する。
 		for(var i = 0; i < tbResizeArrayLength; i++){
 			textBoxResize(tbResizeArray[i], i);	//テキストボックスのサイズを修正する
 		}
@@ -2985,6 +2992,7 @@ function executeTextBoxResize(){
 	
 	//2つ目の設定値を画面幅が下回ったら
 	if($('.main:first').width() <= borderWidth[1]){
+		///textBoxResizeOnFixed関数でリサイズを行う、配列に格納された対象のセレクタを走査する。
 		for(var i = tbResizeArrayLength; i < tbResizeOnFixedArrayLength; i++){
 			textBoxResizeOnFixed($(tbResizeOnFixedArray[i - tbResizeArrayLength]), i);	//テキストボックスのサイズを修正する
 		}
@@ -3238,8 +3246,8 @@ function appendRowData(checkedRow, grid, addElem, elemStrings, targetGrid){
 				rowdata[elemStrings[j]] = addElem[elemStrings[j]];
 			}
 		}
-		
-		// 呼び出し元のリストにレコードを追加
+
+		// 追加対象のリストにレコードを追加する。
 		$(targetGrid).addRowData(undefined, rowdata);
 	}
 }
@@ -3456,7 +3464,7 @@ function addShowEditDialogEvent(){
 			
 			//IDがgridOptionIndexのキーとして存在するものなら
 			if(id in gridDataIndex){
-				// 新規追加用ダイアログを出す
+				// 編集用ダイアログを出す
 				$('#' + id + '-list').editGridRow(rowid, gridoption[parseInt(gridOptionIndex[id])]);
 			}
 		}
@@ -3489,7 +3497,7 @@ function addDeleteRecordEvent(){
 }
 
 /* 
- * 関数名:(document).on('click', '#personal .add-button.add-record', function(){});
+ * イベント名:(document).on('click', '#personal .add-button.add-record', function(){});
  * 引数  　　:なし
  * 戻り値　　:なし
  * 概要  　　:fig4個人タブの編集画面を出すイベント。
@@ -3608,7 +3616,7 @@ function setTodayButton(target){
  * 引数　:String target:処理対象の画面のセレクタ。
  * 　　　:jQuery checkedRecord:チェックが入ったレコード。
  * 戻り値:なし。
- * 概要  :値を一時保存する要素を作る。
+ * 概要  :カレンダーと、選択したカレンダーの日付の値を一時保存する要素を作る。
  * 作成日:14.12.2
  * 作成者:T.Masuda
 */	
@@ -3639,10 +3647,12 @@ function createTemporatyElem(target, checkedRecord){
 	setTemporaryElemChangeEvent(target, checkedRecord, $hidden);
 }
 
-/* 関数名:function setCalendarButton(target)
+/* 関数名:function setTemporaryElemChangeEvent(target ,checkedRecord, temporaryElem)
  * 引数　:String target:処理対象のセレクタ。
- * 戻り値:boolean:処理中断時にはfalseを返す。
- * 概要  :カレンダーボタンのイベントを登録する。
+ *　　　　:jQuery checkedRecord:チェックが入ったレコード。
+ *　　　　:jQuery temporaryElem:イベントの登録対象となる、値を一時保存するための要素。
+ * 戻り値:なし
+ * 概要  :値を一時保存する要素の値が変わったときのイベントを登録する。
  * 作成日:14.12.2
  * 作成者:T.Masuda
 */	
@@ -3653,13 +3663,13 @@ function setTemporaryElemChangeEvent(target, checkedRecord, temporaryElem){
 		//チェックが入った要素の数を取得する。
 		var checkedRecordLength = checkedRecord.length;
 		var $targetList = $(target + '-list');	//処理対象のリストを取得する。
-		
+
 		// チェックが入ったレコードを走査
 		for(var i = 0; i < checkedRecordLength; i++){
 			// 該当するレコードに日付を与える
 			$targetList.setCell(checkedRecord.eq(i).attr('id'), 'date', temporaryElem.val());
 		}
-		
+
 		// イベントとhidden要素を削除する。
 		$(document).off('change.tmpdate');
 		$(target + '-tmpdate').remove();
@@ -3694,7 +3704,7 @@ function setCalendarButton(target){
  * 関数名:addAddConfirmButtonEvent()
  * 引数  :なし
  * 戻り値:なし
- * 概要  :レコードの追加内容を確定して現在の画面を終わらせるボタンの処理。レコード追加の処理未実装。
+ * 概要  :レコードの追加内容を確定して現在の画面を終わらせるボタンのイベント登録。レコード追加の処理未実装。
  * 作成者:T.Masuda
 */ 
 function addAddConfirmButtonEvent(){
@@ -3711,7 +3721,7 @@ function addAddConfirmButtonEvent(){
  * 関数名:addEditConfirmButtonEvent()
  * 引数  :なし
  * 戻り値:なし
- * 概要  :レコードの追加内容を確定して現在の画面を終わらせるボタンの処理。レコード追加の処理未実装。
+ * 概要  :レコードの変更内容を確定して現在の画面を終わらせるボタンの処理。レコード追加の処理未実装。
  * 作成者:T.Masuda
 */ 
 function addEditConfirmButtonEvent(){
@@ -3726,10 +3736,10 @@ function addEditConfirmButtonEvent(){
 
 
 /* 
- * 関数名:addEditConfirmButtonEvent()
+ * 関数名:addRegistRecordButtonEvent()
  * 引数  :なし
  * 戻り値:なし
- * 概要  :レコード登録ボタンのイベントを登録する。。
+ * 概要  :レコード登録ボタンのイベントを登録する。
  * 作成者:T.Masuda
 */ 
 function addRegistRecordButtonEvent(){
@@ -3746,7 +3756,7 @@ function addRegistRecordButtonEvent(){
  * 関数名:addNodeDevideButtonEvent()
  * 引数  :なし
  * 戻り値:なし
- * 概要  :ノード分割ボタンのイベントを登録する。。
+ * 概要  :ノード分割ボタンのイベントを登録する。
  * 作成者:T.Masuda
 */ 
 function addNodeDevideButtonEvent(){
