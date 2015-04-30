@@ -13,11 +13,7 @@
 				<script type='text/javascript'>
 				//読み込み後
 				$(document).ready(function(){
-					$('#tab-container').easytabs({
-						animate: false,		//アニメーションをオフにする
-						cache: true,		// キャッシュを有効にする
-						updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
-					});
+					createTab();	//tab-containerからタブを作る。
 					
 					// fig4-3 社員のリストを生成
 					callList('fig4-3');

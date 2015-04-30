@@ -51,9 +51,10 @@
 	tabContainerWidth = 0;				//タブの幅を格納する変数
 
 	values = '';	// 編集用データを格納する変数
+	$delrow = 0;	//削除対象になるリストのレコードを格納する変数。
 
 	//どの画面の追加ダイアログがどの設定データを使うかの設定の連想配列。
-	var gridOptionIndex = {'fig2-1':'3','fig3-1':'3','fig5':'0','fig7-0':'1','fig7-1':'2','fig9':'4','fig10':'3'}
+	var gridOptionIndex = {'fig2-1':'3','fig3-1':'3','fig5':'0','fig7-0':'1','fig7-1':'2','fig9':'4','fig10':'3','fig10':'3', 'fig11':'3'}
 	
 	//テキストボックスの各要素の幅(%指定)の値を格納する配列。
 	//1 - それぞれの配列の合計でテキストボックスの取れる割合を算出する
@@ -3218,7 +3219,7 @@ function openEditDialog(page){
 	
 }
 
-/* 関数名:function appendRowData(getRowFrom, targetGrid, addElem, elemStrings){});
+/* 関数名:function appendRowData(checkedRow, grid, addElem, targetGrid);
  * 引数　:jQuery checkedRow:チェックが入った行のデータ。
  * 引数　:jQuery grid:レコードを取得する元のテーブル。
  * 		:Array addElem:レコードの追記項目。
@@ -3786,3 +3787,94 @@ function addComboBoxCloseEvent(){
 	});
 }
 
+/* 
+ * 関数名:function createDevideNodeDialog()
+ * 引数  :なし
+ * 戻り値:なし
+ * 概要  :ノード分割のダイアログを作る。
+ * 作成者:T.Masuda
+ */ 
+function createDevideNodeDialog(){
+	
+	//リストを保存するかどうかの選択のダイアログ
+	$('#devide_node').dialog({
+		title: 'ノード分割',		//ダイアログのタイトル
+		width: '300px',					//幅
+		height: 'auto',					//高さ
+	 	autoOpen: false, 				// 自動でオープンしない
+		modal: true,					//モーダルダイアログ
+	 	resizable: false, 				// リサイズしない
+	 	draggable: true, 				// ドラッグできる
+	 	show: "fade",     				// 表示時のエフェクト
+	    hide: "fade",      				// 非表示時のエフェクト
+		position: 'center',				//表示位置の指定。上に表示
+		closeOnEscape: false,			//Escボタンを押しても閉じない
+		// 配置するボタンとイベント
+		buttons: {
+			// 登録ボタン
+			"分": function(){
+					// 実際の処理を書く
+				
+					// ダイアログを閉じる
+					$(this).dialog('close');
+			}
+		},
+		// 閉じるときのイベント
+		close: function(){
+			// テキストボックスを空にする
+			$('#devide_quantity').val('');
+		}
+	});			
+}
+
+/* 関数名:function addSendSelectedRowEvent(currentScreen, targetGrid, addElem, elemStrings)
+ * 引数　:String currentScreen:現在の画面のID。
+ * 		:String targetGrid:レコードを挿入する先のテーブル。
+ * 		:Array addElem:レコードの追記項目。
+ * 		:Array elemStrings:追記する文字列の配列。
+ * 戻り値:なし。
+ * 概要  :チェックを入れたレコードを指定したリストに追加するイベントを登録する。
+ * 作成者:T.Masuda
+*/	
+function addSendSelectedRowEvent(currentScreen, targetGrid, addElem, elemStrings){
+	// レコード選択ボタンのイベントを登録する。
+	$(currentScreen + ' .choose-record').on('click', function(){
+
+		// 選択したレコードを呼び出し元のリストに追加
+		if(addSelectedRows(currentScreen + '-list', targetGrid, addElem, elemStrings)){
+			// 追加が終了したらこのページを閉じる
+			disappearPage();
+		}
+	});
+}
+
+/* 関数名:function changerGraphUnit(screen, chart, isDrawTable)
+ * 引数　:String screen:現在の画面名。
+ * 		:String chart:グラフの種類の文字列。
+ * 		:boolean isDrawTable:テーブルを描画するかどうか判定。
+ * 戻り値:なし。
+ * 概要  :データセット変更のプルダウンメニューが変更されたらグラフを再描画するイベントを登録する。。
+ * 作成者:T.Masuda
+*/	
+function changerGraphUnit(screen, chart, isDrawTable){
+	//データセット変更のプルダウンメニューが変更されたら
+	$('#' + screen + ' .choose_unit').on('change', function(){
+		//グラフを書き換える
+		drawChart(screen, chart, isDrawTable, $(this).val());
+	});
+}
+
+/* 関数名:function createTab()
+ * 引数　:なし
+ * 戻り値:なし
+ * 概要  :タブを作る。
+ * 作成者:T.Masuda
+*/	
+function createTab(){
+	//easytabsによるタブのコンテンツを作成する。
+	$('#tab-container').easytabs({
+		animate: false,		//アニメーションしない。
+		updateHash: false,	//タブ選択時にアドレスバーにタブのID名が付かないようにする
+		cache:false			//Ajax通信でコンテンツ取得時にキャッシュしない。
+	});
+}

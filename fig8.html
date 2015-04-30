@@ -22,12 +22,8 @@
 							updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
 						});
 						
-						//fig8のプルダウンメニューが変更されたら
-						$(document).on('change', '#fig8-0 .choose_unit', function(){
-							//グラフを書き換える
-							drawChart('fig8-0', 'line_chart', false, $(this).val());
-						});
-						
+						//まとめタブのグラフの年月日切り替えイベントを登録する。
+		   		    	changerGraphUnit('fig8-0', 'line_chart', false);
 		   			 });
 				</script>
 				<!-- 見出し部を開始 -->

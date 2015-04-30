@@ -13,12 +13,15 @@
 				<script type='text/javascript'>
 					//読み込み後
 					$(document).ready(function(){
-						$('#tab-container').easytabs({
-							//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
-							//になることからアニメーションを切る。
-							animate: false,		
-							updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
-						});
+				
+						// fig7-0 在庫一覧タブのリストを生成
+						callList('fig7-0');
+						// fig7-1 過去在庫タブのリストを生成
+						callList('fig7-1');
+				
+						createDevideNodeDialog();	//ノード分割ダイアログを作る。
+						
+						createTab();	//tab-containerからタブを作る。
 					});
 				
 					//JavaScriptのコード記述を終える

@@ -13,15 +13,8 @@
 				<script type='text/javascript'>
 					//読み込み後
 					$(document).ready(function(){
-						// レコードを呼び出し元のページのリストに追加する
-						$(this).on('click', '#fig4-6 .choose-record', function(){
-					
-							// 選択したレコードを呼び出し元のリストに追加
-							if(addSelectedRows('#fig4-6-list', '#fig4-4-list')){
-								// 追加が終了したらこのページを閉じる
-								disappearPage();
-							}
-						});
+						//選択したレコードを取扱製品リストに追加するイベントを登録する。
+						addSendSelectedRowEvent('#fig4-6', '#fig4-4-list');	
 					});
 				
 				//JavaScriptのコード記述を終える

@@ -9,22 +9,6 @@
 		<div id = "container">
 			<!-- コンテンツ領域となるdivタグmain -->
 			<div class = "main">
-				<!-- JavaScriptのコードを記述 -->
-				<script type='text/javascript'>
-				//読み込み後
-				$(document).ready(function(){
-					
-					// fig10の削除ボタン
-					$(document).on('click', '#personal .delete-button', function(){
-						// チェックが入った行を走査
-						$('#fig10-list .jqgrow:has(input:radio:checked)').each(function(){
-							// チェックが入った行を削除
-							$('#fig10-list').delRowData($(this).attr('id'));
-						});
-					});
-				});
-				//JavaScriptのコード記述を終える
-				</script>
 				<!-- 見出し部を開始 -->
 				<div id="header" class="clearfix">
 					<!-- ヘッダーのタイトル部分 -->

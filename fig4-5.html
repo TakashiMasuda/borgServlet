@@ -13,19 +13,12 @@
 				<script type='text/javascript'>
 					//読み込み後
 					$(document).ready(function(){
-						// レコードを呼び出し元のページのリストに追加する
-						$(this).on('click', '#fig4-5 .choose-record', function(){
-							// チェックボックスのHTMLデータを文字列で用意。連想配列形式で格納
-							var checkboxHtml = {check:'<input type="checkbox" name="check" class="check" value="checked">'};
-							// 連想配列のインデックスを配列に格納
-							var arrayStrings = ['<input type="checkbox" name="check" class="check" value="checked">'];
-					
-							// 選択したレコードを呼び出し元のリストに追加
-							if(addSelectedRows('#fig4-5-list', '#fig4-3-list', checkboxHtml, arrayStrings)){
-								// 追加が終了したらこのページを閉じる
-								disappearPage();
-							}
-						});
+						// チェックボックスのHTMLデータを文字列で用意。連想配列形式で格納
+						var checkboxHtml = {check:'<input type="checkbox" name="check" class="check" value="checked">'};
+						// 連想配列のインデックスを配列に格納
+						var arrayStrings = ['<input type="checkbox" name="check" class="check" value="checked">'];
+						//レコード送信イベントを登録する。
+						addSendSelectedRowEvent('#fig4-5', '#fig4-3-list', checkboxHtml,arrayStrings);
 					});
 				
 				//JavaScriptのコード記述を終える

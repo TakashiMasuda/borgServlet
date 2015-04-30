@@ -13,10 +13,7 @@
 				<script type='text/javascript'>
 					//読み込み後
 					$(document).ready(function(){
-						$('#tab-container').easytabs({
-							animate: false,		//アニメーションによるタブの切り替えを無効にする。
-							updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
-						});
+						createTab();	//tab-containerからタブを作る。
 					});
 
 				//JavaScriptのコード記述を終える

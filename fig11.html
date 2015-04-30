@@ -9,36 +9,6 @@
 		<div id = "container">
 			<!-- コンテンツ領域となるdivタグmain -->
 			<div class = "main">
-				<!-- JavaScriptのコードを記述 -->
-				<script type='text/javascript'>
-					//読み込み後
-					$(document).ready(function(){
-						
-						// レコード追加ダイアログ
-						$('#fig11 .add-button.add-record').on('click', function(){
-							// 新規追加用ダイアログを出す
-							$('#fig11-list').editGridRow("new", {url:location.href, bSubmit:'追加'});
-						});
-						// レコード編集ダイアログ
-						$('#fig11 .edit-button.edit-record').on('click', function(){
-							var checkedrow = $('#fig11-list .jqgrow:has(input:radio:checked)');
-							var rowid = $(checkedrow).attr("id");
-							// 編集用ダイアログを出す
-							$('#fig11-list').editGridRow(rowid, {url:location.href, bSubmit:'更新'});
-						});
-						// fig11の削除ボタン
-						$(document).on('click', '#fig11-list .delete-button', function(){
-							// チェックが入った行を走査
-							$('#fig11-list .jqgrow:has(input:radio:checked)').each(function(){
-								// チェックが入った行を削除
-								$('#fig11-list').delRowData($(this).attr('id'));
-							});
-						});
-			
-					});
-					
-				//JavaScriptのコード記述を終える
-				</script>
 				<!-- 見出し部を開始 -->
 				<div id="header" class="clearfix">
 					<!-- ヘッダーのタイトル部分 -->
