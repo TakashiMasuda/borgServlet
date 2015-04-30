@@ -11,60 +11,18 @@
 			<div class = "main">
 				<!-- JavaScriptのコードを記述 -->
 				<script type='text/javascript'>
-			//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
-			//の高さ分リストの高さを取る
-			//読み込み後
-			$(document).ready(function(){
-				//ボタンが押されたら一度だけ計算を行う
-				$('.page:first .main h1').one('click', function(){
-					//リストの高さを取得
-					listHeight = $('.page:first .ui-jqgrid-bdiv').height();
-					//全てのテキストボックスが取っている高さを格納する変数textBoxsHeight
-					textBoxsHeight = 0;
-					//each関数で高さを取っている全てのテキストボックスの高さを合計する
-					$('.page:first .line').each(function(){
-						//テキストボックスの高さをtextBoxsHeightに加える
-						textBoxsHeight += $(this).outerHeight();
+					//読み込み後
+					$(document).ready(function(){
+					$('#tab-container').easytabs({
+						//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
+						//になることからアニメーションを切る。
+						animate: false,		
+						updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
 					});
-					//テキストボックス等を非表示にした際にリストが取る高さを変数
-					//newListHeightに格納する
-					newListHeight = listHeight + textBoxsHeight;
 				});
-				
-				$('.page:first .main h1').click(function(){
-				// 引数には開閉する速度を指定します
-				var divs = 0;
-						
-				//リストのみ表示されている状態であれば
-				if($('.page:first .ui-jqgrid-bdiv').height() != listHeight){
-					//リストの高さを戻す
-					$('.page:first .list').setGridHeight(listHeight);
-				}
-				$('.page:first .figs > div').not('.wrap-list').slideToggle('slow', function(){
-					//divsをカウントアップしていく
-					divs++;
-					//最後の処理であれば
-					if(divs >= $('.page:first .figs > div').not('.wrap-list').length){
-						//テキストボックス等が表示いなければ
-						if($(this).css('display') == 'none'){
-							//リストの高さをのばす
-							$('.page:first .list').setGridHeight(newListHeight);
-							divs = 0;	//divsの値をリセット
-						}
-					}
-				});
-				$('.parallel-text.two-tb input.textbox_S').css('width', '25%');
-			});
-			$('#tab-container').easytabs({
-				//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
-				//になることからアニメーションを切る。
-				animate: false,		
-				updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
-			});
-		});
-			
-		//JavaScriptのコード記述を終える
-		</script>
+					
+				//JavaScriptのコード記述を終える
+				</script>
 				<!-- 見出し部を開始 -->
 				<div id="header" class="clearfix">
 					<!-- ヘッダーのタイトル部分 -->

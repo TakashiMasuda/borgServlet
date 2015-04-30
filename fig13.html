@@ -13,12 +13,14 @@
 				<script type='text/javascript'>
 					//読み込み後
 					$(document).ready(function(){
-						$('#tab-container').easytabs({
-							//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
-							//になることからアニメーションを切る。
-							animate: false,		
-							updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
-						});
+						
+						function createTab(){
+							$('#tab-container').easytabs({
+								animate: false,		//アニメーションしない。
+								updateHash: false,	//タブ選択時にアドレスバーにタブのID名が付かないようにする
+								cache:false			//Ajax通信でコンテンツ取得時にキャッシュしない。
+							});
+						}
 						
 						// fig13-1 会社タブのリストを生成
 						callList('fig13-0');

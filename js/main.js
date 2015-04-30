@@ -44,7 +44,7 @@
 	
 	xmlselector = '';	//xmlのセレクタを保存する変数
 	xmls = new Array();	//xmlのデータを保存する配列。
-	
+
 	selectedCategory = '';	//選択した種別を格納する変数
 	mainWidthPercent = 0.972;		//mainのタグの幅に対するリスト幅の割合
 	tabContainerPercent = 0.985;	//タブの幅に対するリスト幅の割合
@@ -2669,13 +2669,12 @@ function gridResize() {
  * 引数　:なし
  * 戻り値:なし
  * 概要  :グリッドのリサイズイベントを登録する。
- */	
+ */
 function addGridResizeEvent(){
 	$(window).resize(function () {	//ウィンドウの大きさが変わったら
 		gridResize();				//リストの幅を調整する
 	}).trigger('resize');			//リサイズイベント取得の補助
 }
-
 
 /* 
  * 関数名:function getChartDataFromMap(contentName, unit)
