@@ -1,111 +1,120 @@
-<%@ page pageEncoding="UTF-8" %>
 <html>
-<head>
-<meta charset="utf-8">
-<!-- タイトル -->
-<title>商品管理</title>
-<!-- ウェブアプリケーション全体を対象とするスタイルシート -->
-<link href="css/borgstyle.css" rel="stylesheet" type="text/css">
-<!-- JQueryのグラフ作成プラグインを読み込む -->
-<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
-<!-- JQueryの本体を読み込む -->
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<!-- JQueryの外部プラグインセット、JQuery UIを読み込む -->
-<link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
-<!-- 必要となるJavaScriptの処理をまとめたjsファイルを読み込む -->
-<script type="text/javascript" src="js/main.js"></script>
-<!-- JQuery UIの使用に必要となるJSファイル -->
-<script type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
-<!-- グラフ描画に必要となるJSファイル -->
-<script type="text/javascript" src="../js/jqplot.categoryAxisRenderer.min.js"></script>
-<!-- グラフのプラグインのIE9対応JSの読み込み -->
-<!--[if lt IE 9]>
-    <script language="javascript" type="text/javascript" src="../js/excanvas.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
-<div id = "container">
-	<!-- コンテンツ領域となるdivタグmain -->
-	<div class = "main">
-		<!-- JavaScriptのコードを記述 -->
-		<script type='text/javascript'>
-		//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
-		//の高さ分リストの高さを取る
-		//読み込み後
-		
-		$(document).ready(function(){
-			$delrow = 0;
-
-			// fig5-1 リストを生成
-			callList('fig5-1');
-			createProductEditDialog();		//商品情報の追加・編集のダイアログを作る。
-			createCheckProductCodeDialog();	//商品レコード上書き確認ダイアログを作る。
-		});
-	
-		//JavaScriptのコード記述を終える
-		</script>
-		<!-- 見出し部を開始 -->
-		<div id="header" class="clearfix">
-		  <!-- ヘッダーのタイトル部分 -->
-		  <!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
-		  <div id="header-title"
-		    ><!-- このページの要旨 --><h1>商品管理</h1
-		    ><!-- ヘッダーのタイトル部分を閉じる --></div
-		    ><!-- ヘッダーのボタン群 --><div id="header-buttons" class="variable-height"
-		        	><span id="disp"></span
-		            ><!-- 閉じるボタン --><button class=" button close-button" value="戻る" name="fig1" /
-		            ><!-- リンクのリストダイアログを出すボタン --><button class="button setting-button" /
-		            ><!-- ヘッダーのボタン群を閉じる --></div
-		            ><!-- ヘッダー部分を終える --></div>
-	    <!-- fig5 商品管理機能 -->
-		<div id = "fig5" class="figs clearfix label_max2"
-        ><div class="line half_line parallel-text variable-height left"
-        ><label for="search-list"
-        >検索</label
-        ><input type="text" class="sort-list textbox_S" name="search-list" style="width: 100px;height: 32px;"/
-        ><button type="button" name="on-search" id="on_search" class="button on-search" value="検索"
-        >検索</button
-        ></div
-        ><div class="half_line parallel-text variable-height right"
-        ><label for="sort-by-product-type" 
-        >絞込</label
-        ><input type="text" name="sort-by-product-type" id="sort-by-product-type" class=" pulldown-menu categories textbox_S"
-        ></div
-        ><div class="line a_line edit_buttons variable-height"
-        ><button name="fig5" class="button add-button add-record" id="add_button"value="追加"
-        >追加</button
-        ><button name="delete_button" id="delete_button" class="edit delete_button button delete-button"value="削除"
-        >削除</button
-        ></div
-        ><div class="wrap-list">
-				<!-- JQ Gridによりリストを形成するtableタグ -->
-				<table id="fig5-list" class="list"></table>
+	<head>
+		<meta charset="utf-8">
+		<!-- タイトル -->
+		<title>商品管理</title>
+	</head>
+	<body>
+		<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
+		<div id = "container">
+			<!-- コンテンツ領域となるdivタグmain -->
+			<div class = "main">
+				<!-- JavaScriptのコードを記述 -->
+				<script type='text/javascript'>
+					//読み込み後
+					$(document).ready(function(){
+						$delrow = 0;
+			
+						// fig5-1 リストを生成
+						callList('fig5-1');
+						createProductEditDialog();		//商品情報の追加・編集のダイアログを作る。
+						createCheckProductCodeDialog();	//商品レコード上書き確認ダイアログを作る。
+					});
+				//JavaScriptのコード記述を終える
+				</script>
+				<!-- 見出し部を開始 -->
+				<div id="header" class="clearfix">
+					<!-- ヘッダーのタイトル部分 -->
+					<!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
+					<div id="header-title" >
+						<!-- このページの要旨 -->
+						<h1>商品管理</h1 >
+						<!-- ヘッダーのタイトル部分を閉じる -->
+					</div >
+					<!-- ヘッダーのボタン群 -->
+					<div id="header-buttons" class="variable-height" >
+						<span id="disp"></span >
+						<!-- 閉じるボタン -->
+						<button class=" button close-button" value="戻る" name="fig1" / >
+						<!-- リンクのリストダイアログを出すボタン -->
+						<button class="button setting-button" / >
+						<!-- ヘッダーのボタン群を閉じる -->
+					</div >
+					<!-- ヘッダー部分を終える -->
+				</div>
+				<!-- fig5 商品管理機能 -->
+				<div id = "fig5" class="figs clearfix label_max2" >
+					<!-- 検索機能 -->
+					<div class="line half_line parallel-text variable-height left">
+						<!-- ラベル -->
+						<label for="search-list">検索</label>
+						<!-- テキストボックス -->
+						<input type="text" class="sort-list textbox_S" name="search-list" />
+						<!-- 検索ボタン -->
+						<button type="button" name="on-search" id="on_search" class="button on-search" value="検索">検索 
+						</button>
+					</div>
+					<!-- 製品種別でのレコード絞込のためのコンボボックス -->
+					<div class="half_line parallel-text variable-height right" >
+						<!-- ラベル -->
+						<label for="sort-by-product-type" >絞込</label >
+						<!-- テキストボックス -->
+						<input type="text" name="sort-by-product-type" id="sort-by-product-type" class=" pulldown-menu categories textbox_S" >
+					</div >
+					<!-- リスト編集ボタン群 -->
+					<div class="line a_line edit_buttons variable-height" >
+						<!-- 追加ボタン。ダイアログを出して編集する。 -->
+						<button name="fig5" class="button add-button add-record" id="add_button"value="追加" >追加
+						</button >
+						<!-- 削除ボタン -->
+						<button name="delete_button" id="delete_button" class="button delete-button"value="削除" >削除
+						</button >
+					</div >
+					<!-- リストを囲んでレイアウト崩れを防止するためのタグ -->
+					<div class="wrap-list">
+						<!-- JQ Gridによりリストを形成するtableタグ -->
+						<table id="fig5-list" class="list"></table>
+					</div>
+				</div>
+				<!-- 製品レコードの編集ダイアログ -->
+				<div id="fig5-edit">
+					<!-- 登録日ラベル -->
+					<label>登録日</label>
+					<!-- 登録日テキストボックス -->
+					<input type="text" name="date">
+					<!-- 型番ラベル -->
+					<label>型番</label>
+					<!-- 型番テキストボックス -->
+					<input type="text" name="model_num">
+					<!-- 商品種別ラベル -->
+					<label>商品種別</label>
+					<!-- 商品種別テキストボックス -->
+					<input type="text" name="product_type">
+					<!-- 商品名ラベル -->
+					<label>商品名</label>
+					<!-- 商品名テキストボックス -->
+					<input type="text" name="product">
+					<!-- 製造元ラベル -->
+					<label>製造元</label>
+					<!-- 製造元テキストボックス -->
+					<input type="text" name="maker">
+					<!-- 製造元担当者ラベル -->
+					<label>製造元担当者</label>
+					<!-- 製造元担当者テキストボックス -->
+					<input type="text" name="charger">
+					<!-- 代理業者ラベル -->
+					<label>代理業者</label>
+					<!-- 代理業者テキストボックス -->
+					<input type="text" name="agency">
+					<!-- 製品コードの隠しフォーム -->
+					<input type="hidden" name="product_code">
+				</div>
+				<!-- 製品コードが被ったときにレコードの上書きを確認するダイアログ -->
+				<div id="check_product_code">同じ製品コードのレコードがあります。
+					<!-- 警告メッセージ -->
+					<br />上書きしますか？ 
+				</div>
 			</div>
 		</div>
-		<div id="fig5-edit">
-			<label>登録日</label>
-			<input type="text" name="date">
-			<label>型番</label>
-			<input type="text" name="model_num">
-			<label>商品種別</label>
-			<input type="text" name="product_type">
-			<label>商品名</label>
-			<input type="text" name="product">
-			<label>製造元</label>
-			<input type="text" name="maker">
-			<label>製造元担当者</label>
-			<input type="text" name="charger">
-			<label>代理業者</label>
-			<input type="text" name="agency">
-			<input type="hidden" name="product_code">
-		</div>
-		<div id="check_product_code">
-			同じ製品コードのレコードがあります。<br />
-			上書きしますか？
-		</div>
-	</div>
-</div>
-</body>
+	</body>
 </html>

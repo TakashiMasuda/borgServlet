@@ -7,7 +7,7 @@
 	#tab-container ul li a:hover { text-decoration: underline; }
 	#tab-container ul li.active { background: #fff; padding-top: 6px; position: relative; top: 1px; }
 	#tab-container ul li a.active { font-weight: bold; }
-	#tab-container .panel-container { border: solid 1px; padding: 0px; }
+	#tab-container .panel-container { border: solid 1px; padding: 0px;}
 /* ここまで公式サンプルCSS */
 
 /*
@@ -30,6 +30,7 @@
 	width: 100%;		/* 幅 */
 	padding: 20px;		/* 枠の内側に余白 */
 	background: #FFF;	/* 背景色を白にする */
+	box-sizing: border-box;	/* 大きさの計算にborderを含める */
 }
 
 /*

@@ -1,113 +1,114 @@
 <html>
-<head>
-<meta charset="utf-8">
-<!-- タイトル -->
-<title>入出庫管理</title>
-<!-- ウェブアプリケーション全体を対象とするスタイルシート -->
-<link href="css/borgstyle.css" rel="stylesheet" type="text/css">
-<!-- JQueryのグラフ作成プラグインを読み込む -->
-<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
-<!-- JQueryの本体を読み込む -->
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<!-- JQueryの外部プラグインセット、JQuery UIを読み込む -->
-<link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
-<!-- 必要となるJavaScriptの処理をまとめたjsファイルを読み込む -->
-<script type="text/javascript" src="js/main.js"></script>
-<!-- JQuery UIの使用に必要となるJSファイル -->
-<script type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
-<!-- グラフ描画に必要となるJSファイル -->
-<script type="text/javascript" src="../js/jqplot.categoryAxisRenderer.min.js"></script>
-<!-- グラフのプラグインのIE9対応JSの読み込み -->
-<!--[if lt IE 9]>
-    <script language="javascript" type="text/javascript" src="../js/excanvas.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
-<div id = "container">
-	<!-- コンテンツ領域となるdivタグmain -->
-	<div class = "main">
-		<!-- JavaScriptのコードを記述 -->
-		<script type='text/javascript'>
-		//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
-		//の高さ分リストの高さを取る
-		//読み込み後
-		$(document).ready(function(){
-			$('#tab-container').easytabs({
-				//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
-				//になることからアニメーションを切る。
-				animate: false,		
-				updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
-			});
+	<head>
+		<meta charset="utf-8">
+		<!-- タイトル -->
+		<title>入出庫管理</title>
+	</head>
+	<body>
+		<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
+		<div id = "container">
+			<!-- コンテンツ領域となるdivタグmain -->
+			<div class = "main">
+				<!-- JavaScriptのコードを記述 -->
+				<script type='text/javascript'>
+					//読み込み後
+					$(document).ready(function(){
+						$('#tab-container').easytabs({
+							//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
+							//になることからアニメーションを切る。
+							animate: false,		
+							updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
+						});
 			
-			// fig12-1 会社タブのリストを生成
-			callList('fig12-0');
-			callList('fig12-1');
-			
-			
-			// 本日ボタンのイベントを登録
-			setTodayButton("#fig12-0");
-			setTodayButton("#fig12-1");
-			setCalendarButton("#fig12-0");
-			setCalendarButton("#fig12-1");
-			
-			
-		});
-		
-		//JavaScriptのコード記述を終える
-		</script>
-		<!-- 見出し部を開始 -->
-		<div id="header" class="clearfix">
-		  <!-- ヘッダーのタイトル部分 -->
-		  <!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
-		  <div id="header-title"
-		    ><!-- このページの要旨 --><h1>入出庫管理</h1
-		    ><!-- ヘッダーのタイトル部分を閉じる --></div
-		    ><!-- ヘッダーのボタン群 --><div id="header-buttons" class="variable-height"
-		        	><span id="disp"></span
-		            ><!-- 閉じるボタン --><button class=" button close-button" value="戻る" name="fig1" /
-		            ><!-- リンクのリストダイアログを出すボタン --><button class="button setting-button" /
-		            ><!-- ヘッダーのボタン群を閉じる --></div
-		            ><!-- ヘッダー部分を終える --></div>
-		            
-		<div id = "fig12" class="figs clearfix">
-				<!-- タブメニュー -->
-				<div id="tab-container">
-					<ul>
-					    <!-- タブメニューのボタン5項目 -->
-						<li id="default"><a href="#fig12-0">入庫</a></li>
-						<li><a href="#fig12-1">出庫</a></li>
-					<!-- タブメニューを閉じる -->
-					</ul>
-					<!-- タブパネル -->
-					<div class="panel-container">
-						<div id="fig12-0">
-							<div class="line a_line edit_buttons  variable-height">
-							  <button name="today_button" class="button today_button normal-button " id="today_button"value="本日">本日</button>
-							  <button name="calendar_button" class="button calendar_button normal-button " id="calendar_button"value="カレ">カレ</button>
+						// fig12-1 会社タブのリストを生成
+						callList('fig12-0');
+						callList('fig12-1');
+						
+						// 本日ボタンのイベントを登録
+						setTodayButton("#fig12-0");
+						setTodayButton("#fig12-1");
+						setCalendarButton("#fig12-0");
+						setCalendarButton("#fig12-1");
+					});
+					
+				//JavaScriptのコード記述を終える
+				</script>
+				<!-- 見出し部を開始 -->
+				<div id="header" class="clearfix">
+					<!-- ヘッダーのタイトル部分 -->
+					<!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
+					<div id="header-title" >
+						<!-- このページの要旨 -->
+						<h1>入出庫管理</h1 >
+						<!-- ヘッダーのタイトル部分を閉じる -->
+					</div >
+					<!-- ヘッダーのボタン群 -->
+					<div id="header-buttons" class="variable-height" >
+						<span id="disp"></span >
+						<!-- 閉じるボタン -->
+						<button class=" button close-button" value="戻る" name="fig1" / >
+						<!-- リンクのリストダイアログを出すボタン -->
+						<button class="button setting-button" / >
+						<!-- ヘッダーのボタン群を閉じる -->
+					</div >
+					<!-- ヘッダー部分を終える -->
+				</div>
+				<!-- 入出庫管理画面 -->
+				<div id = "fig12" class="figs clearfix">
+					<!-- タブメニュー -->
+					<div id="tab-container">
+						<ul>
+							<!-- タブメニューのボタン5項目 -->
+							<li id="default">
+								<!-- 入庫タブ -->
+								<a href="#fig12-0">入庫</a>
+							</li>
+							<li>
+								<!-- 出庫タブ -->
+								<a href="#fig12-1">出庫</a>
+							</li>
+							<!-- タブメニューを閉じる -->
+						</ul>
+						<!-- タブパネル -->
+						<div class="panel-container">
+							<!-- 入庫タブ -->
+							<div id="fig12-0">
+								<!-- リスト編集ボタン群 -->
+								<div class="line a_line edit_buttons  variable-height">
+									<!-- 本日ボタン。チェックしたレコードに本日の日付を与え入庫状態にする。 -->
+									<button name="today_button" class="button today_button normal-button " id="today_button"value="本日">本日
+									</button>
+									<!-- カレンダーボタン。カレンダーを表示し、チェックしたレコードを選択した日付で入庫状態にする。 -->
+									<button name="calendar_button" class="button calendar_button normal-button " id="calendar_button"value="カレ">カレ
+									</button>
+								</div>
+								<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+								<div class="wrap-list">
+									<!-- JQ Gridによりリストを形成するtableタグ -->
+									<table id="fig12-0-list" class="list"></table>
+								</div>
 							</div>
-							<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-							<div class="wrap-list">
-								<!-- JQ Gridによりリストを形成するtableタグ -->
-								<table id="fig12-0-list" class="list"></table>
-							</div>
-						</div>
-						<div id="fig12-1">
-							<div class="line a_line edit_buttons  variable-height">
-							  <button name="today_button" class="today_button button normal-button " id="today_button"value="本日">本日</button>
-							  <button name="calendar_button" class="calendar_button button normal-button" id="calendar_button"value="カレ">カレ</button>
-							</div>
-							<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-							<div class="wrap-list">
-								<!-- JQ Gridによりリストを形成するtableタグ -->
-								<table id="fig12-1-list" class="list"></table>
+							<!-- 出庫タブ -->
+							<div id="fig12-1">
+								<!-- リスト編集ボタン群 -->
+								<div class="line a_line edit_buttons  variable-height">
+									<!-- 本日ボタン。チェックしたレコードに本日の日付を与え出庫状態にする。 -->
+									<button name="today_button" class="today_button button normal-button " id="today_button"value="本日">本日
+									</button>
+									<!-- カレンダーボタン。カレンダーを表示し、チェックしたレコードを選択した日付で出庫状態にする。 -->
+									<button name="calendar_button" class="calendar_button button normal-button" id="calendar_button"value="カレ">カレ
+									</button>
+								</div>
+								<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+								<div class="wrap-list">
+									<!-- JQ Gridによりリストを形成するtableタグ -->
+									<table id="fig12-1-list" class="list"></table>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-</div>
-</body>
+	</body>
 </html>

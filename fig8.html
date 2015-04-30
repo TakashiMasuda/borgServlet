@@ -1,220 +1,284 @@
-<%@ page pageEncoding="UTF-8" %>
 <!doctype html>
 <html>
-<head>
-<!-- 文字コードはUTF-8 -->
-<meta charset="utf-8">
-<title>統計</title>
-</head>
-<body>
-<!-- container -->
-<div id="container">
-	<!-- main。Ajax通信で取得される領域 -->
-	<div class="main">
-		<!-- JavaScriptの記述を開始 -->	
-		<script type="text/javascript">
-			//HTMLの読み込みが完了したら
-   			 $(document).ready(function(){
-				//idがtab-containerのタグを外枠にしてタブを生成
-   		    	$('#tab-container').easytabs({
-					//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
-					//になることからアニメーションを切る。
-					animate: false,		
-					updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
-				});
-				
-				//fig8のプルダウンメニューが変更されたら
-				$(document).on('change', '#fig8-0 .choose_unit', function(){
-					//グラフを書き換える
-					drawChart('fig8-0', 'line_chart', false, $(this).val());
-				});
-				
-   			 });
-		</script>
-        <!-- 見出し部を開始 -->
-        <div id="header" class="clearfix">
-            <!-- ヘッダーのタイトル部分 -->
-            <div id="header-title"
-                ><!-- このページの要旨 --><h1>統計</h1
-                ><!-- ヘッダーのタイトル部分を閉じる --></div
-            ><!-- ヘッダーのボタン群 --><div id="header-buttons"class="variable-height" class="half_line"
-                ><!-- 閉じるボタン --><button class=" button close-button" value="戻る" name="fig1" /
-                ><!-- リンクのリストダイアログを出すボタン --><button class="button setting-button" /
-            ><!-- ヘッダーのボタン群を閉じる --></div>
-        <!-- ヘッダー部分を終える -->
-        </div>
-		<!-- Fig.8 -->
-		<div id="fig8" class="figs">
-			<!-- タブの外枠となるdivタグ -->
-			<div id="tab-container">
-				<!-- タブメニュー -->
-				<ul>
-				    <!-- タブメニューのボタン5項目 -->
-					<li id="default"><a href="#fig8-0">まとめ</a></li>
-					<li ><a href="#fig8-1">仕入</a></li>
-					<li ><a href="#fig8-2">売上</a></li>
-					<li ><a href="#fig8-5">利益</a></li>
-					<li ><a href="#fig8-3">企業詳細</a></li>
-					<li ><a href="#fig8-4">商品詳細</a></li>
-				<!-- タブメニューを閉じる -->
-				</ul>
-				<!-- タブパネル -->
-				<div class="panel-container">
-					<!-- Fig.8-0 -->
-					<div id="fig8-0">
-						<!-- GoogleChartによりグラフが描画されるタグ -->
-   	  		       <div id="fig8-0-graph" class="google-chart line_chart"></div>
-   	    			     <!-- 改行 -->
-   	    			     <br />
-						<div class="line a_line edit_buttons variable-height">
-							<label>日付の単位選択</label>
-							<!-- 年月日表示選択 -->
-							<select id="choose_unit_8-0" class="choose_unit">
-								<!-- 3項目 -->
-								<option value="year">年</option>
-								<option value="month">月</option>
-								<option value="day">日</option>
-							</select>
-						</div>
-					<!-- Fig.8-0を終了 -->
+	<head>
+		<!-- 文字コードはUTF-8 -->
+		<meta charset="utf-8">
+		<title>統計</title>
+	</head>
+	<body>
+		<!-- containerのタグ -->
+		<div id="container">
+			<!-- main。Ajax通信で取得される領域 -->
+			<div class="main">
+				<!-- JavaScriptの記述を開始 -->
+				<script type="text/javascript">
+					//HTMLの読み込みが完了したら
+		   			 $(document).ready(function(){
+						//idがtab-containerのタグを外枠にしてタブを生成
+		   		    	$('#tab-container').easytabs({
+							//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
+							//になることからアニメーションを切る。
+							animate: false,		
+							updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
+						});
+						
+						//fig8のプルダウンメニューが変更されたら
+						$(document).on('change', '#fig8-0 .choose_unit', function(){
+							//グラフを書き換える
+							drawChart('fig8-0', 'line_chart', false, $(this).val());
+						});
+						
+		   			 });
+				</script>
+				<!-- 見出し部を開始 -->
+				<div id="header" class="clearfix">
+					<!-- ヘッダーのタイトル部分 -->
+					<div id="header-title" >
+						<!-- このページの要旨 -->
+						<h1>統計</h1 >
+						<!-- ヘッダーのタイトル部分を閉じる -->
+					</div >
+					<!-- ヘッダーのボタン群 -->
+					<div id="header-buttons"class="variable-height" class="half_line" >
+						<!-- 閉じるボタン -->
+						<button class=" button close-button" value="戻る" name="fig1" / >
+						<!-- リンクのリストダイアログを出すボタン -->
+						<button class="button setting-button" / >
+						<!-- ヘッダーのボタン群を閉じる -->
 					</div>
-					<!-- Fig.8-1 -->
-					<div id="fig8-1" class="label_max2" style="position:relative">
-						<div class="half_line parallel-text two-tb variable-height right clearfix" style="position: absolute; z-index: 9999; right: 5;"
-                        ><label for="filter-list"
-                            >期間</label
-                            ><span class="date filter-list filter-list-after"
-                            ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
-                            ></span
-                            ><label class="from-to" style="margin: 0 auto 0;" 
-                            >〜</label
-                            ><span class=" filter-list filter-list-before"
-                            ><input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" /
-                            ></span
-                            ></div
-                            ><div id="fig8-1-graph" class="google-chart column_chart"
-                            ></div>
-                    </div>
-					<!-- Fig.8-2 -->
-					<div id="fig8-2"  class="label_max2" style="position:relative"
-                    ><div class="half_line parallel-text two-tb variable-height right clearfix" style="position: absolute; z-index: 9999; right: 5;"
-                    ><label for="filter-list"
-                    >期間</label
-                    ><span class="date filter-list filter-list-after"
-                    ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
-                    ></span
-                    ><label class="from-to" style="margin: 0 auto 0;" 
-                    >〜</label
-                    ><span class=" filter-list filter-list-before"
-                    ><input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" /
-                    ></span
-                    ></div><div id="fig8-2-graph" class="google-chart  column_chart has-table clearfix"></div>
-						<!-- GoogleChartにより表が描画されるタグ -->
-   				         <div class="table margin_top clearfix" id="fig8-2-table"></div>
-					<!-- タブパネル3つめを閉じる -->
-					</div>
-					<!-- Fig.8-5 -->
-					<div id="fig8-5" class="label_max2" style="position:relative"
-                    ><div class="half_line parallel-text two-tb variable-height right clearfix" style="position: absolute; z-index: 9999; right: 5;"
-                    ><label for="filter-list"
-                    >期間</label
-                    ><span class="date filter-list filter-list-after"
-                    ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
-                    ></span
-                    ><label class="from-to" style="margin: 0 auto 0;" 
-                    >〜</label
-                    ><span class=" filter-list filter-list-before"
-                    ><input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" /
-                    ></span
-                    ></div>
-						<!-- GoogleChartによりグラフが描画されるタグ -->
-   				         <div id="fig8-5-graph" class="google-chart  column_chart clearfix"></div>
-						<!-- GoogleChartにより表が描画されるタグ -->
-   				         <div class="table margin_top clearfix" id="fig8-2-table"></div>
-					<!-- タブパネル3つめを閉じる -->
-					</div>
-					<!-- Fig.8-3 -->
-					<div id="fig8-3" style="position:relative" class="label_max6"
-                    ><div class="line half_line parallel-text variable-height left"
-            ><label for="deliverdate"
-            >都道府県絞込</label
-            ><input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu prefecture textbox_S"
-            ></div
-            ><div class="parallel-text variable-height right"
-            ><label for="deliverdate"
-            >種別絞込</label
-            ><input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu categories textbox_S"
-            ></div
-            ><div class="line half_line parallel-text variable-height left"
-            ><label for="scribedby"
-            >製品絞込</label
-            ><input type="text" name="scribedby" id="scribedby" class=" pulldown-menu product textbox_S"
-            ></div
-            ><div class="half_line parallel-text two-tb variable-height right"
-            ><label for="filter-list"
-            >期間</label
-            ><span class="date filter-list filter-list-after"
-            ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
-            ></span
-            ><label class="from-to" style="margin: 0 auto 0;" 
-            >〜</label
-            ><span class=" filter-list filter-list-before"
-            ><input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" /
-            ></span
-            ></div>
-						<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-						<div class="wrap-list">
-							<!-- JQ Gridによりリストを形成するtableタグ -->
-							<table id="fig8-3-list" class="list"></table>
-						</div>
-		   	  		    <script>
+					<!-- ヘッダー部分を終える -->
+				</div>
+				<!-- 統計機能の画面 -->
+				<div id="fig8" class="figs">
+					<!-- タブの外枠となるdivタグ -->
+					<div id="tab-container">
+						<!-- タブメニュー -->
+						<ul>
+							<!-- タブメニューのボタン5項目 -->
+							<li id="default">
+								<!-- まとめタブ -->
+								<a href="#fig8-0">まとめ</a>
+							</li>
+							<li >
+								<!-- 仕入タブ -->
+								<a href="#fig8-1">仕入</a>
+							</li>
+							<li >
+								<!-- 売上タブ -->
+								<a href="#fig8-2">売上</a>
+							</li>
+							<li >
+								<!-- 利益タブ -->
+								<a href="#fig8-5">利益</a>
+							</li>
+							<li >
+								<!-- 企業詳細タブ -->
+								<a href="#fig8-3">企業詳細</a>
+							</li>
+							<li >
+								<!-- 商品詳細タブ -->
+								<a href="#fig8-4">商品詳細</a>
+							</li>
+							<!-- タブメニューを閉じる -->
+						</ul>
+						<!-- タブパネル -->
+						<div class="panel-container">
+							<!-- まとめタブ -->
+							<div id="fig8-0">
+								<!-- GoogleChartによりグラフが描画されるタグ -->
+								<div id="fig8-0-graph" class="google-chart line_chart"></div>
+								<!-- 改行 -->
+								<br />
+								<!-- グラフの日付の単位を選択するプルダウンメニュー -->
+								<div class="line a_line edit_buttons variable-height">
+									<!-- ガイドのラベル -->
+									<label>日付の単位選択</label>
+									<!-- 年月日表示選択 -->
+									<select id="choose_unit_8-0" class="choose_unit">
+										<!-- 3項目 -->
+										<option value="year">年</option>
+										<option value="month">月</option>
+										<option value="day">日</option>
+									</select>
+								</div>
+								<!-- Fig.8-0を終了 -->
+							</div>
+							<!-- 仕入タブ -->
+							<div id="fig8-1" class="label_max2" style="position:relative">
+								<!-- グラフの表示期間指定機能 -->
+								<div class="half_line parallel-text two-tb variable-height right clearfix" style="position: absolute; z-index: 9999; right: 5;" >
+									<!-- ラベル -->
+									<label for="filter-list" >期間</label >
+									<!-- 開始日付選択のテキストボックスの外枠 -->
+									<span class="date filter-list filter-list-after" >
+										<!-- 開始日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+										<input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" / >
+									</span >
+									<!-- 〜のラベル -->
+									<label class="from-to">&#12316;</label >
+									<!-- 終了日付選択のテキストボックスの外枠 -->
+									<span class=" filter-list filter-list-before" >
+									<!-- 終了日付選択のテキストボックスの外枠 -->
+										<input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" / >
+									</span >
+								</div >
+								<!-- グラフが描画される領域 -->
+								<div id="fig8-1-graph" class="google-chart column_chart" ></div>
+							</div>
+							<!-- 売上タブ -->
+							<div id="fig8-2" class="label_max2" style="position:relative" >
+								<!-- グラフの表示期間指定機能 -->
+								<div class="half_line parallel-text two-tb variable-height right clearfix" style="position: absolute; z-index: 9999; right: 5;" >
+									<!-- ラベル -->
+									<label for="filter-list" >期間</label >
+									<!-- 開始日付選択のテキストボックスの外枠 -->
+									<span class="date filter-list filter-list-after" >
+										<!-- 開始日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+										<input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" / >
+									</span >
+									<!-- 〜のラベル -->
+									<label class="from-to">&#12316;</label >
+									<!-- 終了日付選択のテキストボックスの外枠 -->
+									<span class=" filter-list filter-list-before" >
+									<!-- 終了日付選択のテキストボックスの外枠 -->
+										<input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" / >
+									</span >
+								</div >
+								<!-- グラフが描画される領域 -->
+								<div id="fig8-2-graph" class="google-chart  column_chart has-table clearfix"></div>
+								<!-- グラフのデータのテーブルを描画する領域 -->
+								<div class="table margin_top clearfix" id="fig8-2-table"></div>
+								<!-- タブパネル3つめを閉じる -->
+							</div>
+							<!-- 利益タブ -->
+							<div id="fig8-5" class="label_max2" style="position:relative" >
+								<!-- グラフの表示期間指定機能 -->
+								<div class="half_line parallel-text two-tb variable-height right clearfix" style="position: absolute; z-index: 9999; right: 5;" >
+									<!-- ラベル -->
+									<label for="filter-list" >期間</label >
+									<!-- 開始日付選択のテキストボックスの外枠 -->
+									<span class="date filter-list filter-list-after" >
+										<!-- 開始日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+										<input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" / >
+									</span >
+									<!-- 〜のラベル -->
+									<label class="from-to">&#12316;</label >
+									<!-- 終了日付選択のテキストボックスの外枠 -->
+									<span class=" filter-list filter-list-before" >
+									<!-- 終了日付選択のテキストボックスの外枠 -->
+										<input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" / >
+									</span >
+								</div >
+								<!-- グラフが描画される領域 -->
+								<div id="fig8-5-graph" class="google-chart  column_chart clearfix"></div>
+								<!-- GoogleChartにより表が描画されるタグ -->
+								<div class="table margin_top clearfix" id="fig8-2-table"></div>
+								<!-- タブパネル3つめを閉じる -->
+							</div>
+							<!-- 企業詳細タブ -->
+							<div id="fig8-3" style="position:relative" class="label_max6" >
+								<!-- 都道府県絞込コンボボックス -->
+								<div class="line half_line parallel-text variable-height left" >
+									<!-- ラベル -->
+									<label for="deliverdate" >都道府県絞込</label >
+									<!-- テキストボックス -->
+									<input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu prefecture textbox_S" >
+								</div >
+								<!-- 種別絞込コンボボックス -->
+								<div class="parallel-text variable-height right" >
+									<!-- ラベル -->
+									<label for="deliverdate" >種別絞込</label >
+									<!-- テキストボックス -->
+									<input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu categories textbox_S" >
+								</div >
+								<!-- 製品絞込コンボボックス -->
+								<div class="line half_line parallel-text variable-height left" >
+									<!-- ラベル -->
+									<label for="scribedby" >製品絞込</label >
+									<!-- テキストボックス -->
+									<input type="text" name="scribedby" id="scribedby" class=" pulldown-menu product textbox_S" >
+								</div >
+								<!-- 期間を指定してのレコード絞り込み機能 -->
+								<div class="half_line parallel-text two-tb variable-height right">
+									<!-- ラベル -->
+									<label for="filter-list">期間</label>
+									<!-- 開始日付選択のテキストボックスの外枠 -->
+									<span class="date filter-list filter-list-after">
+										<!-- 開始日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+										<input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" />
+									</span>
+									<!-- 〜のラベル -->
+									<label class="from-to">&#12316;</label>
+									<!-- 終了日付選択のテキストボックスの外枠 -->
+									<span class=" filter-list filter-list-before">
+										<!-- 終了日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+										<input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" />
+									</span>
+								</div>
+								<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+								<div class="wrap-list">
+									<!-- JQ Gridによりリストを形成するtableタグ -->
+									<table id="fig8-3-list" class="list"></table>
+								</div>
+								<script>
 							 callList('fig8-3');
 						</script>
-   					    <!-- Fig8-3を終える -->
-						</div>
-			   	    <!-- Fig8-4 -->
-					<div id="fig8-4" style="position:relative" class="label_max6"
-                    ><div class="line half_line parallel-text variable-height left"
-            ><label for="deliverdate"
-            >都道府県絞込</label
-            ><input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu prefecture textbox_S"
-            ></div
-            ><div class="parallel-text variable-height right"
-            ><label for="deliverdate"
-            >種別絞込</label
-            ><input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu categories textbox_S"
-            ></div
-            ><div class="line half_line parallel-text variable-height left"
-            ><label for="scribedby"
-            >製品絞込</label
-            ><input type="text" name="scribedby" id="scribedby" class=" pulldown-menu product textbox_S" readonly
-            ></div
-            ><div class="half_line parallel-text two-tb variable-height right"
-            ><label for="filter-list"
-            >期間</label
-            ><span class="date filter-list filter-list-after"
-            ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
-            ></span
-            ><label class="from-to" style="margin: 0 auto 0;" 
-            >〜</label
-            ><span class=" filter-list filter-list-before"
-            ><input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" /
-            ></span
-            ></div
-            ><div class="wrap-list">
-							<!-- JQ Gridによりリストを形成するtableタグ -->
-							<table id="fig8-4-list" class="list"></table>	
-						</div>
-   			        	<script>
+								<!-- Fig8-3を終える -->
+							</div>
+							<!-- 商品詳細タブ -->
+							<div id="fig8-4" style="position:relative" class="label_max6" >
+								<!-- 都道府県絞込コンボボックス -->
+								<div class="line half_line parallel-text variable-height left" >
+									<!-- ラベル -->
+									<label for="deliverdate" >都道府県絞込</label >
+									<!-- テキストボックス -->
+									<input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu prefecture textbox_S" >
+								</div >
+								<!-- 種別絞込コンボボックス -->
+								<div class="parallel-text variable-height right" >
+									<!-- ラベル -->
+									<label for="deliverdate" >種別絞込</label >
+									<!-- テキストボックス -->
+									<input type="text" name="deliverdate" id="deliverdate" class=" pulldown-menu categories textbox_S" >
+								</div >
+								<!-- 製品絞込コンボボックス -->
+								<div class="line half_line parallel-text variable-height left" >
+									<!-- ラベル -->
+									<label for="scribedby" >製品絞込</label >
+									<!-- テキストボックス -->
+									<input type="text" name="scribedby" id="scribedby" class=" pulldown-menu product textbox_S" >
+								</div >
+								<!-- 期間を指定してのレコード絞り込み機能 -->
+								<div class="half_line parallel-text two-tb variable-height right">
+									<!-- ラベル -->
+									<label for="filter-list">期間</label>
+									<!-- 開始日付選択のテキストボックスの外枠 -->
+									<span class="date filter-list filter-list-after">
+										<!-- 開始日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+										<input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" />
+									</span>
+									<!-- 〜のラベル -->
+									<label class="from-to">&#12316;</label>
+									<!-- 終了日付選択のテキストボックスの外枠 -->
+									<span class=" filter-list filter-list-before">
+										<!-- 終了日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+										<input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" />
+									</span>
+								</div>
+								<div class="wrap-list">
+									<!-- JQ Gridによりリストを形成するtableタグ -->
+									<table id="fig8-4-list" class="list"></table>
+								</div>
+								<script>
 							 callList('fig8-4');	
 						</script>
+							</div>
+							<!-- タブパネルを閉じる -->
+						</div>
+						<!-- タブの記述を終了 -->
 					</div>
-				<!-- タブパネルを閉じる -->
 				</div>
-			<!-- タブの記述を終了 -->
 			</div>
 		</div>
-	</div>
-</div>
-</body>
+	</body>
 </html>

@@ -1,153 +1,170 @@
-<%@ page pageEncoding="UTF-8" %>
 <html>
-<head>
-<meta charset="utf-8">
-<!-- タイトル -->
-<title>取引先管理 会社情報登録・編集</title>
-<!-- ウェブアプリケーション全体を対象とするスタイルシート -->
-<link href="css/borgstyle.css" rel="stylesheet" type="text/css">
-<!-- JQueryのグラフ作成プラグインを読み込む -->
-<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
-<!-- JQueryの本体を読み込む -->
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<!-- JQueryの外部プラグインセット、JQuery UIを読み込む -->
-<link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
-<!-- 必要となるJavaScriptの処理をまとめたjsファイルを読み込む -->
-<script type="text/javascript" src="js/main.js"></script>
-<!-- JQuery UIの使用に必要となるJSファイル -->
-<script type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
-<!-- グラフ描画に必要となるJSファイル -->
-<script type="text/javascript" src="../js/jqplot.categoryAxisRenderer.min.js"></script>
-<!-- グラフのプラグインのIE9対応JSの読み込み -->
-<!--[if lt IE 9]>
-    <script language="javascript" type="text/javascript" src="../js/excanvas.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
-<div id = "container">
-	<!-- コンテンツ領域となるdivタグmain -->
-	<div class = "main">
-		<!-- JavaScriptのコードを記述 -->
-		<script type='text/javascript'>
-		//テキストボックス等の表示、非表示を切り替えて、非表示ならテキストボックス等
-		//の高さ分リストの高さを取る
-		//読み込み後
-		$(document).ready(function(){
-			$('#tab-container').easytabs({
-				//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
-				//になることからアニメーションを切る。
-				animate: false,
-				cache: true,		// キャッシュを有効にする
-				updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
-			});
-			
-			// fig4-3 社員のリストを生成
-			callList('fig4-3');
-			// fig4-4 取扱商品のリストを生成
-			callList('fig4-4');
-		});
+	<head>
+		<meta charset="utf-8">
+		<!-- タイトル -->
+		<title>取引先管理 会社情報登録・編集</title>
+	</head>
+	<body>
+		<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
+		<div id = "container">
+			<!-- コンテンツ領域となるdivタグmain -->
+			<div class = "main">
+				<!-- JavaScriptのコードを記述 -->
+				<script type='text/javascript'>
+				//読み込み後
+				$(document).ready(function(){
+					$('#tab-container').easytabs({
+						animate: false,		//アニメーションをオフにする
+						cache: true,		// キャッシュを有効にする
+						updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
+					});
+					
+					// fig4-3 社員のリストを生成
+					callList('fig4-3');
+					// fig4-4 取扱商品のリストを生成
+					callList('fig4-4');
+				});
 		
 		//JavaScriptのコード記述を終える
 		</script>
-		<!-- 見出し部を開始 -->
-		<div id="header" class="clearfix">
-		  <!-- ヘッダーのタイトル部分 -->
-		  <!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
-		  <div id="header-title"
-		    ><!-- このページの要旨 --><h1>取引先管理 会社情報登録・編集</h1
-		    ><!-- ヘッダーのタイトル部分を閉じる --></div
-		    ><!-- ヘッダーのボタン群 --><div id="header-buttons" class="variable-height"
-		        	><span id="disp"></span
-		            ><!-- 閉じるボタン --><button class=" button close-button" value="戻る" name="fig1" /
-		            ><!-- リンクのリストダイアログを出すボタン --><button class="button setting-button" /
-		            ><!-- ヘッダーのボタン群を閉じる --></div
-		            ><!-- ヘッダー部分を終える --></div>
-		<!-- fig4-2 -->
-		<div id = "fig4-2" class="figs label_max5">
- 			<!-- 一段目左 -->
- 			<div class="line half_line parallel-text variable-height left"
-            ><label for="textfield"
-            >登録日</label
-            ><input type="text" name="date" id="edit_date" class="textbox_S date "
-            ></div
-            ><div class="parallel-text variable-height right"
-            ><label for="company"
-            >会社名</label
-            ><input type="text" name="company" id="company" class=" pulldown-menu customer textbox_S"
-            ></div
-            ><div class="line half_line parallel-text variable-height left"
-            ><label for="address"
-            >住所</label
-            ><input type="text" name="address" id="address" class="textbox_S "
-            ></div
-            ><div class="parallel-text variable-height right"
-            ><label for="tel"
-            >電話番号</label
-            ><input type="text" name="tel" id="tel" class="textbox_S" readonly
-            ></div
-            ><div class="line half_line parallel-text variable-height left"
-            ><label for="fax"
-            >FAX番号</label
-            ><input type="text" name="fax" id="fax" class="textbox_S "
-            ></div
-            ><div class="parallel-text variable-height right"
-            ><label for="email"
-            >Eメール</label
-            ><input type="text" name="email" id="email" class="textbox_S" readonly
-            ></div
-            ><div class="line half_line parallel-text variable-height left"
-            ><label for="url"
-            >URL</label
-            ><input type="text" name="url" id="url" class="textbox_S "
-            ></div
-            ><div class="parallel-text variable-height right"
-            ><label for="sml_trans"
-            >メール一斉</label
-            ><input type="checkbox" name="sml_trans" id="sml_trans" class="checkbox" value="checked"
-            ></div
-            ><div class="line a_line edit_buttons  variable-height clearfix"
-            ><button name="register_button" class="button normal-button regist_record" id="register_button"value="登"
-            >登</button
-            ></div
-            ><hr class="content-border invisible" />
-			<!-- タブコンテナ -->
-			<div id="tab-container">
-				<!-- タブメニュー -->
-				<ul>
-				    <!-- タブメニューのボタン5項目 -->
-					<li id="default"><a href="#fig4-3">社員</a></li>
-					<li><a href="#fig4-4">取扱製品</a></li>
-				<!-- タブメニューを閉じる -->
-				</ul>
-				<!-- タブパネル -->
-				<div class="panel-container">
-					<div id="fig4-3">
-						<div class="line a_line edit_buttons  variable-height">
-							<button name="fig4-5" class="button add-button callpage" id="add_button" value="追加">追加</button>
-							<button name="delete_button" id="delete_button" class="edit delete_button button delete-button"value="削除">削除</button>
-						</div>
-						<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-						<div class="wrap-list">
-							<!-- JQ Gridによりリストを形成するtableタグ -->
-							<table id="fig4-3-list" class="list"></table>
-						</div>
-					</div>
-					<div id="fig4-4">
-						<div class="line a_line edit_buttons  variable-height">
-									  <button name="fig4-6" class="button add-button callpage" id="add_button"value="追加">追加</button>
-						</div>
-						<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-						<div class="wrap-list">
-							<!-- JQ Gridによりリストを形成するtableタグ -->
-							<table id="fig4-4-list" class="list"></table>
+				<!-- 見出し部を開始 -->
+				<div id="header" class="clearfix">
+					<!-- ヘッダーのタイトル部分 -->
+					<!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
+					<div id="header-title" >
+						<!-- このページの要旨 -->
+						<h1>取引先管理 会社情報登録・編集</h1 >
+						<!-- ヘッダーのタイトル部分を閉じる -->
+					</div >
+					<!-- ヘッダーのボタン群 -->
+					<div id="header-buttons" class="variable-height" >
+						<span id="disp"></span >
+						<!-- 閉じるボタン -->
+						<button class=" button close-button" value="戻る" name="fig1" / >
+						<!-- リンクのリストダイアログを出すボタン -->
+						<button class="button setting-button" / >
+						<!-- ヘッダーのボタン群を閉じる -->
+					</div >
+					<!-- ヘッダー部分を終える -->
+				</div>
+				<!-- 会社情報の登録・編集の画面 -->
+				<div id = "fig4-2" class="figs label_max5">
+					<!-- 登録日の入力欄 -->
+					<div class="line half_line parallel-text variable-height left" >
+						<!-- ラベル -->
+						<label for="textfield" >登録日</label >
+						<!-- テキストボックス -->
+						<input type="text" name="date" id="edit_date" class="textbox_S date " >
+					</div >
+					<!-- 会社名の入力欄 -->
+					<div class="parallel-text variable-height right" >
+						<!-- ラベル -->
+						<label for="company" >会社名</label >
+						<!-- テキストボックス -->
+						<input type="text" name="company" id="company" class=" pulldown-menu customer textbox_S" >
+					</div >
+					<!-- ラベルの入力欄 -->
+					<div class="line half_line parallel-text variable-height left" >
+						<!-- ラベル -->
+						<label for="address" >住所</label >
+						<!-- テキストボックス -->
+						<input type="text" name="address" id="address" class="textbox_S " >
+					</div >
+					<!-- 電話番号の入力欄 -->
+					<div class="parallel-text variable-height right" >
+						<!-- ラベル -->
+						<label for="tel" >電話番号</label >
+						<!-- テキストボックス -->
+						<input type="text" name="tel" id="tel" class="textbox_S" readonly >
+					</div >
+					<!-- FAXの入力欄 -->
+					<div class="line half_line parallel-text variable-height left" >
+						<!-- ラベル -->
+						<label for="fax" >FAX番号</label >
+						<!-- テキストボックス -->
+						<input type="text" name="fax" id="fax" class="textbox_S " >
+					</div >
+					<!-- メールアドレスの入力欄 -->
+					<div class="parallel-text variable-height right" >
+						<!-- ラベル -->
+						<label for="email" >Eメール</label >
+						<!-- テキストボックス -->
+						<input type="text" name="email" id="email" class="textbox_S" readonly >
+					</div >
+					<!-- URLの入力欄 -->
+					<div class="line half_line parallel-text variable-height left" >
+						<!-- ラベル -->
+						<label for="url" >URL</label >
+						<!-- テキストボックス -->
+						<input type="text" name="url" id="url" class="textbox_S " >
+					</div >
+					<!-- 一斉送信されるメールの受信設定チェックボックス -->
+					<div class="parallel-text variable-height right" >
+						<!-- ラベル -->
+						<label for="sml_trans" >メール一斉</label >
+						<!-- チェックボックス -->
+						<input type="checkbox" name="sml_trans" id="sml_trans" class="checkbox" value="checked" >
+					</div >
+						<!-- 編集ボタンの領域 -->
+					<div class="line a_line edit_buttons  variable-height clearfix" >
+						<!-- 入力情報の登録ボタン -->
+						<button name="register_button" class="button normal-button regist_record" id="register_button"value="登" >登
+						</button >
+					</div >
+					<!-- 不可視の境界線 -->
+					<hr class="content-border invisible" />
+					<!-- タブコンテナ -->
+					<div id="tab-container">
+						<!-- タブメニュー -->
+						<ul>
+							<!-- タブメニューのボタン2項目 -->
+							<li id="default">
+								<!-- 社員タブ -->
+								<a href="#fig4-3">社員</a>
+							</li>
+							<li>
+								<!-- 取扱製品タブ -->
+								<a href="#fig4-4">取扱製品</a>
+							</li>
+							<!-- タブメニューを閉じる -->
+						</ul>
+						<!-- タブパネル -->
+						<div class="panel-container">
+							<!-- 社員タブの内容 -->
+							<div id="fig4-3">
+								<!-- 編集ボタンの領域 -->
+								<div class="line a_line edit_buttons  variable-height">
+									<!-- レコード追加ボタン。人物一覧の画面を呼ぶ -->
+									<button name="fig4-5" class="button add-button callpage" id="add_button" value="追加">追加
+									</button>
+									<!-- 削除ボタン -->
+									<button name="delete_button" id="delete_button" class="button delete-button"value="削除">削除
+									</button>
+								</div>
+								<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+								<div class="wrap-list">
+									<!-- JQ Gridによりリストを形成するtableタグ -->
+									<table id="fig4-3-list" class="list"></table>
+								</div>
+							</div>
+							<!-- 取扱製品タブの内容 -->
+							<div id="fig4-4">
+								<!-- 編集ボタンの領域 -->
+								<div class="line a_line edit_buttons  variable-height">
+									<!-- レコード追加ボタン。製品一覧の画面を呼ぶ -->
+									<button name="fig4-6" class="button add-button callpage" id="add_button"value="追加">追加
+									</button>
+								</div>
+								<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+								<div class="wrap-list">
+									<!-- JQ Gridによりリストを形成するtableタグ -->
+									<table id="fig4-4-list" class="list"></table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</body>
+	</body>
 </html>

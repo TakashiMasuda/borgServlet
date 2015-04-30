@@ -177,6 +177,7 @@ button.button.normal-button.ui-button-text-only{
 	min-height: 32px;	/* 最低高32pxを指定して */
 	/* JQuery UIのテキストのボタンは大きめなので小さく */
 	font-size: 0.7em!important;	/* 小さめのテキスト */
+	letter-spacing: normal;		/* 文字同士の間隔を通常にする。インラインブロック独自の余白対策。 */
 }
 
 /*
@@ -410,6 +411,7 @@ button.button.normal-button.ui-button-text-only{
 	display: block;	/* ブロックとして扱う */
 	margin: 1% 0;	/* 上下1%のmargin */
 	text-align: right;	/* 中のテキストを右に寄せる */
+	letter-spacing: -.40em; /* 文字間を詰めて隙間を削除する */;
 }
  /*
  * セレクタ:#header > div
@@ -428,6 +430,7 @@ button.button.normal-button.ui-button-text-only{
 #header-title{
 	width: 72%;	/* 幅 */
 	text-align:left;	/* 中の文章を左に寄せる */
+	letter-spacing: normal; /* 文字間を詰めて隙間を削除する */;
 }
 
  /*
@@ -514,7 +517,8 @@ div.top_page_button button{
  * 作成者:T.M
  */
 .parallel-text{
-	padding: 0.4% 0;	/* 上下に0.2%のpadding */
+	padding: 0.4% 0;		/* 上下に0.4%のpadding */
+	letter-spacing: -.35em;	/* 文字同士の間隔を詰めてインラインブロック独自の余白を消す。 */
 }
 
 /*
@@ -551,7 +555,7 @@ div.top_page_button button{
  */
 .parallel-text.left{
 	width: 50%;		/* 幅を50%に指定 */
-	float: left;	/* 左に寄せる */
+	float: left;	/* 左に寄せる */ /* 文字間を詰めて隙間を削除する */;
 }
 
 /*
@@ -581,6 +585,7 @@ div.top_page_button button{
 	width: 27%;	/* 幅を27%取る */
 	min-width: 40px;		/* 最低幅を指定する */
 	max-height: 32px;		/* 最大の高さを指定 */
+	letter-spacing: normal;	/* 文字同士の間隔を通常にする。インラインブロック独自の余白対策。 */
 }
 
 /*
@@ -591,6 +596,7 @@ div.top_page_button button{
 .parallel-text button.ui-button{
 	margin-left: 7.5px;	/* 左margin */
 	margin-right: 0;	/* 右marginをなくす */
+	letter-spacing: normal;/* 文字同士の間隔を通常にする。インラインブロック独自の余白対策。 */
 }
 
 /*
@@ -642,6 +648,7 @@ span.two-tb #filter-list-before{
 	width: auto!important;
 	min-width: 10px!important;	/* 最低幅を指定する。 */
 	font-size: 12px;			/* サイズを微調整する。 */
+	margin: 0 0 0 5px;			/* 左にmarginを挿入する。 */
 }
 
 /* 各ページごとのparallel-textのラベル幅設定 */
@@ -701,6 +708,7 @@ span.two-tb #filter-list-before{
  */
 #fig9 #detail .parallel-text label:first-child{
 	width: 40px;	/* 固定幅指定 */
+	margin-right: 5px;  /* ラベルとプルダウンメニューとの間に適切な間隔を取る。 */
 }
 
 /*
@@ -743,7 +751,7 @@ span.two-tb #filter-list-before{
  */
 span.two-str-button button{
 	float: none!important;	/* 寄せない */
-	margin-left: 2px;		/* 左に最低限の余白 */
+	margin-left: 2px;		/* 左に最低限の余白 */ /* 文字間を詰めて隙間を削除する */;
 }
 
 /*
@@ -754,6 +762,7 @@ span.two-str-button button{
 span.two-str-button{
 	display: inline-block;	/* インラインブロック扱い */
 	float: right;			/* 右寄せ */
+	letter-spacing: -.33em;/* 文字間を詰めて隙間を削除する */
 }
 
 /*
@@ -789,6 +798,7 @@ span.two-str-button{
  * 作成者:T.M
  */
 .edit_buttons{
+ /* 文字間を詰めて隙間を削除する */;
 }
 
 /*
@@ -1067,3 +1077,76 @@ hr.content-border.invisible{
 	width: 50px;	/* 最低限の幅を取る。 */
 }
 
+
+
+/*
+ * セレクタ:#detail .line:first-child
+ * 概要  :詳細タブの編集ボタン群
+ * 作成者:T.M
+*/
+#detail .line:first-child {
+	padding: 0.4% 0.5% 1%;	/* 上下左右に適切な間隔を取る。 */
+}
+/*
+
+ * セレクタ:#detail .line:first-child
+ * 概要  :詳細タブの通知設定のタイトル
+ * 作成者:T.M
+*/
+#detail .line:nth-child(2) {
+	padding: 0.5% 0 1%;	/* 上下左右に適切な間隔を取る。 */
+}
+
+/*
+ * セレクタ:#detail .line:first-child button
+ * 概要  :詳細タブの編集ボタン
+ * 作成者:T.M
+*/
+#detail .line:first-child button{
+	margin-right: 3px;	/* ボタン同士適切な間隔を取る。。 */
+}
+
+/*
+ * セレクタ:#detail .parallel-text select
+ * 概要  :詳細タブのプルダウンメニュー
+ * 作成者:T.M
+*/
+#detail .parallel-text select{
+	margin-right: 5px;	/* 「日」の文字と少し離す。 */
+}
+
+/*
+ * セレクタ:.filter-list-before
+ * 概要  :期間絞込テキストボックスの終了日側
+ * 作成者:T.M
+*/
+.filter-list-before{
+	margin-left:5px;	/* 〜の文字との間に間隔を取る。 */
+}
+
+/*
+ * セレクタ:#fig7-0 .on-search
+ * 概要  :在庫一覧タブの検索ボタン
+ * 作成者:T.M
+*/
+#fig7-0 .on-search {
+	float: none;	/* floatを解除してタグの並び通りに配置する。 */
+}
+
+/*
+ * セレクタ:#fig8-3 .from-to,#fig8-4 .from-to
+ * 概要  :統計画面のリストの期間絞込テキストボックスの「〜」の文字
+ * 作成者:T.M
+*/
+#fig8-3 .from-to,#fig8-4 .from-to{
+	margin-left: 0px;	/* 幅に余裕がないため、marginをなくす */
+}
+
+/*
+ * セレクタ:#fig8-3 .filter-list-before, #fig8-4 .filter-list-before
+ * 概要  :統計画面のリストの期間絞込テキストボックスの終了日側
+ * 作成者:T.M
+*/
+#fig8-3 .filter-list-before, #fig8-4 .filter-list-before{
+	margin-left:0px;	/* 幅に余裕がないため、marginをなくす */
+}

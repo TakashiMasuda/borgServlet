@@ -1,103 +1,128 @@
 <html>
-<head>
-<meta charset="utf-8">
-<!-- タイトル -->
-<title>受注伝票</title>
-</head>
-<body>
-<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
-<div id = "container">
-	<!-- コンテンツ領域となるdivタグmain -->
-	<div class = "main">
-		<!-- JavaScriptのコードを記述 -->
-		<script type='text/javascript'>
-			//読み込み後
-			$(document).ready(function(){
-				$('#tab-container').easytabs({
-					animate: false,		//アニメーションによるタブの切り替えを無効にする。
-					updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
-				});
-			});
+	<head>
+		<meta charset="utf-8">
+		<!-- タイトル -->
+		<title>受注伝票</title>
+	</head>
+	<body>
+		<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
+		<div id = "container">
+			<!-- コンテンツ領域となるdivタグmain -->
+			<div class = "main">
+				<!-- JavaScriptのコードを記述 -->
+				<script type='text/javascript'>
+					//読み込み後
+					$(document).ready(function(){
+						$('#tab-container').easytabs({
+							animate: false,		//アニメーションによるタブの切り替えを無効にする。
+							updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
+						});
+					});
 
-		//JavaScriptのコード記述を終える
-		</script>
-		<!-- 見出し部を開始 -->
-		<div id="header" class="clearfix">
-		  <!-- ヘッダーのタイトル部分 -->
-		  <!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
-		  <div id="header-title"
-		    ><!-- このページの要旨 --><h1>受注伝票</h1
-		    ><!-- ヘッダーのタイトル部分を閉じる --></div
-		    ><!-- ヘッダーのボタン群 --><div id="header-buttons" class="variable-height"
-		        	><span id="disp"></span
-		            ><!-- 閉じるボタン --><button class=" button close-button" value="戻る" name="fig1" /
-		            ><!-- リンクのリストダイアログを出すボタン --><button class="button setting-button" /
-		            ><!-- ヘッダーのボタン群を閉じる --></div
-		            ><!-- ヘッダー部分を終える --></div>
-		<!-- fig2独自の記述を開始 -->
-		<div id = "fig2" class="figs clearfix">
-			<div id="tab-container">
-				<!-- タブメニュー -->
-				<ul>
-				    <!-- タブメニューのボタン -->
-					<li id="default">
-						<a href="#order_bill">受注タブ</a>
-					</li>
-				<!-- タブメニューを閉じる -->
-				</ul>
-				<!-- タブパネル -->
-				<div class="panel-container">
-					<!-- 受注伝票のIDのタグでコンテンツを囲む -->
-					<div id="order_bill" class="label_max2">
-						<!-- インライン要素に自動で発生する余白の対策で、横並べにするパーツのタグの閉じ括弧を行の最後に配置しないようにしています。 -->
-					  	<!-- 検索機能。ラベル、テキストボックス、ボタンで構成される。 -->
-						<div class="line half_line parallel-text variable-height left"
-                        ><label for="search-list">検索</label
-                        ><input type="text" class="sort-list textbox_S" name="search-list" style="width: 100px;height: 32px;"/
-                        ><button type="button" name="on-search" id="on_search" class="button on-search" value="検索">検索</button
-                        ></div>
-					  	<!-- 期間を指定してのレコード絞り込み機能。ラベルとテキストボックスとカレンダー呼出ボタンの2セットで構成される。 -->
-					  	<div class="half_line parallel-text two-tb variable-height right"
-                        ><label for="filter-list">期間</label
-                        ><span class="date filter-list filter-list-after"
-                        ><input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" /
-                        ></span>
-                            <label class="from-to" style="margin: 0 auto 0;" >〜</label>
-					    	<span class=" filter-list filter-list-before">
-                            	<input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" />
-					   		</span>
-                        </div>
-						<!-- リスト直前の行。 -->                        
-						<div class="line before_list_line variable-height">
-							<!--  -->
-						    <div class="edit_buttons left bill_buttons clearfix" style="width: 50%;height: auto; float: left;"
-						    ><button type="button" name="fig2-1" id="add_button" class="button add-button callpage" value="登録" style="float:left; : 5px; height: 32px;"
-						    >登</button
-						    ></div
-						    ><div  class="edit_buttons right bill_buttons has-two-str-button variable-height clearfix" style="width: 50%;height: auto; float: right;"
-                                ><span class="two-str-button clearfix"
-                                ><button type="button" name="fig2-1" id="nouhin" class="button normal-button" value="納品書" style=": 5px; font-size: 6px; width: 75px;" 
-                                >納</button
-                                ><button type="button" name="fig2-1" id="hassou" class="button normal-button" value="発送指示書" style="width: 75px;" 
-                                >発指</button
-                                ></span
-	                            ><span class="two-str-button clearfix"
-                                ><button type="button" name="fig2-1" id="mitsumori" class="button normal-button" value="見積書" style="width: 75px;"
-                                >見</button
-                                ><button type="button" name="fig2-1" id="chuumon" class="button normal-button" value="注文書" style="width: 75px;" 
-                                >注</button
-                                ></span
-                                ></div
-                            ></div
-                            ><div class="wrap-list clearfix">
-	 						<!-- JQ Gridによりリストを形成するtableタグ -->
- 						   <table id="fig2-list" class="list clearfix"></table>
-    					</div>
+				//JavaScriptのコード記述を終える
+				</script>
+				<!-- 見出し部を開始 -->
+				<div id="header" class="clearfix">
+					<!-- ヘッダーのタイトル部分 -->
+					<!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
+					<div id="header-title" >
+						<!-- このページの要旨 -->
+						<h1>受注伝票</h1 >
+						<!-- ヘッダーのタイトル部分を閉じる -->
+					</div >
+					<!-- ヘッダーのボタン群 -->
+					<div id="header-buttons" class="variable-height" >
+						<span id="disp"></span >
+						<!-- 閉じるボタン -->
+						<button class=" button close-button" value="戻る" name="fig1" / >
+						<!-- リンクのリストダイアログを出すボタン -->
+						<button class="button setting-button" / >
+						<!-- ヘッダーのボタン群を閉じる -->
+					</div >
+					<!-- ヘッダー部分を終える -->
+				</div>
+				<!-- fig2独自の記述を開始 -->
+				<div id = "fig2" class="figs clearfix">
+					<div id="tab-container">
+						<!-- タブメニュー -->
+						<ul>
+							<!-- タブメニューのボタン -->
+							<li id="default">
+								<a href="#order_bill">受注タブ</a>
+							</li>
+							<!-- タブメニューを閉じる -->
+						</ul>
+						<!-- タブパネル -->
+						<div class="panel-container">
+							<!-- 受注伝票のIDのタグでコンテンツを囲む -->
+							<div id="order_bill" class="label_max2">
+								<!-- 検索機能 -->
+								<div class="line half_line parallel-text variable-height left">
+									<!-- ラベル -->
+									<label for="search-list">検索</label>
+									<!-- テキストボックス -->
+									<input type="text" class="sort-list textbox_S" name="search-list" />
+									<!-- 検索ボタン -->
+									<button type="button" name="on-search" id="on_search" class="button on-search" value="検索">検索 
+									</button>
+								</div>
+								<!-- 期間を指定してのレコード絞り込み機能 -->
+								<div class="half_line parallel-text two-tb variable-height right">
+									<!-- ラベル -->
+									<label for="filter-list">期間</label>
+									<!-- 開始日付選択のテキストボックスの外枠 -->
+									<span class="date filter-list filter-list-after">
+										<!-- 開始日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+										<input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" />
+									</span>
+									<!-- 〜のラベル -->
+									<label class="from-to">&#12316;</label>
+									<!-- 終了日付選択のテキストボックスの外枠 -->
+									<span class=" filter-list filter-list-before">
+										<!-- 終了日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+										<input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" />
+									</span>
+								</div>
+								<!-- リスト直前の行。 -->
+								<div class="line before_list_line variable-height">
+									<!-- リスト編集ボタン群 -->
+									<div class="edit_buttons left clearfix">
+										<!-- 登録ボタン -->
+										<button type="button" name="fig2-1" id="add_button" class="button add-button callpage">登 
+										</button>
+									</div>
+									<!-- PDF出力ボタン群 -->
+									<div class="edit_buttons right has-two-str-button variable-height clearfix">
+										<!-- ボタン群右半分 -->
+										<span class="two-str-button clearfix">
+											<!-- 納品書ボタン -->
+											<button type="button" name="fig2-1" id="nouhin" class="button normal-button" value="納品書">納 
+											</button>
+											<!-- 発送指示書ボタン -->
+											<button type="button" name="fig2-1" id="hassou" class="button normal-button" value="発送指示書">発指 
+											</button>
+										</span>
+										<!-- ボタン群左半分 -->
+										<span class="two-str-button clearfix">
+											<!-- 見積書ボタン -->
+											<button type="button" name="fig2-1" id="mitsumori" class="button normal-button" value="見積書">見 
+											</button>
+											<!-- 注文書ボタン -->
+											<button type="button" name="fig2-1" id="chuumon" class="button normal-button" value="注文書">注 
+											</button>
+										</span>
+									</div>
+								</div>
+								<!-- リストを囲んでレイアウト崩れを防止するためのタグ -->
+								<div class="wrap-list clearfix">
+									<!-- JQ Gridによりリストを形成するtableタグ -->
+									<table id="fig2-list" class="list clearfix"></table>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</body>
+	</body>
 </html>

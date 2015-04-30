@@ -1,303 +1,323 @@
-<%@ page pageEncoding="UTF-8" %>
 <html>
-<head>
-<meta charset="utf-8">
-<!-- タイトル -->
-<title>管理者</title>
-<!-- ウェブアプリケーション全体を対象とするスタイルシート -->
-<link href="css/borgstyle.css" rel="stylesheet" type="text/css">
-<!-- JQueryのグラフ作成プラグインを読み込む -->
-<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.min.css" />
-<!-- JQueryの本体を読み込む -->
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-<!-- JQueryの外部プラグインセット、JQuery UIを読み込む -->
-<link href="css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css">
-<!-- 必要となるJavaScriptの処理をまとめたjsファイルを読み込む -->
-<script type="text/javascript" src="js/main.js"></script>
-<!-- JQuery UIの使用に必要となるJSファイル -->
-<script type="text/javascript" src="js/jquery-ui-i18n.js" charset="utf-8"></script>
-<!-- グラフ描画に必要となるJSファイル -->
-<script type="text/javascript" src="../js/jqplot.categoryAxisRenderer.min.js"></script>
-<!-- グラフのプラグインのIE9対応JSの読み込み -->
-<!--[if lt IE 9]>
-    <script language="javascript" type="text/javascript" src="../js/excanvas.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
-<div id = "container">
-	<!-- コンテンツ領域となるdivタグmain -->
-	<div class = "main">
-		<!-- JavaScriptのコードを記述 -->
-		<script type='text/javascript'>
-			//読み込み後
-			$(document).ready(function(){
-				$('#tab-container').easytabs({
-					//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
-					//になることからアニメーションを切る。
-					animate: false,		
-					updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
-				});
-			});
-			
-		//JavaScriptのコード記述を終える
-		</script>
-		<!-- 見出し部を開始 -->
-		<div id="header" class="clearfix">
-		<!-- ヘッダーのタイトル部分 -->
-		<!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
-		<div id="header-title"
-		    ><!-- このページの要旨 --><h1>管理者</h1
-		    ><!-- ヘッダーのタイトル部分を閉じる --></div
-		    ><!-- ヘッダーのボタン群 --><div id="header-buttons" class="variable-height"
-		        	><span id="disp"></span
-		            ><!-- 閉じるボタン --><button class=" button close-button" value="戻る" name="fig1" /
-		            ><!-- リンクのリストダイアログを出すボタン --><button class="button setting-button" /
-		            ><!-- ヘッダーのボタン群を閉じる --></div
-		            ><!-- ヘッダー部分を終える --></div>
-		<!-- fig9独自の記述を開始 -->
-		<div id = "fig9" class="figs clearfix" style="height: auto;">
-			<div id="tab-container">
-				<!-- タブメニュー -->
-				<ul>
-				    <!-- タブメニューのボタン5項目 -->
-					<li id="default"><a href="#user">ユーザー</a></li>
-					<li><a href="#detail">詳細</a></li>
-				<!-- タブメニューを閉じる -->
-				</ul>
-				<!-- タブパネル -->
-				<div class="panel-container">
-					<div id="user">
-						<div class="line before_list_line variable-height">
-						    <div class="edit_buttons  clearfix" style="width: 50%;height: auto; float: left;">
-						      <button type="button" name="add_button" id="add_button" class="button add-button add-record" value="登録" style="float:left; : 5px; height: 32px;">登録</button>
-		 					  <button name="delete_button" id="delete_button" class="edit delete_button button delete-button"value="削除">削除</button>
+	<head>
+		<meta charset="utf-8">
+		<!-- タイトル -->
+		<title>管理者</title>
+	</head>
+	<body>
+		<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
+		<div id = "container">
+			<!-- コンテンツ領域となるdivタグmain -->
+			<div class = "main">
+				<!-- JavaScriptのコードを記述 -->
+				<script type='text/javascript'>
+					//読み込み後
+					$(document).ready(function(){
+						$('#tab-container').easytabs({
+							//アニメーション後にグラフのリサイズ処理が行われるため、不恰好
+							//になることからアニメーションを切る。
+							animate: false,		
+							updateHash: false	//タブ選択時にアドレスバーにタブのID名が付かないようにする
+						});
+					});
+					
+				//JavaScriptのコード記述を終える
+				</script>
+				<!-- 見出し部を開始 -->
+				<div id="header" class="clearfix">
+					<!-- ヘッダーのタイトル部分 -->
+					<!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
+					<div id="header-title" >
+						<!-- このページの要旨 -->
+						<h1>管理者</h1 >
+						<!-- ヘッダーのタイトル部分を閉じる -->
+					</div >
+					<!-- ヘッダーのボタン群 -->
+					<div id="header-buttons" class="variable-height" >
+						<span id="disp"></span >
+						<!-- 閉じるボタン -->
+						<button class=" button close-button" value="戻る" name="fig1" / >
+						<!-- リンクのリストダイアログを出すボタン -->
+						<button class="button setting-button" / >
+						<!-- ヘッダーのボタン群を閉じる -->
+					</div >
+					<!-- ヘッダー部分を終える -->
+				</div>
+				<!-- fig9独自の記述を開始 -->
+				<div id = "fig9" class="figs clearfix" style="height: auto;">
+					<div id="tab-container">
+						<!-- タブメニュー -->
+						<ul>
+							<!-- タブメニューのボタン5項目 -->
+							<li id="default">
+							<!-- ユーザタブ -->
+								<a href="#user">ユーザー</a>
+							</li>
+							<li>
+								<!-- 詳細タブ -->
+								<a href="#detail">詳細</a>
+							</li>
+							<!-- タブメニューを閉じる -->
+						</ul>
+						<!-- タブパネル -->
+						<div class="panel-container">
+							<!-- ユーザタブ -->
+							<div id="user">
+								<!-- リスト直前の行。 -->
+								<div class="line before_list_line variable-height">
+									<!-- リスト編集ボタン群 -->
+									<div class="edit_buttons  clearfix">
+										<!-- 登録ボタン -->
+										<button type="button" name="add_button" id="add_button" class="button add-button add-record" value="登録">登録
+										</button>
+										<!-- 削除ボタン -->
+										<button name="delete_button" id="delete_button" class="button delete-button"value="削除">削除
+										</button>
+									</div>
+								</div>
+								<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
+								<div class="wrap-list clearfix">
+									<!-- JQ Gridによりリストを形成するtableタグ -->
+									<table id="fig9-list" class="list clearfix"></table>
+								</div>
 							</div>
-						</div>
-						<!-- リストを包むタグ。リストが他のfloat要素に回り込むのを阻止する -->
-						<div class="wrap-list clearfix">
-							<!-- JQ Gridによりリストを形成するtableタグ -->
-							<table id="fig9-list" class="list clearfix"></table>
-						</div>
-					</div>
-					<div id="detail" class="clearfix label_max2"
-					><div class="line single-line-text variable-height"
-					><div class="edit_buttons  clearfix" style="width: 50%;height: auto; float: left;"
-					><button type="button" name="register_button" id="register_button" class="button normal-button" value="登"
-					>登</button
-					><button type="button" name="cancel_button" id="cancel_button" class="button normal-button edit-record" value="キ"
-					>キ</button
-					></div>
-						</div>
- 						 <div class="line a_line single-line-text clearfix">
-    						<h1>通知設定</h1>
-   						 </div>
-						<div class="line half_line parallel-text variable-height left">
-					    	<label>見積</label>
-					    	<!-- 通知のメールが送信される経過日数の設定  -->
-					    	<select id="estimate" class="lapsed_days variable-height">
-					    		<option value="1">1</option>
-					    		<option value="2">2</option>
-					    		<option value="3">3</option>
-					    		<option value="4">4</option>
-					    		<option value="5">5</option>
-					    		<option value="6">6</option>
-					    		<option value="7">7</option>
-					    		<option value="8">8</option>
-					    		<option value="9">9</option>
-					    		<option value="10">10</option>
-					    		<option value="11">11</option>
-					    		<option value="12">12</option>
-					    		<option value="13">13</option>
-					    		<option value="14">14</option>
-					    		<option value="15">15</option>
-					    		<option value="16">16</option>
-					    		<option value="17">17</option>
-					    		<option value="18">18</option>
-					    		<option value="19">19</option>
-					    		<option value="20">20</option>
-					    		<option value="21">21</option>
-					    		<option value="22">22</option>
-					    		<option value="23">23</option>
-					    		<option value="24">24</option>
-					    		<option value="25">25</option>
-					    		<option value="26">26</option>
-					    		<option value="27">27</option>
-					    		<option value="28">28</option>
-					    		<option value="29">29</option>
-					    		<option value="30">30</option>
-					    		<option value="45">45</option>
-					    		<option value="60">60</option>
-					    		<option value="90">90</option>
-					    		<option value="120">120</option>
-					    	</select> 日
-					    </div>
-						<div class="half_line parallel-text  variable-height right">
-						    <label>発注</label>
-					    	<!-- 通知のメールが送信される経過日数の設定  -->
-					    	<select id="purchase" class="lapsed_days variable-height">
-					    		<option value="1">1</option>
-					    		<option value="2">2</option>
-					    		<option value="3">3</option>
-					    		<option value="4">4</option>
-					    		<option value="5">5</option>
-					    		<option value="6">6</option>
-					    		<option value="7">7</option>
-					    		<option value="8">8</option>
-					    		<option value="9">9</option>
-					    		<option value="10">10</option>
-					    		<option value="11">11</option>
-					    		<option value="12">12</option>
-					    		<option value="13">13</option>
-					    		<option value="14">14</option>
-					    		<option value="15">15</option>
-					    		<option value="16">16</option>
-					    		<option value="17">17</option>
-					    		<option value="18">18</option>
-					    		<option value="19">19</option>
-					    		<option value="20">20</option>
-					    		<option value="21">21</option>
-					    		<option value="22">22</option>
-					    		<option value="23">23</option>
-					    		<option value="24">24</option>
-					    		<option value="25">25</option>
-					    		<option value="26">26</option>
-					    		<option value="27">27</option>
-					    		<option value="28">28</option>
-					    		<option value="29">29</option>
-					    		<option value="30">30</option>
-					    		<option value="45">45</option>
-					    		<option value="60">60</option>
-					    		<option value="90">90</option>
-					    		<option value="120">120</option>
-					    	</select> 日
-						</div>
-						<div class="line half_line parallel-text variable-height left">
-					    	<label>出金</label>
-					    	<!-- 通知のメールが送信される経過日数の設定  -->
-					    	<select id="payment" class="lapsed_days variable-height">
-					    		<option value="1">1</option>
-					    		<option value="2">2</option>
-					    		<option value="3">3</option>
-					    		<option value="4">4</option>
-					    		<option value="5">5</option>
-					    		<option value="6">6</option>
-					    		<option value="7">7</option>
-					    		<option value="8">8</option>
-					    		<option value="9">9</option>
-					    		<option value="10">10</option>
-					    		<option value="11">11</option>
-					    		<option value="12">12</option>
-					    		<option value="13">13</option>
-					    		<option value="14">14</option>
-					    		<option value="15">15</option>
-					    		<option value="16">16</option>
-					    		<option value="17">17</option>
-					    		<option value="18">18</option>
-					    		<option value="19">19</option>
-					    		<option value="20">20</option>
-					    		<option value="21">21</option>
-					    		<option value="22">22</option>
-					    		<option value="23">23</option>
-					    		<option value="24">24</option>
-					    		<option value="25">25</option>
-					    		<option value="26">26</option>
-					    		<option value="27">27</option>
-					    		<option value="28">28</option>
-					    		<option value="29">29</option>
-					    		<option value="30">30</option>
-					    		<option value="45">45</option>
-					    		<option value="60">60</option>
-					    		<option value="90">90</option>
-					    		<option value="120">120</option>
-					    	</select> 日
-					    </div>
-						<div class="half_line parallel-text  variable-height right">
-						    <label>納品</label>
-					    	<!-- 通知のメールが送信される経過日数の設定  -->
-					    	<select id="delivery" class="lapsed_days variable-height">
-					    		<option value="1">1</option>
-					    		<option value="2">2</option>
-					    		<option value="3">3</option>
-					    		<option value="4">4</option>
-					    		<option value="5">5</option>
-					    		<option value="6">6</option>
-					    		<option value="7">7</option>
-					    		<option value="8">8</option>
-					    		<option value="9">9</option>
-					    		<option value="10">10</option>
-					    		<option value="11">11</option>
-					    		<option value="12">12</option>
-					    		<option value="13">13</option>
-					    		<option value="14">14</option>
-					    		<option value="15">15</option>
-					    		<option value="16">16</option>
-					    		<option value="17">17</option>
-					    		<option value="18">18</option>
-					    		<option value="19">19</option>
-					    		<option value="20">20</option>
-					    		<option value="21">21</option>
-					    		<option value="22">22</option>
-					    		<option value="23">23</option>
-					    		<option value="24">24</option>
-					    		<option value="25">25</option>
-					    		<option value="26">26</option>
-					    		<option value="27">27</option>
-					    		<option value="28">28</option>
-					    		<option value="29">29</option>
-					    		<option value="30">30</option>
-					    		<option value="45">45</option>
-					    		<option value="60">60</option>
-					    		<option value="90">90</option>
-					    		<option value="120">120</option>
-					    	</select> 日
-						</div>
-						<div class="half_line parallel-text  variable-height left">
-						    <label>入金</label>
-					    	<!-- 通知のメールが送信される経過日数の設定  -->
-					    	<select id="deposit" class="lapsed_days variable-height">
-					    		<option value="1">1</option>
-					    		<option value="2">2</option>
-					    		<option value="3">3</option>
-					    		<option value="4">4</option>
-					    		<option value="5">5</option>
-					    		<option value="6">6</option>
-					    		<option value="7">7</option>
-					    		<option value="8">8</option>
-					    		<option value="9">9</option>
-					    		<option value="10">10</option>
-					    		<option value="11">11</option>
-					    		<option value="12">12</option>
-					    		<option value="13">13</option>
-					    		<option value="14">14</option>
-					    		<option value="15">15</option>
-					    		<option value="16">16</option>
-					    		<option value="17">17</option>
-					    		<option value="18">18</option>
-					    		<option value="19">19</option>
-					    		<option value="20">20</option>
-					    		<option value="21">21</option>
-					    		<option value="22">22</option>
-					    		<option value="23">23</option>
-					    		<option value="24">24</option>
-					    		<option value="25">25</option>
-					    		<option value="26">26</option>
-					    		<option value="27">27</option>
-					    		<option value="28">28</option>
-					    		<option value="29">29</option>
-					    		<option value="30">30</option>
-					    		<option value="45">45</option>
-					    		<option value="60">60</option>
-					    		<option value="90">90</option>
-					    		<option value="120">120</option>
-					    	</select> 日
+							<!-- 詳細タブ -->
+							<div id="detail" class="clearfix label_max2" >
+								<!-- ボタンの行を囲む -->
+								<div class="line variable-height" >
+									<!-- 編集ボタンの領域 -->
+									<div class="edit_buttons  clearfix">
+										<!-- 登録ボタン -->
+										<button type="button" name="register_button" id="register_button" class="button normal-button" value="登" >登
+										</button >
+										<!-- キャンセルボタン -->
+										<button type="button" name="cancel_button" id="cancel_button" class="button normal-button cancel-button" value="キ" >キ
+										</button >
+									</div>
+								</div>
+								<!-- 通知設定タイトルの行 -->
+								<div class="line a_line  clearfix">
+									<!-- 通知設定のタイトルテキスト -->
+									<h1>通知設定</h1>
+								</div>
+								<!-- 見積書通知の設定プルダウンメニュー -->
+								<div class="line half_line parallel-text variable-height left">
+									<!-- ラベル -->
+									<label>見積</label>
+									<!-- 通知のメールが送信される経過日数の設定  -->
+									<select id="estimate" class="lapsed_days variable-height">
+										<!-- 日数設定の項目。1〜30日、60日、90日、120日 -->
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+										<option value="24">24</option>
+										<option value="25">25</option>
+										<option value="26">26</option>
+										<option value="27">27</option>
+										<option value="28">28</option>
+										<option value="29">29</option>
+										<option value="30">30</option>
+										<option value="45">45</option>
+										<option value="60">60</option>
+										<option value="90">90</option>
+										<option value="120">120</option>
+									</select>日 
+								</div>
+								<!-- 発注書通知の設定プルダウンメニュー -->
+								<div class="half_line parallel-text  variable-height right">
+									<!-- ラベル -->
+									<label>発注</label>
+									<!-- 通知のメールが送信される経過日数の設定  -->
+									<select id="purchase" class="lapsed_days variable-height">
+										<!-- 日数設定の項目。1〜30日、60日、90日、120日 -->
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+										<option value="24">24</option>
+										<option value="25">25</option>
+										<option value="26">26</option>
+										<option value="27">27</option>
+										<option value="28">28</option>
+										<option value="29">29</option>
+										<option value="30">30</option>
+										<option value="45">45</option>
+										<option value="60">60</option>
+										<option value="90">90</option>
+										<option value="120">120</option>
+									</select>日 
+								</div>
+								<!-- 出金通知の設定プルダウンメニュー -->
+								<div class="line half_line parallel-text variable-height left">
+									<!-- ラベル -->
+									<label>出金</label>
+									<!-- 通知のメールが送信される経過日数の設定  -->
+									<select id="payment" class="lapsed_days variable-height">
+										<!-- 日数設定の項目。1〜30日、60日、90日、120日 -->
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+										<option value="24">24</option>
+										<option value="25">25</option>
+										<option value="26">26</option>
+										<option value="27">27</option>
+										<option value="28">28</option>
+										<option value="29">29</option>
+										<option value="30">30</option>
+										<option value="45">45</option>
+										<option value="60">60</option>
+										<option value="90">90</option>
+										<option value="120">120</option>
+									</select>日 
+								</div>
+								<!-- 納品書書通知の設定プルダウンメニュー -->
+								<div class="half_line parallel-text  variable-height right">
+									<!-- ラベル -->
+									<label>納品</label>
+									<!-- 通知のメールが送信される経過日数の設定  -->
+									<select id="delivery" class="lapsed_days variable-height">
+										<!-- 日数設定の項目。1〜30日、60日、90日、120日 -->
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+										<option value="24">24</option>
+										<option value="25">25</option>
+										<option value="26">26</option>
+										<option value="27">27</option>
+										<option value="28">28</option>
+										<option value="29">29</option>
+										<option value="30">30</option>
+										<option value="45">45</option>
+										<option value="60">60</option>
+										<option value="90">90</option>
+										<option value="120">120</option>
+									</select>日 
+								</div>
+								<div class="half_line parallel-text  variable-height left">
+									<label>入金</label>
+									<!-- 通知のメールが送信される経過日数の設定  -->
+									<select id="deposit" class="lapsed_days variable-height">
+										<!-- 日数設定の項目。1〜30日、60日、90日、120日 -->
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+										<option value="24">24</option>
+										<option value="25">25</option>
+										<option value="26">26</option>
+										<option value="27">27</option>
+										<option value="28">28</option>
+										<option value="29">29</option>
+										<option value="30">30</option>
+										<option value="45">45</option>
+										<option value="60">60</option>
+										<option value="90">90</option>
+										<option value="120">120</option>
+									</select>日 
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</body>
+	</body>
 </html>

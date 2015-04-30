@@ -1,11 +1,10 @@
-
 <html>
 	<head>
 		<title>株式会社ボルグシステム</title>
 		<meta charset="utf-8">
 		<!-- iPhone、iPadを認識する -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<!-- メディアクエリーの記述 -->
 		<!-- viewportの設定により、端末の幅を初期解像度とする -->
 		<meta name="viewport" content="width=device-width">
@@ -25,48 +24,48 @@
 		<div id="container">
 			<!-- 後に呼ばれる各ページと同じく、main以下をpageで囲む -->
 			<div class="page">
-		    	<!-- コンテンツの記述が始まるmainのタグ -->
+				<!-- コンテンツの記述が始まるmainのタグ -->
 				<div class = "main">
-		        	<!-- fig1の記述を開始 -->
+					<!-- fig1の記述を開始 -->
 					<div id = "fig1" class="figs">
-		            	<!-- タイトル -->
+						<!-- タイトル -->
 						<h1>ボルグシステム</h1>
-		                <!-- 1行目のボタン群。他より大きくなる -->
+						<!-- 1行目のボタン群。他より大きくなる -->
 						<div class="fig1_buttons first">
-		                	<!-- 受注伝票へリンクするボタン -->
+							<!-- 受注伝票へリンクするボタン -->
 							<button value= "受注" class = "top_page_button left callpage button" name="fig2">受注</button>
-		                	<!-- 発注伝票へリンクするボタン -->
+							<!-- 発注伝票へリンクするボタン -->
 							<button value= "発注" class = "top_page_button right callpage button" name="fig3">発注</button>
 						</div>
-		                <!-- 2行目のボタン群 -->
+						<!-- 2行目のボタン群 -->
 						<div class="fig1_buttons">
-		                	<!-- 在庫一覧へリンクするボタン -->
+							<!-- 在庫一覧へリンクするボタン -->
 							<button value= "在庫一覧" class = "top_page_button left callpage button" name="fig7">在庫一覧</button>
-		                	<!-- 取引先登録へリンクするボタン -->
+							<!-- 取引先登録へリンクするボタン -->
 							<button value= "取引先登録" class = "top_page_button right callpage button" name="fig4">取引先登録</button>
 						</div>
-		               	<!-- 3行目のボタン -->
+						<!-- 3行目のボタン -->
 						<div class="fig1_buttons">
-		                	<!-- 製品登録へリンクするボタン -->
+							<!-- 製品登録へリンクするボタン -->
 							<button value= "製品登録" class = "top_page_button left callpage button" name="fig5">製品登録</button>
-		                	<!-- 統計へリンクするボタン -->
+							<!-- 統計へリンクするボタン -->
 							<button value= "統計" class = "top_page_button right callpage button" name="fig8">統計</button>
 						</div>
-		               	<!-- 4行目のボタン -->
+						<!-- 4行目のボタン -->
 						<div class="fig1_buttons">
-		                	<!-- 出入庫管理へリンクするボタン -->
+							<!-- 出入庫管理へリンクするボタン -->
 							<button value= "出入庫" class = "top_page_button left callpage button" name="fig12">出入庫</button>
-		                	<!-- 出入金管理へリンクするボタン -->
+							<!-- 出入金管理へリンクするボタン -->
 							<button value= "出入金" class = "top_page_button right callpage button" name="fig13">出入金</button>
 						</div>
-		               	<!-- 5行目のボタン -->
+						<!-- 5行目のボタン -->
 						<div class="fig1_buttons">
-		                	<!-- クレーム管理へリンクするボタン -->
+							<!-- クレーム管理へリンクするボタン -->
 							<button value= "クレーム管理" class = "top_page_button left callpage button" name="fig11">クレーム</button>
 							<div class="half_buttons top_page_button right">
-			                	<!-- 管理者画面へリンクするボタン -->
+								<!-- 管理者画面へリンクするボタン -->
 								<button value= "管理者" class = "top_page_button left callpage button" name="fig9">管理者</button>
-			                	<!--メール機能へリンクするボタン -->
+								<!--メール機能へリンクするボタン -->
 								<button value= "メール機能" class = "top_page_button right callpage button" name="fig10">メール</button>
 							</div>
 						</div>
@@ -77,32 +76,76 @@
 		<!-- リンクリストのモーダルダイアログの中身 -->
 		<div id="modal" class="modal">
 			<!-- リンクのリスト -->
-		    <ul id="link-list">
-		    	<!-- リンクの項目 全11項目 -->
-		 	   	<li name="fig2" class="callpage link-button"><span><nobr>受注伝票</nobr></span></li>
-		 	   	<li name="fig3" class="callpage link-button"><span><nobr>発注伝票</nobr></span></li>
-			    <li name="fig7" class="callpage link-button"><span><nobr>在庫一覧</nobr></span></li>
-			    <li name="fig4" class="callpage link-button"><span><nobr>取引先登録</nobr></span></li>
-			    <li name="fig5" class="callpage link-button"><span><nobr>製品登録</nobr></span></li>
-			    <li name="fig8" class="callpage link-button"><span><nobr>統計</nobr></span></li>
-		  	    <li name="fig9" class="callpage link-button"><span><nobr>管理者</nobr></span></li>
-		  	    <li name="fig10" class="callpage link-button"><span><nobr>メール</nobr></span></li>
-		  	    <li name="fig11" class="callpage link-button"><span><nobr>クレーム</nobr></span></li>
-		  	    <li name="fig12" class="callpage link-button"><span><nobr>入出庫</nobr></span></li>
-		  	    <li name="fig13" class="callpage link-button"><span><nobr>入出金</nobr></span></li>
-			<!-- リストの記述を終了 -->
-		    </ul>
-		<!-- リストの編集確認ダイアログ終了 -->
+			<ul id="link-list">
+				<!-- リンクの項目 全11項目 -->
+				<li name="fig2" class="callpage link-button">
+					<span>
+						<nobr>受注伝票</nobr>
+					</span>
+				</li>
+				<li name="fig3" class="callpage link-button">
+					<span>
+						<nobr>発注伝票</nobr>
+					</span>
+				</li>
+				<li name="fig7" class="callpage link-button">
+					<span>
+						<nobr>在庫一覧</nobr>
+					</span>
+				</li>
+				<li name="fig4" class="callpage link-button">
+					<span>
+						<nobr>取引先登録</nobr>
+					</span>
+				</li>
+				<li name="fig5" class="callpage link-button">
+					<span>
+						<nobr>製品登録</nobr>
+					</span>
+				</li>
+				<li name="fig8" class="callpage link-button">
+					<span>
+						<nobr>統計</nobr>
+					</span>
+				</li>
+				<li name="fig9" class="callpage link-button">
+					<span>
+						<nobr>管理者</nobr>
+					</span>
+				</li>
+				<li name="fig10" class="callpage link-button">
+					<span>
+						<nobr>メール</nobr>
+					</span>
+				</li>
+				<li name="fig11" class="callpage link-button">
+					<span>
+						<nobr>クレーム</nobr>
+					</span>
+				</li>
+				<li name="fig12" class="callpage link-button">
+					<span>
+						<nobr>入出庫</nobr>
+					</span>
+				</li>
+				<li name="fig13" class="callpage link-button">
+					<span>
+						<nobr>入出金</nobr>
+					</span>
+				</li>
+				<!-- リストの記述を終了 -->
+			</ul>
+			<!-- リストの編集確認ダイアログ終了 -->
 		</div>
 		<div id="chooseListSave" class="modal">
-		<!-- ダイアログの記述を終了 -->
+			<!-- ダイアログの記述を終了 -->
 		</div>
 		<!-- ローディング画面用の画像のためのタグ -->
 		<div id="loading">
 			<!-- ローディング画面用gif画像 -->
 			<img src="images/gif-load.gif" />
-		    <p id="loading-title">ボルグシステム販売管理システム</p>
-		    <p id="loading-notice">起動中です。</p>
+			<p id="loading-title">ボルグシステム販売管理システム</p>
+			<p id="loading-notice">起動中です。</p>
 		</div>
 		<!-- jQueryの本体 -->
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
@@ -131,6 +174,6 @@
 		<!-- 自己定義のデータをまとめたファイルを読み込む。 -->
 		<script type="text/javascript" src="js/main.js"></script>
 		<!-- トップページ読み込みの処理のファイルを読み込む -->
-		<script type="text/javascript" src="js/toppageload.js"></script>	
+		<script type="text/javascript" src="js/toppageload.js"></script>
 	</body>
 </html>
