@@ -925,6 +925,7 @@
  * 　　  :Map ondblClickRowEvents:画面ごとのレコードをダブルクリックしたときのイベントを格納する連想配列。
  * 戻り値:なし
  * 概要  :各画面のリストの設定を作る。
+ * 作成日 : 2014.06.14
  * 作成者:T.Masuda
 */
 function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
@@ -1311,7 +1312,7 @@ function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
 	 * 引数  :int width:対象となるテキストボックスの枠の幅
 	 * 戻り値:なし
 	 * 概要  :ラベルの最大幅が2グリッドの画面の1ブロック2個のテキストボックスの枠のレイアウトの動的変更を行う。
-	 * 作成日:2015.04.25
+	 * 作成日 :2014.06.14
 	 * 作成者:T.Masuda
 	*/
 	 function labelMax2Resize(width){
@@ -1337,7 +1338,7 @@ function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
 		 * 引数  :int width:対象となるテキストボックスの枠の幅
 		 * 戻り値:なし
 		 * 概要  :ラベルの最大幅が6グリッドの画面の1ブロック2個のテキストボックスの枠のレイアウトの動的変更を行う。
-		 * 作成日:2015.04.25
+		 * 作成日 :2014.06.14
 		 * 作成者:T.Masuda
 		*/
 	 function labelMax6Resize(width){
@@ -1376,7 +1377,7 @@ function createObjRule(objRule, hasObjRuleFigs, ondblClickRowEvents){
 		 * 引数  :なし
 		 * 戻り値:なし
 		 * 概要  :伝票ボタンを囲む枠を画面幅に合わせてリサイズする。
-		 * 作成日:2015.04.25
+		 * 作成日 :2014.06.14
 		 * 作成者:T.Masuda
 		*/
 function billButtonsResize(){
@@ -1410,7 +1411,7 @@ function billButtonsResize(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :画面の高さを取得してコンテンツの高さにする
- * 作成日:2014.07.16
+ * 作成日 :2014.06.16
  * 作成者:T.Masuda
 */
 function setContentHeight(){
@@ -1440,7 +1441,7 @@ function setContentHeight(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :ボタンの大きさを修正する
- * 作成日:2014.07.16
+ * 作成日 :2014.06.16
  * 作成者:T.Masuda
 */
 function setButtonSize(){
@@ -1457,7 +1458,7 @@ function setButtonSize(){
  * 		:int newFontSize:新しいフォントサイズ。パーセントで指定する。
  * 戻り値:なし
  * 概要  :フォントの大きさを変える関数をコールする。
- * 作成日:2015.04.25
+ * 作成日 :2014.06.16
  * 作成者:T.Masuda
 */
 function changeNormalFontSize(selectors, newFontSize){
@@ -1477,7 +1478,7 @@ function changeNormalFontSize(selectors, newFontSize){
  * 		:int fixSize:サイズの補正値。
  * 戻り値:なし
  * 概要  :フォントの大きさを変える関数をコールする。
- * 作成日:2015.04.25
+ * 作成日 :2014.06.16
  * 作成者:T.Masuda
 */
 function changeFixFontSize(selectors, newFontSize, fixSize){
@@ -1495,7 +1496,7 @@ function changeFixFontSize(selectors, newFontSize, fixSize){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :動的にフォントの大きさを変える
- * 作成日:2014.07.17
+ * 作成日 :2014.06.17
  * 作成者:T.Masuda
 */
 function changeFontSize(){
@@ -1511,7 +1512,7 @@ function changeFontSize(){
  * 引数　:なし
  * 戻り値:なし
  * 概要  :ドロップダウンチェックリストのレスポンシブ対応関数
- * 作成日:14.07.21
+ * 作成日 :2014.06.17
  * 作成者:T.Masuda
 */
 function dropdownResize(){
@@ -1525,6 +1526,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :画面のリサイズに合わせて画面のアイテムのレイアウトを動的に変更する関数をコールするイベントを登録する。
+	 * 作成日 :2014.06.17
 	 * 作成者:T.Masuda
 	*/
 	function itemResize(){
@@ -1550,7 +1552,7 @@ function dropdownResize(){
 	 * 引数  :int isChange:リストに変更があったかどうかの状態を保存する数値。
 	 * 		:String figName:フラグの数値を格納する連想配列のキーであり、画面名。
 	 * 戻り値:int:判定結果の0か1を返す。
-	 * 作成日:2014/07.10 
+	 * 作成日 :2014.06.17
 	 * 作成者:T.Masuda
 	 */
 	 function isListChanged(isChange, figName){
@@ -1567,6 +1569,7 @@ function dropdownResize(){
 		 * 		:String rowid:処理対象の行番号。
 		 * 		:String targetType:処理対象の種類。product等
 		 * 戻り値:なし
+		 * 作成日 :2014.06.17
 		 * 概要  :リストの中の商品名を種別で絞る
 		*/	
 		function filterGridItems(table, rowid, targetType){
@@ -1597,9 +1600,9 @@ function dropdownResize(){
 	 * 		:String rowid:処理対象の行番号。
 	 * 戻り値:なし
 	 * 概要  :リストの中の商品名を種別で絞る
-	 * 作成日:14.07.25
+	 * 作成日 :2014.06.17
 	 * 作成者:T.Masuda
-	 * 修正日:14.07.28
+	 * 作成日 :2014.06.21
 	 * 修正者:T.Masuda
 	 * 内容  :スマホでは絞込みが機能しない問題についての修正
 	*/	
@@ -1617,9 +1620,9 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :今表示しているページを消す
-	 * 作成日:14.06.23
+	 * 作成日 :2014.06.17
 	 * 作成者:T.Masuda
-	 * 更新日:14.07.10
+	 * 作成日 :2014.06.20
 	 * 更新者:T.Masuda
 	 * 内容  :どこからでも呼び出せるように変更
 	*/
@@ -1643,7 +1646,7 @@ function dropdownResize(){
 	 * 引数　: String: file_url:
 	 * 戻り値: String:
 	 * 概要  : URLから現在のページ名(aaa/~.htmlの~の部分)を取得する。
-	 * 作成日:14.06.16
+	 * 作成日 :2014.06.18
 	 * 作成者:T.Masuda
 	*/
 	function getFileName(file_url){
@@ -1662,7 +1665,7 @@ function dropdownResize(){
 	 * 引数　: なし
 	 * 戻り値: なし
 	 * 概要  : 日付をカレンダーで選択できるようにする
-	 * 作成日:14.06.14
+	 * 作成日 :2014.06.18
 	 * 作成者:T.Masuda
 	*/
 	var setCalendar = function(){
@@ -1698,7 +1701,7 @@ function dropdownResize(){
 	 * 引数　: なし
 	 * 戻り値: なし
 	 * 概要  : プルダウンメニューを作成する
-	 * 作成日:14.06.24
+	 * 作成日 :2014.06.19
 	 * 作成者:T.Masuda
 	*/
 	var wrapPulldown = function(){
@@ -1745,6 +1748,7 @@ function dropdownResize(){
 	 * 		:String categoryName: 絞り込む種別名。
 	 * 戻り値: なし
 	 * 概要  : カテゴリー名で絞り込んだ名前を配列に格納して返す。
+	 * 作成日 :2014.06.21
 	 * 作成者:T.Masuda
 	*/
 	function filterPulldownItem(pulldownItem, categoryName){
@@ -1770,6 +1774,7 @@ function dropdownResize(){
 	 * 		:Array filltered:フィルタリングする名前の配列。
 	 * 戻り値: なし
 	 * 概要  :リストに存在する項目を表示する。
+	 * 作成日 :2014.06.21
 	 * 作成者:T.Masuda
 	*/
 	function showItem(showTarget, filltered){
@@ -1794,7 +1799,7 @@ function dropdownResize(){
 	 * 		:var openingList:開くプルダウンメニューの連番。
 	 * 戻り値: なし
 	 * 概要  : 種別に対応したプルダウンメニューの項目を絞り込む。
-	 * 作成日:14.07.27
+	 * 作成日 :2014.06.21
 	 * 作成者:T.Masuda
 	*/
 	var fillterPulldown = function(pulldownType, categoryName, openingList){
@@ -1830,6 +1835,7 @@ function dropdownResize(){
 	 * 　　　:String カテゴリー名。
 	 * 戻り値:Array:絞られた製品名のリストの配列。
 	 * 概要  :プルダウンメニューの製品をカテゴリーで絞り込む。
+	 * 作成日 :2014.06.21
 	 * 作成者:T.Masuda
 	*/
 	function filteringItemCategory(pulldownItem, category){
@@ -1855,6 +1861,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値: なし
 	 * 概要  : 製品種別のテキストボックスの値が変わったら製品名をチェックし、種別が違ったら製品名をクリアするイベントを登録する。
+	 * 作成日 :2014.06.22
 	 * 作成者:T.Masuda
 	*/
 	function checkProductCategory(){
@@ -1903,6 +1910,7 @@ function dropdownResize(){
 	 * 引数　　:なし
 	 * 戻り値　: なし
 	 * 概要  　: 製品名のプルダウンメニューが開いたときのイベント登録の関数。種別から製品名を絞り込む。
+	 * 作成日 :2014.06.23
 	 * 作成者　:T.Masuda
 	*/
 	function filterProductPulldownOnOpen(){
@@ -1931,7 +1939,7 @@ function dropdownResize(){
 	 * 引数　: なし
 	 * 戻り値: なし
 	 * 概要  : リストを呼び出す
-	 * 作成日:14.06.17
+	 * 作成日 :2014.06.23
 	 * 作成者:T.Masuda
 	*/
 	var loadList = function(contentUrl){
@@ -1944,6 +1952,7 @@ function dropdownResize(){
 	 * 引数　: なし
 	 * 戻り値: なし
 	 * 概要  : Ajax通信が終わった後にfig名を取得してグラフを書き出す関数をコールするイベントを登録する。
+	 * 作成日 :2014.06.23
 	 * 作成者:T.Masuda
 	*/
 	function drowChartAfterLoad(){
@@ -1967,6 +1976,7 @@ function dropdownResize(){
 	 * 		　: String css:追加するスタイル。
 	 * 戻り値  : なし
 	 * 概要    : 引数に取ったセレクターにCSSのスタイルを設定する
+	 * 作成日 :2014.06.25
 	 * 作成者  : T.Masuda
 	 */
 	function addCSSRule(selector, css) { 
@@ -1985,6 +1995,7 @@ function dropdownResize(){
 	 * 引数　  : String html:Ajax通信で取得した画面のHTMLデータ。
 	 * 戻り値  : なし
 	 * 概要    : 新たな画面を書き出す。
+	 * 作成日 :2014.06.25
 	 * 作成者  : T.Masuda
 	 */
 	function writePage(html){
@@ -2002,6 +2013,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :callPage後の処理を行う。
+	 * 作成日 :2014.06.25
 	 * 作成者:T.Masuda
 	*/
 	function afterCallPage(){
@@ -2014,6 +2026,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :callPage後、設置されたタグに対応するコンテンツを生成する。
+	 * 作成日 :2014.06.25
 	 * 作成者:T.Masuda
 	 */
 	function afterCallPageSetContent(){
@@ -2038,6 +2051,7 @@ function dropdownResize(){
 	 * 引数　:String contentUrl:コンテンツ名。
 	 * 戻り値:なし
 	 * 概要  :callPage後に各コンテンツ毎の処理を行う。
+	 * 作成日 :2014.06.25
 	 * 作成者:T.Masuda
 	*/
 	function afterCallPageEachPages(contentUrl){
@@ -2061,6 +2075,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :callPage後に、読み込んだ画面のレイアウトの調整を行う。
+	 * 作成日 :2014.06.25
 	 * 作成者:T.Masuda
 	 */
 	function afterCallPageLayoutFix(){
@@ -2075,7 +2090,7 @@ function dropdownResize(){
 	 * 引数　:String name:画面名。HTMLファイルの名前と合致する。
 	 * 戻り値:なし
 	 * 概要  :ページを呼び出し表示する
-	 * 作成日:14.06.23
+	 * 作成日 :2014.06.25
 	 * 作成者:T.Masuda
 	*/
 	  function callPage(name){
@@ -2109,7 +2124,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :クローズボックスが押されたときの処理
-	 * 作成日:14.07.10
+	 * 作成日 :2014.06.27
 	 * 作成者:T.Masuda
 	*/
 	  function onPageClose(){
@@ -2126,6 +2141,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :リンクのボタンがクリックされたときに画面遷移の関数をコールするイベントを登録する。
+	 * 作成日 :2014.06.27
 	 * 作成者:T.Masuda
 	*/	
 	function addCallPageEvent(){
@@ -2141,6 +2157,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :クローズボタンをクリックしたら現在の画面を閉じるイベントを登録する。
+	 * 作成日 :2014.06.27
 	 * 作成者:T.Masuda
 	*/	
 	function addCloseButtonEvent(){
@@ -2156,7 +2173,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :ダイアログを表示して編集したリストを保存するか選択させる
-	 * 作成日:14.07.01
+	 * 作成日 :2014.06.27
 	 * 作成者:T.Masuda
 	*/	
 	function saveList(){
@@ -2168,6 +2185,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:boolean:判定結果を返す。
 	 * 概要  :ユーザの端末がタッチ端末かどうかを判定して返す。
+	 * 作成日 :2014.06.29
 	 * 作成者:T.Masuda
 	*/	
 	function isTouchDevice(){
@@ -2186,6 +2204,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :リスト編集の汎用的なボタンをjQueryUIのボタンに置き換える。
+	 * 作成日 :2014.06.29
 	 * 作成者:T.Masuda
 	*/	
 	function setListEditButtons(){
@@ -2230,6 +2249,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :リスト編集の特殊なボタンをjQueryUIのボタンに置き換える。
+	 * 作成日 :2014.06.29
 	 * 作成者:T.Masuda
 	*/	
 	function setListEditSpecialButtons(){
@@ -2274,6 +2294,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :使用頻度が高いボタンをまとめてjQueryUIのボタンに置き換える。
+	 * 作成日 :2014.06.29
 	 * 作成者:T.Masuda
 	*/	
 	function setCommonButtons(){
@@ -2320,6 +2341,7 @@ function dropdownResize(){
 	 * 引数　:なし
 	 * 戻り値:なし
 	 * 概要  :登録ボタン、キャンセルボタンをjQueryUIのボタンに置き換える。
+	 * 作成日 :2014.06.29
 	 * 作成者:T.Masuda
 	*/	
 	function setRegistCancelButtons(){
@@ -2351,6 +2373,7 @@ function dropdownResize(){
 	 * 引数　:Boolean isTouchDevice:タッチ端末かどうかの判定。
 	 * 戻り値:なし
 	 * 概要  :タッチ端末かどうかでツールチップを配置するかどうかを変えるボタン群を、jQueryUIのボタンに置き換える。
+	 * 作成日 :2014.06.29
 	 * 作成者:T.Masuda
 	*/	
 	function setToolTipAlterButtons(touchDevice){
@@ -2399,6 +2422,7 @@ function dropdownResize(){
 	 * 引数　:Boolean isTouchDevice:タッチ端末かどうかの判定。
 	 * 戻り値:なし
 	 * 概要  :ボタンのグループごとにjQueryUIのボタンを置き換える。
+	 * 作成日 :2014.06.30
 	 * 作成者:T.Masuda
 	*/	
 	function setButtonsEachGroup(touchDevice){
@@ -2419,12 +2443,12 @@ function dropdownResize(){
  * 引数　:Boolean isTopPage:トップページでの読み込みかどうかの判定。
  * 戻り値:なし
  * 概要  :ボタンをJQuery UIのものに置き換える
- * 作成日:14.07.01
+ * 作成日 :2014.06.30
  * 作成者:T.Masuda
- * 修正日:14.07.25
+ * 作成日 :2014.07.03
  * 修正者:T.Masuda
  * 内容  :ツールチップ対応
- * 修正日:14.07.30
+ * 修正日:14.07.09
  * 修正者:T.Masuda
  * 内容  :トップページでの読み込み時の記述追加
 */	
@@ -2463,6 +2487,7 @@ function setButtons(isTopPage){
 /* 関数名:function showLinkList()
  * 引数　:なし
  * 戻り値:なし
+ * 作成日 :2014.06.30
  * 概要  :リンクリストのダイアログを設定ボタン付近に表示する。
  */	
 function showLinkList(){
@@ -2482,6 +2507,7 @@ function showLinkList(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :リンクリストのダイアログを作る。
+ * 作成日 :2014.06.30
  * 作成者:T.Masuda
 */
 function createLinkListDialog(){
@@ -2532,6 +2558,7 @@ function createLinkListDialog(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :画面アイテムのリサイズのイベントを一斉に登録する。
+ * 作成日 :2014.07.01
  * 作成者:T.Masuda
 */
 function addResizeEvents(){
@@ -2545,6 +2572,7 @@ function addResizeEvents(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :ボタンのイベントを一斉に登録する。
+ * 作成日 :2014.07.01
  * 作成者:T.Masuda
 */
 function addButtonEvents(){
@@ -2559,6 +2587,7 @@ function addButtonEvents(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :リスト関連のイベントを一斉に登録する。
+ * 作成日 :2014.07.01
  * 作成者:T.Masuda
 */
 function addGridEditEvents(){
@@ -2587,6 +2616,7 @@ $(document).ready(function(){
  * 引数  :Element dialog:ダイアログの要素。
  * 戻り値:なし
  * 概要  :レコード保存確認ダイアログを閉じる。
+ * 作成日 :2014.07.01
  * 作成者:T.Masuda
 */
 function closeChooseListSaveDialog(dialog){
@@ -2603,6 +2633,7 @@ function closeChooseListSaveDialog(dialog){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :リスト保存前に画面を閉じようとしたら表示される、保存ダイアログを作る。
+ * 作成日 :2014.07.02
  * 作成者:T.Masuda
 */
 function createChooseListSaveDialog(){
@@ -2644,7 +2675,7 @@ function createChooseListSaveDialog(){
  * 引数  : String contentName:コンテンツ名。各画面名(例) fig2-1)。IDの指定に利用する。
  * 戻り値: なし
  * 概要  : リストを作る
- * 作成日: 14.07.06
+ * 作成日 :2014.07.03
  * 作成者: T.Masuda
  */
 function callList(contentName){
@@ -2656,7 +2687,7 @@ function callList(contentName){
  * 引数  : なし
  * 戻り値: なし
  * 概要  : リストの幅を調整する
- * 作成日: 14.07.14
+ * 作成日 :2014.07.03
  * 作成者: T.Masuda
  */
 function gridResize() {
@@ -2669,6 +2700,7 @@ function gridResize() {
 /* 関数名:function addGridResizeEvent()
  * 引数　:なし
  * 戻り値:なし
+ * 作成日 :2014.07.05
  * 概要  :グリッドのリサイズイベントを登録する。
  */
 function addGridResizeEvent(){
@@ -2683,6 +2715,7 @@ function addGridResizeEvent(){
  *  	:String contentName:グラフの種類。
  * 戻り値:map:グラフのデータ。
  * 概要  :グラフのデータを取得する。
+ * 作成日 :2014.07.05
  * 作成者:T.Masuda
 */ 
 function getChartDataFromMap(contentName, unit){
@@ -2710,6 +2743,7 @@ function getChartDataFromMap(contentName, unit){
  * 　　  :boolean existTable:テーブルを書くかどうかの判定。
  * 戻り値:なし
  * 概要  :Google Chart Toolsの表を書く。
+ * 作成日 :2014.07.05
  * 作成者:T.Masuda
 */ 
 function writeTable(contentName, data, existTable){
@@ -2732,12 +2766,12 @@ function writeTable(contentName, data, existTable){
  *  	:String unit:グラフデータの連想配列のキー。
  * 戻り値:なし
  * 概要  :Google Chart Toolsでグラフを描く
- * 作成日:14.07.06
+ * 作成日 :2014.07.05
  * 作成者:T.Masuda
- * 修正日:14.07.21
+ * 作成日 :2014.07.10
  * 修正者:T.Masuda
  * 内容  :resizeイベント対応
- * 修正日:14.12.03
+ * 作成日 :2014.07.12
  * 修正者:T.Masuda
  * 内容  :引数 unit追加、連想配列による年月日表示きりかえ対応
 */ 
@@ -2770,7 +2804,7 @@ function drawChart(contentName, graphType, existTable, unit) {
  * 引数  :var figName:画面名。
  * 戻り値:なし
  * 概要  :グラフ用のタグを取得して画面にグラフを描く
- * 作成日:14.07.21
+ * 作成日 :2014.07.06
  * 作成者:T.Masuda
 */ 
 function drawChartInFig(figName){
@@ -2806,7 +2840,7 @@ function drawChartInFig(figName){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :グラフを描く
- * 作成日:14.07.21
+ * 作成日 :2014.07.06
  * 作成者:T.Masuda
 */ 
 function doDrawChart(){
@@ -2824,6 +2858,7 @@ function doDrawChart(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :ウィンドウのサイズが変わったときに、ウィンドウのサイズに合わせてグラフを再描画するイベントを登録する。
+ * 作成日 :2014.07.06
  * 作成者:T.Masuda
  */ 
 function addChartResizeEvent(){
@@ -2846,6 +2881,7 @@ function addChartResizeEvent(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :easytabsのタブのインデックスが押された後のイベント。
+ * 作成日 :2014.07.07
  * 作成者:T.Masuda
 */ 
 function addAfterShowTabEvent(){
@@ -2866,6 +2902,7 @@ function addAfterShowTabEvent(){
  * 		:int index:該当する要素のwidthSum内でのインデックス。
  * 戻り値:int:算出したパーセンテージを返す。
  * 概要  :テキストボックス以外の要素の幅をパーセンテージで返す。
+ * 作成日 :2014.07.07
  * 作成者:T.Masuda
 */
 function calcWithoutTextBox(widthSum, index){
@@ -2887,6 +2924,7 @@ function calcWithoutTextBox(widthSum, index){
  * 		:int index:該当する要素のwidthSum内でのインデックス。
  * 戻り値:int:算出したパーセンテージを返す。
  * 概要  :テキストボックス以外の要素の幅をパーセンテージで返す。実際の幅の数値を算出する。
+ * 作成日 :2014.07.09
  * 作成者:T.Masuda
  */
 function calcWithoutTextBoxOnFixed(selector, widthSum, index){
@@ -2914,7 +2952,7 @@ function calcWithoutTextBoxOnFixed(selector, widthSum, index){
  * 		:String index:テキストボックスのサイズの計算に使う数値の配列を格納した連想配列のキー。
  * 戻り値:なし
  * 概要  :指定したテキストボックスの幅を動的に変える。
- * 作成日:14.07.22
+ * 作成日 :2014.07.09
  * 作成者:T.Masuda
 */
 function textBoxResize(selector, index){
@@ -2938,7 +2976,7 @@ function textBoxResize(selector, index){
  * 		:String index	:テキストボックスのサイズの計算に使う数値の配列を格納した連想配列のキー。
  * 戻り値:なし
  * 概要  :固定幅での計算からテキストボックスのサイズを決める
- * 作成日:14.12.07
+ * 作成日 :2014.07.09
  * 作成者:T.Masuda
 */
 function textBoxResizeOnFixed(selector, index){
@@ -2957,7 +2995,7 @@ function textBoxResizeOnFixed(selector, index){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :指定した要素に後から指定した幅をリセットする。
- * 作成日:14.07.22
+ * 作成日 :2014.07.09
  * 作成者:T.Masuda
 */ 
 function removeTextBoxResize(){
@@ -2974,7 +3012,7 @@ function removeTextBoxResize(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :テキストボックスのリサイズの関数を一斉にコールする。
- * 作成日:14.07.22
+ * 作成日 :2014.07.10
  * 作成者:T.Masuda
 */ 
 function executeTextBoxResize(){
@@ -3005,6 +3043,7 @@ function executeTextBoxResize(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :画面の幅が変わった後にテキストボックスのリサイズを行う関数をコールするイベントを登録する。
+ * 作成日 :2014.07.10
  * 作成者:T.Masuda
 */
 function addExecuteTextBoxResizeEvent(){
@@ -3020,7 +3059,7 @@ function addExecuteTextBoxResizeEvent(){
  * 引数  :int newGridHeight:指定する高さの数値。
  * 戻り値:なし
  * 概要  :リストの高さを変える
- * 作成日:14.07.23
+ * 作成日 :2014.07.10
  * 作成者:T.Masuda
 */ 
 function changeGridHeight(newGridHeight){
@@ -3033,6 +3072,7 @@ function changeGridHeight(newGridHeight){
  * 引数  :int newGridHeight:指定する高さの数値。
  * 戻り値:なし
  * 概要  :リストの高さを変える。ドキュメントから.listクラスを見る。
+ * 作成日 :2014.07.10
  * 作成者:T.Masuda
 */ 
 function streachList(newListHeight){
@@ -3182,6 +3222,7 @@ function streachList(newListHeight){
  * 引数  :int newGridHeight:指定する高さの数値。
  * 戻り値:なし
  * 概要  :ロード画面終了時に呼び出される関数。少し間を置いてからコンテンツを表示する。
+ * 作成日 :2014.07.11
  * 作成者:T.Masuda
 */ 
 function endLoad(){
@@ -3200,7 +3241,7 @@ function endLoad(){
  * 		:function callback:コールバック関数。
  * 戻り値:なし
  * 概要  :timeミリ秒待ってコールバック関数を実行
- * 作成日:14.07.31
+ * 作成日 :2014.07.11
  * 作成者:T.Masuda
 */ 
 function sleep(time, callback){
@@ -3212,7 +3253,7 @@ function sleep(time, callback){
  * 引数  :String page:ページ名。
  * 戻り値:なし
  * 概要  :リストの追加・編集のダイアログ(ページ)を開く時の処理。未実装。
- * 作成日:14.12.01
+ * 作成日 :2014.07.11
  * 作成者:T.Masuda
  */ 
 function openEditDialog(page){
@@ -3227,6 +3268,7 @@ function openEditDialog(page){
  * 		:String targetGrid:レコードを挿入する先のテーブル。
  * 戻り値:なし。
  * 概要  :チェックが入ったレコードを指定してjqGridの表に挿入する処理を行う。
+ * 作成日 :2014.07.11
  * 作成者:T.Masuda
 */	
 function appendRowData(checkedRow, grid, addElem, elemStrings, targetGrid){
@@ -3259,7 +3301,7 @@ function appendRowData(checkedRow, grid, addElem, elemStrings, targetGrid){
  * 		:Array elemStrings:追記する文字列の配列。
  * 戻り値:boolean:処理の成否を返す。
  * 概要  :チェックが入ったレコードを指定してjqGridの表に挿入する。実際に挿入を行う処理はappendRowData関数で行う。
- * 作成日:14.12.2
+ * 作成日 :2014.07.13
  * 作成者:T.Masuda
  * 備考　:引数はグリッドのセレクタの文字列
 */	
@@ -3286,6 +3328,7 @@ function addSelectedRows(getRowFrom, targetGrid, addElem, elemStrings){
  * 引数　:なし
  * 戻り値:なし
  * 概要  :製品コードが被るレコードを新しいレコードで上書きする。
+ * 作成日 :2014.07.13
  * 作成者:T.Masuda
 */	
 function overwriteSameProductCodeRecord(){
@@ -3302,6 +3345,7 @@ function overwriteSameProductCodeRecord(){
  * 引数　:なし
  * 戻り値:なし
  * 概要  :商品情報登録・編集時に商品コードに被りがあれば上書きするかどうかを確認するダイアログを作る。
+ * 作成日 :2014.07.13
  * 作成者:T.Masuda
 */	
 function createCheckProductCodeDialog(){
@@ -3346,6 +3390,7 @@ function createCheckProductCodeDialog(){
  * 引数　:String selector:対象となるダイアログのセレクタ。
  * 戻り値:map:ダイアログのフォームのデータ。
  * 概要  :編集ダイアログのフォームをまとめたデータを作り返す。
+ * 作成日 :2014.07.14
  * 作成者:T.Masuda
 */	
 function getEditDialogValues(selector){
@@ -3364,7 +3409,8 @@ function getEditDialogValues(selector){
 /* 関数名:function createProductEditDialog()
  * 引数　:なし
  * 戻り値:なし
- * 概要  :製品登録ページの商品情報登録・編集のダイアログを作る。。
+ * 概要  :製品登録ページの商品情報登録・編集のダイアログを作る。
+ * 作成日 :2014.07.14
  * 作成者:T.Masuda
 */	
 function createProductEditDialog(){
@@ -3424,6 +3470,7 @@ function createProductEditDialog(){
  * 引数  　　:なし
  * 戻り値　　:なし
  * 概要  　　:リストのレコードの新規追加のダイアログを出すイベントを設定する。
+ * 作成日 :2014.07.14
  * 作成者　　:T.Masuda
  */ 
 function addShowAddDialogEvent(){
@@ -3447,6 +3494,7 @@ function addShowAddDialogEvent(){
  * 引数  　　:なし
  * 戻り値　　:なし
  * 概要  　　:リストのレコードの編集のダイアログを出すイベントを設定する。
+ * 作成日 :2014.07.15
  * 作成者　　:T.Masuda
  */ 
 function addShowEditDialogEvent(){
@@ -3478,6 +3526,7 @@ function addShowEditDialogEvent(){
  * 引数  　　:なし
  * 戻り値　　:なし
  * 概要  　　:リストのレコードを削除するボタンのイベントを設定する。
+ * 作成日 :2014.07.15
  * 作成者　　:T.Masuda
 */
 function addDeleteRecordEvent(){
@@ -3500,6 +3549,7 @@ function addDeleteRecordEvent(){
  * 引数  　　:なし
  * 戻り値　　:なし
  * 概要  　　:fig4個人タブの編集画面を出すイベント。
+ * 作成日 :2014.07.15
  * 作成者　　:T.Masuda
 */ 
 $(document).on('click', '#personal .add-button.add-record', function(){
@@ -3512,6 +3562,7 @@ $(document).on('click', '#personal .add-button.add-record', function(){
  * 引数  　　:なし
  * 戻り値　　:なし
  * 概要  　　:fig4個人タブの削除ボタンのイベント。
+ * 作成日 :2014.07.15
  * 作成者　　:T.Masuda
 */ 
 $(document).on('click', '#personal .delete-button', function(){
@@ -3527,6 +3578,7 @@ $(document).on('click', '#personal .delete-button', function(){
  * 引数  　　:なし
  * 戻り値　　:なし
  * 概要  　　:fig4会社タブの削除ボタンのイベント。
+ * 作成日 :2014.07.15
  * 作成者　　:T.Masuda
 */ 
 $(document).on('click', '#company .delete-button', function(){
@@ -3542,6 +3594,7 @@ $(document).on('click', '#company .delete-button', function(){
  * 引数  　　:なし
  * 戻り値　　:なし
  * 概要  　　:fig4-3の削除ボタンのイベント。
+ * 作成日 :2014.07.15
  * 作成者　　:T.Masuda
 */ 
 $(document).on('click', '#fig4-3 .delete-button', function(){
@@ -3557,6 +3610,7 @@ $(document).on('click', '#fig4-3 .delete-button', function(){
  * 引数　:なし
  * 戻り値:String:現在の日付の文字列。
  * 概要  :現在の日付の文字列を作成して返す。
+ * 作成日 :2014.07.16
  * 作成者:T.Masuda
 */	
 function getCurrentDate(){
@@ -3574,6 +3628,7 @@ function getCurrentDate(){
  * 　　　:String target:処理対象の画面のセレクタ。
  * 戻り値:boolean:処理中断時にはfalseを返す。
  * 概要  :本日ボタンのイベントを登録する。
+ * 作成日 :2014.07.16
  * 作成者:T.Masuda
 */
 function setRecordDate(checkedRecords, date, target){
@@ -3591,7 +3646,7 @@ function setRecordDate(checkedRecords, date, target){
  * 引数　:String target:処理対象のセレクタ。
  * 戻り値:boolean:処理中断時にはfalseを返す。
  * 概要  :本日ボタンのイベントを登録する。
- * 作成日:14.12.2
+ * 作成日 :2014.07.16
  * 作成者:T.Masuda
 */	
 function setTodayButton(target){
@@ -3616,7 +3671,7 @@ function setTodayButton(target){
  * 　　　:jQuery checkedRecord:チェックが入ったレコード。
  * 戻り値:なし。
  * 概要  :カレンダーと、選択したカレンダーの日付の値を一時保存する要素を作る。
- * 作成日:14.12.2
+ * 作成日 :2014.07.16
  * 作成者:T.Masuda
 */	
 function createTemporatyElem(target, checkedRecord){
@@ -3652,7 +3707,7 @@ function createTemporatyElem(target, checkedRecord){
  *　　　　:jQuery temporaryElem:イベントの登録対象となる、値を一時保存するための要素。
  * 戻り値:なし
  * 概要  :値を一時保存する要素の値が変わったときのイベントを登録する。
- * 作成日:14.12.2
+ * 作成日 :2014.07.17
  * 作成者:T.Masuda
 */	
 function setTemporaryElemChangeEvent(target, checkedRecord, temporaryElem){
@@ -3680,7 +3735,7 @@ function setTemporaryElemChangeEvent(target, checkedRecord, temporaryElem){
  * 引数　:String target:処理対象のセレクタ。
  * 戻り値:boolean:処理中断時にはfalseを返す。
  * 概要  :カレンダーボタンのイベントを登録する。
- * 作成日:14.12.2
+ * 作成日 :2014.07.17
  * 作成者:T.Masuda
 */	
 function setCalendarButton(target){
@@ -3704,6 +3759,7 @@ function setCalendarButton(target){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :レコードの追加内容を確定して現在の画面を終わらせるボタンのイベント登録。レコード追加の処理未実装。
+ * 作成日 :2014.07.17
  * 作成者:T.Masuda
 */ 
 function addAddConfirmButtonEvent(){
@@ -3721,6 +3777,7 @@ function addAddConfirmButtonEvent(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :レコードの変更内容を確定して現在の画面を終わらせるボタンの処理。レコード追加の処理未実装。
+ * 作成日 :2014.07.17
  * 作成者:T.Masuda
 */ 
 function addEditConfirmButtonEvent(){
@@ -3739,6 +3796,7 @@ function addEditConfirmButtonEvent(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :レコード登録ボタンのイベントを登録する。
+ * 作成日 :2014.07.18
  * 作成者:T.Masuda
 */ 
 function addRegistRecordButtonEvent(){
@@ -3756,6 +3814,7 @@ function addRegistRecordButtonEvent(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :ノード分割ボタンのイベントを登録する。
+ * 作成日 :2014.07.18
  * 作成者:T.Masuda
 */ 
 function addNodeDevideButtonEvent(){
@@ -3770,6 +3829,7 @@ function addNodeDevideButtonEvent(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :コンボボックス以外をクリックしてコンボボックスのプルダウンメニューを閉じるためのイベントを登録する。
+ * 作成日 :2014.07.18
  * 作成者:T.Masuda
  */ 
 function addComboBoxCloseEvent(){
@@ -3792,6 +3852,7 @@ function addComboBoxCloseEvent(){
  * 引数  :なし
  * 戻り値:なし
  * 概要  :ノード分割のダイアログを作る。
+ * 作成日 :2014.07.18
  * 作成者:T.Masuda
  */ 
 function createDevideNodeDialog(){
@@ -3834,6 +3895,7 @@ function createDevideNodeDialog(){
  * 		:Array elemStrings:追記する文字列の配列。
  * 戻り値:なし。
  * 概要  :チェックを入れたレコードを指定したリストに追加するイベントを登録する。
+ * 作成日 :2014.07.18
  * 作成者:T.Masuda
 */	
 function addSendSelectedRowEvent(currentScreen, targetGrid, addElem, elemStrings){
@@ -3854,6 +3916,7 @@ function addSendSelectedRowEvent(currentScreen, targetGrid, addElem, elemStrings
  * 		:boolean isDrawTable:テーブルを描画するかどうか判定。
  * 戻り値:なし。
  * 概要  :データセット変更のプルダウンメニューが変更されたらグラフを再描画するイベントを登録する。。
+ * 作成日 :2014.07.20
  * 作成者:T.Masuda
 */	
 function changerGraphUnit(screen, chart, isDrawTable){
@@ -3868,6 +3931,7 @@ function changerGraphUnit(screen, chart, isDrawTable){
  * 引数　:なし
  * 戻り値:なし
  * 概要  :タブを作る。
+ * 作成日 :2014.07.20
  * 作成者:T.Masuda
 */
 function createTab(){
