@@ -6,8 +6,10 @@
  * 作成者:T.M
  */
 body{
+	/* 
+	フォントを設定する */
 	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-	margin: 0 1% 0;
+	margin: 0 1% 0;	/* 左右に1%の余白をとる */
 	font-size: 90%;	/* 全体的を通常の9割程度のサイズにする */
 }
 
@@ -241,7 +243,7 @@ button.button.normal-button.ui-button-text-only{
  * 作成者:H.U
  */
 .margin_bottom{
-		margin_bottom::1%;	/* 1%の下margin */
+		margin-bottom::1%;	/* 1%の下margin */
 }
 
 /*
@@ -334,8 +336,8 @@ button.button.normal-button.ui-button-text-only{
 .a_line{
 }
 
- /*
- * セレクタ:.a_line
+/*
+ * セレクタ:.a_line button.ui-button
  * 概要  :a_lineのボタン
  * 作成者:T.M
  */
@@ -375,7 +377,7 @@ button.button.normal-button.ui-button-text-only{
 	padding: 0;			/* ulに最初から入っているpaddingを消す */
 }
  /*
- * セレクタ:#link-list
+ * セレクタ:#link-list li
  * 概要  :リンクリストの項目
  * 作成者:T.M
  */
@@ -428,9 +430,9 @@ button.button.normal-button.ui-button-text-only{
  * 作成者:T.M
  */
 #header-title{
-	width: 72%;	/* 幅 */
-	text-align:left;	/* 中の文章を左に寄せる */
-	letter-spacing: normal; /* 文字間を詰めて隙間を削除する */;
+	width: 72%;				/* 幅 */
+	text-align:left;		/* 中の文章を左に寄せる */
+	letter-spacing: normal; /* 文字間を詰めて隙間を削除する */
 }
 
  /*
@@ -439,10 +441,10 @@ button.button.normal-button.ui-button-text-only{
  * 作成者:T.M
  */
 #header h1{
-	margin: 0;
-	display: inline;
-	text-align: left;
-	color: #888;	/* 文字を薄めの灰色にする */
+	margin: 0;			/* 余白をとらない */
+	display: inline;	/* インライン要素として扱う */
+	text-align: left;	/* 文字を左寄せにする */
+	color: #888;		/* 文字を薄めの灰色にする */
 }
  /*
  * セレクタ:#header-buttons
@@ -450,7 +452,7 @@ button.button.normal-button.ui-button-text-only{
  * 作成者:T.M
  */
 #header-buttons{
-	width: 28%;	/* 幅 */
+	width: 28%;			/* 幅 */
 	min-height: 30px;	/* 最小高 */
 }
  /*
@@ -469,7 +471,7 @@ button.button.normal-button.ui-button-text-only{
  * 作成者:T.M
  */
 #header-buttons .setting-button{
-	float: right;	/* 右寄せ */
+	float: right;		/* 右寄せ */
 	margin-right: 3.5%;	/* 右のボタンとの間に余白 */
 }
 
@@ -490,10 +492,10 @@ button.button.normal-button.ui-button-text-only{
  * 作成者:T.M
  */
 button.button.ui-button.top_page_button, div.top_page_button,div.top_page_button{
-	width: 40%;		/* 幅 */
-	height: 100%;	/* 高さ100% */
-	zoom: 1;    /* for IE */
-	cursor: pointer;	/* カーソルを指差しにする */
+	width: 40%;					/* 幅 */
+	height: 100%;				/* 高さ100% */
+	zoom: 1;					/* for IE */
+	cursor: pointer;			/* カーソルを指差しにする */
 	max-height: 100%!important;	/* 高さを変えない */
 }
 
@@ -555,7 +557,7 @@ div.top_page_button button{
  */
 .parallel-text.left{
 	width: 50%;		/* 幅を50%に指定 */
-	float: left;	/* 左に寄せる */ /* 文字間を詰めて隙間を削除する */;
+	float: left;	/* 左に寄せる */
 }
 
 /*
@@ -573,7 +575,7 @@ div.top_page_button button{
  * 作成者:T.M
  */
 .parallel-text.two-tb input.textbox_S {
-	width: 25%!important;		/* 幅を55%に指定 */
+	width: 25%!important;		/* 幅を25%に指定 */
 }
 
 /*
@@ -582,7 +584,7 @@ div.top_page_button button{
  * 作成者:T.M
  */
 .parallel-text label{
-	width: 27%;	/* 幅を27%取る */
+	width: 27%;				/* 幅を27%取る */
 	min-width: 40px;		/* 最低幅を指定する */
 	max-height: 32px;		/* 最大の高さを指定 */
 	letter-spacing: normal;	/* 文字同士の間隔を通常にする。インラインブロック独自の余白対策。 */
@@ -594,9 +596,9 @@ div.top_page_button button{
  * 作成者:T.M
  */
 .parallel-text button.ui-button{
-	margin-left: 7.5px;	/* 左margin */
-	margin-right: 0;	/* 右marginをなくす */
-	letter-spacing: normal;/* 文字同士の間隔を通常にする。インラインブロック独自の余白対策。 */
+	margin-left: 7.5px;		/* 左margin */
+	margin-right: 0;		/* 右marginをなくす */
+	letter-spacing: normal;	/* 文字同士の間隔を通常にする。インラインブロック独自の余白対策。 */
 }
 
 /*
@@ -875,7 +877,7 @@ span.two-str-button{
  * 作成者:T.M
  */
 #fig1 h1{
-	color: #888;	/* 文字を薄めの灰色にする */
+	color: #888;		/* 文字を薄めの灰色にする */
 	text-align: center; /* 中央に寄せる */
 }
 
@@ -889,13 +891,13 @@ div#fig1 div.half_buttons button.right{
 }
 
 /*
- * セレクタ:div#fig1 div.half_buttons button.right
+ * セレクタ:div#fig1 div.half_buttons button
  * 概要  :トップページの小さなボタン
  * 作成者:T.M
  */
 div#fig1 div.half_buttons button{
-	font-size: 0.75em;	/* フォントサイズを小さく */
-	float: left;		/* 左寄せ */
+	font-size: 0.75em;			/* フォントサイズを小さく */
+	float: left;				/* 左寄せ */
 	width: 48.5%!important;		/* 元々の値より0.5%大きく */	
 }
 
@@ -928,11 +930,11 @@ div#fig1 div.half_buttons button{
  * 作成者:T.M
  */
 #fig7-0 input:text{
-	width: 25%!important:	/* 幅を25%に固定する */
+	width: 25%!important;	/* 幅を25%に固定する */
 }
 
 /*
- * セレクタ:#fig7-0 input:text
+ * セレクタ:#fig7-0 .line.edit_buttons
  * 概要  :在庫一覧タブのボタン領域
  * 作成者:T.M
  */
@@ -941,7 +943,7 @@ div#fig1 div.half_buttons button{
 }
 
 /*
- * セレクタ:#fig7-0 input:text
+ * セレクタ:#fig7-0 .half_line.parallel-text.variable-height.right
  * 概要  :在庫一覧タブの並んだ複数のテキストボックス領域の右側
  * 作成者:T.M
  */
@@ -961,7 +963,7 @@ div#fig1 div.half_buttons button{
 .inner-list-title{
 	float: right;		/* 右に寄せる */
 	margin-right: 5%;	/* 右にmarginを挿入し開閉ボタンと重ならないようにする */
-	width: 50%;		/* 幅をタイトル枠の横幅の20%に設定 */
+	width: 50%;			/* 幅をタイトル枠の横幅の20%に設定 */
 	text-align: right;	/* 中の要素を右に詰める */
 }
 
@@ -977,7 +979,7 @@ div#fig1 div.half_buttons button{
  * 作成者:T.M
 */
 .inner-list-title .textbox_M{
-	width: 40%;		/* 幅を60%に設定。多少余裕がないと回り込む */
+	width: 40%;			/* 幅を60%に設定。多少余裕がないと回り込む */
 	height: inherit;	/* 親要素の高さを受け継ぐ */
 }
 
@@ -992,7 +994,7 @@ div#fig1 div.half_buttons button{
 }
 
 /*
- * セレクタ:.list-wrap
+ * セレクタ:.wrap-list
  * 概要  :リストを囲む
  * 作成日:2014.06.30
  * 作成者:T.M
@@ -1036,7 +1038,7 @@ a#cData{
 }
 
 /*
- * セレクタ:.panel-container .line.edit_buttons
+ * セレクタ:.panel-container .half_line.edit_buttons
  * 概要  :タブ内の行の半分の幅を取るリスト編集ボタン領域
  * 作成者:T.M
 */
@@ -1089,7 +1091,7 @@ hr.content-border.invisible{
 }
 /*
 
- * セレクタ:#detail .line:first-child
+ * セレクタ:#detail .line:nth-child(2)
  * 概要  :詳細タブの通知設定のタイトル
  * 作成者:T.M
 */
