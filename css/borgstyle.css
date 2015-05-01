@@ -485,11 +485,11 @@ button.button.normal-button.ui-button-text-only{
 }
 
  /*
- * セレクタ:button.button.ui-button.top_page_button, div.top_page_button,div.top_page_button
+ * セレクタ:button.button.ui-button.top_page_button, div.top_page_button
  * 概要  :トップページ(fig1)のボタン
  * 作成者:T.M
  */
-button.button.ui-button.top_page_button, div.top_page_button,div.top_page_button{
+button.button.ui-button.top_page_button, div.top_page_button{
 	width: 40%;		/* 幅 */
 	height: 100%;	/* 高さ100% */
 	zoom: 1;    /* for IE */
