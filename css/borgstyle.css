@@ -284,16 +284,6 @@ button.button.normal-button.ui-button-text-only{
 	float: left;	/* 左に寄せる */
 }
 
-/*
- * セレクタ:.table
- * 概要  :表。特にグラフとセットになっているもの
- * 作成日:2014.07.07
- * 作成者:T.M
-*/
-.table{
-	
-}
-
  /*
  * セレクタ:.dummy
  * 概要  :レイアウトのためのダミー要素
@@ -335,7 +325,7 @@ button.button.normal-button.ui-button-text-only{
 }
 
  /*
- * セレクタ:.a_line
+ * セレクタ:.a_line button.ui-button
  * 概要  :a_lineのボタン
  * 作成者:T.M
  */
@@ -351,18 +341,6 @@ button.button.normal-button.ui-button-text-only{
 .line.edit_buttons{
 	width: 100%;	/* 2段組でない状況をまずは想定して100%の幅 */
 }
-
-
- /*
- * セレクタ:.last_line
- * 概要  :テキストボックス最終行
- * 作成日:2014.07.18
- * 作成者:T.M
- */
-.last_line{
-	padding-bottom:	1%;	/* 主にリストの下部と間を取る */
-}
-
 
 /* モーダルダイアログのリンクリストについて */
  /*
@@ -693,7 +671,7 @@ span.two-tb #filter-list-before{
 }
 
 /*
- * セレクタ:#fig7-1 .parallel-text.right
+ * セレクタ:#fig7-1 .parallel-text.right label:first-child
  * 概要  :過去在庫のテキストボックス領域のラベル
  * 作成者:T.M
  */
@@ -889,7 +867,7 @@ div#fig1 div.half_buttons button.right{
 }
 
 /*
- * セレクタ:div#fig1 div.half_buttons button.right
+ * セレクタ:div#fig1 div.half_buttons button
  * 概要  :トップページの小さなボタン
  * 作成者:T.M
  */
@@ -923,16 +901,7 @@ div#fig1 div.half_buttons button{
 }
 
 /*
- * セレクタ:#fig7-0 input:text
- * 概要  :在庫一覧タブのテキストボックス全体
- * 作成者:T.M
- */
-#fig7-0 input:text{
-	width: 25%!important:	/* 幅を25%に固定する */
-}
-
-/*
- * セレクタ:#fig7-0 input:text
+ * セレクタ:#fig7-0 .line.edit_buttons
  * 概要  :在庫一覧タブのボタン領域
  * 作成者:T.M
  */
@@ -952,34 +921,6 @@ div#fig1 div.half_buttons button{
 /* ここまでfig7独自 */
 
 /* jqGrid関連 */
-
-/* セレクタ:.inner-list-title
- * 概要  :リストのタイトル領域の記述
- * 作成日:2014.06.25
- * 作成者:T.M
-*/
-.inner-list-title{
-	float: right;		/* 右に寄せる */
-	margin-right: 5%;	/* 右にmarginを挿入し開閉ボタンと重ならないようにする */
-	width: 50%;		/* 幅をタイトル枠の横幅の20%に設定 */
-	text-align: right;	/* 中の要素を右に詰める */
-}
-
-/* セレクタ:.inner-list-title label
- * 概要  :リストのタイトル領域のラベル
- * 作成者:T.M
-*/
-.inner-list-title label{
-	width: 25%;		/* 幅を35%に設定。 */
-}
-/* セレクタ:.inner-list-title .textbox_M
- * 概要  :リストのタイトル領域のテキストボックス
- * 作成者:T.M
-*/
-.inner-list-title .textbox_M{
-	width: 40%;		/* 幅を60%に設定。多少余裕がないと回り込む */
-	height: inherit;	/* 親要素の高さを受け継ぐ */
-}
 
 /* 
  * セレクタ:.list
@@ -1032,11 +973,10 @@ a#cData{
 */
 .panel-container .line.edit_buttons{
 	width: 98%;	/* 幅をpaddingを加味して98%にする */
-	/*margin-bottom: 1%;*/	/* 1%の下margin */
 }
 
 /*
- * セレクタ:.panel-container .line.edit_buttons
+ * セレクタ:.panel-container .half_line.edit_buttons
  * 概要  :タブ内の行の半分の幅を取るリスト編集ボタン領域
  * 作成者:T.M
 */

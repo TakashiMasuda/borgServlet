@@ -3869,7 +3869,7 @@ function changerGraphUnit(screen, chart, isDrawTable){
  * 戻り値:なし
  * 概要  :タブを作る。
  * 作成者:T.Masuda
-*/	
+*/
 function createTab(){
 	//easytabsによるタブのコンテンツを作成する。
 	$('#tab-container').easytabs({
