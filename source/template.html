@@ -1,0 +1,93 @@
+<html>
+<body>
+	<!-- 見出し部を開始 -->
+	<div id="" class="header">
+		<!-- ヘッダーのタイトル部分 -->
+		<!-- 改行によるインライン要素同士の空白をなくすため、閉括弧を次の行の頭に記述する -->
+		<div id="" class="header-title">
+			<!-- このページの要旨 -->
+			<h1 class="pageTitle"></h1 >
+			<!-- ヘッダーのタイトル部分を閉じる -->
+		</div>
+		<!-- ヘッダーのボタン群 -->
+		<div id="" class="header-buttons">
+			<!-- 閉じるボタン -->
+			<button class="close-button" value="" name="">
+			<!-- リンクのリストダイアログを出すボタン -->
+			<button class="setting-button">
+		</div><!-- ヘッダーのボタン群を閉じる -->
+	</div><!-- ヘッダー部分を終える -->
+
+	<!-- タブのリスト -->
+	<ul class="tablist">
+		<!-- タブメニューのボタン -->
+		<li id="" class="firsttab">
+			<a href="" class="receivedlink"></a>
+		</li>
+	</ul><!-- タブメニューを閉じる -->
+
+	<!-- 検索機能 -->
+	<div class="searcharea">
+		<!-- ラベル -->
+		<label class="searchtext" for=""></label>
+		<!-- テキストボックス -->
+		<input type="" class="searchtextbox" name="">
+		<!-- 検索ボタン -->
+		<button type="" name="" id="" class="searchbutton" value=""> 
+		</button>
+	</div>
+
+	<!-- 期間を指定してのレコード絞り込み機能 -->
+	<div class="periodarea">
+		<!-- ラベル -->
+		<label class="periodtext" for=""></label>
+		<!-- 開始日付選択のテキストボックスの外枠 -->
+		<span class="datestart">
+			<!-- 開始日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+			<input type="" class="datebox" id="" name="" value="">
+		</span>
+		<!-- 〜のラベル -->
+		<label class="from-to"></label>
+		<!-- 終了日付選択のテキストボックスの外枠 -->
+		<span class="dateafter">
+			<!-- 終了日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+			<input type="" class="datebox" id="" name="" value="">
+		</span>
+	</div>
+
+	<!-- 空白のdiv。要素を囲みたいときに使う -->
+	<div class="insertdiv"></div>
+
+	<!-- リスト編集ボタン群 -->
+	<div class="edit_buttons">
+		<!-- 登録ボタン -->
+		<button type="" name="" id="" class="add-button"></button>
+	</div>
+
+	<!-- PDF出力ボタン群 -->
+	<div class="pdfbuttons">
+		<!-- ボタン群右半分 -->
+		<span class="rightbuttons">
+			<!-- 納品書ボタン -->
+			<button type="" name="" id="" class="payitem" value=""></button>
+			<!-- 発送指示書ボタン -->
+			<button type="" name="" id="" class="orderdelivery" value="">
+			</button>
+		</span>
+		<!-- ボタン群左半分 -->
+		<span class="leftbuttons">
+			<!-- 見積書ボタン -->
+			<button type="" name="" id="" class="estimate" value=""></button>
+			<!-- 注文書ボタン -->
+			<button type="" name="" id="" class="order" value=""></button>
+		</span>
+	</div>
+
+	<!-- リストを囲んでレイアウト崩れを防止するためのタグ -->
+	<div class="wrap-list">
+		<!-- JQ Gridによりリストを形成するtableタグ -->
+		<table id="" class="list"></table>
+	</div>
+
+</body>
+</html>

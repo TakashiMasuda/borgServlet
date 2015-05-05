@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- タイトル -->
+		<title>受注伝票</title>
+	</head>
+	<body>
+		<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
+		<div id = "container">
+			<!-- コンテンツ領域となるdivタグmain -->
+			<div class = "main">
+				<!-- fig2独自の記述を開始 -->
+				<div id ="fig2" class="figs clearfix">
+					<div id="tab-container">
+						<!-- タブメニュー -->
+						<div class="tabmenu"></div>
+						<!-- タブパネル -->
+						<div class="panel-container">
+							<!-- 受注伝票のIDのタグでコンテンツを囲む -->
+							<div id="order_bill" class="label_max2"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- JavaScriptのコードを記述 -->
+		<script type='text/javascript'>
+		//読み込み後
+		$(document).ready(function(){
+			createTab();	//tab-containerからタブを作る。
+
+			// dom要素を作るためのクラスをインスタンス化する
+			creator = new createTag();
+			// 受注画面のjsonデータを取得する
+			creator.getJsonFile('source/ordersreceive.json');
+			// 受注画面の受注jsonデータを取得する(jqGrid)
+			creator.getJsonFile('source/receivedata.json');
+			// テンプレートのdomを取得する
+			creator.getDomFile('source/template.json');
+			// ヘッダー部分のdomを作る
+			creator.outputTag('header');
+			// タブリストのdomを作る
+			creator.outputTag('tablist', 'tablist', '.tabmenu');
+			// 検索機能領域のdomを作る
+			creator.outputTag('searcharea', 'searcharea', '#order_bill');
+			// 期間を指定する領域のdomを作る
+			creator.outputTag('periodarea', 'periodarea', '#order_bill');
+			// リスト編集領域のdomを作る(中身は空)
+			creator.outputTag('insertdiv', 'insertdiv', '#order_bill');
+			// 編集ボタン群領域のdomを作る
+			creator.outputTag('edit_buttons', 'edit_buttons', '.buttonlist');
+			// PDF出力ボタン群領域のdomを作る
+			creator.outputTag('pdfbuttons', 'pdfbuttons', '.buttonlist');
+			// 受注テーブル領域のdomを作る
+			creator.outputTag('wrap-list', 'wrap-list', '#order_bill');
+		});
+
+		//JavaScriptのコード記述を終える
+		</script>
+	</body>
+</html>

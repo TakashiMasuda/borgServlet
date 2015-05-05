@@ -1,0 +1,144 @@
+{
+	"header":{
+		"class":"header clearfix",
+		"id":"header",
+		"header-title":{
+			"id":"header-title",
+			"pageTitle":{
+				"text":"受注伝票"
+			}
+		},
+		"header-buttons":{
+			"id":"header-buttons",
+			"class":"header-buttons variable-height",
+			"close-button":{
+				"class":"button close-button",
+				"value":"戻る",
+				"name":"fig1"
+			},
+			"setting-button":{
+				"class":"button setting-button"
+			}
+		}
+	},
+	"tablist":{
+		"firsttab":{
+			"id":"default",
+			"receivedlink":{
+				"href":"#order_bill",
+				"text":"受注タブ"
+			}
+		}
+	},
+	"searcharea":{
+		"class":"searcharea line half_line parallel-text variable-height left",
+		"searchtext":{
+			"for":"search-list",
+			"text":"検索"
+		},
+		"searchtextbox":{
+			"class":"searchtextbox sort-list textbox_S",
+			"type":"text",
+			"name":"search-list"
+		},
+		"searchbutton":{
+			"class":"searchbutton button on-search",
+			"type":"button",
+			"name":"on-search",
+			"id":"on_search",
+			"value":"検索",
+			"text":"検索"
+		}
+	},
+	"periodarea":{
+		"class":"periodarea half_line parallel-text two-tb variable-height right",
+		"periodtext":{
+			"for":"filter-list",
+			"text":"期間"
+		},
+		"datestart":{
+			"class":"date filter-list filter-list-after",
+			"datebox":{
+				"class":"date filter-list filter-list-after textbox_S",
+				"type":"text",
+				"id":"filter-list-after",
+				"name":"filter-list-after",
+				"value":"2013/11/28"
+			}
+		},
+		"from-to":{
+			"text":"&#12316;"
+		},
+		"dateafter":{
+			"class":"filter-list filter-list-before",
+			"datebox":{
+				"class":"date filter-list filter-list-before textbox_S",
+				"type":"text",
+				"id":"filter-list-before",
+				"name":"filter-list-before",
+				"value":"2014/11/28"
+			}
+		}
+	},
+	"insertdiv":{
+		"class":"buttonlist line before_list_line variable-height"
+	},
+	"edit_buttons":{
+		"class":"edit_buttons left clearfix",
+		"add-button":{
+			"class":"button add-button callpage",
+			"type":"button",
+			"name":"fig2-1",
+			"id":"add_button",
+			"text":"登"
+		}
+	},
+	"pdfbuttons":{
+		"class":"edit_buttons right has-two-str-button variable-height clearfix",
+		"rightbuttons":{
+			"class":"two-str-button clearfix",
+			"payitem":{
+				"class":"button normal-button",
+				"type":"button",
+				"name":"fig2-1",
+				"id":"nouhin",
+				"value":"納品書",
+				"text":"納"
+			},
+			"orderdelivery":{
+				"class":"button normal-button",
+				"type":"button",
+				"name":"fig2-1",
+				"id":"hassou",
+				"value":"発送指示書",
+				"text":"発指"
+			}
+		},
+		"leftbuttons":{
+			"class":"two-str-button clearfix",
+			"estimate":{
+				"class":"button normal-button",
+				"type":"button",
+				"name":"fig2-1",
+				"id":"mitsumori",
+				"value":"見積書",
+				"text":"見"
+			},
+			"orderdelivery":{
+				"class":"button normal-button",
+				"type":"button",
+				"name":"fig2-1",
+				"id":"chuumon",
+				"value":"注文書",
+				"text":"注"
+			}
+		}
+	},
+	"wrap-list":{
+		"class":"wrap-list clearfix",
+		"list":{
+			"class":"list clearfix",
+			"id":"fig2-list"
+		}
+	}
+}
