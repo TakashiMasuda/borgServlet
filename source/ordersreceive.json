@@ -10,7 +10,7 @@
 		},
 		"header-buttons":{
 			"id":"header-buttons",
-			"class":"header-buttons variable-height",
+			"class":"variable-height",
 			"close-button":{
 				"class":"button close-button",
 				"value":"戻る",
@@ -19,6 +19,13 @@
 			"setting-button":{
 				"class":"button setting-button"
 			}
+		}
+	},
+	"figs":{
+		"class":"figs clearfix",
+		"id":"fig2",
+		"contents":{
+			"id":"tab-container"
 		}
 	},
 	"tablist":{
@@ -30,19 +37,25 @@
 			}
 		}
 	},
+	"panel-container":{
+		"tabInContent":{
+			"id":"order_bill",
+			"class":"label_max2"
+		}
+	},
 	"searcharea":{
-		"class":"searcharea line half_line parallel-text variable-height left",
+		"class":"line half_line parallel-text variable-height left",
 		"searchtext":{
 			"for":"search-list",
 			"text":"検索"
 		},
 		"searchtextbox":{
-			"class":"searchtextbox sort-list textbox_S",
+			"class":"sort-list textbox_S",
 			"type":"text",
 			"name":"search-list"
 		},
 		"searchbutton":{
-			"class":"searchbutton button on-search",
+			"class":"button on-search",
 			"type":"button",
 			"name":"on-search",
 			"id":"on_search",
@@ -51,7 +64,7 @@
 		}
 	},
 	"periodarea":{
-		"class":"periodarea half_line parallel-text two-tb variable-height right",
+		"class":"half_line parallel-text two-tb variable-height right",
 		"periodtext":{
 			"for":"filter-list",
 			"text":"期間"
@@ -67,7 +80,7 @@
 			}
 		},
 		"from-to":{
-			"text":"&#12316;"
+			"html":"&#12316;"
 		},
 		"dateafter":{
 			"class":"filter-list filter-list-before",
@@ -81,7 +94,7 @@
 		}
 	},
 	"insertdiv":{
-		"class":"buttonlist line before_list_line variable-height"
+		"class":"line before_list_line variable-height"
 	},
 	"edit_buttons":{
 		"class":"edit_buttons left clearfix",
@@ -124,7 +137,7 @@
 				"value":"見積書",
 				"text":"見"
 			},
-			"orderdelivery":{
+			"order":{
 				"class":"button normal-button",
 				"type":"button",
 				"name":"fig2-1",
