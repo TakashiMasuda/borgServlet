@@ -74,27 +74,29 @@
 		//セルを編集してもサーバとの通信をしないように設定する。
 		cellsubmit: 'clientArray',
         sortorder: "desc",	// 降順ソートをする
-        multiselect: true,	// チェックボックス行を出す
+//        multiselect: true,	// チェックボックス行を出す
         shrinkToFit: false,	// 列幅の自動調整を行う。
 		//行を選択する前に実行される関数。
 		beforeSelectRow:function(rowid, e){
 			//行のチェックボックスの状態を取得する。
-			isCheck = $('.list:first #' + rowid + ' input:checkbox:first').prop('checked');
+//			isCheck = $('.list:first #' + rowid + ' input:checkbox:first').prop('checked');
         	return true;	//onSelectRowイベントへ移行する
 		},
 		//行を選択した後に実行される関数。
 		onSelectRow:function(rowid, status, e){
 			//チェックボックス以外をクリックしたら
-			if(e === void(0)|| (e.target.cellIndex != 0 && $(e.target).hasClass('cbox') == false)){
+//			if(e === void(0)|| (e.target.cellIndex != 0 && $(e.target).hasClass('cbox') == false)){
 				//行クリックでの選択であれば(行クリックでなければeはundefined)
-				if(e !== void(0)){
+//				if(e !== void(0)){
 					//編集ダイアログを開く。
-					$('#fig2-list').editGridRow(rowid, gridFormOptions[0]);
-				}
-			}
+//					$('#fig2-list').editGridRow(rowid, gridFormOptions[0]);
+//				}
+//			}
 
 			//行のチェックボックスの状態を行クリックで変化する前の状態に戻す。
-			$('.list:first #' + rowid + ' input:checkbox:first').prop('checked', isCheck);
+//			$('.list:first #' + rowid + ' input:checkbox:first').prop('checked', isCheck);
+			
+			callPage('fig2-1');	//fig2-1(伝票の製品編集画面)を呼び出す。
 		}
 	};
 
@@ -107,10 +109,11 @@
 	 * 作成者:T.Masuda
 	*/
 	function makeGrid(target){
+		//設定用の連想配列を使い、jqGridの表を作る。
 		$('#' + target).jqGrid(objRules[target]);
 	}
 
 	//ドキュメントの配置完了後(= 全てのファイルを読み込んだ後)
-	$(document).ready(function(){
-		makeGrid('fig2-list');	//グリッドを作成する
-	});
+//	$(document).ready(function(){
+//		makeGrid('fig2-list');	//グリッドを作成する
+//	});
