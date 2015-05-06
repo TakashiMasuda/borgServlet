@@ -1,0 +1,166 @@
+<html>
+	<head>
+		<!-- UTF-8でページを扱うように宣言する。 -->
+		<meta charset="utf-8">
+		<!-- メディアクエリーの記述 -->
+		<!-- viewportの設定により、端末の幅を初期解像度とする -->
+		<meta name="viewport" content="width=device-width">
+		<!-- メディアクエリーの記述終了 -->
+		<!-- タイトル -->
+		<title>受注伝票</title>
+		<!-- CSSファイルを読み込む -->
+		<!-- 全体に必要なスタイルシートを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/borgstyle.css">
+		<!-- easytabsのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/easytabs.css">
+		<!-- jQuery UIのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.9.2.custom.min.css">
+		<!-- jqGridのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/ui.jqgrid.css">
+		<!-- formlyのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/formly.css">
+		
+		<!-- JSファイルを読み込む -->
+		<!-- jQueryの本体を読み込む -->
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<!-- 多機能ライブラリ jQuery UIを読み込む -->
+		<script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
+		<!-- easytabsを読み込む -->
+		<script type="text/javascript" src="js/jquery.easytabs.js"></script>
+		<!-- 表のプラグインjqGridを読み込む -->
+		<script type="text/javascript" src="js/jquery.jqGrid.src.js"></script>
+		<!-- jqGridの日本語ローカライズプラグインを読み込む -->
+		<script type="text/javascript" src="js/grid.locale-ja.js"></script>
+		<!-- jqGridのセル編集機能プラグインを読み込む -->
+		<script type="text/javascript" src="js/grid.celledit.js"></script>
+		<!-- フォーム整形プラグインformlyを読み込む -->
+		<script type="text/javascript" src="js/formly.js"></script>
+		<!-- jQuery UIの日本語ローカライズプラグインを読み込む -->
+		<script type="text/javascript" src="js/jquery-ui-i18n.js"></script>
+		<!-- ツールチップのプラグインpowertipを読み込む -->
+		<script type="text/javascript" src="js/jquery.powertip.min.js"></script>
+		
+		<!-- このページの趣旨であるjqGridのJSON読み込みの設定をまとめたファイルを読み込む。 -->
+		<script type="text/javascript" src="js/samplejqgrid.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
+	</head>
+	<body>
+		<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
+		<div id = "container">
+			<!-- 各画面を分けるタグ -->
+			<div class="page">
+				<!-- コンテンツ領域となるdivタグmain -->
+				<div class = "main">
+					<!-- 見出し部を開始 -->
+					<div id="header" class="clearfix">
+						<!-- ヘッダーのタイトル部分 -->
+						<div id="header-title" >
+							<!-- このページの要旨 -->
+							<h1>受注伝票</h1 >
+							<!-- ヘッダーのタイトル部分を閉じる -->
+						</div >
+						<!-- ヘッダーのボタン群 -->
+						<div id="header-buttons" class="variable-height" >
+							<!-- 閉じるボタン -->
+							<button class=" button close-button" value="戻る" name="fig1" / >
+							<!-- リンクのリストダイアログを出すボタン -->
+							<button class="button setting-button" / >
+							<!-- ヘッダーのボタン群を閉じる -->
+						</div >
+						<!-- ヘッダー部分を終える -->
+					</div>
+					<!-- fig2独自の記述を開始 -->
+					<div id = "fig2" class="figs clearfix">
+						<!-- タブの領域全体のタグ -->
+						<div id="tab-container">
+							<!-- タブメニュー -->
+							<ul>
+								<!-- タブメニューのボタン -->
+								<li id="default">
+									<a href="#order_bill">受注タブ</a>
+								</li>
+								<!-- タブメニューを閉じる -->
+							</ul>
+							<!-- タブパネル -->
+							<div class="panel-container">
+								<!-- 受注伝票のIDのタグでコンテンツを囲む -->
+								<div id="order_bill" class="label_max2">
+									<!-- 検索機能 -->
+									<div class="line half_line parallel-text variable-height left">
+										<!-- ラベル -->
+										<label for="search-list">検索</label>
+										<!-- テキストボックス -->
+										<input type="text" class="sort-list textbox_S" name="search-list" />
+										<!-- 検索ボタン -->
+										<button type="button" name="on-search" id="on_search" class="button on-search" value="検索">検索 
+										</button>
+									</div>
+									<!-- 期間を指定してのレコード絞り込み機能 -->
+									<div class="half_line parallel-text two-tb variable-height right">
+										<!-- ラベル -->
+										<label for="filter-list">期間</label>
+										<!-- 開始日付選択のテキストボックスの外枠 -->
+										<span class="date filter-list filter-list-after">
+											<!-- 開始日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+											<input type="text" class="date filter-list filter-list-after textbox_S" id="filter-list-after" name="filter-list-after" value="2013/11/28" />
+										</span>
+										<!-- 〜のラベル -->
+										<label class="from-to">&#12316;</label>
+										<!-- 終了日付選択のテキストボックスの外枠 -->
+										<span class=" filter-list filter-list-before">
+											<!-- 終了日付選択のテキストボックス。クリックすることでカレンダーが表示される -->
+											<input type="text" class="date filter-list filter-list-before textbox_S " id="filter-list-before" name="filter-list-before" value="2014/11/28" />
+										</span>
+									</div>
+									<!-- リスト直前の行。 -->
+									<div class="line before_list_line variable-height">
+										<!-- リスト編集ボタン群 -->
+										<div class="edit_buttons left clearfix">
+											<!-- 登録ボタン -->
+											<button type="button" name="fig2-1" id="add_button" class="button add-button callpage">登 
+											</button>
+										</div>
+										<!-- PDF出力ボタン群 -->
+										<div class="edit_buttons right has-two-str-button variable-height clearfix">
+											<!-- ボタン群右半分 -->
+											<span class="two-str-button clearfix">
+												<!-- 納品書ボタン -->
+												<button type="button" name="fig2-1" id="nouhin" class="button normal-button" value="納品書">納 
+												</button>
+												<!-- 発送指示書ボタン -->
+												<button type="button" name="fig2-1" id="hassou" class="button normal-button" value="発送指示書">発指 
+												</button>
+											</span>
+											<!-- ボタン群左半分 -->
+											<span class="two-str-button clearfix">
+												<!-- 見積書ボタン -->
+												<button type="button" name="fig2-1" id="mitsumori" class="button normal-button" value="見積書">見 
+												</button>
+												<!-- 注文書ボタン -->
+												<button type="button" name="fig2-1" id="chuumon" class="button normal-button" value="注文書">注 
+												</button>
+											</span>
+										</div>
+									</div>
+									<!-- リストを囲んでレイアウト崩れを防止するためのタグ -->
+									<div class="wrap-list clearfix">
+										<!-- jqGridによりリストを形成するtableタグ -->
+										<table id="fig2-list" class="list clearfix"></table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- JavaScriptのコードを記述 -->
+					<script type='text/javascript'>
+						createTab();	//tab-containerからタブを作る。
+						$('#fig2').formly();	//ページのレイアウトを整える
+						setButtons(false);		//jQueryUIのボタンをセットする
+						setCalendar();			//Datepickerのカレンダーをセットする
+					</script>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

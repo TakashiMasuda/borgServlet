@@ -505,7 +505,7 @@ div.top_page_button button{
  * 作成者:T.M
  */
 .parallel-text input{
-	height: 100%;	/* テキストボックスの高さを100%に指定 */
+	height:100%;
 }
 
 /*
@@ -1089,4 +1089,15 @@ hr.content-border.invisible{
 */
 #fig8-3 .filter-list-before, #fig8-4 .filter-list-before{
 	margin-left:0px;	/* 幅に余裕がないため、marginをなくす */
+}
+
+/*
+ * セレクタ:.list .ui-state-highlight
+ * 概要  :.ui-state-highlight
+ * 作成者:T.M
+*/
+.list .ui-state-highlight{
+	border: 1px solid #aaa!important;
+	background: #fff url("images/ui-bg_flat_75_ffffff_40x100.png") 50% 50% repeat-x!important;
+	color: #222!important;
 }
