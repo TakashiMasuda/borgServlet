@@ -1,0 +1,233 @@
+{
+    "header": {
+        "class":"header clearfix",
+        "headerTitle": {
+            "pageTitle": {
+                "text": "発注・受注機能"
+            }
+        },
+        "closeButton": {
+            "type":"image",
+            "src":"css/images/closeButton.png",
+            "class":"closeButton buttonImage grid1",
+            "name": "closeButton"
+        }
+    },
+    "mainContent": {
+        "id":"fig2",
+        "tabArea":{
+            "tablist":{
+                "firstTab":{
+                    "class":"firstTab grid1",
+                    "tabLabel":{
+                        "for":"sendTab",
+                        "text":"発注"
+                    }
+                },
+                "secondTab":{
+                    "class":"secondTab grid1",
+                    "tabLabel":{
+                        "for":"receivedTab",
+                        "text":"受注"
+                    }
+                }
+            },
+            "firstTabContent":{
+                "tabRadio":{
+                    "name":"tab",
+                    "id":"sendTab",
+                    "type":"radio"
+                },
+                "tabContent":{
+                    "id":"sendTabContent"
+                }
+            },
+            "secondTabContent":{
+                "tabRadio":{
+                    "name":"tab",
+                    "id":"receivedTab",
+                    "type":"radio"
+                },
+                "tabContent":{
+                    "id":"receivedTabContent"
+                }
+            }
+        }
+    },
+    "searcharea": {
+        "searchtext": {
+            "class":"searchtext grid1",
+            "for": "searchList",
+            "text": "検索"
+        },
+        "searchtextbox": {
+            "class":"searchtextbox grid10",
+            "type": "text",
+            "name": "searchList"
+        },
+        "searchButton": {
+            "class":"searchButton grid1 buttonImage",
+            "name": "search",
+            "value": "検索",
+            "type":"image",
+            "src":"css/images/searchButton.png"
+        }
+    },
+    "periodarea": {
+        "periodtext": {
+            "class":"periodtext grid1",
+            "for": "filter-list",
+            "text": "期間"
+        },
+        "datestart": {
+            "class": "dateArea",
+            "datebox": {
+                "class":"datebox grid2",
+                "type": "text",
+                "name": "startDay",
+                "value": "13/11/28",
+                "format": "yyyy/MM/dd"
+            }
+        },
+        "from-to": {
+            "html": "&#12316;"
+        },
+        "dateafter": {
+            "class": "dateArea",
+            "datebox": {
+                "class":"datebox grid2",
+                "type": "text",
+                "name": "endDay",
+                "value": "14/11/28",
+                "format": "yyyy/MM/dd"
+            }
+        }
+    },
+    "choice": {
+        "selectLabel": {
+            "class":"selectLabel grid2",
+            "text": "受注種別"
+        },
+        "selectbox": {
+            "class":"selectbox grid2",
+            "name": "selectbox",
+            "firstSelect": {
+                "value": "種別1",
+                "text": "種別1"
+            },
+            "secondSelect": {
+                "value": "種別2",
+                "text": "種別2"
+            },
+            "thirdSelect": {
+                "value": "種別3",
+                "text": "種別3"
+            },
+            "forthSelect": {
+                "value": "種別4",
+                "text": "種別4"
+            },
+            "fifthSelect": {
+                "value": "種別5",
+                "text": "種別5"
+            }
+        }
+    },
+    "sendButtonList": {
+        "id":"sendButtonList",
+        "class": "buttonList"
+    },
+    "receivedButtonlist": {
+        "id":"receivedButtonList",
+        "class": "buttonList"
+    },
+    "editButtons": {
+        "addButton": {
+            "type":"image",
+            "src":"css/images/addButton.png",
+            "class":"addButton grid1 buttonImage",
+            "name": "addButton"
+        },
+        "deleteButton": {
+            "type":"image",
+            "src":"css/images/deleteButton.png",
+            "class":"deleteButton grid1 buttonImage",
+            "name": "deleteButton"
+        }
+    },
+    "sendPDFbutton": {
+        "buttonsposition": {
+            "firstbutton": {
+                "class":"firstbutton grid1",
+                "name": "orderPaper",
+                "value": "注文書",
+                "text": "注"
+            },
+            "secondbutton": {
+                "class":"secondButton grid1",
+                "name": "payItem",
+                "value": "納品書",
+                "text": "納"
+            },
+            "thirdbutton": {
+                "class":"thirdbutton grid2",
+                "name": "orderSend",
+                "value": "発送指示書",
+                "text": "発指"
+            }
+        }
+    },
+    "receivedPDFbutton": {
+        "class":"pdfButtons",
+        "buttonsposition": {
+            "firstbutton": {
+                "class":"first grid1",
+                "name": "estimate",
+                "value": "見積書",
+                "text": "見"
+            },
+            "secondbutton": {
+                "class":"secondButton grid1",
+                "name": "orderPaper",
+                "value": "注文書",
+                "text": "注"
+            },
+            "thirdbutton": {
+                "class":"thirdButton grid2",
+                "name": "orderBill",
+                "value": "注文請書",
+                "text": "注請"
+            },
+            "forthbutton": {
+                "class":"forthbutton grid1",
+                "name": "payItem",
+                "value": "納品書",
+                "text": "納"
+            },
+            "fifthbutton": {
+                "class":"fifthbutton grid1",
+                "name": "billPaper",
+                "value": "請求書",
+                "text": "請"
+            },
+            "sixthbutton": {
+                "class":"sixthbutton grid2",
+                "name": "sendOrder",
+                "value": "発送指示書",
+                "text": "発指"
+            }
+        }
+    },
+    "receivedWrapList": {
+        "id": "receivedWrapList",
+        "list": {
+            "id": "receivedData"
+        }
+    },
+    "sendWrapList": {
+        "id": "sendWrapList",
+        "list": {
+            "id": "sendData"
+        }
+    }
+}

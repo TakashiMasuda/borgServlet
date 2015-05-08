@@ -5,7 +5,7 @@
 		"header-title":{
 			"id":"header-title",
 			"pageTitle":{
-				"text":"受注伝票"
+				"text":"発注・受注機能"
 			}
 		},
 		"header-buttons":{
@@ -15,9 +15,6 @@
 				"class":"button close-button",
 				"value":"戻る",
 				"name":"fig1"
-			},
-			"setting-button":{
-				"class":"button setting-button"
 			}
 		}
 	},
@@ -31,15 +28,25 @@
 	"tablist":{
 		"firsttab":{
 			"id":"default",
+			"sendlink":{
+				"href":"#order_send",
+				"text":"発注"
+			}
+		},
+		"secondtab":{
 			"receivedlink":{
-				"href":"#order_bill",
-				"text":"受注タブ"
+				"href":"#order_received",
+				"text":"受注"
 			}
 		}
 	},
 	"panel-container":{
-		"tabInContent":{
-			"id":"order_bill",
+		"tabFirstContent":{
+			"id":"order_send",
+			"class":"label_max2"
+		},
+		"tabSecondContent":{
+			"id":"order_received",
 			"class":"label_max2"
 		}
 	},
@@ -64,7 +71,7 @@
 		}
 	},
 	"periodarea":{
-		"class":"half_line parallel-text two-tb variable-height right",
+		"class":"periodarea half_line parallel-text two-tb variable-height right",
 		"periodtext":{
 			"for":"filter-list",
 			"text":"期間"
@@ -93,8 +100,24 @@
 			}
 		}
 	},
-	"insertdiv":{
-		"class":"line before_list_line variable-height"
+	"commbobox":{
+		"class":"half_line parallel-text variable-height right",
+		"commbolabel":{
+			"for":"sort-by-product-type",
+			"text":"受注種別"
+		},
+		"pulldown-menu":{
+			"class":"pulldown-menu categories textbox_S",
+			"type":"text",
+			"name":"sort-by-product-type",
+			"id":"sort-by-product-type"
+		}
+	},
+	"sendbuttonlist":{
+		"class":"sendbuttonlist line before_list_line variable-height"
+	},
+	"receivedbuttonlist":{
+		"class":"receivedbuttonlist line before_list_line variable-height"
 	},
 	"edit_buttons":{
 		"class":"edit_buttons left clearfix",
@@ -104,13 +127,20 @@
 			"name":"fig2-1",
 			"id":"add_button",
 			"text":"登"
+		},
+		"delete-button":{
+			"class":"button delete-button",
+			"name":"delete_button",
+			"id":"delete_button",
+			"value":"削除",
+			"text":"削除"
 		}
 	},
-	"pdfbuttons":{
+	"receivedpdfbuttonright":{
 		"class":"edit_buttons right has-two-str-button variable-height clearfix",
-		"rightbuttons":{
+		"buttonsposition":{
 			"class":"two-str-button clearfix",
-			"payitem":{
+			"firstbutton":{
 				"class":"button normal-button",
 				"type":"button",
 				"name":"fig2-1",
@@ -118,7 +148,15 @@
 				"value":"納品書",
 				"text":"納"
 			},
-			"orderdelivery":{
+			"secondbutton":{
+				"class":"button normal-button",
+				"type":"button",
+				"name":"fig2-1",
+				"id":"seikyusyo",
+				"value":"請求書",
+				"text":"請"
+			},
+			"thirdbutton":{
 				"class":"button normal-button",
 				"type":"button",
 				"name":"fig2-1",
@@ -126,10 +164,12 @@
 				"value":"発送指示書",
 				"text":"発指"
 			}
-		},
-		"leftbuttons":{
+		}
+	},
+	"receivedpdfbuttonleft":{
+		"buttonsposition":{
 			"class":"two-str-button clearfix",
-			"estimate":{
+			"firstbutton":{
 				"class":"button normal-button",
 				"type":"button",
 				"name":"fig2-1",
@@ -137,21 +177,67 @@
 				"value":"見積書",
 				"text":"見"
 			},
-			"order":{
+			"secondbutton":{
+				"class":"button normal-button",
+				"type":"button",
+				"name":"fig2-1",
+				"id":"nouhin",
+				"value":"納品書",
+				"text":"納"
+			},
+			"thirdbutton":{
+				"class":"button normal-button",
+				"type":"button",
+				"name":"fig2-1",
+				"id":"chuumonuke",
+				"value":"注文請書",
+				"text":"注請"
+			}
+		}
+	},
+	"sendpdfbutton":{
+		"buttonsposition":{
+			"class":"two-str-button clearfix",
+			"firstbutton":{
 				"class":"button normal-button",
 				"type":"button",
 				"name":"fig2-1",
 				"id":"chuumon",
 				"value":"注文書",
 				"text":"注"
+			},
+			"secondbutton":{
+				"class":"button normal-button",
+				"type":"button",
+				"name":"fig2-1",
+				"id":"nouhin",
+				"value":"納品書",
+				"text":"納"
+			},
+			"thirdbutton":{
+				"class":"button normal-button",
+				"type":"button",
+				"name":"fig2-1",
+				"id":"hassou",
+				"value":"発送指示書",
+				"text":"発指"
 			}
 		}
 	},
-	"wrap-list":{
+	"received-wrap-list":{
+		"id":"received-wrap-list",
 		"class":"wrap-list clearfix",
 		"list":{
 			"class":"list clearfix",
 			"id":"fig2-list"
+		}
+	},
+	"send-wrap-list":{
+		"id":"send-wrap-list",
+		"class":"wrap-list clearfix",
+		"list":{
+			"class":"list clearfix",
+			"id":"send-list"
 		}
 	}
 }

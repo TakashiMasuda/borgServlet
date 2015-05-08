@@ -1,0 +1,375 @@
+@charset "utf-8";
+/* bodyタグ。全体に影響を及ぼす */
+/*
+ * セレクタ:body
+ * 概要  :表示領域全体のタグ
+ * 作成者:T.M
+ */
+body{
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	margin: 1% 0;	/* 余白をとる */
+	font-size: 90%;	/* 全体的を通常の9割程度のサイズにする */
+	color: #888;		/* 色を少し薄めにする */
+}
+
+/*
+ * セレクタ:.clearfix:after
+ * 概要  :クラスを適用した要素の中にfloatがあっても、その高さを認識させるためのクラスclearfixで追加される疑似要素。
+ * 作成日:2014.07.23
+ * 作成者:T.M
+ */
+.clearfix:after {
+	content: " ";	/* 場所をとらない形で要素を存在させる */
+	display: block;	/* 必ずブロックとして扱う */
+	clear: both;	/* 回り込み防止 */
+	height: 0;		/* 後に存在する要素の高さを0にする */
+	visibility: hidden;	/* 表示しない */
+}
+
+/*
+ * セレクタ:a
+ * 概要  :リンクに対してのスタイル
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+a {
+	text-decoration: none;		/* 下線を消す */
+}
+
+/* クリック時の動作についてのスタイルシート */
+/*
+ * セレクタ:*:focus
+ * 概要  :全ての要素が対象となる。フォーカスが当たったときのレスポンス。
+ * 作成者:T.M
+ */
+*:focus { 
+	outline:none;	/* 表示される青い枠線を消す */
+}
+
+/* テキストボックスについて */
+/*
+ * セレクタ:input
+ * 概要  :入力フォームの要素
+ * 作成者:T.M
+ */
+input{
+	background: #FFF;		/* 灰色になる場合があるので白くする */
+	vertical-align: middle;	/* 高さを親要素の中心に合わせる */
+	height :32px;	/* コンテンツの高さ */
+}
+
+/*
+ * セレクタ:.main
+ * 概要  :各画面のコンテンツの領域
+ * 作成日:2014.06.12
+ * 作成者:T.I
+ */
+.main {
+	max-width: 768px;	/* 画面幅の最大値 */
+	width: 100%;		/* 幅の基準パーセンテージ */
+	height: inherit;	/* containerの高さを継承 */
+	margin: 0 auto 0;	/* 画面全体の各マージン */
+	max-height: 1024px;	/* 画面の最大高 */
+}
+
+/*
+ * セレクタ:.grid1
+ * 概要  :グリッド1つ分のレイアウト
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.grid1 {
+	width	:32px;	/* 1グリッドの幅。 */
+	height :31px;	/* コンテンツの高さ */
+}
+
+/*
+ * セレクタ:.grid2
+ * 概要  :グリッド2つ分のレイアウト
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.grid2 {
+	width	:64px;	/*2グリッドの幅。*/
+	height :31px;	/* コンテンツの高さ */
+}
+
+/*
+ * セレクタ:.grid8
+ * 概要  :グリッド10個分のレイアウト
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.grid10{
+	width	:325px; /*10グリッドの幅。*/
+	height :31px;	/* コンテンツの高さ */
+}
+
+/*
+ * セレクタ:ul
+ * 概要  :箇条書きを表すulタグのスタイル
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+ul {
+	margin: 0;						/* 余白を0にする */
+	padding: 0;						/* 要素の広がりを0にする */
+}
+
+/*
+ * セレクタ:ul li
+ * 概要  :箇条書きに黒丸を付けないためのスタイル
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+ul li {
+	list-style: none;
+}
+
+/*
+ * セレクタ:button
+ * 概要  :1文字のボタン
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+button {
+	height:28px;		/* ボタンの高さを28pxにする */
+	padding: 4px;		/* 要素の幅を4px広げる */
+	color: #555;		/* 色を少し薄くする */
+}
+
+/*
+ * セレクタ:button:hover
+ * 概要  :ボタンにマウスオーバー時のスタイル
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+button:hover {
+	cursor: pointer;	/* カーソルをリンクのポインターにする */
+	opacity: 0.4; 		/* 40%に透過する */
+}
+
+/*
+ * セレクタ:.header
+ * 概要  :ページのヘッダー領域
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+.header {
+	margin: 1% 0;
+}
+
+/*
+ * セレクタ:.headerTitle
+ * 概要  :ページのタイトルを囲む領域
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+.headerTitle {
+	float: left;			/* 左側に回り込みする */
+	width: 90%;				/* 幅を80%にする */
+	text-align: center;		/* 中央揃えにする */
+}
+
+/*
+ * セレクタ:header h1
+ * 概要  :ページのタイトル
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+.header .pageTitle {
+	margin: 0;			/* 余白を0にしてタグデフォルトの余白をとらせない */
+}
+
+/*
+ * セレクタ:.closeButton
+ * 概要  :閉じるボタン
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+.closeButton {
+	float: right;		/* 右側に回り込みする */
+/*	width: 20px;
+	height: 20px;*/
+	margin-top: 6px;	/* 上から余白をとる */
+/*	background: url("images/close_r2_c12.gif")no-repeat;*/
+}
+
+/*
+ * セレクタ:#fig2
+ * 概要  :ヘッダーより下のコンテンツ全体の外枠
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+#fig2 {
+	background: #eee;		/* 背景をグレーにする */
+	clear: both;			/* 回り込みを解除する */
+	padding: 10px;			/* 要素の幅を10px広げる */
+}
+
+/*
+ * セレクタ:.tabContent
+ * 概要  :ヘッダーより下のコンテンツ全体の外枠
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.tabContent {
+	background: #fff;		/* 背景を白にする */
+	padding: 10px;			/* 要素の幅を10px広げる */
+	border: 1px solid #999;	/* 少し灰色目の黒い線で要素を囲む */
+	border-top: none;		/* 上部の線を消す*/
+}
+
+
+/*
+ * セレクタ:.tablist li
+ * 概要  :タブ領域
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+.tablist li {
+	cursor: pointer;				/* マウスカーソルを指にする */
+	display: inline-block;			/* ブロック要素にしてクリックしやすくする */
+	padding: 5px;					/* 5px要素の幅を広げる */
+	color: #444;					/* 文字色を少しグレーがかかった黒にする */
+	background: #eee;				/* 背景をグレーにする */
+	border: 1px solid #999;			/* 濃い目の線を引く */
+	border-bottom:none;				/* 下のボーダインをなくす */
+	border-top-left-radius: 5px;	/* 左上を角丸にする */
+	border-top-right-radius: 5px;	/* 右上を角丸にする */
+	height:22px;
+}
+
+/*
+ * セレクタ:.tablist 
+ * 概要  :タブのラベル領域
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.tabLabel {
+	cursor: pointer;				/* マウスカーソルを指にする */
+}
+
+/*
+ * セレクタ:.tablist li:hover
+ * 概要  :個々のタブにマウスオーバーした時の処理
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.tabArea .tablist li:hover{
+	color: #999;					/* 文字色をグレーにする */
+}
+
+/*
+ * セレクタ:.tabRadio
+ * 概要  :タブのラジオボタンについてのスタイル
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.tabRadio {
+	display: none;					/* ラジオボタンを消して見た目をタブにする */
+}
+
+/*
+ * セレクタ:.tabRadio:not(:checked) + .tabContent
+ * 概要  :選択されていないタブのコンテンツについてのスタイル
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.tabRadio:not(:checked) + .tabContent {
+    display: none;					/* 選択されていないタブのコンテンツは表示しないようにする */
+}
+
+/*
+ * セレクタ:.searcharea
+ * 概要  :検索機能領域
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+.searcharea {
+	float:left;				/* 左側に回り込む */
+}
+
+/*
+ * セレクタ:.periodarea, .choice
+ * 概要  :期間領域と受注種別選択領域
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+.periodarea, .choice {
+	margin-left: 10px;			/* 左から10pxの余白をとる */
+	float: left;				/* 左側に回り込む */
+}
+
+/*
+ * セレクタ:.choice .selectbox
+ * 概要  :受注種別のセレクトボックス領域
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+.choice .selectbox {
+	height: 30px;				/* 高さを30pxに設定する */
+}
+
+/*
+ * セレクタ:.buttonList
+ * 概要  :ボタン群
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+.buttonList {
+	padding-top: 10px;		/* 上から10px余白をとる */
+	clear: both;			/* 回り込みを解除する */
+}
+
+/*
+ * セレクタ:.editButtons
+ * 概要  :編集ボタン群
+ * 作成日:2015.05.06
+ * 作成者:T.Y
+ */
+.editButtons {
+	width:30%;
+	float: left;
+}
+
+/*
+ * セレクタ:.pdfButtons
+ * 概要  :pdf出力ボタン
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.pdfButtons {
+	float: right;					/* 右側に回り込みする */
+}
+
+/*
+ * セレクタ:.wrapList
+ * 概要  :jqGridの外枠
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.wrapList {
+	padding-top:10px;				/* 上から10px要素の幅を広げる */
+	clear: both;					/* 回り込みをなくす */
+}
+
+/*
+ * セレクタ:.tablist .firstTab
+ * 概要  :初期表示のタブのスタイル
+ * 作成日:2015.05.07
+ * 作成者:T.Y
+ */
+.tablist .firstTab {
+	background: #fff;				/* タブの背景を白色にする */
+}
+
+/*
+ * セレクタ:.buttonImage
+ * 概要  :画像ボタンにマウスオーバーしたときのスタイル
+ * 作成日:2015.05.08
+ * 作成者:T.Y
+ */
+.buttonImage:hover {
+	opacity: 0.65;	/* 50%透過する */
+}

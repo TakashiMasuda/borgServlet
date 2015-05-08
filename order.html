@@ -1,0 +1,124 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- viewportの設定により、端末の幅を初期解像度とする -->
+		<meta name="viewport" content="width=device-width">
+		<!-- タイトル -->
+		<title>受注伝票</title>
+				<!-- CSSファイルを読み込む -->
+		<!-- 全体に必要なスタイルシートを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/borgstyle.css">
+		<!-- ローディング画面用CSSファイルを読み込む。 -->
+		<!-- <link rel="stylesheet" type="text/css" href="css/preload.css" /> -->
+		<!-- easytabsのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/easytabs.css">
+		<!-- jQuery UIのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.9.2.custom.min.css">
+		<!-- jqGridのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/ui.jqgrid.css">
+		<!-- formlyのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/formly.css">
+		<!-- ツールチップのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="css/jquery.powertip-light.min.css">
+		
+		<!-- JSファイルを読み込む -->
+		<!-- jQueryの本体を読み込む -->
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<!-- 多機能ライブラリ jQuery UIを読み込む -->
+		<script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
+		<!-- タグを作成するJSの関数群を読み込む -->
+		<script type="text/javascript" src="js/createTag.js"></script>
+		<!-- 自己定義のデータをまとめたファイルを読み込む。 -->
+		<script type="text/javascript" src="js/main.js"></script>
+		<!-- 表のプラグインjqGridを読み込む -->
+		<script type="text/javascript" src="js/jquery.jqGrid.src.js"></script>
+		<!-- jqGridの日本語ローカライズプラグインを読み込む -->
+		<script type="text/javascript" src="js/grid.locale-ja.js"></script>
+		<!-- jqGridのセル編集機能プラグインを読み込む -->
+		<script type="text/javascript" src="js/grid.celledit.js"></script>
+		<!-- フォーム整形プラグインformlyを読み込む -->
+		<script type="text/javascript" src="js/formly.js"></script>
+		<!-- jQuery UIの日本語ローカライズプラグインを読み込む -->
+		<script type="text/javascript" src="js/jquery-ui-i18n.js"></script>
+		<!-- タブ作成プラグインeasytabsを読み込む -->
+		<script type="text/javascript" src="js/jquery.easytabs.js"></script>
+		<!--jqgridの設定jsを読み込む -->
+		<script type="text/javascript" src="js/samplejqgrid.js"></script>
+		<!-- ツールチップのプラグインpowertipを読み込む -->
+		<script type="text/javascript" src="js/jquery.powertip.min.js"></script>
+	</head>
+	<body>
+		<!-- ウィンドウサイズを取得しそれに幅を合わせるdivタグcontainer -->
+		<div id="container">
+			<!-- 後に呼ばれる各ページと同じく、main以下をpageで囲む -->
+			<div class="page">
+				<!-- コンテンツ領域となるdivタグmain -->
+				<div class="main"></div>
+			</div>
+		</div>
+
+
+			<!-- JavaScriptのコードを記述 -->
+		<script type='text/javascript'>
+		//読み込み後
+		$(document).ready(function(){
+			// dom要素を作るためのクラスをインスタンス化する
+			creator = new createTag();
+			// 受注画面のjsonデータを取得する
+			creator.getJsonFile('source/order.json');
+			// 受注画面の受注jsonデータを取得する(jqGrid)
+			//creator.getJsonFile('source/receivedata.json');
+			// テンプレートのdomを取得する
+			creator.getDomFile('source/template.html');
+			// ヘッダー部分のdomを作る
+			creator.outputTag('header', 'header', '.main');
+			// コンテンツの外枠のdomを作る
+			creator.outputTag('figs', 'figs', '.main');
+			// タブのdomを作る
+			creator.outputTag('tablist', 'tablist', '#tab-container');
+			// タブ中身のdomを作る
+			creator.outputTag('panel-container', 'panel-container', '#tab-container');
+
+			// 検索機能領域のdomを作る
+			creator.outputTag('searcharea', 'searcharea', '#order_send, #order_received');
+			// 期間を指定する領域のdomを作る
+			creator.outputTag('periodarea', 'periodarea', '#order_send, #order_received');
+			// 受注種別のプルダウンメニューを作る
+			creator.outputTag('commbobox', 'commbobox', '#order_received .periodarea');
+			// ボタン一覧(新規ボタンから発送指示ボタンまでを囲むdiv)を作る
+			creator.outputTag('sendbuttonlist', 'insertdiv', '#order_send');
+			// ボタン一覧(新規ボタンから発送指示ボタンまでを囲むdiv)を作る
+			creator.outputTag('receivedbuttonlist', 'insertdiv', '#order_received');
+			// 編集ボタン群領域のdomを作る
+			creator.outputTag('edit_buttons', 'edit_buttons', '.sendbuttonlist, .receivedbuttonlist');
+			// PDF出力ボタン群領域左側のdomを作る
+			creator.outputTag('sendpdfbutton', 'pdfbuttons', '.sendbuttonlist');
+			// PDF出力ボタン群領域右側のdomを作る
+			creator.outputTag('receivedpdfbuttonright', 'pdfbuttons', '.receivedbuttonlist');
+			// PDF出力ボタン群領域左側のdomを作る
+			creator.outputTag('receivedpdfbuttonleft', 'pdfbuttons', '.receivedbuttonlist');
+			// 発注テーブル領域のdomを作る
+			creator.outputTag('send-wrap-list', 'wrap-list', '#order_send');
+			// 受注テーブル領域のdomを作る
+			creator.outputTag('received-wrap-list', 'wrap-list', '#order_received');
+
+
+			
+
+			createTab();	//tab-containerからタブを作る。
+
+			$('#fig2').formly();	//ページのレイアウトを整える
+			setButtons('false');	//jQueryUIのボタンをセットする
+			setCalendar();			//Datepickerのカレンダーをセットする
+			setContentHeight();		//コンテンツの高さを調節する
+
+			makeGrid('fig2-list');
+
+
+			// addExecuteTextBoxResizeEvent();
+		});
+
+		//JavaScriptのコード記述を終える
+		</script>
+	</body>
+</html>

@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width">
 		<!-- タイトル -->
 		<title>受注伝票</title>
-				<!-- CSSファイルを読み込む -->
+		<!-- CSSファイルを読み込む -->
 		<!-- 全体に必要なスタイルシートを読み込む。 -->
 		<link rel="stylesheet" type="text/css" href="css/borgstyle.css">
 		<!-- ローディング画面用CSSファイルを読み込む。 -->
@@ -56,15 +56,14 @@
 			</div>
 		</div>
 
-
-			<!-- JavaScriptのコードを記述 -->
+		<!-- JavaScriptのコードを記述 -->
 		<script type='text/javascript'>
 		//読み込み後
 		$(document).ready(function(){
 			// dom要素を作るためのクラスをインスタンス化する
 			creator = new createTag();
 			// 受注画面のjsonデータを取得する
-			creator.getJsonFile('source/ordersreceive.json');
+			creator.getJsonFile('source/order.json');
 			// 受注画面の受注jsonデータを取得する(jqGrid)
 			//creator.getJsonFile('source/receivedata.json');
 			// テンプレートのdomを取得する
@@ -78,21 +77,23 @@
 			// タブ中身のdomを作る
 			creator.outputTag('panel-container', 'panel-container', '#tab-container');
 			// 検索機能領域のdomを作る
-			creator.outputTag('searcharea', 'searcharea', '#order_bill');
+			creator.outputTag('searcharea', 'searcharea', '#order_received');
 			// 期間を指定する領域のdomを作る
-			creator.outputTag('periodarea', 'periodarea', '#order_bill');
+			creator.outputTag('periodarea', 'periodarea', '#order_received');
+			// 受注種別を指定する領域のdomを作る
+			//creator.outputTag('commbobox', 'commbobox', '#order_received');
 			// リスト編集領域のdomを作る(中身は空)
-			creator.outputTag('insertdiv', 'insertdiv', '#order_bill');
+			creator.outputTag('insertdiv', 'insertdiv', '#order_received');
 			// 編集ボタン群領域のdomを作る
 			creator.outputTag('edit_buttons', 'edit_buttons', '.before_list_line');
 			// PDF出力ボタン群領域のdomを作る
 			creator.outputTag('pdfbuttons', 'pdfbuttons', '.before_list_line');
 			// 受注テーブル領域のdomを作る
-			creator.outputTag('wrap-list', 'wrap-list', '#order_bill');
+			creator.outputTag('wrap-list', 'wrap-list', '#order_received');
 
 			createTab();	//tab-containerからタブを作る。
 
-			$('#fig2').formly();	//ページのレイアウトを整える
+			$('#fig2-1').formly();	//ページのレイアウトを整える
 			setButtons('false');	//jQueryUIのボタンをセットする
 			setCalendar();			//Datepickerのカレンダーをセットする
 			setContentHeight();		//コンテンツの高さを調節する
