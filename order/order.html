@@ -51,9 +51,9 @@
 			// コンテンツの外枠を作る
 			creator.outputTag('mainContent', 'mainContent', '.main');
 			// 検索機能領域を作る
-			creator.outputTag('searcharea', 'searcharea', '#sendTabContent, #receivedTabContent');
+			creator.outputTag('searcharea', 'searcharea', '.tabContent');
 			// 期間を指定する領域のdomを作る
-			creator.outputTag('periodarea', 'periodarea', '#sendTabContent, #receivedTabContent');
+			creator.outputTag('periodarea', 'periodarea', 'tabContent');
 			// 受注種別のプルダウンメニューを作る
 			creator.outputTag('choice', 'choice', '#receivedTabContent');
 			// 発注画面にボタン一覧(新規ボタンから発送指示ボタンまでを囲むdiv)を作る
@@ -64,15 +64,14 @@
 			creator.outputTag('editButtons', 'editButtons', '.buttonList');
 			// 発注画面PDF出力ボタン群領域を作る
 			creator.outputTag('sendPDFbutton', 'pdfbuttons', '#sendButtonList');
-			// 発注画面PDF出力ボタン群領域を作る
+			// 受注画面PDF出力ボタン群領域を作る
 			creator.outputTag('receivedPDFbutton', 'receivedPDFbutton', '#receivedButtonList');
 			// 発注テーブル領域を作る
 			creator.outputTag('sendWrapList', 'wrapList', '#sendTabContent');
 			// 受注テーブル領域を作る
 			creator.outputTag('receivedWrapList', 'wrapList', '#receivedTabContent');
 
-
-			// タブの色をクリックするたびに変更する
+			// タブをクリックしたらクリックしたタブの背景を白にする
 			tabColorChange();
 			// jqGridでテーブルを作る
 			makeGrid('sendData');				// 発注テーブルを作る
