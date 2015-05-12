@@ -43,9 +43,9 @@
 			// dom要素を作るためのクラスをインスタンス化する
 			creator = new createTag();
 			// 受発注画面のdomに配置するデータを取得する
-			creator.getJsonFile('source/order.json');
+			creator.getJsonFile('json/order.json');
 			// 受発注画面に配置するdomを取得する
-			creator.getDomFile('source/template.html');
+			creator.getDomFile('template.html');
 			// ヘッダーを作る
 			creator.outputTag('header', 'header', '.main');
 			// コンテンツの外枠を作る
@@ -53,7 +53,7 @@
 			// 検索機能領域を作る
 			creator.outputTag('searcharea', 'searcharea', '.tabContent');
 			// 期間を指定する領域のdomを作る
-			creator.outputTag('periodarea', 'periodarea', 'tabContent');
+			creator.outputTag('periodarea', 'periodarea', '.tabContent');
 			// 受注種別のプルダウンメニューを作る
 			creator.outputTag('choice', 'choice', '#receivedTabContent');
 			// 発注画面にボタン一覧(新規ボタンから発送指示ボタンまでを囲むdiv)を作る
@@ -71,7 +71,7 @@
 			// 受注テーブル領域を作る
 			creator.outputTag('receivedWrapList', 'wrapList', '#receivedTabContent');
 
-			// タブをクリックしたらクリックしたタブの背景を白にする
+			// タブの色をクリックするたびに変更する
 			tabColorChange();
 			// jqGridでテーブルを作る
 			makeGrid('sendData');				// 発注テーブルを作る

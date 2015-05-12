@@ -241,7 +241,7 @@ button.button.normal-button.ui-button-text-only{
  * 作成者:H.U
  */
 .margin_bottom{
-		margin_bottom::1%;	/* 1%の下margin */
+		margin-bottom::1%;	/* 1%の下margin */
 }
 
 /*
@@ -505,7 +505,7 @@ div.top_page_button button{
  * 作成者:T.M
  */
 .parallel-text input{
-	height:100%;
+	height:100%;		
 }
 
 /*
@@ -1097,7 +1097,7 @@ hr.content-border.invisible{
  * 作成者:T.M
 */
 .list .ui-state-highlight{
-	border: 1px solid #aaa!important;
+	border: 1px solid #aaa!important;		/* グレーの実践で要素を囲む */
 	background: #fff url("images/ui-bg_flat_75_ffffff_40x100.png") 50% 50% repeat-x!important;
 	color: #222!important;
 }

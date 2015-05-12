@@ -32,7 +32,7 @@ body{
  * セレクタ:a
  * 概要  :リンク要素の領域
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 a {
 	text-decoration: none;		/* 下線を消す */
@@ -42,7 +42,7 @@ a {
 /*
  * セレクタ:*:focus
  * 概要  :全ての要素が対象となる。フォーカスが当たったときのレスポンス。
- * 作成者:T.M
+ * 作成者:T.Masuda
  */
 *:focus { 
 	outline:none;	/* 表示される青い枠線を消す */
@@ -52,7 +52,7 @@ a {
 /*
  * セレクタ:input
  * 概要  :入力フォームの要素
- * 作成者:T.M
+ * 作成者:T.Masuda
  */
 input{
 	background: #FFF;		/* 灰色になる場合があるので白くする */
@@ -64,7 +64,7 @@ input{
  * セレクタ:.main
  * 概要  :各画面のコンテンツの領域
  * 作成日:2014.06.12
- * 作成者:T.I
+ * 作成者:T.Ishii
  */
 .main {
 	max-width: 768px;	/* 画面幅の最大値 */
@@ -78,7 +78,7 @@ input{
  * セレクタ:.grid1
  * 概要  :グリッド1つ分のレイアウト
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .grid1 {
 	width	:32px;	/* 1グリッドの幅。 */
@@ -89,10 +89,10 @@ input{
  * セレクタ:.grid2
  * 概要  :グリッド2つ分のレイアウト
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .grid2 {
-	width	:64px;	/*2グリッドの幅。*/
+	width	:64px;	/* 2グリッドの幅。 */
 	height :31px;	/* コンテンツの高さ */
 }
 
@@ -100,18 +100,18 @@ input{
  * セレクタ:.grid10
  * 概要  :グリッド10個分のレイアウト
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .grid10{
-	width	:325px; /*10グリッドの幅。*/
+	width	:325px; /* 10グリッドの幅。 */
 	height :31px;	/* コンテンツの高さ */
 }
 
 /*
  * セレクタ:ul
  * 概要  :箇条書きを表すulタグのスタイル
- * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成日:2015.05.06
+ * 作成者:T.Yamamoto
  */
 ul {
 	margin: 0;						/* 余白を0にする */
@@ -122,7 +122,7 @@ ul {
  * セレクタ:ul li
  * 概要  :箇条書きの個々の領域
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 ul li {
 	list-style: none;				/* 黒丸をつけない */
@@ -132,7 +132,7 @@ ul li {
  * セレクタ:button
  * 概要  :1文字のボタン
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 button {
 	height:28px;		/* ボタンの高さを28pxにする */
@@ -144,28 +144,28 @@ button {
  * セレクタ:button:hover
  * 概要  :ボタンにマウスオーバー時のレイアウト
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 button:hover {
 	cursor: pointer;	/* カーソルをリンクのポインターにする */
-	opacity: 0.4; 		/* 40%に透過する */
+	opacity: 0.4; 		/* 要素の透過度を40%にする */
 }
 
 /*
  * セレクタ:.buttonImage
  * 概要  :画像ボタンにマウスオーバーしたときのスタイル
  * 作成日:2015.05.08
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .buttonImage:hover {
-	opacity: 0.65;	/* 65%に透過する */
+	opacity: 0.65;	/* 要素の透過度を65%にする */
 }
 
 /*
  * セレクタ:#fig2
  * 概要  :ヘッダーより下のコンテンツ全体の外枠
- * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成日:2015.05.06
+ * 作成者:T.Yamamoto
  */
 #fig2 {
 	background: #eee;		/* 背景をグレーにする */
@@ -177,7 +177,7 @@ button:hover {
  * セレクタ:.header
  * 概要  :ページのヘッダー領域
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .header {
 	margin: 1% 0;			/* 余白を上下に1%とる */
@@ -187,7 +187,7 @@ button:hover {
  * セレクタ:.headerTitle
  * 概要  :ページのタイトルを囲む領域
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .headerTitle {
 	float: left;			/* 左側に回り込みする */
@@ -199,7 +199,7 @@ button:hover {
  * セレクタ:header .pageTitle
  * 概要  :ページのタイトル
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .header .pageTitle {
 	margin: 0;			/* 余白を0にしてタグデフォルトの余白をとらせない */
@@ -209,7 +209,7 @@ button:hover {
  * セレクタ:.closeButton
  * 概要  :閉じるボタン
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .closeButton {
 	float: right;		/* 右側に回り込みする */
@@ -220,7 +220,7 @@ button:hover {
  * セレクタ:.tabContent
  * 概要  :タブの中のコンテンツ全体の外枠
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .tabContent {
 	background: #fff;		/* 背景を白にする */
@@ -233,7 +233,7 @@ button:hover {
  * セレクタ:.tabLabel
  * 概要  :タブのラベル領域
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .tabLabel {
 	cursor: pointer;				/* マウスカーソルを指にする */
@@ -243,7 +243,7 @@ button:hover {
  * セレクタ:.tablist li
  * 概要  :それぞれのタブ領域
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .tablist li {
 	cursor: pointer;				/* マウスカーソルを指にする */
@@ -262,7 +262,7 @@ button:hover {
  * セレクタ:.tablist li:hover
  * 概要  :個々のタブにマウスオーバーした時の処理
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .tabArea .tablist li:hover{
 	color: #999;					/* 文字色をグレーにする */
@@ -272,7 +272,7 @@ button:hover {
  * セレクタ:.tabRadio
  * 概要  :タブのラジオボタンのレイアウト
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .tabRadio {
 	display: none;					/* ラジオボタンを消して見た目をタブにする */
@@ -282,7 +282,7 @@ button:hover {
  * セレクタ:.tabRadio:not(:checked) + .tabContent
  * 概要  :選択されていないタブのコンテンツについてのスタイル
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .tabRadio:not(:checked) + .tabContent {
 	display: none;					/* 選択されていないタブのコンテンツは表示しないようにする */
@@ -292,7 +292,7 @@ button:hover {
  * セレクタ:.tablist .firstTab
  * 概要  :初期表示のタブのスタイル
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .tablist .firstTab {
 	background: #fff;				/* タブの背景を白色にする */
@@ -303,7 +303,7 @@ button:hover {
  * セレクタ:.searcharea
  * 概要  :検索機能領域
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .searcharea {
 	float:left;				/* 左側に回り込む */
@@ -313,7 +313,7 @@ button:hover {
  * セレクタ:.periodarea, .choice
  * 概要  :期間領域と受注種別選択領域
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .periodarea, .choice {
 	margin-left: 10px;			/* 左から10pxの余白をとる */
@@ -324,7 +324,7 @@ button:hover {
  * セレクタ:.choice .selectbox
  * 概要  :受注種別のセレクトボックス領域
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .choice .selectbox {
 	height: 30px;				/* 高さを30pxに設定する */
@@ -334,7 +334,7 @@ button:hover {
  * セレクタ:.buttonList
  * 概要  :ボタン群全体の領域
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .buttonList {
 	padding-top: 10px;		/* 上から10px余白をとる */
@@ -345,7 +345,7 @@ button:hover {
  * セレクタ:.editButtons
  * 概要  :編集ボタン領域
  * 作成日:2015.05.06
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .editButtons {
 	width:30%;				/* .buttonListの幅の30%にする */
@@ -356,7 +356,7 @@ button:hover {
  * セレクタ:.pdfButtons
  * 概要  :pdf出力ボタン領域
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .pdfButtons {
 	float: right;					/* 右側に回り込みする */
@@ -366,7 +366,7 @@ button:hover {
  * セレクタ:.wrapList
  * 概要  :jqGridの外枠領域
  * 作成日:2015.05.07
- * 作成者:T.Y
+ * 作成者:T.Yamamoto
  */
 .wrapList {
 	padding-top:10px;				/* 上から10px要素の幅を広げる */
