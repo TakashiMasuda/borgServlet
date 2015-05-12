@@ -13,44 +13,44 @@
             "name": "closeButton"
         }
     },
-    "mainContent": {
-        "id":"fig2",
-        "tabArea":{
-            "tablist":{
-                "firstTab":{
-                    "class":"firstTab grid1",
-                    "tabLabel":{
-                        "for":"sendTab",
-                        "text":"発注"
-                    }
-                },
-                "secondTab":{
-                    "class":"secondTab grid1",
-                    "tabLabel":{
-                        "for":"receivedTab",
-                        "text":"受注"
-                    }
+    "mainContent":{
+        "class":"mainContent"
+    },
+    "tabArea":{
+        "tablist":{
+            "firstTab":{
+                "class":"firstTab grid1",
+                "tabLabel":{
+                    "for":"sendTab",
+                    "text":"発注"
                 }
             },
-            "firstTabContent":{
-                "tabRadio":{
-                    "name":"tab",
-                    "id":"sendTab",
-                    "type":"radio"
-                },
-                "tabContent":{
-                    "id":"sendTabContent"
+            "secondTab":{
+                "class":"secondTab grid1",
+                "tabLabel":{
+                    "for":"receivedTab",
+                    "text":"受注"
                 }
+            }
+        },
+        "firstTabContent":{
+            "tabRadio":{
+                "name":"tab",
+                "id":"sendTab",
+                "type":"radio"
             },
-            "secondTabContent":{
-                "tabRadio":{
-                    "name":"tab",
-                    "id":"receivedTab",
-                    "type":"radio"
-                },
-                "tabContent":{
-                    "id":"receivedTabContent"
-                }
+            "tabContent":{
+                "id":"sendTabContent"
+            }
+        },
+        "secondTabContent":{
+            "tabRadio":{
+                "name":"tab",
+                "id":"receivedTab",
+                "type":"radio"
+            },
+            "tabContent":{
+                "id":"receivedTabContent"
             }
         }
     },
@@ -142,17 +142,22 @@
         "class": "buttonList"
     },
     "editButtons": {
-        "addButton": {
-            "type":"image",
-            "src":"css/images/addButton.png",
-            "class":"addButton grid1 buttonImage",
-            "name": "addButton"
+        "buttonLink":{
+            "href":"sendOrder.html",
+            "addButton": {
+                "type":"image",
+                "src":"css/images/addButton.png",
+                "class":"addButton grid1 buttonImage",
+                "name": "addButton",
+                "value":"addButton"
+            }
         },
         "deleteButton": {
             "type":"image",
             "src":"css/images/deleteButton.png",
             "class":"deleteButton grid1 buttonImage",
-            "name": "deleteButton"
+            "name": "deleteButton",
+            "value":"deleteButton"
         }
     },
     "sendPDFbutton": {

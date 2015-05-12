@@ -1,5 +1,6 @@
 [
     {
+        "send_check":"<input type=\"checkbox\" name=\"sendCheck\" class=\"checkbox\" value=\"sendCheck\">",
         "order_date": "2014/09/21",
         "order_code": "00021",
         "send_place": "株式会社W",
@@ -10,6 +11,7 @@
         "ammount": "43000"
     },
     {
+        "send_check":"<input type=\"checkbox\" name=\"sendCheck\" class=\"checkbox\" value=\"sendCheck\">",
         "order_date": "2014/11/11",
         "order_code": "00022",
         "send_place": "株式会社R",
@@ -20,6 +22,7 @@
         "ammount": "34500"
     },
     {
+        "send_check":"<input type=\"checkbox\" name=\"sendCheck\" class=\"checkbox\" value=\"sendCheck\">",
         "order_date": "2015/03/02",
         "order_code": "00024",
         "send_place": "株式会社F",

@@ -1,0 +1,130 @@
+{
+    "header":{
+        "class":"header clearfix",
+        "headerTitle": {
+            "pageTitle": {
+                "text": "新規・編集画面（伝票）"
+            }
+        },
+        "closeButton": {
+            "type":"image",
+            "src":"css/images/closeButton.png",
+            "class":"closeButton buttonImage grid1",
+            "name": "closeButton"
+        }
+    },
+    "mainContent":{
+        "class":"mainContent"
+    },
+    "dataInArea":{
+        "dataIn":[
+            {
+                "text":"発注日",
+                "type":"text",
+                "name":"data"
+            },
+            {
+                "text":"発注コード",
+                "type":"text",
+                "name":"data"
+            },
+                        {
+                "text":"発注先",
+                "type":"text",
+                "name":"data"
+            },
+                        {
+                "text":"発送指定日",
+                "type":"text",
+                "name":"data"
+            },
+                        {
+                "text":"納品指定日",
+                "type":"text",
+                "name":"data"
+            },
+                        {
+                "text":"入力者",
+                "type":"text",
+                "name":"data"
+            },
+                        {
+                "text":"承認者",
+                "type":"text",
+                "name":"data"
+            },
+                        {
+                "text":"備考",
+                "type":"text",
+                "name":"data"
+            },
+            {
+                "text":"合計金額",
+                "type":"text",
+                "name":"data"
+            }
+        ]
+    },
+    "buttonArea":{
+        "class":"buttonArea clearfix clear"
+    },
+    "leftButtonArea":{
+        "class":"leftButtonArea left",
+        "leftButton":[
+            {
+                "class":"yet grid2",
+                "name": "yetButton",
+                "value":"未在",
+                "text":"未在"
+            },
+            {
+                "type":"button",
+                "class":"reurnButton grid1",
+                "name": "reurnButton",
+                "value":"返客",
+                "text":"返"
+            }
+        ]
+    },
+    "rightButtonArea":{
+        "class":"rightButtonArea right",
+        "rightButton":[
+            {
+                "class":"yet grid1",
+                "name": "yetButton",
+                "value":"承認",
+                "text":"承"
+            },
+            {
+                "type":"button",
+                "class":"reurnButton grid1",
+                "name": "reurnButton",
+                "value":"変更",
+                "text":"変"
+            }
+        ]
+    },
+    "editButtons": {
+        "addButton": {
+            "type":"image",
+            "src":"css/images/addButton.png",
+            "class":"addButton grid1 buttonImage",
+            "name": "addButton",
+            "value":"addButton"
+        },
+        "deleteButton": {
+            "type":"image",
+            "src":"css/images/deleteButton.png",
+            "class":"deleteButton grid1 buttonImage",
+            "name": "deleteButton",
+            "value":"deleteButton"
+        }
+    },
+    "sendWrapList": {
+        "id": "sendWrapList",
+        "class":"sendWrapList clear",
+        "list": {
+            "id": "sendDataAddEdit"
+        }
+    }
+}

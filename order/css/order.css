@@ -67,7 +67,7 @@ input{
  * 作成者:T.Ishii
  */
 .main {
-	max-width: 768px;	/* 画面幅の最大値 */
+	max-width: 788px;	/* 画面幅の最大値 */
 	width: 100%;		/* 幅の基準パーセンテージ */
 	height: inherit;	/* containerの高さを継承 */
 	margin: 0 auto 0;	/* 画面全体の各マージン */
@@ -93,6 +93,28 @@ input{
  */
 .grid2 {
 	width	:64px;	/* 2グリッドの幅。 */
+	height :31px;	/* コンテンツの高さ */
+}
+
+/*
+ * セレクタ:.grid10
+ * 概要  :グリッド3個分のレイアウト
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
+.grid3{
+	width	:96px; /* 3グリッドの幅。 */
+	height :31px;	/* コンテンツの高さ */
+}
+
+/*
+ * セレクタ:.grid9
+ * 概要  :グリッド9個分のレイアウト
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
+.grid9{
+	width	:288px; /* 9グリッドの幅。 */
 	height :31px;	/* コンテンツの高さ */
 }
 
@@ -167,7 +189,7 @@ button:hover {
  * 作成日:2015.05.06
  * 作成者:T.Yamamoto
  */
-#fig2 {
+.mainContent {
 	background: #eee;		/* 背景をグレーにする */
 	clear: both;			/* 回り込みを解除する */
 	padding: 10px;			/* 要素の幅を10px広げる */
@@ -348,7 +370,7 @@ button:hover {
  * 作成者:T.Yamamoto
  */
 .editButtons {
-	width:30%;				/* .buttonListの幅の30%にする */
+	width: 75px;			/* 2グリッド分＋余白の幅 */
 	float: left;			/* 左側に回り込みする */
 }
 
@@ -369,6 +391,63 @@ button:hover {
  * 作成者:T.Yamamoto
  */
 .wrapList {
+	padding-top:10px;				/* 上から10px要素の幅を広げる */
+	clear: both;					/* 回り込みをなくす */
+}
+
+/*
+ * セレクタ:.dataIn
+ * 概要  :新規。編集画面のデータを入力するラベルとテキストボックスを囲む領域
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
+.dataIn {
+	display: inline-block;			/* 要素を横並びにするためにインラインブロック要素にする */
+	width: 384px;					/* .mainの半分の幅にする */
+}
+
+/*
+ * セレクタ:.dataLabel
+ * 概要  :新規。編集画面のデータを入力するラベル領域
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
+.dataLabel {
+	float: left;					/* 左に回り込みする */
+	line-height: 32px;				/* テキストボックスと中央揃えにするため、高さを揃える */
+}
+
+/*
+ * セレクタ:.left
+ * 概要  :左に回り込みするためのクラス
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
+.left {
+	float: left;					/* 左側に回り込みする */
+}
+
+ /*
+ * セレクタ:.right
+ * 概要  :右側に回り込みするためのクラス
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
+.right {
+	float: right;					/* 右側に回り込みする */
+}
+
+.list, .ui-jqgrid-labels {
+	font-size:13px;
+}
+
+/*
+ * セレクタ:.clear
+ * 概要  :jqGridの外枠領域
+ * 作成日:2015.05.07
+ * 作成者:T.Yamamoto
+ */
+.clear {
 	padding-top:10px;				/* 上から10px要素の幅を広げる */
 	clear: both;					/* 回り込みをなくす */
 }

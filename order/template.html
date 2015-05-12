@@ -16,34 +16,31 @@
 	<!-- 空白のdiv。要素を囲みたいときに使う -->
 	<div id="" class="insertdiv"></div>
 
-	<!-- コンテント部分 -->
-	<div id="" class="mainContent">
-		<!-- タブ全体の領域 -->
-		<div class="tabArea">
-			<!-- タブ一覧 -->
-			<ul class="tablist">
-				<!-- 最初のタブ -->
-				<li class="firstTab"><label class="tabLabel" for=""></label>
-				</li>
-				<!-- 2番目のタブ -->
-				<li class="secondTab"><label class="tabLabel" for=""></label>
-				</li>
-			</ul>
+	<!-- タブ全体の領域 -->
+	<div class="tabArea">
+		<!-- タブ一覧 -->
+		<ul class="tablist">
+			<!-- 最初のタブ -->
+			<li class="firstTab"><label class="tabLabel" for=""></label>
+			</li>
+			<!-- 2番目のタブ -->
+			<li class="secondTab"><label class="tabLabel" for=""></label>
+			</li>
+		</ul>
 
-			<!-- 最初のタブのコンテンツ -->
-			<div class="firstTabContent">
-				<!-- タブが選択されているかどうかを判定するラジオボタン -->
-				<input name="" id="" class="tabRadio" type="" checked>
-				<!-- タブの中身 -->
-				<div id="" class="tabContent"></div>
-			</div>
-			<!-- 2番目ののタブ -->
-			<div class="secondTabContent">
-				<!-- タブが選択されているかどうかを判定するラジオボタン -->
-				<input name="" id="" class="tabRadio" type="">
-				<!-- タブの中身 -->
-				<div id="" class="tabContent"></div>
-			</div>
+		<!-- 最初のタブのコンテンツ -->
+		<div class="firstTabContent">
+			<!-- タブが選択されているかどうかを判定するラジオボタン -->
+			<input name="" id="" class="tabRadio" type="" checked>
+			<!-- タブの中身 -->
+			<div id="" class="tabContent"></div>
+		</div>
+		<!-- 2番目ののタブ -->
+		<div class="secondTabContent">
+			<!-- タブが選択されているかどうかを判定するラジオボタン -->
+			<input name="" id="" class="tabRadio" type="">
+			<!-- タブの中身 -->
+			<div id="" class="tabContent"></div>
 		</div>
 	</div>
 
@@ -93,7 +90,9 @@
 	<!-- リスト編集ボタン群 -->
 	<div class="editButtons">
 		<!-- 登録ボタン -->
-		<input type="" src="" name="" class="addButton">
+		<a href="" class="buttonLink">
+			<input type="" src="" name="" class="addButton">
+		</a>
 		<!-- 削除ボタン -->
 		<input type="" src="" name="" class="deleteButton">
 	</div>
@@ -135,6 +134,26 @@
 	<div id="" class="wrapList">
 		<!-- JQ Gridによりリストを形成するtableタグ -->
 		<table id="" class="list"></table>
+	</div>
+
+	<!-- 新規・編集画面のラベルとテキストボックスエリア -->
+	<div class="dataInArea">
+		<div class="dataIn">
+			<label class="dataLabel grid3"></label>
+			<input class="databox grid9" type="" name="">
+		</div>
+	</div>
+
+	<div class="leftButtonArea">
+		<span class="leftButton">
+			<button class="" name="" value=""></button>
+		</span>
+	</div>
+
+	<div class="rightButtonArea">
+		<span class="rightButton">
+			<button class="" name="" value=""></button>
+		</span>
 	</div>
 
 </div>

@@ -4,7 +4,7 @@
 		<!-- viewportの設定により、端末の幅を初期解像度とする -->
 		<meta name="viewport" content="width=device-width">
 		<!-- タイトル -->
-		<title>発注・受注機能</title>
+		<title>新規・編集(伝票)</title>
 		<!-- CSSファイルを読み込む -->
 		<!-- 全体に必要なスタイルシートを読み込む。 -->
 		<link rel="stylesheet" type="text/css" href="css/order.css">
@@ -43,41 +43,54 @@
 			// dom要素を作るためのクラスをインスタンス化する
 			creator = new createTag();
 			// 受発注画面のdomに配置するデータを取得する
-			creator.getJsonFile('json/order.json');
+			creator.getJsonFile('json/orderAddEdit.json');
 			// 受発注画面に配置するdomを取得する
 			creator.getDomFile('template.html');
+
 			// ヘッダーを作る
 			creator.outputTag('header', 'header', '.main');
 			// コンテンツの外枠を作る
 			creator.outputTag('mainContent', 'insertdiv', '.main');
-			// タブ領域を作る
-			creator.outputTag('tabArea','tabArea', '.mainContent');
-			// 検索機能領域を作る
-			creator.outputTag('searcharea', 'searcharea', '.tabContent');
-			// 期間を指定する領域のdomを作る
-			creator.outputTag('periodarea', 'periodarea', '.tabContent');
-			// 受注種別のプルダウンメニューを作る
-			creator.outputTag('choice', 'choice', '#receivedTabContent');
-			// 発注画面にボタン一覧(新規ボタンから発送指示ボタンまでを囲むdiv)を作る
-			creator.outputTag('sendButtonList', 'insertdiv', '#sendTabContent');
-			// 受注画面にボタン一覧(新規ボタンから発送指示ボタンまでを囲むdiv)を作る
-			creator.outputTag('receivedButtonlist', 'insertdiv', '#receivedTabContent');
-			// 編集ボタン群領域を作る
-			creator.outputTag('editButtons', 'editButtons', '.buttonList');
-			// 発注画面PDF出力ボタン群領域を作る
-			creator.outputTag('sendPDFbutton', 'pdfbuttons', '#sendButtonList');
-			// 受注画面PDF出力ボタン群領域を作る
-			creator.outputTag('receivedPDFbutton', 'receivedPDFbutton', '#receivedButtonList');
+			// テキストボックスに発注データを入力する領域を作る
+			creator.outputTag('dataInArea', 'dataInArea', '.mainContent');
+			// コンテンツのボタン領域外枠を作る
+			creator.outputTag('buttonArea', 'insertdiv', '.mainContent');
+			// 新規追加ボタンと削除ボタンの領域を作る
+			creator.outputTag('editButtons', 'editButtons', '.buttonArea');
+			// その他の左側ボタンを追加する
+			creator.outputTag('leftButtonArea', 'leftButtonArea', '.buttonArea');
+			// その他の右ボタンを追加する
+			creator.outputTag('rightButtonArea', 'rightButtonArea', '.buttonArea');
 			// 発注テーブル領域を作る
-			creator.outputTag('sendWrapList', 'wrapList', '#sendTabContent');
-			// 受注テーブル領域を作る
-			creator.outputTag('receivedWrapList', 'wrapList', '#receivedTabContent');
+			creator.outputTag('sendWrapList', 'wrapList', '.mainContent');
 
-			// タブの色をクリックするたびに変更する
-			tabColorChange();
-			// jqGridでテーブルを作る
-			makeGrid('sendData');				// 発注テーブルを作る
-			makeGrid('receivedData');			// 受注テーブルを作る
+			// 新規・編集画面の発注テーブルを作る
+			makeGrid('sendDataAddEdit');
+
+			// // 検索機能領域を作る
+			// creator.outputTag('searcharea', 'searcharea', '.tabContent');
+			// // 期間を指定する領域のdomを作る
+			// creator.outputTag('periodarea', 'periodarea', '.tabContent');
+			// // 受注種別のプルダウンメニューを作る
+			// creator.outputTag('choice', 'choice', '#receivedTabContent');
+			// // 発注画面にボタン一覧(新規ボタンから発送指示ボタンまでを囲むdiv)を作る
+			// creator.outputTag('sendButtonList', 'insertdiv', '#sendTabContent');
+			// // 受注画面にボタン一覧(新規ボタンから発送指示ボタンまでを囲むdiv)を作る
+			// creator.outputTag('receivedButtonlist', 'insertdiv', '#receivedTabContent');
+			// // 編集ボタン群領域を作る
+			// creator.outputTag('editButtons', 'editButtons', '.buttonList');
+			// // 発注画面PDF出力ボタン群領域を作る
+			// creator.outputTag('sendPDFbutton', 'pdfbuttons', '#sendButtonList');
+			// // 受注画面PDF出力ボタン群領域を作る
+			// creator.outputTag('receivedPDFbutton', 'receivedPDFbutton', '#receivedButtonList');
+			// // 受注テーブル領域を作る
+			// creator.outputTag('receivedWrapList', 'wrapList', '#receivedTabContent');
+
+			// // タブの色をクリックするたびに変更する
+			// tabColorChange();
+			// // jqGridでテーブルを作る
+			// makeGrid('sendData');				// 発注テーブルを作る
+			// makeGrid('receivedData');			// 受注テーブルを作る
 		});
 
 		//JavaScriptのコード記述を終える
