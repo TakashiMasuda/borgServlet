@@ -142,85 +142,89 @@
         "class": "buttonList"
     },
     "editButtons": {
-        "buttonLink":{
-            "href":"sendOrder.html",
-            "addButton": {
+        "buttonLink":
+        [
+            {
+                "href":"sendOrder.html",
                 "type":"image",
                 "src":"css/images/addButton.png",
                 "class":"addButton grid1 buttonImage",
                 "name": "addButton",
                 "value":"addButton"
+            },
+            {
+                "type":"image",
+                "src":"css/images/deleteButton.png",
+                "class":"deleteButton grid1 buttonImage",
+                "name": "deleteButton",
+                "value":"deleteButton"
             }
-        },
-        "deleteButton": {
-            "type":"image",
-            "src":"css/images/deleteButton.png",
-            "class":"deleteButton grid1 buttonImage",
-            "name": "deleteButton",
-            "value":"deleteButton"
-        }
+        ]
     },
     "sendPDFbutton": {
-        "buttonsposition": {
-            "firstbutton": {
-                "class":"firstbutton grid1",
+        "buttonLink":
+        [
+            {
+                "class": "grid1",
                 "name": "orderPaper",
                 "value": "注文書",
                 "text": "注"
             },
-            "secondbutton": {
-                "class":"secondButton grid1",
+                            {
+                "class": "grid1",
                 "name": "payItem",
                 "value": "納品書",
                 "text": "納"
             },
-            "thirdbutton": {
-                "class":"thirdbutton grid2",
+            {
+                "class": "grid2",
                 "name": "orderSend",
                 "value": "発送指示書",
                 "text": "発指"
             }
-        }
+        ]
     },
     "receivedPDFbutton": {
-        "class":"pdfButtons",
         "buttonsposition": {
-            "firstbutton": {
-                "class":"first grid1",
-                "name": "estimate",
-                "value": "見積書",
-                "text": "見"
-            },
-            "secondbutton": {
-                "class":"secondButton grid1",
-                "name": "orderPaper",
-                "value": "注文書",
-                "text": "注"
-            },
-            "thirdbutton": {
-                "class":"thirdButton grid2",
-                "name": "orderBill",
-                "value": "注文請書",
-                "text": "注請"
-            },
-            "forthbutton": {
-                "class":"forthbutton grid1",
-                "name": "payItem",
-                "value": "納品書",
-                "text": "納"
-            },
-            "fifthbutton": {
-                "class":"fifthbutton grid1",
-                "name": "billPaper",
-                "value": "請求書",
-                "text": "請"
-            },
-            "sixthbutton": {
-                "class":"sixthbutton grid2",
-                "name": "sendOrder",
-                "value": "発送指示書",
-                "text": "発指"
-            }
+            "buttonLink":
+            [
+                {
+                    "class": "grid1",
+                    "name": "estimate",
+                    "value": "見積書",
+                    "text": "見"
+                },
+                                {
+                    "class": "grid1",
+                    "name": "orderPaper",
+                    "value": "注文書",
+                    "text": "注"
+                },
+                                {
+                    "class": "grid2",
+                    "name": "orderBill",
+                    "value": "注文請書",
+                    "text": "注請"
+                },
+                                {
+                    "class": "grid1",
+                    "name": "payItem",
+                    "value": "納品書",
+                    "text": "納"
+                },
+                                {
+                    "class": "grid1",
+                    "name": "billPaper",
+                    "value": "請求書",
+                    "text": "請"
+                },
+                                {
+                    "class": "grid2",
+                    "name": "sendOrder",
+                    "value": "発送指示書",
+                    "text": "発指"
+                }
+            ]
         }
     },
     "receivedWrapList": {

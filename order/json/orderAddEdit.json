@@ -21,47 +21,47 @@
             {
                 "text":"発注日",
                 "type":"text",
-                "name":"data"
+                "name":"order_date"
             },
             {
                 "text":"発注コード",
                 "type":"text",
-                "name":"data"
+                "name":"order_code"
             },
                         {
                 "text":"発注先",
                 "type":"text",
-                "name":"data"
+                "name":"send_place"
             },
                         {
                 "text":"発送指定日",
                 "type":"text",
-                "name":"data"
+                "name":"delivery_date"
             },
                         {
                 "text":"納品指定日",
                 "type":"text",
-                "name":"data"
+                "name":"fixedDate"
             },
                         {
                 "text":"入力者",
                 "type":"text",
-                "name":"data"
+                "name":"scribedby"
             },
                         {
                 "text":"承認者",
                 "type":"text",
-                "name":"data"
+                "name":"permiter"
             },
                         {
                 "text":"備考",
                 "type":"text",
-                "name":"data"
+                "name":"others"
             },
             {
                 "text":"合計金額",
                 "type":"text",
-                "name":"data"
+                "name":"amount"
             }
         ]
     },
@@ -70,55 +70,57 @@
     },
     "leftButtonArea":{
         "class":"leftButtonArea left",
-        "leftButton":[
+        "sideButton":[
             {
                 "class":"yet grid2",
-                "name": "yetButton",
+                "name": "lessStockButton",
                 "value":"未在",
                 "text":"未在"
             },
             {
-                "type":"button",
-                "class":"reurnButton grid1",
-                "name": "reurnButton",
-                "value":"返客",
+                "class":"returnButton grid1",
+                "name": "returnButton",
+                "value":"返品",
                 "text":"返"
             }
         ]
     },
     "rightButtonArea":{
         "class":"rightButtonArea right",
-        "rightButton":[
+        "sideButton":[
             {
-                "class":"yet grid1",
-                "name": "yetButton",
+                "class":"permit grid1",
+                "name": "permitButton",
                 "value":"承認",
                 "text":"承"
             },
             {
-                "type":"button",
-                "class":"reurnButton grid1",
-                "name": "reurnButton",
+                "class":"changeButton grid1",
+                "name": "changeButton",
                 "value":"変更",
                 "text":"変"
             }
         ]
     },
     "editButtons": {
-        "addButton": {
-            "type":"image",
-            "src":"css/images/addButton.png",
-            "class":"addButton grid1 buttonImage",
-            "name": "addButton",
-            "value":"addButton"
-        },
-        "deleteButton": {
-            "type":"image",
-            "src":"css/images/deleteButton.png",
-            "class":"deleteButton grid1 buttonImage",
-            "name": "deleteButton",
-            "value":"deleteButton"
-        }
+        "buttonLink":
+        [
+            {
+                "href":"sendOrder.html",
+                "type":"image",
+                "src":"css/images/addButton.png",
+                "class":"addButton grid1 buttonImage",
+                "name": "addButton",
+                "value":"addButton"
+            },
+            {
+                "type":"image",
+                "src":"css/images/deleteButton.png",
+                "class":"deleteButton grid1 buttonImage",
+                "name": "deleteButton",
+                "value":"deleteButton"
+            }
+        ]
     },
     "sendWrapList": {
         "id": "sendWrapList",

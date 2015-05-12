@@ -52,7 +52,7 @@
 	        //顧客名列
 	        { name: "customer", index:"customer", width: 100,  align:"left", className: " customer", editable: true, sortable:true, sorttype:'text'},
 	        //納品希望日列
-	        { name: "deliver_date", index:"deliver_date", width: 100, align:"left", className: "deliver_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
+	        { name: "delivery_date", index:"delivery_date", width: 100, align:"left", className: "delivery_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
 	        //入力者列
 	        { name: "scribedby", index:"scribedby", width: 100, align:"left", className: "scribedby", editable: true, sortable:true, sorttype:'text'},
 	        //受注主別列
@@ -81,7 +81,7 @@
 	        //発注先列
 	        { name: "send_place", index:"send_place", width: 100,  align:"left", className: " send_place", editable: true, sortable:true, sorttype:'text'},
 	        //発送指定日列
-	        { name: "deliver_date", index:"deliver_date", width: 100, align:"left", className: "deliver_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
+	        { name: "delivery_date", index:"delivery_date", width: 100, align:"left", className: "delivery_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
 	        //入力者列
 	        { name: "scribedby", index:"scribedby", width: 100, align:"left", className: "scribedby", editable: true, sortable:true, sorttype:'text'},
 	        //承認者列
