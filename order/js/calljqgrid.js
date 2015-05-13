@@ -31,6 +31,9 @@
 	//発注タブ、列名定義の配列。順番にセットされる。
 	colNamesLists['sendData'] = ['', '発注日', '発注コード', '発注先', '発送指定日', '入力者', '承認者', '合計金額'];
 
+	//受注、新規・編集画面、列名定義の配列。順番にセットされる。
+	colNamesLists['receivedDataAddEdit'] = ['', '製造番号', '製品種別', '製品名', '販売価格', '個数', '小計', '発送場所', '発送指定日', '納品指定日'];
+
 	//発注、新規・編集画面、列名定義の配列。順番にセットされる。
 	colNamesLists['sendDataAddEdit'] = ['', '製造番号', '製品種別', '製品名', '単価', '個数', '小計', '顧客名', '納品場所'];
 
@@ -92,6 +95,38 @@
 	        //合計金額列
 	        { name: "amount", index:"amount", width: 100, align:"left", className: "amount", editable: false, sortable:true, sorttype:'int'}
 	];
+
+	//fig.3-1 発注画面、新規編集画面のリストの列定義。
+	//列の設定について、特筆すべき点のみ補足します。
+	colData['receivedDataAddEdit'] = [
+	        //name:名前 index:ソート時の名前 width:列幅 dataType:データの型 align:セルのテキストの寄せる方向
+	        //className:列のクラス名 editable:編集可能にするかどうかの設定。trueかfalseで指定する。
+	        //editType:editableが有効な場合のセルの編集方法の指定。ラジオボタン、チェックボックス等を指定する。
+	        //editoptions:セレクトメニューでのセル編集時に、選択項目のソースとなる連想配列を指定する。
+	        //sortable:ソート可能かどうかの設定。 sorttype:ソートのデータ型を指定する。
+
+	        //チェックボックス列
+	        { name: "received_check", index:"received_check", width: 32, align:"center", className: "received_check", editable: true, sortable:false},
+	        //製品番号列。dateTypeを日付型にする。
+	        { name: "productNumber", index:"productNumber", width: 80, align:"left", className: "productNumber", editable: true, sortable:true, sorttype:'int'},
+			//製品種別列
+	        { name: "productType", index:"productType", width: 80, align:"left", className: "productType", editable: true, sortable:true, sorttype:'text'},
+	        //製品名列
+	        { name: "productName", index:"productName", width: 160, align:"left", className: " productName", editable: true, sortable:true, sorttype:'text'},
+	        //販売価格列
+	        { name: "unitPrice", index:"unitPrice", width: 64, align:"left", className: "unitPrice", editable: true, sortable:true, sorttype:'int'},
+	        //個数列
+	        { name: "number", index:"number", width: 64, align:"left", className: "number", editable: true, sortable:true, sorttype:'int'},
+	        //小計列
+	        { name: "subtotal", index:"subtotal", width: 64, align:"left", className: "subtotal", editable: false, sortable:true, sorttype:'int'},
+	        //発送場所
+	        { name: "deliveryPlace", index:"deliveryPlace", width: 80, align:"left", className: "deliveryPlace", editable: false, sortable:true, sorttype:'texts'},
+			//発送指定日列
+	        { name: "send_date", index:"send_date", width: 100, align:"left", className: "send_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
+	        //納品指定日列
+	        { name: "delivery_date", index:"delivery_date", width: 100, align:"left", className: "delivery_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}}
+	];
+
 
 	//fig.3-1 発注画面、新規編集画面のリストの列定義。
 	//列の設定について、特筆すべき点のみ補足します。
@@ -197,6 +232,37 @@
 		//列定義のデータをセットする。
 		colModel: colData['sendData'],
 		caption: '発注リスト'	,	//リストのタイトルを設定する。
+		cellEdit: false,    	// セルの編集を無効にする。
+		//セルを編集してもサーバとの通信をしないように設定する。
+		cellsubmit: 'clientArray',
+        sortorder: "desc",	// 降順ソートをする
+        shrinkToFit: false,	// 列幅の自動調整を行う。
+		//行を選択する前に実行される関数。
+		beforeSelectRow:function(rowid, e){
+        	return true;	//onSelectRowイベントへ移行する
+		},
+		//行を選択した後に実行される関数。
+		onSelectRow:function(rowid, status, e){
+		}
+	};
+
+	//receivedDataAddEditのjqGridのルールを連想配列に設定する。
+	objRules['receivedDataAddEdit'] = { 
+		//データの取得元を設定する。
+		url:'json/receivedDataAddEdit.json',
+		//JSONデータをデータソースとして利用する。
+		datatype:"json",
+		//基本の幅を指定する。
+		width: 768,
+		//グリッドのリサイズ時の最大幅、最小幅を指定する。
+		gridResize: {minWidth:310, maxWidth:576},
+		//表部分の高さを指定する。
+		height: 280,
+		//列名の表示の配列をセットする。
+		colNames: colNamesLists['receivedDataAddEdit'],
+		//列定義のデータをセットする。
+		colModel: colData['receivedDataAddEdit'],
+		caption: '製品詳細'	,	//リストのタイトルを設定する。
 		cellEdit: false,    	// セルの編集を無効にする。
 		//セルを編集してもサーバとの通信をしないように設定する。
 		cellsubmit: 'clientArray',
