@@ -142,10 +142,13 @@
         "class": "buttonList"
     },
     "editButtons": {
-        "buttonLink":
+        "buttonLink":{
+            "class":"linkButton",
+            "href":"sendOrder.html"
+        },
+        "linkButton":
         [
             {
-                "href":"sendOrder.html",
                 "type":"image",
                 "src":"css/images/addButton.png",
                 "class":"addButton grid1 buttonImage",

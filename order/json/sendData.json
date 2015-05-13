@@ -8,7 +8,7 @@
         "scribedby": "吉田絵里",
         "order_type": "納品",
         "permiter":"高橋未海",
-        "ammount": "43000"
+        "amount": "43000"
     },
     {
         "send_check":"<input type=\"checkbox\" name=\"sendCheck\" class=\"checkbox\" value=\"sendCheck\">",
@@ -19,7 +19,7 @@
         "scribedby": "藤原花",
         "order_type": "納品",
         "permiter":"山上円",
-        "ammount": "34500"
+        "amount": "34500"
     },
     {
         "send_check":"<input type=\"checkbox\" name=\"sendCheck\" class=\"checkbox\" value=\"sendCheck\">",
@@ -30,6 +30,6 @@
         "scribedby": "三上輝幸",
         "order_type": "発送",
         "permiter":"二宮隆",
-        "ammount": "144000"
+        "amount": "144000"
     }
 ]

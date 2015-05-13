@@ -8,7 +8,7 @@
         "scribedby": "田中太郎",
         "order_type": "納品",
         "permiter":"上村和也",
-        "ammount": "87400"
+        "amount": "87400"
     },
     {
         "received_check":"<input type=\"checkbox\" name=\"receivedCheck\" class=\"checkbox\" value=\"receivedCheck\">",
@@ -19,7 +19,7 @@
         "scribedby": "田中太郎",
         "order_type": "納品",
         "permiter":"山下智子",
-        "ammount": "50000"
+        "amount": "50000"
     },
     {
         "received_check":"<input type=\"checkbox\" name=\"receivedCheck\" class=\"checkbox\" value=\"receivedCheck\">",
@@ -30,6 +30,6 @@
         "scribedby": "山田一郎",
         "order_type": "発送",
         "permiter":"岸上義久",
-        "ammount": "133200"
+        "amount": "133200"
     }
 ]

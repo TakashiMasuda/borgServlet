@@ -60,7 +60,7 @@
 	        //承認者列
 	        { name: "permiter", index:"permiter", width: 100, align:"left", className: "permiter", editable: false, sortable:true, sorttype:'text'},
 	        //合計金額列
-	        { name: "ammount", index:"ammount", width: 100, align:"left", className: "ammount", editable: false, sortable:true, sorttype:'int'}
+	        { name: "amount", index:"amount", width: 100, align:"left", className: "amount", editable: false, sortable:true, sorttype:'int'}
 	];
 
 	//fig.3 見積・発注機能のリストの列定義。
@@ -87,7 +87,7 @@
 	        //承認者列
 	        { name: "permiter", index:"permiter", width: 100, align:"left", className: "permiter", editable: false, sortable:true, sorttype:'text'},
 	        //合計金額列
-	        { name: "ammount", index:"ammount", width: 100, align:"left", className: "ammount", editable: false, sortable:true, sorttype:'int'}
+	        { name: "amount", index:"amount", width: 100, align:"left", className: "amount", editable: false, sortable:true, sorttype:'int'}
 	];
 
 	//fig.3-1 発注画面、新規編集画面のリストの列定義。

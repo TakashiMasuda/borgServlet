@@ -1,0 +1,144 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- viewportの設定により、端末の幅を初期解像度とする -->
+		<meta name="viewport" content="width=device-width">
+		<!-- タイトル -->
+		<title>発注・受注機能</title>
+		<!-- CSSファイルを読み込む -->
+		<!-- 全体に必要なスタイルシートを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="../css/order.css">
+		<!-- jQuery UIのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui-1.9.2.custom.min.css">
+		<!-- jqGridのCSSを読み込む。 -->
+		<link rel="stylesheet" type="text/css" href="../css/ui.jqgrid.css">
+		
+		<!-- JSファイルを読み込む -->
+		<!-- jQueryの本体を読み込む -->
+		<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+		<!-- 多機能ライブラリ jQuery UIを読み込む -->
+		<script type="text/javascript" src="../js/jquery-ui-1.9.2.custom.min.js"></script>
+		<!-- タグを作成するJSの関数群を読み込む -->
+		<script type="text/javascript" src="../js/createTag.js"></script>
+		<!-- jqGridでテーブルを作る -->
+		<script type="text/javascript" src="../js/jquery.jqGrid.src.js"></script>
+		<!--jqgridの設定jsを読み込む -->
+		<script type="text/javascript" src="../js/calljqgrid.js"></script>
+		<!--タブの色を選択されたら変えるjsを読み込む -->
+		<script type="text/javascript" src="../js/tabColorChange.js"></script>
+	</head>
+
+	<style>
+		.dialogHeader {
+			text-align: right;
+		}
+		.dialogData{
+			margin-top:10px;
+		}
+		.fig3 {
+			display: inline-block;
+			width:96px;
+			height: 31px;
+		}
+		.fig5 {
+			width:160px;
+			height: 31px;
+		}
+	}
+	</style>
+	<body>
+				<!-- JavaScriptのコードを記述 -->
+		<script type='text/javascript'>
+		//読み込み後
+		$(document).ready(function(){
+			// ダイアログの設定
+			$('#dialogdemo1').dialog({
+				autoOpen: false,				// 自動で開かない
+				title:'新規・編集画面(製品項目)',	// ダイアログのタイトル
+				width:320,						// ダイアログの幅
+				show: "fade",					// 表示時のエフェクト
+				hide: "fade",					// 非表示時のエフェクト
+				modal:true						// ダイアログをモーダル化する
+			});
+			// ダイアログを開く設定
+			$('#button1').click(function(){
+				$('#dialogdemo1').dialog('open');
+			});
+
+			$('#okButton').click(function(){
+				$('#dialogdemo1').dialog('close');
+			});
+
+		});
+
+		//JavaScriptのコード記述を終える
+		</script>
+		<div id="dialogdemo1">
+			<div class="dialogHeader">
+				<button id="okButton">OK</button>
+			</div>
+			<div class="dialogData">
+				<label class="fig3">製品種別(大)</label>
+				<select class="fig5">
+					<option value="二管">二管</option>
+					<option value="一管">一管</option>
+					<option value="灯台">灯台</option>
+					<option value="二支">二支</option>
+					<option value="一支">一支</option>
+					<option value="アク">アク</option>
+					<option value="フラ">フラ</option>
+				</select>
+
+				<label class="fig3">製品種別(中)</label>
+				<select class="fig5">
+					<option value="種別1">種別1</option>
+					<option value="種別2">種別2</option>
+					<option value="種別3">種別3</option>
+					<option value="種別4">種別4</option>
+					<option value="種別5">種別5</option>
+					<option value="種別6">種別6</option>
+					<option value="種別7">種別7</option>
+				</select>
+
+				<label class="fig3">製品種別(小)</label>
+				<select class="fig5">
+					<option value="二管">二管</option>
+					<option value="一管">一管</option>
+					<option value="灯台">灯台</option>
+					<option value="二支">二支</option>
+					<option value="一支">一支</option>
+					<option value="アク">アク</option>
+					<option value="フラ">フラ</option>
+				</select>
+
+				<label class="fig3">製品</label>
+				<select class="fig5">
+					<option value="フラッシング3寸">フラッシング3寸</option>
+					<option value="チムニーフラッシング　□650">チムニーフラッシング　□650</option>
+					<option value="炉台キット2枚組　CB30">炉台キット2枚組　CB30</option>
+					<option value="煙突ヒートシールド">煙突ヒートシールド</option>
+					<option value="スチールステージプレート　角">スチールステージプレート　角</option>
+					<option value="バーベキュースタンド">バーベキュースタンド</option>
+					<option value="ストームカラー　ネック付">ストームカラー　ネック付</option>
+				</select>
+
+				<label class="fig3">仕入価格</label>
+				<input type="text" class="fig5">
+
+				<label class="fig3">個数</label>
+				<input type="text" class="fig5">
+
+				<label class="fig3">顧客名</label>
+				<select class="fig5">
+					<option value="木村隆">木村隆</option>
+					<option value="佐藤祐作">佐藤祐作</option>
+					<option value="山田太郎">山田太郎</option>
+				</select>
+
+				<label class="fig3">発送先</label>
+				<input type="text" class="fig5" value="相模原">
+			</div>
+		</div>
+		<button id="button1">click</button>
+	</body>
+</html>

@@ -451,3 +451,17 @@ button:hover {
 	padding-top:10px;				/* 上から10px要素の幅を広げる */
 	clear: both;					/* 回り込みをなくす */
 }
+
+.dialogHeader {
+	text-align: right;
+	margin-bottom:10px;
+}
+.dialogLabel {
+	display: inline-block;
+	width:96px;
+	height: 31px;
+}
+.fig5 {
+	width:160px;
+	height: 31px;
+}
