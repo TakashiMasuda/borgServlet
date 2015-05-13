@@ -66,35 +66,31 @@
 			// 新規・編集画面の発注テーブルを作る
 			makeGrid('sendDataAddEdit');
 
-			// 追加ダイアログを作る
-			creator.outputTag('newDialog', 'newDialog', '.mainContent');
+			// 新規追加ダイアログを作るために、追加ボタンのhref属性を削除する
+			deleteAttr('.buttonLink', 'href');
+			// 新規追加ダイアログの外枠を作る
+			creator.outputTag('newDialog', 'insertdiv', '.main');
+			// 追加ダイアログのヘッダー領域を作る
+			creator.outputTag('newDialogHeader', 'dialogHeader', '#newDialog');
+			// 追加ダイアログの1つ目(4連続プルダウン)のデータ入力領域を作る
+			creator.outputTag('dialogPulldown4', 'dialogPulldown4', '#newDialog');
+			// 追加ダイアログの2つ目(2連続テキストボックス)のデータ入力領域を作る
+			creator.outputTag('dialogTextbox2', 'dialogTextbox2', '#newDialog');
+			// 追加ダイアログの3つ目(最後のコンテンツ)のデータ入力領域を作る
+			creator.outputTag('newDialogLast', 'newDialogLast', '#newDialog');
 			// ダイアログを作る
-			createDialog()
+			createDialog('#newDialog', '.addButton')
 
-			// // 検索機能領域を作る
-			// creator.outputTag('searcharea', 'searcharea', '.tabContent');
-			// // 期間を指定する領域のdomを作る
-			// creator.outputTag('periodarea', 'periodarea', '.tabContent');
-			// // 受注種別のプルダウンメニューを作る
-			// creator.outputTag('choice', 'choice', '#receivedTabContent');
-			// // 発注画面にボタン一覧(新規ボタンから発送指示ボタンまでを囲むdiv)を作る
-			// creator.outputTag('sendButtonList', 'insertdiv', '#sendTabContent');
-			// // 受注画面にボタン一覧(新規ボタンから発送指示ボタンまでを囲むdiv)を作る
-			// creator.outputTag('receivedButtonlist', 'insertdiv', '#receivedTabContent');
-			// // 編集ボタン群領域を作る
-			// creator.outputTag('editButtons', 'editButtons', '.buttonList');
-			// // 発注画面PDF出力ボタン群領域を作る
-			// creator.outputTag('sendPDFbutton', 'pdfbuttons', '#sendButtonList');
-			// // 受注画面PDF出力ボタン群領域を作る
-			// creator.outputTag('receivedPDFbutton', 'receivedPDFbutton', '#receivedButtonList');
-			// // 受注テーブル領域を作る
-			// creator.outputTag('receivedWrapList', 'wrapList', '#receivedTabContent');
-
-			// // タブの色をクリックするたびに変更する
-			// tabColorChange();
-			// // jqGridでテーブルを作る
-			// makeGrid('sendData');				// 発注テーブルを作る
-			// makeGrid('receivedData');			// 受注テーブルを作る
+			// 未在庫ダイアログの外枠を作る
+			creator.outputTag('lessStockDialog', 'insertdiv', '.main');
+			// 追加ダイアログのヘッダー領域を作る
+			creator.outputTag('lessStockDialogHeader', 'dialogHeader', '#lessStockDialog');
+			// 未在庫テーブルの外枠を作る
+			creator.outputTag('lessStockWrapList', 'wrapList', '#lessStockDialog');
+			// 未在庫テーブルを作る
+			makeGrid('sendDataLessStock');
+			// 未在庫ダイアログを作る
+			createDialog('#lessStockDialog', '.lessStockButton');
 		});
 
 		//JavaScriptのコード記述を終える

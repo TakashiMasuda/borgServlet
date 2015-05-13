@@ -13,7 +13,7 @@
     {
         "received_check":"<input type=\"checkbox\" name=\"receivedCheck\" class=\"checkbox\" value=\"receivedCheck\">",
         "order_date": "2014/10/10",
-        "order_code": "00001",
+        "order_code": "00002",
         "customer": "株式会社B",
         "delivery_date": "2014/11/01",
         "scribedby": "田中太郎",
@@ -24,7 +24,7 @@
     {
         "received_check":"<input type=\"checkbox\" name=\"receivedCheck\" class=\"checkbox\" value=\"receivedCheck\">",
         "order_date": "2015/01/10",
-        "order_code": "00001",
+        "order_code": "00003",
         "customer": "株式会社C",
         "delivery_date": "2015/02/14",
         "scribedby": "山田一郎",

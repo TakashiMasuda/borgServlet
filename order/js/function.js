@@ -30,28 +30,45 @@ function tabColorChange() {
 
 /* 
  * 関数名:createDialog
- * 引数  :なし
+ * 引数  :
+ *  dialogName ： ダイアログのセレクタ名
+ *  openButton : ダイアログを開くためのボタン
  * 戻り値:なし
  * 概要  :ダイアログを作る
  * 作成日 :2015.05.12
  * 作成者:T.Masuda
 */
-function createDialog() {
+function createDialog(dialogName, openButton) {
 	// ダイアログの設定
-	$('#dialog').dialog({
+	$(dialogName).dialog({
 		autoOpen: false,				// 自動で開かない
-		title:'新規・編集画面(製品項目)',	// ダイアログのタイトル
 		width:320,						// ダイアログの幅
 		show: "fade",					// 表示時のエフェクト
 		hide: "fade",					// 非表示時のエフェクト
 		modal:true						// ダイアログをモーダル化する
 	});
 	// ダイアログを開く設定
-	$('.returnButton').click(function(){		// セレクタのボタンがクリックされたら
-		$('#dialog').dialog('open');// ダイアログを開く
+	$(openButton).click(function(){		// セレクタのボタンがクリックされたら
+		$(dialogName).dialog('open');// ダイアログを開く
 	});
 
 	$('#okButton').click(function(){	// ダイアログのokボタンがクリックされたら
-		$('#dialog').dialog('close');// ダイアログを閉じる
+		$(dialogName).dialog('close');// ダイアログを閉じる
 	});
 }
+
+/* 
+ * 関数名:deleteAttr
+ * 引数  :
+ *  selector	： 属性を削除するセレクタ名
+ *  attr 		: 削除する属性名
+ * 戻り値:なし
+ * 概要  :属性を削除する
+ * 作成日 :2015.05.13
+ * 作成者:T.Masuda
+*/
+function deleteAttr(selector, attr) {
+	// 第一引数の要素から第二引数の属性を削除する
+	$(selector).removeAttr(attr);
+}
+

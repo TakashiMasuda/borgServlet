@@ -92,7 +92,7 @@
         "class":"leftButtonArea left",
         "sideButton":[
             {
-                "class":"yet grid2",
+                "class":"lessStockButton grid2",
                 "name": "lessStockButton",
                 "value":"未在",
                 "text":"未在"
@@ -130,13 +130,17 @@
         }
     },
     "newDialog":{
-        "id":"dialog",
-        "dialogHeader":{
-            "dialogButton":{
-                "id":"okButton",
-                "text":"OK"
-            }
-        },
+        "id":"newDialog",
+        "class":"dialog",
+        "title":"新規・編集画面(製品項目)"
+    },
+    "newDialogHeader":{
+        "dialogButton":{
+            "id":"okButton",
+            "text":"OK"
+        }
+    },
+    "dialogPulldown4":{
         "dialogData1":{
             "dialogLabel":{
                 "class":"dialogLabel fig3",
@@ -212,7 +216,9 @@
                     "ストームカラー　ネック付"
                 ]
             }
-        },
+        }
+    },
+    "dialogTextbox2":{
         "dialogData5":{
             "dialogLabel":{
                 "class":"dialogLabel fig3",
@@ -234,7 +240,9 @@
                 "type":"text",
                 "name":"textbox"
             }
-        },
+        }
+    },
+    "newDialogLast":{
         "dialogData7":{
             "dialogLabel":{
                 "class":"dialogLabel fig3",
@@ -261,6 +269,24 @@
                 "name":"textbox",
                 "value":"相模原"
             }
+        }
+    },
+    "lessStockDialog":{
+        "id":"lessStockDialog",
+        "class":"dialog",
+        "title":"未在庫一覧"
+    },
+    "lessStockWrapList": {
+        "id": "lessStockWrapList",
+        "class":"lessStockWrapList clear",
+        "list": {
+            "id": "sendDataLessStock"
+        }
+    },
+    "lessStockDialogHeader":{
+        "dialogButton":{
+            "id":"okButton",
+            "text":"追加"
         }
     }
 }

@@ -427,7 +427,7 @@ button:hover {
 	float: left;					/* 左側に回り込みする */
 }
 
- /*
+/*
  * セレクタ:.right
  * 概要  :右側に回り込みするためのクラス
  * 作成日:2015.05.12
@@ -437,14 +437,20 @@ button:hover {
 	float: right;					/* 右側に回り込みする */
 }
 
+ /*
+ * セレクタ:.list, .ui-jqgrid-labels
+ * 概要  :jqGrid領域
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
 .list, .ui-jqgrid-labels {
-	font-size:13px;
+	font-size:13px;					/* フォントサイズを13pxにする */
 }
 
 /*
  * セレクタ:.clear
- * 概要  :jqGridの外枠領域
- * 作成日:2015.05.07
+ * 概要  :回り込みをなくすためのクラス
+ * 作成日:2015.05.12
  * 作成者:T.Yamamoto
  */
 .clear {
@@ -452,16 +458,37 @@ button:hover {
 	clear: both;					/* 回り込みをなくす */
 }
 
+
+/*
+ * セレクタ:.clear
+ * 概要  :ダイアログのヘッダー領域
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
 .dialogHeader {
-	text-align: right;
-	margin-bottom:10px;
+	text-align: right;				/* 右側に回り込みする */
+	margin-bottom:10px;				/* 下向きに10px余白をとる */
 }
+
+/*
+ * セレクタ:.clear
+ * 概要  :ダイアログのヘッダー領域
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
 .dialogLabel {
-	display: inline-block;
-	width:96px;
-	height: 31px;
+	display: inline-block;			/* インラインブロック要素にして横並びにする */
+	width:96px;						/* 幅を3グリッド分 */
+	height: 31px;					/* コンテンツの基本の高さ */
 }
+
+/*
+ * セレクタ:.fig5
+ * 概要  :グリッド5個分の幅
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
 .fig5 {
-	width:160px;
+	width:160px;					/* 幅をグリッド5個分にする */
 	height: 31px;
 }
