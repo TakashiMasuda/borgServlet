@@ -16,30 +16,19 @@
 	<!-- 空白のdiv。要素を囲みたいときに使う -->
 	<div id="" class="insertdiv" title=""></div>
 
-	<!-- タブ全体の領域 -->
-	<div class="tabArea">
-		<!-- タブ一覧 -->
-		<ul class="tablist">
-			<!-- 最初のタブ -->
-			<li class="firstTab"><label class="tabLabel" for=""></label>
-			</li>
-			<!-- 2番目のタブ -->
-			<li class="secondTab"><label class="tabLabel" for=""></label>
+	<!-- タブ領域 -->
+	<div class="tab">
+		<!-- タブの外側(クリックするタブの部分) -->
+		<ul class="tabOut">
+			<!-- 個々のタブ領域 -->
+			<li class="tablist">
+				<!-- クリックするタブ領域 -->
+				<a name="" class=""></a>
 			</li>
 		</ul>
-
-		<!-- 最初のタブのコンテンツ -->
-		<div class="firstTabContent">
-			<!-- タブが選択されているかどうかを判定するラジオボタン -->
-			<input name="" id="" class="tabRadio" type="" checked>
-			<!-- タブの中身 -->
-			<div id="" class="tabContent"></div>
-		</div>
-		<!-- 2番目ののタブ -->
-		<div class="secondTabContent">
-			<!-- タブが選択されているかどうかを判定するラジオボタン -->
-			<input name="" id="" class="tabRadio" type="">
-			<!-- タブの中身 -->
+		<!-- タブのコンテンツ領域の外枠 -->
+		<div class="tabIn">
+			<!-- タブのコンテンツ領域 -->
 			<div id="" class="tabContent"></div>
 		</div>
 	</div>
@@ -78,20 +67,16 @@
 		<label class="selectLabel"></label>
 		<!-- セレクトボックス -->
 		<select class="selectbox" name="">
-			<!-- セレクトボックスの値一覧 -->
-			<option class="firstSelect" value=""></option>
-			<option class="secondSelect" value=""></option>
-			<option class="thirdSelect" value=""></option>
-			<option class="forthSelect" value=""></option>
-			<option class="fifthSelect" value=""></option>
+			<!-- セレクトボックスの値 -->
+			<option class="selectValue" value=""></option>
 		</select>
 	</div>
 
 	<!-- リスト編集ボタン群 -->
 	<div class="editButtons">
 		<!-- 登録ボタン -->
-		<a href="" class="buttonLink">
-			<input href="" type="" src="" name="" class="addButton">
+		<a class="buttonLink">
+			<input type="" src="" name="" class="addButton">
 		</a>
 	</div>
 
@@ -181,7 +166,7 @@
 		</div>
 	</div>
 
-	<!-- 追加ダイアログの最後の2つのコンテンツの領域 -->
+	<!-- 発注、追加ダイアログの最後の2つのコンテンツの領域 -->
 	<div class="newDialogLast">
 		<div class="dialogData7">
 			<label class="dialogLabel fig3"></label>
@@ -194,6 +179,26 @@
 			<input class="dialogTextbox" type="" name="" value="">
 		</div>
 	</div>
+
+	<!-- 発注、追加ダイアログの最後の2つのコンテンツの領域 -->
+	<div class="reNewDialogLast">
+		<div class="dialogData1">
+			<label class="dialogLabel fig3"></label>
+			<input class="dialogTextbox" type="" name="">
+		</div>
+		<div class="dialogData2">
+			<label class="dialogLabel fig3"></label>
+			<textarea class="dialogTextbox"></textarea>
+		</div>
+	</div>
+
+	<!-- 返品編集画面ダイアログのコンテント -->
+	<div class="returnDialogContent">
+		<label class="returnLabel"></label>
+		<input class="returnNumber" type="" name="" value="" max="" min="">
+		<span class="returnText"></span>
+	</div>
+
 </div>
 </body>
 </html>

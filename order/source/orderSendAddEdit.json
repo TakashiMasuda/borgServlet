@@ -72,7 +72,6 @@
         "buttonLink":
         [
             {
-                "href":"",
                 "type":"image",
                 "src":"css/images/addButton.png",
                 "class":"addButton grid1 buttonImage",

@@ -248,7 +248,6 @@ button:hover {
 	background: #fff;		/* 背景を白にする */
 	padding: 10px;			/* 要素の幅を10px広げる */
 	border: 1px solid #999;	/* 少し灰色目の黒い線で要素を囲む */
-	border-top: none;		/* 上部の線を消す*/
 }
 
 /*
@@ -491,4 +490,40 @@ button:hover {
 .fig5 {
 	width:160px;					/* 幅をグリッド5個分にする */
 	height: 31px;
+}
+
+.dialogboxLabel {
+	display: inline-block;			/* インラインブロック要素にして横並びにする */
+	width:96px;						/* 幅を3グリッド分 */
+	height: 31px;					/* コンテンツの基本の高さ */
+	vertical-align: top;
+}
+
+.dialogTextarea {
+	height: 70px;
+}
+
+
+.tablist a{
+	padding: 10px;
+	display: block;
+	cursor:pointer;
+	position: relative;
+	top: 1px;
+	border-top-left-radius: 5px;	/* 左上を角丸にする */
+	border-top-right-radius: 5px;	/* 右上を角丸にする */
+	border: 1px solid #999;
+	border-bottom:none;
+}
+
+.tablist {
+	display: inline-block;
+	background: #dfdfdf;
+}
+.tabContent {
+	display: none;
+}
+.selected {
+	background: #fff;
+
 }

@@ -229,11 +229,89 @@
             }
         }
     },
+    "dialogPulldown":{
+        "dialogData1":{
+            "dialogLabel":{
+                "class":"dialogLabel fig3",
+                "text":"製品ランク"
+            },
+            "dialogSelect":{
+                "class":"dialogSelect fig5",
+                "selectData":
+                [
+                    "ランクA",
+                    "ランクB",
+                    "ランクC",
+                    "ランクD",
+                    "ランクE",
+                    "ランクF",
+                    "ランクG"
+                ]
+            }
+        },
+        "dialogData2":{
+            "dialogLabel":{
+                "class":"dialogLabel fig3",
+                "text":"ロットNo"
+            },
+            "dialogSelect":{
+                "class":"dialogSelect fig5",
+                "selectData":
+                [
+                    "000001",
+                    "000002",
+                    "000003",
+                    "000004",
+                    "000005",
+                    "000006",
+                    "000007"
+                ]
+            }
+        },
+        "dialogData3":{
+            "dialogLabel":{
+                "class":"dialogLabel fig3",
+                "text":"シリアルNo"
+            },
+            "dialogSelect":{
+                "class":"dialogSelect fig5",
+                "selectData":
+                [
+                    "123-456",
+                    "654-321",
+                    "123-654",
+                    "321-654",
+                    "654-123",
+                    "789-654",
+                    "345-987"
+                ]
+            }
+        },
+        "dialogData4":{
+            "dialogLabel":{
+                "class":"dialogLabel fig3",
+                "text":"販売価格"
+            },
+            "dialogSelect":{
+                "class":"dialogSelect fig5",
+                "selectData":
+                [
+                    "0",
+                    "-10,000",
+                    "5,000",
+                    "10,000",
+                    "15,000",
+                    "20,000",
+                    "50,000"
+                ]
+            }
+        }
+    },
     "dialogTextbox2":{
         "dialogData5":{
             "dialogLabel":{
                 "class":"dialogLabel fig3",
-                "text":"仕入価格"
+                "text":"個数"
             },
             "dialogTextbox":{
                 "class":"dialogTextbox fig5",
@@ -244,7 +322,7 @@
         "dialogData6":{
             "dialogLabel":{
                 "class":"dialogLabel fig3",
-                "text":"個数"
+                "text":"発送指定日"
             },
             "dialogTextbox":{
                 "class":"dialogTextbox fig5",
@@ -253,51 +331,54 @@
             }
         }
     },
-    "newDialogLast":{
-        "dialogData7":{
+    "reNewDialogLast":{
+        "dialogData1":{
             "dialogLabel":{
                 "class":"dialogLabel fig3",
-                "text":"顧客名"
-            },
-            "dialogSelect":{
-                "class":"dialogSelect fig5",
-                "selectData":
-                [
-                    "木村隆",
-                    "佐藤祐作",
-                    "山田太郎"
-                ]
-            }
-        },
-        "dialogData8":{
-            "dialogLabel":{
-                "class":"dialogLabel fig3",
-                "text":"発送先"
+                "text":"納品指定日"
             },
             "dialogTextbox":{
                 "class":"dialogTextbox fig5",
                 "type":"text",
-                "name":"textbox",
-                "value":"相模原"
+                "name":"textbox"
+            }
+        },
+        "dialogData2":{
+            "dialogLabel":{
+                "class":"dialogboxLabel fig3",
+                "text":"備考"
+            },
+            "dialogTextbox":{
+                "class":"dialogTextarea fig5"
             }
         }
     },
-    "lessStockDialog":{
-        "id":"lessStockDialog",
+    "returnDialog":{
+        "id":"returnDialog",
         "class":"dialog",
-        "title":"未在庫一覧"
+        "title":"返品編集画面"
     },
-    "lessStockWrapList": {
-        "id": "lessStockWrapList",
-        "class":"lessStockWrapList clear",
-        "list": {
-            "id": "sendDataLessStock"
+    "returnDialogContent":{
+        "returnLabel": {
+            "class":"returnLabel grid1",
+            "text":"返品数"
+        },
+        "returnNumber":{
+            "class":"returnNumber grid1",
+            "type":"number",
+            "name":"returnNumber",
+            "value":"1",
+            "max":"5",
+            "min":"1"
+        },
+        "returnText":{
+            "text":"/5個"
         }
     },
-    "lessStockDialogHeader":{
+    "returnDialogHeader":{
         "dialogButton":{
             "id":"okButton",
-            "text":"追加"
+            "text":"OK"
         }
     }
 }

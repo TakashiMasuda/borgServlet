@@ -16,43 +16,30 @@
     "mainContent":{
         "class":"mainContent"
     },
-    "tabArea":{
-        "tablist":{
-            "firstTab":{
-                "class":"firstTab grid1",
-                "tabLabel":{
-                    "for":"sendTab",
+    "tab":{
+        "tabOut":{
+            "tablist":
+            [
+                {
+                    "class":"selected",
+                    "name":"sendTabContent",
                     "text":"発注"
-                }
-            },
-            "secondTab":{
-                "class":"secondTab grid1",
-                "tabLabel":{
-                    "for":"receivedTab",
+                },
+                {
+                    "name":"receivedTabContent",
                     "text":"受注"
                 }
-            }
+            ]
         },
-        "firstTabContent":{
-            "tabRadio":{
-                "name":"tab",
-                "id":"sendTab",
-                "type":"radio"
-            },
-            "tabContent":{
-                "id":"sendTabContent"
-            }
-        },
-        "secondTabContent":{
-            "tabRadio":{
-                "name":"tab",
-                "id":"receivedTab",
-                "type":"radio"
-            },
-            "tabContent":{
-                "id":"receivedTabContent"
-            }
-        }
+        "tabIn":
+        [
+                {
+                    "id":"sendTabContent"
+                },
+                {
+                    "id":"receivedTabContent"
+                }
+        ]
     },
     "searcharea": {
         "searchtext": {
@@ -111,26 +98,14 @@
         "selectbox": {
             "class":"selectbox grid2",
             "name": "selectbox",
-            "firstSelect": {
-                "value": "種別1",
-                "text": "種別1"
-            },
-            "secondSelect": {
-                "value": "種別2",
-                "text": "種別2"
-            },
-            "thirdSelect": {
-                "value": "種別3",
-                "text": "種別3"
-            },
-            "forthSelect": {
-                "value": "種別4",
-                "text": "種別4"
-            },
-            "fifthSelect": {
-                "value": "種別5",
-                "text": "種別5"
-            }
+            "selectValue": 
+            [
+                "種別1",
+                "種別2",
+                "種別3",
+                "種別4",
+                "種別5"
+            ]
         }
     },
     "sendButtonList": {
@@ -142,11 +117,7 @@
         "class": "buttonList"
     },
     "editButtons": {
-        "buttonLink":{
-            "class":"linkButton",
-            "href":"sendOrder.html"
-        },
-        "linkButton":
+        "buttonLink":
         [
             {
                 "type":"image",

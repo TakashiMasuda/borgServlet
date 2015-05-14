@@ -74,23 +74,25 @@
 			creator.outputTag('newDialogHeader', 'dialogHeader', '#newDialog');
 			// 追加ダイアログの1つ目(4連続プルダウン)のデータ入力領域を作る
 			creator.outputTag('dialogPulldown4', 'dialogPulldown4', '#newDialog');
-			// 追加ダイアログの2つ目(2連続テキストボックス)のデータ入力領域を作る
+			// 追加ダイアログの2つ目(4連続プルダウン)のデータ入力領域を作る
+			creator.outputTag('dialogPulldown', 'dialogPulldown4', '#newDialog');
+			// 追加ダイアログの3つ目(2連続テキストボックス)のデータ入力領域を作る
 			creator.outputTag('dialogTextbox2', 'dialogTextbox2', '#newDialog');
-			// 追加ダイアログの3つ目(最後のコンテンツ)のデータ入力領域を作る
-			creator.outputTag('newDialogLast', 'newDialogLast', '#newDialog');
+			// 追加ダイアログの4つ目(最後のコンテンツ)のデータ入力領域を作る
+			creator.outputTag('reNewDialogLast', 'reNewDialogLast', '#newDialog');
 			// ダイアログを作る
 			createDialog('#newDialog', '.addButton')
 
 			// 未在庫ダイアログの外枠を作る
-			creator.outputTag('lessStockDialog', 'insertdiv', '.main');
+			creator.outputTag('returnDialog', 'insertdiv', '.main');
 			// 追加ダイアログのヘッダー領域を作る
-			creator.outputTag('lessStockDialogHeader', 'dialogHeader', '#lessStockDialog');
-			// 未在庫テーブルの外枠を作る
-			creator.outputTag('lessStockWrapList', 'wrapList', '#lessStockDialog');
-			// 未在庫テーブルを作る
-			makeGrid('sendDataLessStock');
+			creator.outputTag('returnDialogHeader', 'dialogHeader', '#returnDialog');
+			// 未在庫ダイアログのコンテンツを作る
+			creator.outputTag('returnDialogContent', 'returnDialogContent', '#returnDialog');
 			// 未在庫ダイアログを作る
-			createDialog('#lessStockDialog', '.lessStockButton');
+			createDialog('#returnDialog', '.returnButton');
+			// プルダウンメニューのvalue属性に値を入れる
+			setOptionValue();
 		});
 
 		//JavaScriptのコード記述を終える
