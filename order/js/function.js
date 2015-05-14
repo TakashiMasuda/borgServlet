@@ -52,7 +52,7 @@ function createDialog(dialogName, openButton) {
 		$(dialogName).dialog('open');// ダイアログを開く
 	});
 
-	$('#okButton').click(function(){	// ダイアログのokボタンがクリックされたら
+	$('.okButton').click(function(){	// ダイアログのokボタンがクリックされたら
 		$(dialogName).dialog('close');// ダイアログを閉じる
 	});
 }
@@ -133,3 +133,67 @@ function funcTab() {
 	});
 }
 
+/* 
+ * 関数名:setCalendar
+ * 引数 :なし
+ * 戻り値:なし
+ * 概要  :カレンダー機能を実装する
+ * 作成日 :2015.05.14
+ * 作成者:T.Yamamoto
+*/
+function setCalendar() {
+	// カレンダーを付ける
+	$('.datebox').datepicker({
+		dateFormat: 'y/mm/dd',			// フォーマットを14/01/01のようにする
+		yearSuffix: '年',				// yearを日本語の「年」で表す
+		showMonthAfterYear: true,		// タイトルの年の後ろに月が来るようにする
+		// monthの日本語設定
+		 monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+	});
+}
+
+// 発注、新規・編集画面画面のname属性の値一覧
+var sendAddEdit = {
+	'発注日'		:'order_date',
+	'発注先'		:'send_place',
+	'発送指定日'	:'send_date',
+	'納品指定日'	:'delivery_date',
+	'入力者'		:'scribedby',
+	'承認者'		:'permiter',
+	'備考'		:'others',
+	'合計金額'	:'amount'
+};
+
+// 受注、新規・編集画面画面のname属性の値一覧
+var receivedAddEdit = {
+	'受注日'			:'order_date',
+	'受注コード'		:'order_code',
+	'顧客名'			:'custmoer',
+	'締日'			:'cutOffDate',
+	'支払日'			:'payDate',
+	'入力者'			:'scribedby',
+	'承認者'			:'permiter',
+	'納品場所'		:'deliveryPlace',
+	'備考(社内向)'	:'OthersIn',
+	'備考(社外向)'	:'OthersOut',
+	'合計金額'		:'amount'
+};
+
+/* 
+ * 関数名:setName
+ * 引数 :targetArray : 対象となる連想配列
+ * 戻り値:なし
+ * 概要  :databoxクラスにname属性を設定する
+ * 作成日 :2015.05.14
+ * 作成者:T.Yamamoto
+*/
+function setName(targetArray) {
+	// .databoxを全て走査する
+	$(".databox").each(function(i){
+		// .databoxの画面に表示される文字列を取得する
+		var label = $(this).text();
+		// 取得した文字列を第一引数のkeyとしてname属性に値を入れる
+		$(this).attr('name', targetArray[label]);
+	});
+
+}

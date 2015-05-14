@@ -40,7 +40,7 @@
 	//発注、新規・編集画面、新規登録ダイアログ、列名定義の配列。順番にセットされる。
 	colNamesLists['sendDataLessStock'] = ['', '受注日', '発注コード', '製造番号', '製品種別', '製品名', '顧客名', '入力者'];
 
-	//fig.2 見積・受注機能のリストの列定義。
+	//受注タブ 見積・受注機能のリストの列定義。
 	//列の設定について、特筆すべき点のみ補足します。
 	colData['receivedData'] = [
 	        //name:名前 index:ソート時の名前 width:列幅 dataType:データの型 align:セルのテキストの寄せる方向
@@ -50,26 +50,26 @@
 	        //sortable:ソート可能かどうかの設定。 sorttype:ソートのデータ型を指定する。
 
 			//受注チェックボックス列
-			{ name: "received_check", index:"received_check", width: 32, align:"center", className: "received_check", editable: true, sortable:false},
+			{ name: "received_check", index:"received_check", width: 27, align:"center", className: "received_check", editable: true, sortable:false},
 	        //受注日列。dateTypeを日付型にする。
-	        { name: "order_date", index:"order_date", width: 100, align:"left", className: "order_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
+	        { name: "order_date", index:"order_date", width: 91, align:"left", className: "order_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
 			//受注コード列
-	        { name: "order_code", index:"order_code", width: 100, align:"left", className: "order_code", editable: true, sortable:true, sorttype:'text'},
+	        { name: "order_code", index:"order_code", width: 59, align:"left", className: "order_code", editable: true, sortable:true, sorttype:'text'},
 	        //顧客名列
-	        { name: "customer", index:"customer", width: 100,  align:"left", className: " customer", editable: true, sortable:true, sorttype:'text'},
+	        { name: "customer", index:"customer", width: 91,  align:"left", className: " customer", editable: true, sortable:true, sorttype:'text'},
 	        //納品希望日列
-	        { name: "delivery_date", index:"delivery_date", width: 100, align:"left", className: "delivery_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
+	        { name: "delivery_date", index:"delivery_date", width: 91, align:"left", className: "delivery_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
 	        //入力者列
-	        { name: "scribedby", index:"scribedby", width: 100, align:"left", className: "scribedby", editable: true, sortable:true, sorttype:'text'},
-	        //受注主別列
-	        { name: "order_type", index:"order_type", width: 75, align:"left", className: "order_type", editable: true, sortable:true, sorttype:'text'},
+	        { name: "scribedby", index:"scribedby", width: 91, align:"left", className: "scribedby", editable: true, sortable:true, sorttype:'text'},
+	        //受注種別列
+	        { name: "order_type", index:"order_type", width: 59, align:"left", className: "order_type", editable: true, sortable:true, sorttype:'text'},
 	        //承認者列
-	        { name: "permiter", index:"permiter", width: 100, align:"left", className: "permiter", editable: false, sortable:true, sorttype:'text'},
+	        { name: "permiter", index:"permiter", width: 91, align:"left", className: "permiter", editable: false, sortable:true, sorttype:'text'},
 	        //合計金額列
-	        { name: "amount", index:"amount", width: 100, align:"left", className: "amount", editable: false, sortable:true, sorttype:'int'}
+	        { name: "amount", index:"amount", width: 103, align:"left", className: "amount", editable: false, sortable:true, sorttype:'int'}
 	];
 
-	//fig.3 見積・発注機能のリストの列定義。
+	//発注タブ 見積・発注機能のリストの列定義。
 	//列の設定について、特筆すべき点のみ補足します。
 	colData['sendData'] = [
 	        //name:名前 index:ソート時の名前 width:列幅 dataType:データの型 align:セルのテキストの寄せる方向
@@ -79,24 +79,24 @@
 	        //sortable:ソート可能かどうかの設定。 sorttype:ソートのデータ型を指定する。
 
 	        //発注日チェックボックス列
-	        { name: "send_check", index:"send_check", width: 32, align:"center", className: "send_check", editable: true, sortable:false},
+	        { name: "send_check", index:"send_check", width: 27, align:"center", className: "send_check", editable: true, sortable:false},
 	        //発注日列。dateTypeを日付型にする。
-	        { name: "order_date", index:"send_date", width: 100, align:"left", className: "send_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
+	        { name: "order_date", index:"send_date", width: 91, align:"left", className: "send_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
 			//発注コード列
-	        { name: "order_code", index:"send_code", width: 100, align:"left", className: "send_code", editable: true, sortable:true, sorttype:'text'},
+	        { name: "order_code", index:"send_code", width: 133, align:"left", className: "send_code", editable: true, sortable:true, sorttype:'text'},
 	        //発注先列
-	        { name: "send_place", index:"send_place", width: 100,  align:"left", className: " send_place", editable: true, sortable:true, sorttype:'text'},
+	        { name: "send_place", index:"send_place", width: 91,  align:"left", className: " send_place", editable: true, sortable:true, sorttype:'text'},
 	        //発送指定日列
-	        { name: "delivery_date", index:"delivery_date", width: 100, align:"left", className: "delivery_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
+	        { name: "delivery_date", index:"delivery_date", width: 91, align:"left", className: "delivery_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
 	        //入力者列
-	        { name: "scribedby", index:"scribedby", width: 100, align:"left", className: "scribedby", editable: true, sortable:true, sorttype:'text'},
+	        { name: "scribedby", index:"scribedby", width: 91, align:"left", className: "scribedby", editable: true, sortable:true, sorttype:'text'},
 	        //承認者列
-	        { name: "permiter", index:"permiter", width: 100, align:"left", className: "permiter", editable: false, sortable:true, sorttype:'text'},
+	        { name: "permiter", index:"permiter", width: 91, align:"left", className: "permiter", editable: false, sortable:true, sorttype:'text'},
 	        //合計金額列
-	        { name: "amount", index:"amount", width: 100, align:"left", className: "amount", editable: false, sortable:true, sorttype:'int'}
+	        { name: "amount", index:"amount", width: 93, align:"left", className: "amount", editable: false, sortable:true, sorttype:'int'}
 	];
 
-	//fig.3-1 発注画面、新規編集画面のリストの列定義。
+	//受注画面、新規編集画面のリストの列定義。
 	//列の設定について、特筆すべき点のみ補足します。
 	colData['receivedDataAddEdit'] = [
 	        //name:名前 index:ソート時の名前 width:列幅 dataType:データの型 align:セルのテキストの寄せる方向
@@ -106,29 +106,29 @@
 	        //sortable:ソート可能かどうかの設定。 sorttype:ソートのデータ型を指定する。
 
 	        //チェックボックス列
-	        { name: "received_check", index:"received_check", width: 32, align:"center", className: "received_check", editable: true, sortable:false},
+	        { name: "received_check", index:"received_check", width: 27, align:"center", className: "received_check", editable: true, sortable:false},
 	        //製品番号列。dateTypeを日付型にする。
-	        { name: "productNumber", index:"productNumber", width: 80, align:"left", className: "productNumber", editable: true, sortable:true, sorttype:'int'},
+	        { name: "productNumber", index:"productNumber", width: 59, align:"left", className: "productNumber", editable: true, sortable:true, sorttype:'int'},
 			//製品種別列
-	        { name: "productType", index:"productType", width: 80, align:"left", className: "productType", editable: true, sortable:true, sorttype:'text'},
+	        { name: "productType", index:"productType", width: 59, align:"left", className: "productType", editable: true, sortable:true, sorttype:'text'},
 	        //製品名列
-	        { name: "productName", index:"productName", width: 160, align:"left", className: " productName", editable: true, sortable:true, sorttype:'text'},
+	        { name: "productName", index:"productName", width: 155, align:"left", className: " productName", editable: true, sortable:true, sorttype:'text'},
 	        //販売価格列
-	        { name: "unitPrice", index:"unitPrice", width: 64, align:"left", className: "unitPrice", editable: true, sortable:true, sorttype:'int'},
+	        { name: "unitPrice", index:"unitPrice", width: 59, align:"left", className: "unitPrice", editable: true, sortable:true, sorttype:'int'},
 	        //個数列
-	        { name: "number", index:"number", width: 64, align:"left", className: "number", editable: true, sortable:true, sorttype:'int'},
+	        { name: "number", index:"number", width: 59, align:"left", className: "number", editable: true, sortable:true, sorttype:'int'},
 	        //小計列
-	        { name: "subtotal", index:"subtotal", width: 64, align:"left", className: "subtotal", editable: false, sortable:true, sorttype:'int'},
+	        { name: "subtotal", index:"subtotal", width: 59, align:"left", className: "subtotal", editable: false, sortable:true, sorttype:'int'},
 	        //発送場所
-	        { name: "deliveryPlace", index:"deliveryPlace", width: 80, align:"left", className: "deliveryPlace", editable: false, sortable:true, sorttype:'texts'},
+	        { name: "deliveryPlace", index:"deliveryPlace", width: 59, align:"left", className: "deliveryPlace", editable: false, sortable:true, sorttype:'texts'},
 			//発送指定日列
-	        { name: "send_date", index:"send_date", width: 100, align:"left", className: "send_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
+	        { name: "send_date", index:"send_date", width: 91, align:"left", className: "send_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
 	        //納品指定日列
-	        { name: "delivery_date", index:"delivery_date", width: 100, align:"left", className: "delivery_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}}
+	        { name: "delivery_date", index:"delivery_date", width: 91, align:"left", className: "delivery_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}}
 	];
 
 
-	//fig.3-1 発注画面、新規編集画面のリストの列定義。
+	//発注画面、新規編集画面のリストの列定義。
 	//列の設定について、特筆すべき点のみ補足します。
 	colData['sendDataAddEdit'] = [
 	        //name:名前 index:ソート時の名前 width:列幅 dataType:データの型 align:セルのテキストの寄せる方向
@@ -138,26 +138,26 @@
 	        //sortable:ソート可能かどうかの設定。 sorttype:ソートのデータ型を指定する。
 
 	        //チェックボックス列
-	        { name: "send_check", index:"send_check", width: 32, align:"center", className: "send_check", editable: true, sortable:false},
+	        { name: "send_check", index:"send_check", width: 27, align:"center", className: "send_check", editable: true, sortable:false},
 	        //製品番号列。dateTypeを日付型にする。
-	        { name: "productNumber", index:"productNumber", width: 80, align:"left", className: "productNumber", editable: true, sortable:true, sorttype:'int'},
+	        { name: "productNumber", index:"productNumber", width: 91, align:"left", className: "productNumber", editable: true, sortable:true, sorttype:'int'},
 			//製品種別列
-	        { name: "productType", index:"productType", width: 80, align:"left", className: "productType", editable: true, sortable:true, sorttype:'text'},
+	        { name: "productType", index:"productType", width: 91, align:"left", className: "productType", editable: true, sortable:true, sorttype:'text'},
 	        //製品名列
-	        { name: "productName", index:"productName", width: 160, align:"left", className: " productName", editable: true, sortable:true, sorttype:'text'},
+	        { name: "productName", index:"productName", width: 155, align:"left", className: " productName", editable: true, sortable:true, sorttype:'text'},
 	        //単価列
-	        { name: "unitPrice", index:"unitPrice", width: 64, align:"left", className: "unitPrice", editable: true, sortable:true, sorttype:'int'},
+	        { name: "unitPrice", index:"unitPrice", width: 59, align:"left", className: "unitPrice", editable: true, sortable:true, sorttype:'int'},
 	        //個数列
-	        { name: "number", index:"number", width: 64, align:"left", className: "number", editable: true, sortable:true, sorttype:'int'},
+	        { name: "number", index:"number", width: 59, align:"left", className: "number", editable: true, sortable:true, sorttype:'int'},
 	        //小計列
-	        { name: "subtotal", index:"subtotal", width: 64, align:"left", className: "subtotal", editable: false, sortable:true, sorttype:'int'},
+	        { name: "subtotal", index:"subtotal", width: 59, align:"left", className: "subtotal", editable: false, sortable:true, sorttype:'int'},
 	        //顧客名列
-	        { name: "customer", index:"customer", width: 64, align:"left", className: "customer", editable: false, sortable:true, sorttype:'int'},
+	        { name: "customer", index:"customer", width: 91, align:"left", className: "customer", editable: false, sortable:true, sorttype:'int'},
 	        //納品場所列
-	        { name: "deliveryPlace", index:"deliveryPlace", width: 80, align:"left", className: "deliveryPlace", editable: false, sortable:true, sorttype:'texts'}
+	        { name: "deliveryPlace", index:"deliveryPlace", width:91, align:"left", className: "deliveryPlace", editable: false, sortable:true, sorttype:'texts'}
 	];
 
-	//fig.3-1 発注画面、新規編集画面のリストの列定義。
+	// 発注画面、新規編集画面、未在庫ダイアログのリストの列定義。
 	//列の設定について、特筆すべき点のみ補足します。
 	colData['sendDataLessStock'] = [
 	        //name:名前 index:ソート時の名前 width:列幅 dataType:データの型 align:セルのテキストの寄せる方向
@@ -167,21 +167,21 @@
 	        //sortable:ソート可能かどうかの設定。 sorttype:ソートのデータ型を指定する。
 
 	        //チェックボックス列
-	        { name: "stock_check", index:"send_check", width: 32, align:"center", className: "send_check", editable: true, sortable:false},
+	        { name: "stock_check", index:"send_check", width: 27, align:"center", className: "send_check", editable: true, sortable:false},
 	        //受注日列。dateTypeを日付型にする。
-	        { name: "order_date", index:"order_date", width: 100, align:"left", className: "order_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
+	        { name: "order_date", index:"order_date", width: 91, align:"left", className: "order_date", editable: true, sortable:true, sorttype:'date',datefmt:"yyyy-mm-dd",editrules:{date:true}},
 			//受注コード列
-	        { name: "order_code", index:"order_code", width: 100, align:"left", className: "order_code", editable: true, sortable:true, sorttype:'text'},
+	        { name: "order_code", index:"order_code", width: 59, align:"left", className: "order_code", editable: true, sortable:true, sorttype:'text'},
 	        //製品番号列。dateTypeを日付型にする。
-	        { name: "productNumber", index:"productNumber", width: 80, align:"left", className: "productNumber", editable: true, sortable:true, sorttype:'int'},
+	        { name: "productNumber", index:"productNumber", width: 59, align:"left", className: "productNumber", editable: true, sortable:true, sorttype:'int'},
 			//製品種別列
-	        { name: "productType", index:"productType", width: 80, align:"left", className: "productType", editable: true, sortable:true, sorttype:'text'},
+	        { name: "productType", index:"productType", width: 59, align:"left", className: "productType", editable: true, sortable:true, sorttype:'text'},
 	        //製品名列
-	        { name: "productName", index:"productName", width: 160, align:"left", className: " productName", editable: true, sortable:true, sorttype:'text'},
+	        { name: "productName", index:"productName", width: 155, align:"left", className: " productName", editable: true, sortable:true, sorttype:'text'},
 	        //顧客名列
-	        { name: "customer", index:"customer", width: 64, align:"left", className: "customer", editable: false, sortable:true, sorttype:'int'},
+	        { name: "customer", index:"customer", width: 59, align:"left", className: "customer", editable: false, sortable:true, sorttype:'int'},
 	        //入力者列
-	        { name: "scribedby", index:"scribedby", width: 100, align:"left", className: "scribedby", editable: true, sortable:true, sorttype:'text'},
+	        { name: "scribedby", index:"scribedby", width: 91, align:"left", className: "scribedby", editable: true, sortable:true, sorttype:'text'},
 	];
 
 	//receivedDataのjqGridのルールを連想配列に設定する。
@@ -215,7 +215,7 @@
 		}
 	};
 
-	//sendDataのjqGridのルールを連想配列に設定する。
+	//sendData(発注タブ)のjqGridのルールを連想配列に設定する。
 	objRules['sendData'] = { 
 		//データの取得元を設定する。
 		url:'json/sendData.json',
@@ -315,7 +315,7 @@
 		//JSONデータをデータソースとして利用する。
 		datatype:"json",
 		//基本の幅を指定する。
-		width: 768,
+		width: 640,
 		//グリッドのリサイズ時の最大幅、最小幅を指定する。
 		gridResize: {minWidth:310, maxWidth:576},
 		//表部分の高さを指定する。

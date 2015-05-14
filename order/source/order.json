@@ -16,12 +16,12 @@
     "mainContent":{
         "class":"mainContent"
     },
-    "tab":{
+    "tabArea":{
         "tabOut":{
             "tablist":
             [
                 {
-                    "class":"selected",
+                    "class":"tab selected",
                     "name":"sendTabContent",
                     "text":"発注"
                 },

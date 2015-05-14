@@ -51,7 +51,7 @@
 			// コンテンツの外枠を作る
 			creator.outputTag('mainContent', 'insertdiv', '.main');
 			// タブ領域を作る
-			creator.outputTag('tab','tab', '.mainContent');
+			creator.outputTag('tabArea','tabArea', '.mainContent');
 			// 検索機能領域を作る
 			creator.outputTag('searcharea', 'searcharea', '.tabContent');
 			// 期間を指定する領域のdomを作る
@@ -85,6 +85,9 @@
 			setAddButtonLink('#sendTabContent', 'sendOrder.html');
 			// 受注タブの追加ボタンにリンクをセットする
 			setAddButtonLink('#receivedTabContent', 'receivedOrder.html');
+
+			// カレンダーを付ける
+			setCalendar();
 		});
 
 		//JavaScriptのコード記述を終える

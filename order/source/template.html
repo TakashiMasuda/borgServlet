@@ -17,13 +17,13 @@
 	<div id="" class="insertdiv" title=""></div>
 
 	<!-- タブ領域 -->
-	<div class="tab">
+	<div class="tabArea">
 		<!-- タブの外側(クリックするタブの部分) -->
 		<ul class="tabOut">
 			<!-- 個々のタブ領域 -->
 			<li class="tablist">
 				<!-- クリックするタブ領域 -->
-				<a name="" class=""></a>
+				<a name="" class="tab"></a>
 			</li>
 		</ul>
 		<!-- タブのコンテンツ領域の外枠 -->
@@ -104,7 +104,7 @@
 			<!-- テキストボックスのラベル領域 -->
 			<label class="dataLabel grid3"></label>
 			<!-- テキストボックス領域 -->
-			<input class="databox grid9" type="" name="">
+			<input class="databox grid9" type="text" name="">
 		</div>
 	</div>
 
@@ -120,7 +120,7 @@
 	<!-- ダイアログのヘッダー -->
 	<div class="dialogHeader">
 		<!-- ダイアログに表示されるボタン -->
-		<button id="" class="dialogButton"></button>
+		<button class="dialogButton"></button>
 	</div>
 
 	<!-- ダイアログのプルダウンが4連続のときの領域 -->
@@ -128,27 +128,27 @@
 		<!-- ダイアログでデータを入力する領域 -->
 		<div class="dialogData1">
 			<!-- ラベル領域 -->
-			<label class="dialogLabel fig3"></label>
+			<label class="dialogLabel"></label>
 			<!-- プルダウンメニュー領域 -->
-			<select class="dialogSelect fig5">
+			<select class="dialogSelect" name="">
 				<option value="" class="selectData"></option>
 			</select>
 		</div>
 		<div class="dialogData2">
-			<label class="dialogLabel fig3"></label>
-			<select class="dialogSelect fig5">
+			<label class="dialogLabel"></label>
+			<select class="dialogSelect" name="">
 				<option value="" class="selectData"></option>
 			</select>
 		</div>
 		<div class="dialogData3">
-			<label class="dialogLabel fig3"></label>
-			<select class="dialogSelect fig5">
+			<label class="dialogLabel"></label>
+			<select class="dialogSelect" name="">
 				<option value="" class="selectData"></option>
 			</select>
 		</div>
 		<div class="dialogData4">
-			<label class="dialogLabel fig3"></label>
-			<select class="dialogSelect fig5">
+			<label class="dialogLabel"></label>
+			<select class="dialogSelect" name="">
 				<option value="" class="selectData"></option>
 			</select>
 		</div>
@@ -156,26 +156,26 @@
 
 	<!-- ダイアログのテキストボックスが2連続の領域 -->
 	<div class="dialogTextbox2">
-		<div class="dialogData5">
-			<label class="dialogLabel fig3"></label>
+		<div class="dialogData1">
+			<label class="dialogLabel"></label>
 			<input class="dialogTextbox" type="" name="">
 		</div>
-		<div class="dialogData6">
-			<label class="dialogLabel fig3"></label>
+		<div class="dialogData2">
+			<label class="dialogLabel"></label>
 			<input class="dialogTextbox" type="" name="">
 		</div>
 	</div>
 
 	<!-- 発注、追加ダイアログの最後の2つのコンテンツの領域 -->
 	<div class="newDialogLast">
-		<div class="dialogData7">
-			<label class="dialogLabel fig3"></label>
-			<select class="dialogSelect fig5">
+		<div class="dialogData1">
+			<label class="dialogLabel grid3"></label>
+			<select class="dialogSelect grid5" name="">
 				<option value="" class="selectData"></option>
 			</select>
 		</div>
-		<div class="dialogData8">
-			<label class="dialogLabel fig3"></label>
+		<div class="dialogData2">
+			<label class="dialogLabel grid3"></label>
 			<input class="dialogTextbox" type="" name="" value="">
 		</div>
 	</div>
@@ -183,19 +183,22 @@
 	<!-- 発注、追加ダイアログの最後の2つのコンテンツの領域 -->
 	<div class="reNewDialogLast">
 		<div class="dialogData1">
-			<label class="dialogLabel fig3"></label>
+			<label class="dialogLabel grid3"></label>
 			<input class="dialogTextbox" type="" name="">
 		</div>
 		<div class="dialogData2">
-			<label class="dialogLabel fig3"></label>
-			<textarea class="dialogTextbox"></textarea>
+			<label class="dialogLabel grid3"></label>
+			<textarea class="dialogTextbox" name=""></textarea>
 		</div>
 	</div>
 
 	<!-- 返品編集画面ダイアログのコンテント -->
 	<div class="returnDialogContent">
+		<!-- 「返品数」と表示するラべル -->
 		<label class="returnLabel"></label>
+		<!-- 返品数を入力するテキストボックス -->
 		<input class="returnNumber" type="" name="" value="" max="" min="">
+		<!-- 「/5個」と表示する領域 -->
 		<span class="returnText"></span>
 	</div>
 

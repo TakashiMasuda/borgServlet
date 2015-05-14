@@ -19,59 +19,37 @@
     "dataInArea":{
         "dataIn":[
             {
-                "text":"受注日",
-                "type":"text",
-                "name":"order_date"
+                "text":"受注日"
             },
             {
-                "text":"受注コード",
-                "type":"text",
-                "name":"order_code"
+                "text":"受注コード"
             },
             {
-                "text":"顧客名",
-                "type":"text",
-                "name":"custmoer"
+                "text":"顧客名"
             },
             {
-                "text":"締日",
-                "type":"text",
-                "name":"cutOffDate"
+                "text":"締日"
             },
             {
-                "text":"支払日",
-                "type":"text",
-                "name":"payDate"
+                "text":"支払日"
             },
             {
-                "text":"入力者",
-                "type":"text",
-                "name":"scribedby"
+                "text":"入力者"
             },
             {
-                "text":"承認者",
-                "type":"text",
-                "name":"permiter"
+                "text":"承認者"
             },
             {
-                "text":"納品場所",
-                "type":"text",
-                "name":"deliveryPlace"
+                "text":"納品場所"
             },
             {
-                "text":"備考(社内向)",
-                "type":"text",
-                "name":"OthersIn"
+                "text":"備考(社内向)"
             },
             {
-                "text":"備考(社外向)",
-                "type":"text",
-                "name":"othersOut"
+                "text":"備考(社外向)"
             },
             {
-                "text":"合計金額",
-                "type":"text",
-                "name":"amonut"
+                "text":"合計金額"
             }
         ]
     },
@@ -147,18 +125,19 @@
     },
     "newDialogHeader":{
         "dialogButton":{
-            "id":"okButton",
+            "class":"okButton",
             "text":"OK"
         }
     },
     "dialogPulldown4":{
         "dialogData1":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"製品種別(大)"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"productTypeBig",
                 "selectData":
                 [
                     "二管",
@@ -173,11 +152,12 @@
         },
         "dialogData2":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"製品種別(中)"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"productTypeMiddle",
                 "selectData":
                 [
                     "種別1",
@@ -192,11 +172,12 @@
         },
         "dialogData3":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"製品種別(小)"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"productTypeSmall",
                 "selectData":
                 [
                     "二管",
@@ -211,18 +192,19 @@
         },
         "dialogData4":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"製品"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"product",
                 "selectData":
                 [
                     "フラッシング3寸",
                     "チムニーフラッシング　□650",
                     "炉台キット2枚組　CB30",
                     "煙突ヒートシールド",
-                    "スチールステージプレート　角",
+                    "スチールステージプレート",
                     "バーベキュースタンド",
                     "ストームカラー　ネック付"
                 ]
@@ -232,11 +214,12 @@
     "dialogPulldown":{
         "dialogData1":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"製品ランク"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"productRank",
                 "selectData":
                 [
                     "ランクA",
@@ -251,11 +234,12 @@
         },
         "dialogData2":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"ロットNo"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"lotNumber",
                 "selectData":
                 [
                     "000001",
@@ -270,11 +254,12 @@
         },
         "dialogData3":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"シリアルNo"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"serialNumber",
                 "selectData":
                 [
                     "123-456",
@@ -289,11 +274,12 @@
         },
         "dialogData4":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"販売価格"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"salePrice",
                 "selectData":
                 [
                     "0",
@@ -308,48 +294,49 @@
         }
     },
     "dialogTextbox2":{
-        "dialogData5":{
+        "dialogData1":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"個数"
             },
             "dialogTextbox":{
-                "class":"dialogTextbox fig5",
+                "class":"dialogTextbox grid5",
                 "type":"text",
-                "name":"textbox"
+                "name":"number"
             }
         },
-        "dialogData6":{
+        "dialogData2":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"発送指定日"
             },
             "dialogTextbox":{
-                "class":"dialogTextbox fig5",
+                "class":"dialogTextbox grid5",
                 "type":"text",
-                "name":"textbox"
+                "name":"send_date"
             }
         }
     },
     "reNewDialogLast":{
         "dialogData1":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"納品指定日"
             },
             "dialogTextbox":{
-                "class":"dialogTextbox fig5",
+                "class":"dialogTextbox grid5",
                 "type":"text",
-                "name":"textbox"
+                "name":"delivery_date"
             }
         },
         "dialogData2":{
             "dialogLabel":{
-                "class":"dialogboxLabel fig3",
+                "class":"dialogboxLabel grid3",
                 "text":"備考"
             },
             "dialogTextbox":{
-                "class":"dialogTextarea fig5"
+                "class":"dialogTextarea grid5",
+                "name":"others"
             }
         }
     },
@@ -377,7 +364,7 @@
     },
     "returnDialogHeader":{
         "dialogButton":{
-            "id":"okButton",
+            "class":"okButton",
             "text":"OK"
         }
     }

@@ -19,9 +19,9 @@
     "dataInArea":{
         "dataIn":[
             {
-                "text":"発注日",
                 "type":"text",
-                "name":"order_date"
+                "name":"order_date",
+                "text":"発注日"
             },
             {
                 "text":"発注コード",
@@ -135,18 +135,19 @@
     },
     "newDialogHeader":{
         "dialogButton":{
-            "id":"okButton",
+            "class":"okButton",
             "text":"OK"
         }
     },
     "dialogPulldown4":{
         "dialogData1":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"製品種別(大)"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"productTypeBig",
                 "selectData":
                 [
                     "二管",
@@ -161,11 +162,12 @@
         },
         "dialogData2":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"製品種別(中)"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"productTypeMiddle",
                 "selectData":
                 [
                     "種別1",
@@ -180,11 +182,12 @@
         },
         "dialogData3":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"製品種別(小)"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"productTypeSmall",
                 "selectData":
                 [
                     "二管",
@@ -199,11 +202,12 @@
         },
         "dialogData4":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"製品"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"product",
                 "selectData":
                 [
                     "フラッシング3寸",
@@ -218,37 +222,38 @@
         }
     },
     "dialogTextbox2":{
-        "dialogData5":{
+        "dialogData1":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"仕入価格"
             },
             "dialogTextbox":{
-                "class":"dialogTextbox fig5",
+                "class":"dialogTextbox grid5",
                 "type":"text",
-                "name":"textbox"
+                "name":"cost"
             }
         },
-        "dialogData6":{
+        "dialogData2":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"個数"
             },
             "dialogTextbox":{
-                "class":"dialogTextbox fig5",
+                "class":"dialogTextbox grid5",
                 "type":"text",
-                "name":"textbox"
+                "name":"number"
             }
         }
     },
     "newDialogLast":{
-        "dialogData7":{
+        "dialogData1":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"顧客名"
             },
             "dialogSelect":{
-                "class":"dialogSelect fig5",
+                "class":"dialogSelect grid5",
+                "name":"customer",
                 "selectData":
                 [
                     "木村隆",
@@ -257,15 +262,15 @@
                 ]
             }
         },
-        "dialogData8":{
+        "dialogData2":{
             "dialogLabel":{
-                "class":"dialogLabel fig3",
+                "class":"dialogLabel grid3",
                 "text":"発送先"
             },
             "dialogTextbox":{
-                "class":"dialogTextbox fig5",
+                "class":"dialogTextbox grid5",
                 "type":"text",
-                "name":"textbox",
+                "name":"delivery_place",
                 "value":"相模原"
             }
         }
@@ -284,7 +289,7 @@
     },
     "lessStockDialogHeader":{
         "dialogButton":{
-            "id":"okButton",
+            "class":"okButton",
             "text":"追加"
         }
     }

@@ -184,7 +184,7 @@ button:hover {
 }
 
 /*
- * セレクタ:#fig2
+ * セレクタ:.mainContent
  * 概要  :ヘッダーより下のコンテンツ全体の外枠
  * 作成日:2015.05.06
  * 作成者:T.Yamamoto
@@ -258,25 +258,6 @@ button:hover {
  */
 .tabLabel {
 	cursor: pointer;				/* マウスカーソルを指にする */
-}
-
-/*
- * セレクタ:.tablist li
- * 概要  :それぞれのタブ領域
- * 作成日:2015.05.06
- * 作成者:T.Yamamoto
- */
-.tablist li {
-	cursor: pointer;				/* マウスカーソルを指にする */
-	display: inline-block;			/* ブロック要素にしてクリックしやすくする */
-	padding: 5px;					/* 5px要素の幅を広げる */
-	color: #444;					/* 文字色を少しグレーがかかった黒にする */
-	background: #eee;				/* 背景をグレーにする */
-	border: 1px solid #999;			/* 濃い目の線を引く */
-	border-bottom:none;				/* 底のボーダをなくす */
-	border-top-left-radius: 5px;	/* 左上を角丸にする */
-	border-top-right-radius: 5px;	/* 右上を角丸にする */
-	height:22px;					/* 高さを22pxにする */
 }
 
 /*
@@ -487,11 +468,17 @@ button:hover {
  * 作成日:2015.05.12
  * 作成者:T.Yamamoto
  */
-.fig5 {
+.grid5 {
 	width:160px;					/* 幅をグリッド5個分にする */
 	height: 31px;
 }
 
+/*
+ * セレクタ:.dialogboxLabel
+ * 概要  :
+ * 作成日:2015.05.12
+ * 作成者:T.Yamamoto
+ */
 .dialogboxLabel {
 	display: inline-block;			/* インラインブロック要素にして横並びにする */
 	width:96px;						/* 幅を3グリッド分 */
@@ -503,8 +490,13 @@ button:hover {
 	height: 70px;
 }
 
+#lessStockDialog {
+	padding: 0;
+}
 
-.tablist a{
+
+
+.tab{
 	padding: 10px;
 	display: block;
 	cursor:pointer;
@@ -514,6 +506,10 @@ button:hover {
 	border-top-right-radius: 5px;	/* 右上を角丸にする */
 	border: 1px solid #999;
 	border-bottom:none;
+}
+
+.tab:hover {
+	text-decoration: underline;
 }
 
 .tablist {
