@@ -42,9 +42,9 @@
 		$(document).ready(function(){
 			// dom要素を作るためのクラスをインスタンス化する
 			creator = new createTag();
-			// 受発注画面のdomに配置するデータを取得する
+			// domに配置するデータを取得する
 			creator.getJsonFile('source/orderSendAddEdit.json');
-			// 受発注画面に配置するdomを取得する
+			// 画面に配置するdomを取得する
 			creator.getDomFile('source/template.html');
 
 			// ヘッダーを作る
@@ -57,17 +57,15 @@
 			creator.outputTag('buttonArea', 'insertdiv', '.mainContent');
 			// 新規追加ボタンと削除ボタンの領域を作る
 			creator.outputTag('editButtons', 'editButtons', '.buttonArea');
-			// その他の左側ボタンを追加する
+			// 画面の左側ボタンを追加する
 			creator.outputTag('leftButtonArea', 'sideButtonArea', '.buttonArea');
-			// その他の右ボタンを追加する
+			// 画面の右側ボタンを追加する
 			creator.outputTag('rightButtonArea', 'sideButtonArea', '.buttonArea');
-			// 発注テーブル領域を作る
+			// 新規・編集テーブル領域を作る
 			creator.outputTag('sendWrapList', 'wrapList', '.mainContent');
-			// 新規・編集画面の発注テーブルを作る
+			// 発注の新規・編集画面テーブルを作る
 			makeGrid('sendDataAddEdit');
 
-			// 新規追加ダイアログを作るために、追加ボタンのhref属性を削除する
-			deleteAttr('.buttonLink', 'href');
 			// 新規追加ダイアログの外枠を作る
 			creator.outputTag('newDialog', 'insertdiv', '.main');
 			// 追加ダイアログのヘッダー領域を作る
@@ -83,7 +81,7 @@
 
 			// 未在庫ダイアログの外枠を作る
 			creator.outputTag('lessStockDialog', 'insertdiv', '.main');
-			// 追加ダイアログのヘッダー領域を作る
+			// 未在庫ダイアログのヘッダー領域を作る
 			creator.outputTag('lessStockDialogHeader', 'dialogHeader', '#lessStockDialog');
 			// 未在庫テーブルの外枠を作る
 			creator.outputTag('lessStockWrapList', 'wrapList', '#lessStockDialog');
@@ -93,8 +91,12 @@
 			createDialog('#lessStockDialog', '.lessStockButton');
 			// optionタグのvalue属性に値を入れる
 			setOptionValue();
-			// テキストボックスにname属性を追加する
+			// テキストボックスのname属性に値を入れる
 			setName(sendAddEdit);
+
+			$('#lessStockDialog').scroll(function(e) {
+				console.log(e.pageX);
+			})
 		});
 
 		//JavaScriptのコード記述を終える

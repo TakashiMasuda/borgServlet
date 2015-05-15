@@ -315,11 +315,11 @@
 		//JSONデータをデータソースとして利用する。
 		datatype:"json",
 		//基本の幅を指定する。
-		width: 640,
+		width: 315,
 		//グリッドのリサイズ時の最大幅、最小幅を指定する。
 		gridResize: {minWidth:310, maxWidth:576},
 		//表部分の高さを指定する。
-		height: 'auto',
+		height: 280,
 		//列名の表示の配列をセットする。
 		colNames: colNamesLists['sendDataLessStock'],
 		//列定義のデータをセットする。

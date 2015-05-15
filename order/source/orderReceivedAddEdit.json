@@ -2,6 +2,7 @@
     "header":{
         "class":"header clearfix",
         "headerTitle": {
+            "class"    :"headerTitle left",
             "pageTitle": {
                 "text": "新規・編集画面（伝票）"
             }
@@ -9,7 +10,7 @@
         "closeButton": {
             "type":"image",
             "src":"css/images/closeButton.png",
-            "class":"closeButton buttonImage grid1",
+            "class":"closeButton buttonImage grid1 right",
             "name": "closeButton"
         }
     },
@@ -57,6 +58,7 @@
         "class":"buttonArea clearfix clear"
     },
     "editButtons": {
+        "class"     :"editbuttons left",
         "buttonLink":
         [
             {
@@ -347,7 +349,7 @@
     },
     "returnDialogContent":{
         "returnLabel": {
-            "class":"returnLabel grid1",
+            "class":"returnLabel grid2",
             "text":"返品数"
         },
         "returnNumber":{

@@ -57,17 +57,15 @@
 			creator.outputTag('buttonArea', 'insertdiv', '.mainContent');
 			// 新規追加ボタンと削除ボタンの領域を作る
 			creator.outputTag('editButtons', 'editButtons', '.buttonArea');
-			// その他の左側ボタンを追加する
+			// 画面の左側ボタンを追加する
 			creator.outputTag('leftButtonArea', 'sideButtonArea', '.buttonArea');
-			// その他の右ボタンを追加する
+			// 画面の右ボタンを追加する
 			creator.outputTag('rightButtonArea', 'sideButtonArea', '.buttonArea');
-			// 発注テーブル領域を作る
+			// 受注、新規編集テーブル領域を作る
 			creator.outputTag('receivedWrapList', 'wrapList', '.mainContent');
-			// 新規・編集画面の発注テーブルを作る
+			// 受注の新規・編集画面テーブルを作る
 			makeGrid('receivedDataAddEdit');
 
-			// 新規追加ダイアログを作るために、追加ボタンのhref属性を削除する
-			deleteAttr('.buttonLink', 'href');
 			// 新規追加ダイアログの外枠を作る
 			creator.outputTag('newDialog', 'insertdiv', '.main');
 			// 追加ダイアログのヘッダー領域を作る
@@ -83,17 +81,17 @@
 			// ダイアログを作る
 			createDialog('#newDialog', '.addButton')
 
-			// 未在庫ダイアログの外枠を作る
+			// 返品ダイアログの外枠を作る
 			creator.outputTag('returnDialog', 'insertdiv', '.main');
-			// 追加ダイアログのヘッダー領域を作る
+			// 返品ダイアログのヘッダー領域を作る
 			creator.outputTag('returnDialogHeader', 'dialogHeader', '#returnDialog');
-			// 未在庫ダイアログのコンテンツを作る
+			// 返品ダイアログのコンテンツを作る
 			creator.outputTag('returnDialogContent', 'returnDialogContent', '#returnDialog');
-			// 未在庫ダイアログを作る
+			// 返品ダイアログを作る
 			createDialog('#returnDialog', '.returnButton');
-			// プルダウンメニューのvalue属性に値を入れる
+			// optionタグのvalue属性に値を入れる
 			setOptionValue();
-			// テキストボックスにname属性を追加する
+			// テキストボックスのname属性に値を入れる
 			setName(receivedAddEdit);
 		});
 

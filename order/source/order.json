@@ -2,15 +2,16 @@
     "header": {
         "class":"header clearfix",
         "headerTitle": {
+            "class"    :"headerTitle left",
             "pageTitle": {
-                "text": "発注・受注機能"
+                "text" : "発注・受注機能"
             }
         },
         "closeButton": {
-            "type":"image",
-            "src":"css/images/closeButton.png",
-            "class":"closeButton buttonImage grid1",
-            "name": "closeButton"
+            "type" :"image",
+            "src"  :"css/images/closeButton.png",
+            "class":"closeButton buttonImage grid1 right",
+            "name" : "closeButton"
         }
     },
     "mainContent":{
@@ -42,25 +43,27 @@
         ]
     },
     "searcharea": {
+        "class":"searcharea left",
         "searchtext": {
-            "class":"searchtext grid1",
-            "for": "searchList",
-            "text": "検索"
+            "class" :"searchtext grid1",
+            "for"   :"searchList",
+            "text"  :"検索"
         },
         "searchtextbox": {
-            "class":"searchtextbox grid10",
-            "type": "text",
-            "name": "searchList"
+            "class" :"searchtextbox grid10",
+            "type"  :"text",
+            "name"  :"searchList"
         },
         "searchButton": {
-            "class":"searchButton grid1 buttonImage",
-            "name": "search",
-            "value": "検索",
-            "type":"image",
-            "src":"css/images/searchButton.png"
+            "class" :"searchButton grid1 buttonImage",
+            "name"  :"search",
+            "value" :"検索",
+            "type"  :"image",
+            "src"   :"css/images/searchButton.png"
         }
     },
     "periodarea": {
+        "class":"periodarea left",
         "periodtext": {
             "class":"periodtext grid1",
             "for": "filter-list",
@@ -69,11 +72,11 @@
         "datestart": {
             "class": "dateArea",
             "datebox": {
-                "class":"datebox grid2",
-                "type": "text",
-                "name": "startDay",
-                "value": "13/11/28",
-                "format": "yyyy/MM/dd"
+                "class" :"datebox grid2",
+                "type"  :"text",
+                "name"  :"startDay",
+                "value" :"13/11/28",
+                "format":"y/㎜/dd"
             }
         },
         "from-to": {
@@ -82,22 +85,23 @@
         "dateafter": {
             "class": "dateArea",
             "datebox": {
-                "class":"datebox grid2",
-                "type": "text",
-                "name": "endDay",
-                "value": "14/11/28",
-                "format": "yyyy/MM/dd"
+                "class" :"datebox grid2",
+                "type"  :"text",
+                "name"  :"endDay",
+                "value" :"14/11/28",
+                "format":"y/mm/dd"
             }
         }
     },
     "choice": {
+        "class":"choice left",
         "selectLabel": {
             "class":"selectLabel grid2",
             "text": "受注種別"
         },
         "selectbox": {
             "class":"selectbox grid2",
-            "name": "selectbox",
+            "name": "receivedType",
             "selectValue": 
             [
                 "種別1",
@@ -110,21 +114,22 @@
     },
     "sendButtonList": {
         "id":"sendButtonList",
-        "class": "buttonList"
+        "class": "buttonList clear"
     },
     "receivedButtonlist": {
         "id":"receivedButtonList",
-        "class": "buttonList"
+        "class": "buttonList clear"
     },
     "editButtons": {
+        "class"     :"editbuttons left",
         "buttonLink":
         [
             {
-                "type":"image",
-                "src":"css/images/addButton.png",
-                "class":"addButton grid1 buttonImage",
-                "name": "addButton",
-                "value":"addButton"
+                "type"  :"image",
+                "src"   :"css/images/addButton.png",
+                "class" :"addButton grid1 buttonImage",
+                "name"  :"addButton",
+                "value" :"addButton"
             },
             {
                 "type":"image",
@@ -136,79 +141,81 @@
         ]
     },
     "sendPDFbutton": {
-        "buttonLink":
+        "class":"pdfButton right",
+        "sideButton":
         [
             {
-                "class": "grid1",
-                "name": "orderPaper",
-                "value": "注文書",
-                "text": "注"
+                "class" :"grid1",
+                "name"  :"orderPaper",
+                "value" :"注文書",
+                "text"  :"注"
             },
                             {
-                "class": "grid1",
-                "name": "payItem",
-                "value": "納品書",
-                "text": "納"
+                "class" :"grid1",
+                "name"  :"payItem",
+                "value" :"納品書",
+                "text"  :"納"
             },
             {
-                "class": "grid2",
-                "name": "orderSend",
-                "value": "発送指示書",
-                "text": "発指"
+                "class" :"grid2",
+                "name"  :"orderSend",
+                "value" :"発送指示書",
+                "text"  :"発指"
             }
         ]
     },
     "receivedPDFbutton": {
-        "buttonsposition": {
-            "buttonLink":
-            [
-                {
-                    "class": "grid1",
-                    "name": "estimate",
-                    "value": "見積書",
-                    "text": "見"
-                },
-                                {
-                    "class": "grid1",
-                    "name": "orderPaper",
-                    "value": "注文書",
-                    "text": "注"
-                },
-                                {
-                    "class": "grid2",
-                    "name": "orderBill",
-                    "value": "注文請書",
-                    "text": "注請"
-                },
-                                {
-                    "class": "grid1",
-                    "name": "payItem",
-                    "value": "納品書",
-                    "text": "納"
-                },
-                                {
-                    "class": "grid1",
-                    "name": "billPaper",
-                    "value": "請求書",
-                    "text": "請"
-                },
-                                {
-                    "class": "grid2",
-                    "name": "sendOrder",
-                    "value": "発送指示書",
-                    "text": "発指"
-                }
-            ]
-        }
+            "class":"pdfButton right",
+        "sideButton":
+        [
+            {
+                "class" :"grid1",
+                "name"  :"estimate",
+                "value" :"見積書",
+                "text"  :"見"
+            },
+                            {
+                "class" :"grid1",
+                "name"  :"orderPaper",
+                "value" :"注文書",
+                "text"  :"注"
+            },
+                            {
+                "class" :"grid2",
+                "name"  :"orderBill",
+                "value" :"注文請書",
+                "text"  :"注請"
+            },
+                            {
+                "class" :"grid1",
+                "name"  :"payItem",
+                "value" :"納品書",
+                "text"  :"納"
+            },
+                            {
+                "class" :"grid1",
+                "name"  :"billPaper",
+                "value" :"請求書",
+                "text"  :"請"
+            },
+                            {
+                "class" :"grid2",
+                "name"  :"sendOrder",
+                "value" :"発送指示書",
+                "text"  :"発指"
+            }
+        ]
     },
     "receivedWrapList": {
         "id": "receivedWrapList",
+        "class":"wrapList clear",
         "list": {
             "id": "receivedData"
         }
     },
     "sendWrapList": {
         "id": "sendWrapList",
+        "class":"wrapList clear",
         "list": {
             "id": "sendData"
         }
