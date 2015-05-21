@@ -186,10 +186,10 @@
 
 	//receivedDataのjqGridのルールを連想配列に設定する。
 	objRules['receivedData'] = { 
-		//データの取得元を設定する。
-		url:'json/receivedData.json',
+		url:'../GetJSONArray',	//サーブレットGetJSONArrayからJSONを取得する
 		//JSONデータをデータソースとして利用する。
 		datatype:"json",
+		mtype:"post",	//POSTメソッドでサーバにデータを送信する
 		//基本の幅を指定する。
 		width: 748,
 		//グリッドのリサイズ時の最大幅、最小幅を指定する。
@@ -218,9 +218,10 @@
 	//sendData(発注タブ)のjqGridのルールを連想配列に設定する。
 	objRules['sendData'] = { 
 		//データの取得元を設定する。
-		url:'json/sendData.json',
+		url:'../GetJSONArray',	//サーブレットGetJSONArrayからJSONを取得する
 		//JSONデータをデータソースとして利用する。
 		datatype:"json",
+		mtype:"post",	//POSTメソッドでサーバにデータを送信する
 		//基本の幅を指定する。
 		width: 748,
 		//グリッドのリサイズ時の最大幅、最小幅を指定する。
@@ -347,7 +348,14 @@
 	 * 作成日 :2015.05.05
 	 * 作成者:T.Masuda
 	*/
-	function makeGrid(target){
+	function makeGrid(target, postData){
+		//サーバに送信するデータがあれば
+		if(postData !== void(0)){
+			//送信するデータを連想配列にセットする
+			var post = {postData:{json:JSON.stringify(postData)}};
+			//objRulesに送信するデータ追記してサーバへ一緒に送信するようにする
+			$.extend(objRules[target], post, true);
+		}
 		//設定用の連想配列を使い、jqGridの表を作る。
 		$('#' + target).jqGrid(objRules[target]);
 	}

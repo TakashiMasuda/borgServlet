@@ -75,11 +75,17 @@
 
 			// タブ機能を実装する
 			funcTab();
+			
+			//jqGridのレコード取得用のJSONファイルを読み込む
+			creator.getJsonFile('json/sendData.json');
+			creator.getJsonFile('json/receivedData.json');
+			
+			
 			// optionタグにvalue属性を設定する
 			setOptionValue()
 			// jqGridでテーブルを作る
-			makeGrid('sendData');				// 発注テーブルを作る
-			makeGrid('receivedData');			// 受注テーブルを作る
+			makeGrid('sendData', creator.json["jqgrid_post"]);	// 発注テーブルを作る
+			makeGrid('receivedData', creator.json["jqgrid_post"]);			// 受注テーブルを作る
 
 			// 発注タブの追加ボタンにリンクをセットする
 			setAddButtonLink('#sendTabContent', 'sendOrder.html');

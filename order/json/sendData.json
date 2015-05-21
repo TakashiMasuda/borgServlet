@@ -1,35 +1,35 @@
-[
-    {
-        "send_check":"<input type=\"checkbox\" name=\"sendCheck\" class=\"checkbox\" value=\"sendCheck\">",
-        "order_date": "2014/09/21",
-        "order_code": "00021",
-        "send_place": "株式会社W",
-        "delivery_date": "2014/09/23",
-        "scribedby": "吉田絵里",
-        "order_type": "納品",
-        "permiter":"高橋未海",
-        "amount": "43000"
-    },
-    {
-        "send_check":"<input type=\"checkbox\" name=\"sendCheck\" class=\"checkbox\" value=\"sendCheck\">",
-        "order_date": "2014/11/11",
-        "order_code": "00022",
-        "send_place": "株式会社R",
-        "delivery_date": "2014/11/13",
-        "scribedby": "藤原花",
-        "order_type": "納品",
-        "permiter":"山上円",
-        "amount": "34500"
-    },
-    {
-        "send_check":"<input type=\"checkbox\" name=\"sendCheck\" class=\"checkbox\" value=\"sendCheck\">",
-        "order_date": "2015/03/02",
-        "order_code": "00024",
-        "send_place": "株式会社F",
-        "delivery_date": "2015/03/23",
-        "scribedby": "三上輝幸",
-        "order_type": "発送",
-        "permiter":"二宮隆",
-        "amount": "144000"
+{
+    "jqgrid_post": {
+        "order": {
+            "db_getQuery": "SELECT od.date AS ordered, od.order_code, og.organization as custom, od.est_delivery_date, p1.person_name AS inputter, ot.order_type, p2.person_name AS submitter, SUM(od.price * od. quantity) AS ammount FROM Order_ddt AS od, Person as p1, Person as p2, Organization as og, Order_Type as ot WHERE od.custom_organization_code = og.organization_code and od.deliver_organization_code = og.organization_code and od.inputter = p1.person_code and od.submitter = p2.person_code and od.order_type_code = ot.order_type_code GROUP BY order_code",
+            "db_setQuery": "UPDATE CONTENT SET content='' WHERE id='2';",
+            "db_column": "",
+            "db_table": "",
+            "modify": "false",
+            "image": {
+                "src": "",
+                "db_getQuery": "SELECT content AS image FROM CONTENT WHERE id='1';",
+                "db_setQuery": "UPDATE content SET content='' WHERE id='1';",
+                "db_column": "content",
+                "db_table": "CONTENT",
+                "modify": "false"
+            },
+            "title": {
+                "text": "",
+                "db_getQuery": "SELECT content AS title FROM CONTENT WHERE id='2';",
+                "db_setQuery": "UPDATE content SET content='' WHERE id='2';",
+                "db_column": "content",
+                "db_table": "CONTENT",
+                "modify": "false"
+            },
+            "summary": {
+                "text": "",
+                "db_getQuery": "SELECT content AS summary FROM CONTENT WHERE id='3';",
+                "db_setQuery": "UPDATE content SET content='' WHERE id='3';",
+                "db_column": "content",
+                "db_table": "CONTENT",
+                "modify": "false"
+            }
+        }
     }
-]
+}
