@@ -153,3 +153,34 @@ function setName(targetArray) {
 	});
 
 }
+
+/* 
+ * 関数名:setJSONItemValue(createTag)
+ * 引数 :createTag createTag : createTagクラスのインスタンス
+ * 戻り値:なし
+ * 概要  :DBから取得した値をJSONにセットする
+ * 作成日 :2015.05.21
+ * 作成者:T.Masuda
+*/
+function setJSONItemValue(createTag){
+	//createTagクラスインスタンスのメンバのJSON連想配列を文字列に変換する
+	var jsonString = JSON.stringify(createTag.json);
+	$.ajax({	//AJAX通信を行う
+		url: "../GetJSONString",	//JSON文字列を加工して返すサーブレットと通信する
+		type: 'post',	//POSTメソッドでサーバにデータを送信する
+		//何かしらのキーとJSON文字列を送信する
+		data:{key:"",json:jsonString},
+		async:false,				//同期通信を行う
+		dataType: 'json',			//JSONをもらう
+		success: function(json){	//通信に成功した場合
+			createTag.json = json;	//createTagのJSONを更新する
+		},
+		//通信失敗時
+		error:function(xhr, status, error){
+			//エラーログをコンソールに出す
+			console.log(xhr);
+			console.log(status);
+			console.log(error);
+		}
+	});
+}

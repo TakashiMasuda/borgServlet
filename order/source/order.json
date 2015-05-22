@@ -4,7 +4,12 @@
         "headerTitle": {
             "class"    :"headerTitle left",
             "pageTitle": {
-                "text" : "発注・受注機能"
+            	"text":"",
+                "db_getQuery": "SELECT db_column AS pageTitle FROM Url WHERE url_code='1';",
+                "db_setQuery": "UPDATE content SET content='' WHERE id='2';",
+                "db_column": "url",
+                "db_table": "Url",
+                "modify": "false"
             }
         },
         "closeButton": {
@@ -30,7 +35,18 @@
                     "name":"receivedTabContent",
                     "text":"受注"
                 }
-            ]
+            ],
+            "summary":{
+            	"text":"概要"
+            },
+            "summary_text":{
+            	"text":"",
+                "db_getQuery": "SELECT db_column AS summary_text FROM Resource WHERE resource_code='1';",
+                "db_setQuery": "UPDATE content SET content='' WHERE id='2';",
+                "db_column": "function",
+                "db_table": "Resource",
+                "modify": "false"
+            }
         },
         "tabIn":
         [
@@ -52,7 +68,8 @@
         "searchtextbox": {
             "class" :"searchtextbox grid10",
             "type"  :"text",
-            "name"  :"searchList"
+            "name"  :"searchList",
+            "value":""
         },
         "searchButton": {
             "class" :"searchButton grid1 buttonImage",
