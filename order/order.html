@@ -44,6 +44,9 @@
 			creator = new createTag();
 			// 受発注画面のdomに配置するデータを取得する
 			creator.getJsonFile('source/order.json');
+			//JSONにDBから取得したデータを追記する
+			setJSONItemValue(creator);
+
 			// 受発注画面に配置するdomを取得する
 			creator.getDomFile('source/template.html');
 			// ヘッダーを作る
@@ -80,12 +83,11 @@
 			creator.getJsonFile('json/sendData.json');
 			creator.getJsonFile('json/receivedData.json');
 			
-			
 			// optionタグにvalue属性を設定する
 			setOptionValue()
 			// jqGridでテーブルを作る
-			makeGrid('sendData', creator.json["jqgrid_post"]);	// 発注テーブルを作る
-			makeGrid('receivedData', creator.json["jqgrid_post"]);			// 受注テーブルを作る
+			makeGrid('sendData', creator.json["jqgrid_post"]["purchase"]);	// 発注テーブルを作る
+			makeGrid('receivedData', creator.json["jqgrid_post"]["order"]);			// 受注テーブルを作る
 
 			// 発注タブの追加ボタンにリンクをセットする
 			setAddButtonLink('#sendTabContent', 'sendOrder.html');

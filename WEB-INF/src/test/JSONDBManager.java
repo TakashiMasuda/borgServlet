@@ -50,6 +50,8 @@ public class JSONDBManager{
 	public static final String KEY_HTML = "html";
 	//JSONのhtmlキーの文字列を定数にセットする
 	public static final String KEY_SRC = "src";
+	//JSONのhtmlキーの文字列を定数にセットする
+	public static final String KEY_VALUE = "value";
 	//JSONの値を入れるノードのキーの文字列リストを定数にセットする
 	public static final String[] KEY_LIST = {"text", "html", "src"};
 
@@ -127,8 +129,8 @@ public class JSONDBManager{
 			if(curKey.getValue() instanceof LinkedHashMap){
 				//再帰する
 				createJSON((Map<String, Object>)curKey.getValue(), keyString, db_resultTree);
-			//キーがtextかhtml、srcであれば
-			} else if(keyString.equals(KEY_TEXT) || keyString.equals(KEY_HTML) || keyString.equals(KEY_SRC)){
+			//取得した列の値がnullでないかつキーがtextかhtml、srcであれば
+			} else if(column != null && (keyString.equals(KEY_TEXT) || keyString.equals(KEY_HTML) || keyString.equals(KEY_SRC))){
 				curKey.setValue(column);	//該当するキーの値をcolumnで上書きする
 			}
 		}
@@ -159,19 +161,19 @@ public class JSONDBManager{
 				if(child.getValue() instanceof LinkedHashMap){
 					//子オブジェクトを取得する
 					Map<String, Object> childObject = (Map<String, Object>)child.getValue();
-					//子オブジェクトの"db_column"キーに値が入っていたら
-					if(childObject.get(DB_COLUMN) != null){
-						//子オブジェクトの"text"キーの値をquery内の"db_column"の値と置換する
-						query = query.replace(DB_COLUMN, (String)childObject.get(DB_COLUMN));
+					//子オブジェクトがvalueを持っていたら
+					if(childObject.containsKey(KEY_VALUE)){
+						//子オブジェクトのkey文字列と一致するqueryの文字列を置換する
+						query = query.replace(child.getKey(), (String)childObject.get(KEY_VALUE));
 					}
 				}
 			}
 			
 			//クエリを実行し、結果セットを取得する
 			Statement stmt = this.conn.createStatement();	//ステートメントを生成する
-			retRS = stmt.executeQuery(query);			//クエリを実行して結果セットを取得する
-
-			retRS.next();	//結果セットをレコードが取得できるポインタに進める
+			retRS = stmt.executeQuery(query);				//クエリを実行して結果セットを取得する
+			//結果セットをレコードが取得できるポインタに進める。レコードが取得できていない場合にはnullを返すようにする
+			retRS = retRS.next()? retRS: null;				
 		}
 		//結果セットを返す
 		return retRS;

@@ -5,10 +5,9 @@
             "class"    :"headerTitle left",
             "pageTitle": {
             	"text":"",
-                "db_getQuery": "SELECT db_column AS pageTitle FROM Url WHERE url_code='1';",
-                "db_setQuery": "UPDATE content SET content='' WHERE id='2';",
-                "db_column": "url",
-                "db_table": "Url",
+                "db_getQuery": "SELECT url AS pageTitle FROM Url WHERE url_code='1';",
+                "db_column": {"1":""},
+                "db_table": {"Url":""},
                 "modify": "false"
             }
         },
@@ -41,7 +40,7 @@
             },
             "summary_text":{
             	"text":"",
-                "db_getQuery": "SELECT db_column AS summary_text FROM Resource WHERE resource_code='1';",
+                "db_getQuery": "SELECT function AS summary_text FROM Resource WHERE resource_code='1';",
                 "db_setQuery": "UPDATE content SET content='' WHERE id='2';",
                 "db_column": "function",
                 "db_table": "Resource",
@@ -59,6 +58,11 @@
         ]
     },
     "searcharea": {
+        "db_getQuery": "SELECT od.date AS ordered, od.order_code, og.organization as custom, od.est_delivery_date, p1.person_name AS inputter, ot.order_type, p2.person_name AS submitter, SUM(od.price * od. quantity) AS ammount FROM Order_ddt AS od, Person as p1, Person as p2, Organization as og, Order_Type as ot WHERE od.custom_organization_code = og.organization_code and od.deliver_organization_code = og.organization_code and od.inputter = p1.person_code and od.submitter = p2.person_code and od.order_type_code = ot.order_type_code GROUP BY order_code HAVING organization='searchtextbox';",
+        "db_setQuery": "INSERT INTO ()",
+        "db_column": {"1":""},
+        "db_table": {"1":"Order_ddt AS od", "2":"Organization AS og", "3":"Person As p1" , "3":"Person As p2" , "3":"Order_Type As ot"},
+        "modify": "false",
         "class":"searcharea left",
         "searchtext": {
             "class" :"searchtext grid1",
@@ -69,7 +73,7 @@
             "class" :"searchtextbox grid10",
             "type"  :"text",
             "name"  :"searchList",
-            "value":""
+            "value":"株式会社C"
         },
         "searchButton": {
             "class" :"searchButton grid1 buttonImage",
