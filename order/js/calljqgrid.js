@@ -5,6 +5,12 @@
 	gridFormOptions = [];	//行の編集ダイアログの設定。
 	isCheckbox = false;		//チェックボックスをクリックしたかの判定。
 
+	//0埋めする桁数の定数
+	ZERO_PADDING_FIGURE = 6;
+	//受注伝票のレコードを追加するクエリ
+	ORDER_INSERT_QUERY = "INSERT INTO Order_ddt VALUES ('date', 'order_code', 'stock_code', 'quantity', 'price', (SELECT MAX(organization_code) FROM Organization WHERE organization='custom_organization_code'), (SELECT MAX(organization_code) FROM Organization WHERE organization='deliver_organization_code') ,'delivery_date', 'est_delivery_date', (SELECT MAX(order_type_code) FROM Order_Type WHERE order_type='order_type_code'),(SELECT MAX(person_code) FROM Person WHERE person_name='imputter'), (SELECT MAX(person_code) FROM Person WHERE person_name='submitter'));";
+
+	
 	//行の編集ダイアログの設定その1。
 	gridFormOptions[0] = {
 			url:location.href,			//編集データの送信先。
@@ -184,6 +190,79 @@
 	        { name: "scribedby", index:"scribedby", width: 91, align:"left", className: "scribedby", editable: true, sortable:true, sorttype:'text'},
 	];
 
+	
+	/*
+	 * 関数名:zeroPadding
+	 * 引数  :int digits:ない桁を0で埋める対象の数値
+	 * 　　  :int figure:桁数
+	 * 戻り値:String:値を文字列にして返す
+	 * 概要  :整数の桁を0で埋める
+	 * 作成日 :2015.05.23
+	 * 作成者:T.Masuda
+	 */
+	function zeroPadding(digits, figure){
+		var figureString = '';	//桁の数だけ0を並べた文字列を用意する
+		//ループでfigureStringの中身を作成する
+		for(var i = 0; i < figure; i++){
+			figureString+='0';	//figureStringに0の文字列を足していく
+		}
+		//digitsをfigure桁まで0で埋めて返す
+		return ( figureString + digits ).slice( -figure );
+	}
+
+	/*
+	 * 関数名:createOrderRecord
+	 * 引数  :Object rowData:表から取得した行データ
+	 * 		:Element grid:表本体
+	 * 		:int paddingFigure:コード列の桁数
+	 * 戻り値:Object :作成したレコードのデータをを返す
+	 * 概要  :受注画面の表のレコードから受注伝票のレコードを作り返す
+	 * 作成日 :2015.05.23
+	 * 作成者:T.Masuda
+	 */
+	function createOrderRecord(rowData, grid, paddingFigure){
+		var retMap = {};	//返却用の連想配列を用意する
+		//行のデータを走査する
+		for(key in rowData){
+			if(key == "order_date"){
+				//連想配列の当該キーに新たにオブジェクトを挿入する
+				retMap["date"] = {value:rowData[key]};
+			} else if(key == "order_code"){
+				//連想配列の当該キーに新たにオブジェクトを挿入する。
+				//受注コードがかぶらないよう、レコード数を基準に受注コードを生成してセットする
+				retMap["order_code"] =
+				{value:zeroPadding($(grid).getGridParam("records") + 1, paddingFigure)};
+			} else if(key == "customer"){
+				//連想配列の当該キーに新たにオブジェクトを挿入する
+				retMap["custom_organization_code"] = {value:rowData[key]};
+				retMap["deliver_organization_code"] = {value:rowData[key]};
+			} else if(key == "delivery_date"){
+				//連想配列の当該キーに新たにオブジェクトを挿入する
+				retMap["delivery_date"] = {value:rowData[key]};
+				retMap["est_delivery_date"] = {value:rowData[key]};
+			} else if(key == "scribedby"){
+				//連想配列の当該キーに新たにオブジェクトを挿入する
+				retMap["imputter"] = {value:rowData[key]};
+			} else if(key == "permiter"){
+				//連想配列の当該キーに新たにオブジェクトを挿入する
+				retMap["submitter"] = {value:rowData[key]};
+			} else if(key == "order_type"){
+				//連想配列の当該キーに新たにオブジェクトを挿入する
+				retMap["order_type_code"] = {value:rowData[key]};
+			} else if(key == "amount"){
+				//連想配列の当該キーに新たにオブジェクトを挿入する。
+				//クライアントのデータだけでは決められないデータなので、テストということで仮に固定の値を入力する
+				retMap["stock_code"] = {value:"000001"};
+				retMap["quantity"] = {value:"1"};
+				retMap["price"] = {value:"20000"};
+			}
+		}
+		
+		return retMap;	//作成したレコードの連想配列を返す
+	}
+	
+	
+	
 	//receivedDataのjqGridのルールを連想配列に設定する。
 	objRules['receivedData'] = { 
 		url:'../GetJSONArray',	//サーブレットGetJSONArrayからJSONを取得する
@@ -212,9 +291,37 @@
 		},
 		//行を選択した後に実行される関数。
 		onSelectRow:function(rowid, status, e){
+			//確認ウィンドウを出す.
+			if(window.confirm(rowid + "番目のレコードを複製します。")){
+				var rowData= $(this).getRowData(rowid);		//選択した行を取得する
+				//サーバへ送信するデータを作成する
+				var sendData = createOrderRecord(rowData, this, ZERO_PADDING_FIGURE);	
+				var self = this;							//テーブルへの参照を変数に入れておく
+				//DB保存用のクエリをセットする
+				sendData["db_setQuery"] = ORDER_INSERT_QUERY; 
+				
+				
+				//AJAX通信でサーバへ保存するレコードを送信する
+				$.ajax({
+					url:'../SaveJSONRecord',	//JSONでレコードを保存するサーブレットを呼ぶ
+					dataType:"json",			//JSONデータを返してもらう
+					async:false,				//同期通信を行う
+					method:"POST",				//POSTメソッドで通信する
+					data:{json:JSON.stringify(sendData)},	//作成したレコードを送信する
+					success:function(json, a, b, c){		//成功時の処理
+						alert(json.message);				//サーバから帰ってきたメッセージをダイアログに出す
+						$(self).trigger("reloadGrid");		//表を読み込み直す
+					},
+					error:function(xhr, status, error){			//エラー時の処理
+						alert(xhr.responseJSON.message);	//サーバから帰ってきたメッセージをダイアログに出す
+					}
+				});
+			}
 		}
 	};
 
+	
+						
 	//sendData(発注タブ)のjqGridのルールを連想配列に設定する。
 	objRules['sendData'] = { 
 		//データの取得元を設定する。

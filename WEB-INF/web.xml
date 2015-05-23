@@ -6,6 +6,16 @@
   version="3.0">
 
 	<servlet>
+		<servlet-name>SaveJSONRecord</servlet-name>
+		<servlet-class>test.SaveJSONRecord</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SaveJSONRecord</servlet-name>
+		<url-pattern>/SaveJSONRecord</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>GetJSONArray</servlet-name>
 		<servlet-class>test.GetJSONArray</servlet-class>
 	</servlet>

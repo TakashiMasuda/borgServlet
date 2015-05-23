@@ -39,9 +39,15 @@ public class JSONDBManager{
 	Map<String, Object> json = null;
 	//DBへの接続をメンバに保存する
 	Connection conn = null;
+	//DBへの追加、更新処理を行ったときに帰ってくる処理レコード数の数値を格納するメンバ
+	int processedRecords = 0;
+	
 	
 	//JSONのdb_getQueryキーの文字列を定数にセットする
 	public static final String DB_GETQUERY = "db_getQuery";
+	//JSONのdb_setQueryキーの文字列を定数にセットする
+	public static final String DB_SETQUERY = "db_setQuery";
+	
 	//JSONのdb_columnキーの文字列を定数にセットする
 	public static final String DB_COLUMN = "db_column";
 	//JSONのtextキーの文字列を定数にセットする
@@ -164,16 +170,23 @@ public class JSONDBManager{
 					//子オブジェクトがvalueを持っていたら
 					if(childObject.containsKey(KEY_VALUE)){
 						//子オブジェクトのkey文字列と一致するqueryの文字列を置換する
-						query = query.replace(child.getKey(), (String)childObject.get(KEY_VALUE));
+						query = query.replace("'" + child.getKey() + "'", "'" + (String)childObject.get(KEY_VALUE) + "'");
 					}
 				}
 			}
 			
 			//クエリを実行し、結果セットを取得する
 			Statement stmt = this.conn.createStatement();	//ステートメントを生成する
-			retRS = stmt.executeQuery(query);				//クエリを実行して結果セットを取得する
-			//結果セットをレコードが取得できるポインタに進める。レコードが取得できていない場合にはnullを返すようにする
-			retRS = retRS.next()? retRS: null;				
+			//SELECT命令であれば
+			if(queryKey.equals(DB_GETQUERY)){
+				retRS = stmt.executeQuery(query);				//クエリを実行して結果セットを取得する
+				//結果セットをレコードが取得できるポインタに進める。レコードが取得できていない場合にはnullを返すようにする
+				retRS = retRS.next()? retRS: null;				
+			//UPDATEかINSERTであれば
+			} else if (queryKey.equals(DB_SETQUERY)){
+				//クエリを実行して更新処理を行う。処理を行ったレコード数を返してメンバに保存する
+				processedRecords = stmt.executeUpdate(query);
+			}
 		}
 		//結果セットを返す
 		return retRS;
