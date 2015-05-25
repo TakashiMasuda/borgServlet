@@ -8,7 +8,11 @@
 	//0埋めする桁数の定数
 	ZERO_PADDING_FIGURE = 6;
 	//受注伝票のレコードを追加するクエリ
-	ORDER_INSERT_QUERY = "INSERT INTO Order_ddt VALUES ('date', 'order_code', 'stock_code', 'quantity', 'price', (SELECT MAX(organization_code) FROM Organization WHERE organization='custom_organization_code'), (SELECT MAX(organization_code) FROM Organization WHERE organization='deliver_organization_code') ,'delivery_date', 'est_delivery_date', (SELECT MAX(order_type_code) FROM Order_Type WHERE order_type='order_type_code'),(SELECT MAX(person_code) FROM Person WHERE person_name='imputter'), (SELECT MAX(person_code) FROM Person WHERE person_name='submitter'));";
+	ORDER_INSERT_QUERY = "INSERT INTO Order_ddt VALUES ('date', 'order_code', 'stock_code', 'quantity', 'price', (SELECT MAX(organization_code) FROM Organization WHERE organization='custom_organization_code'), (SELECT MAX(organization_code) FROM Organization WHERE organization='deliver_organization_code') ,'delivery_date', 'est_delivery_date', (SELECT MAX(order_type_code) FROM Order_Type WHERE order_type='order_type_code'),(SELECT MAX(person_code) FROM Person WHERE person_name='inputter'), (SELECT MAX(person_code) FROM Person WHERE person_name='submitter'));";
+	//受注伝票のレコードを削除するクエリ
+	ORDER_DELETE_QUERY = "DELETE FROM Order_ddt WHERE order_code='order_code';";
+	//受注伝票のレコードを更新するクエリ
+	ORDER_UPDATE_QUERY = "UPDATE Order_ddt SET date='date', stock_code='stock_code', quantity='quantity', price='price', custom_organization_code=(SELECT MAX(organization_code) FROM Organization WHERE organization='custom_organization_code'), delivery_date='delivery_date', est_delivery_date='est_delivery_date', order_type_code=(SELECT MAX(order_type_code) FROM Order_Type WHERE order_type='order_type_code'), inputter=(SELECT MAX(person_code) FROM Person WHERE person_name='inputter'), submitter=(SELECT MAX(person_code) FROM Person WHERE person_name='submitter') WHERE order_code='order_code';";
 
 	
 	//行の編集ダイアログの設定その1。
@@ -220,7 +224,7 @@
 	 * 作成日 :2015.05.23
 	 * 作成者:T.Masuda
 	 */
-	function createOrderRecord(rowData, grid, paddingFigure){
+	function createOrderRecord(rowData, grid, paddingFigure, queryType){
 		var retMap = {};	//返却用の連想配列を用意する
 		//行のデータを走査する
 		for(key in rowData){
@@ -229,9 +233,16 @@
 				retMap["date"] = {value:rowData[key]};
 			} else if(key == "order_code"){
 				//連想配列の当該キーに新たにオブジェクトを挿入する。
-				//受注コードがかぶらないよう、レコード数を基準に受注コードを生成してセットする
-				retMap["order_code"] =
-				{value:zeroPadding($(grid).getGridParam("records") + 1, paddingFigure)};
+				//INSERT命令なら
+				if(queryType == ORDER_INSERT_QUERY){
+					//受注コードがかぶらないよう、レコード数を基準に受注コードを生成してセットする
+					retMap["order_code"] =
+					{value:zeroPadding($(grid).getGridParam("records") + 1, paddingFigure)};
+				//UPDATE命令なら
+				} else if(queryType == ORDER_UPDATE_QUERY){
+					//受注コードをセットする
+					retMap["order_code"] = {value:rowData[key]};
+				}
 			} else if(key == "customer"){
 				//連想配列の当該キーに新たにオブジェクトを挿入する
 				retMap["custom_organization_code"] = {value:rowData[key]};
@@ -242,7 +253,7 @@
 				retMap["est_delivery_date"] = {value:rowData[key]};
 			} else if(key == "scribedby"){
 				//連想配列の当該キーに新たにオブジェクトを挿入する
-				retMap["imputter"] = {value:rowData[key]};
+				retMap["inputter"] = {value:rowData[key]};
 			} else if(key == "permiter"){
 				//連想配列の当該キーに新たにオブジェクトを挿入する
 				retMap["submitter"] = {value:rowData[key]};
@@ -261,8 +272,108 @@
 		return retMap;	//作成したレコードの連想配列を返す
 	}
 	
+	/*
+	 * 関数名:insertOrderRecord
+	 * 引数  :int rowid:処理する行の番号
+	 * 		:Element grid:表本体
+	 * 戻り値:なし
+	 * 概要  :DBにレコードのデータを送信してテーブルに追加する
+	 * 作成日 :2015.05.23
+	 * 作成者:T.Masuda
+	 */
+	function insertOrderRecord(rowid, grid){
+		var rowData= $(grid).getRowData(rowid);		//選択した行を取得する
+		//サーバへ送信するデータを作成する
+		var sendData = createOrderRecord(rowData, grid, ZERO_PADDING_FIGURE, ORDER_INSERT_QUERY);	
+		
+		//DB保存用のクエリをセットする
+		sendData["db_setQuery"] = ORDER_INSERT_QUERY; 
+		
+		//AJAX通信でサーバへ保存するレコードを送信する
+		$.ajax({
+			url:'../SaveJSONRecord',	//JSONでレコードを保存するサーブレットを呼ぶ
+			dataType:"json",			//JSONデータを返してもらう
+			async:false,				//同期通信を行う
+			method:"POST",				//POSTメソッドで通信する
+			data:{json:JSON.stringify(sendData)},	//作成したレコードを送信する
+			success:function(json, a, b, c){		//成功時の処理
+				alert(json.message);				//サーバから帰ってきたメッセージをダイアログに出す
+				$(grid).trigger("reloadGrid");		//表を読み込み直す
+			},
+			error:function(xhr, status, error){			//エラー時の処理
+				alert(xhr.responseJSON.message);	//サーバから帰ってきたメッセージをダイアログに出す
+			}
+		});
+	}
+
+	/*
+	 * 関数名:updateOrderRecord
+	 * 引数  :int rowid:処理する行の番号
+	 * 		:Element grid:表本体
+	 * 戻り値:なし
+	 * 概要  :DBにレコードのデータを送信してレコードを更新する
+	 * 作成日 :2015.05.23
+	 * 作成者:T.Masuda
+	 */
+	function updateOrderRecord(rowid, grid){
+		var rowData= $(grid).getRowData(rowid);		//選択した行を取得する
+		//サーバへ送信するデータを作成する
+		var sendData = createOrderRecord(rowData, grid, ZERO_PADDING_FIGURE, ORDER_UPDATE_QUERY);	
+		
+		//DB保存用のクエリをセットする
+		sendData["db_setQuery"] = ORDER_UPDATE_QUERY; 
+		
+		//AJAX通信でサーバへ保存するレコードを送信する
+		$.ajax({
+			url:'../SaveJSONRecord',	//JSONでレコードを保存するサーブレットを呼ぶ
+			dataType:"json",			//JSONデータを返してもらう
+			async:false,				//同期通信を行う
+			method:"POST",				//POSTメソッドで通信する
+			data:{json:JSON.stringify(sendData)},	//作成したレコードを送信する
+			success:function(json, a, b, c){		//成功時の処理
+				alert(json.message);				//サーバから帰ってきたメッセージをダイアログに出す
+				$(grid).trigger("reloadGrid");		//表を読み込み直す
+			},
+			error:function(xhr, status, error){			//エラー時の処理
+				alert(xhr.responseJSON.message);	//サーバから帰ってきたメッセージをダイアログに出す
+			}
+		});
+	}
 	
+	/*
+	 * 関数名:deleteOrderRecord
+	 * 引数  :int rowid:処理する行の番号
+	 * 		:Element grid:表本体
+	 * 戻り値:なし
+	 * 概要  :選択されたレコードを削除する
+	 * 作成日 :2015.05.23
+	 * 作成者:T.Masuda
+	 */
+	function deleteOrderRecord(rowid, grid){
+		var rowData= $(grid).getRowData(rowid);		//選択した行を取得する
+		//サーバへ送信するデータを作成する。対象の受注コードと在庫コードをセットする
+		var sendData = {order_code:{value:rowData.order_code}};	
+		//テーブルから該当するレコードを削除するクエリをセットする
+		sendData["db_setQuery"] = ORDER_DELETE_QUERY;
+		
+		//AJAX通信でサーバへ保存するレコードを送信する
+		$.ajax({
+			url:'../SaveJSONRecord',	//JSONでレコードを削除するサーブレットを呼び出す
+			dataType:"json",			//結果をJSONデータを返してもらう
+			async:false,				//同期通信を行う
+			method:"POST",				//POSTメソッドで通信する
+			data:{json:JSON.stringify(sendData)},	//作成したレコードを送信する
+			success:function(json, a, b, c){		//成功時の処理
+				alert(json.message);				//サーバから帰ってきたメッセージをダイアログに出す
+				$(grid).trigger("reloadGrid");		//表を読み込み直す
+			},
+			error:function(xhr, status, error){			//エラー時の処理
+				alert(xhr.responseJSON.message);	//サーバから帰ってきたメッセージをダイアログに出す
+			}
+		});
+	}
 	
+	var lastsel2;
 	//receivedDataのjqGridのルールを連想配列に設定する。
 	objRules['receivedData'] = { 
 		url:'../GetJSONArray',	//サーブレットGetJSONArrayからJSONを取得する
@@ -280,42 +391,29 @@
 		//列定義のデータをセットする。
 		colModel: colData['receivedData'],
 		caption: '受注リスト'	,	//リストのタイトルを設定する。
-		cellEdit: false,    	// セルの編集を無効にする。
+		cellEdit: true,    	// セルの編集を無効にする。
 		//セルを編集してもサーバとの通信をしないように設定する。
 		cellsubmit: 'clientArray',
         sortorder: "desc",	// 降順ソートをする
         shrinkToFit: false,	// 列幅の自動調整を行う。
-		//行を選択する前に実行される関数。
-		beforeSelectRow:function(rowid, e){
-        	return true;	//onSelectRowイベントへ移行する
-		},
 		//行を選択した後に実行される関数。
-		onSelectRow:function(rowid, status, e){
+		afterEditCell:function(rowid, status, e){
 			//確認ウィンドウを出す.
 			if(window.confirm(rowid + "番目のレコードを複製します。")){
-				var rowData= $(this).getRowData(rowid);		//選択した行を取得する
-				//サーバへ送信するデータを作成する
-				var sendData = createOrderRecord(rowData, this, ZERO_PADDING_FIGURE);	
-				var self = this;							//テーブルへの参照を変数に入れておく
-				//DB保存用のクエリをセットする
-				sendData["db_setQuery"] = ORDER_INSERT_QUERY; 
-				
-				
-				//AJAX通信でサーバへ保存するレコードを送信する
-				$.ajax({
-					url:'../SaveJSONRecord',	//JSONでレコードを保存するサーブレットを呼ぶ
-					dataType:"json",			//JSONデータを返してもらう
-					async:false,				//同期通信を行う
-					method:"POST",				//POSTメソッドで通信する
-					data:{json:JSON.stringify(sendData)},	//作成したレコードを送信する
-					success:function(json, a, b, c){		//成功時の処理
-						alert(json.message);				//サーバから帰ってきたメッセージをダイアログに出す
-						$(self).trigger("reloadGrid");		//表を読み込み直す
-					},
-					error:function(xhr, status, error){			//エラー時の処理
-						alert(xhr.responseJSON.message);	//サーバから帰ってきたメッセージをダイアログに出す
-					}
-				});
+				insertOrderRecord(rowid, this);	//レコードを複製してDBに保存する
+			//キャンセルが選択されたら
+			} else {
+				//削除するかを問う
+				if(window.confirm(rowid + "番目のレコードを削除します。")){
+					deleteOrderRecord(rowid, this);	//レコードを削除する
+				} 
+			}
+		},
+		//セルを編集したら
+		afterSaveCell:function(rowid){
+			//確認ウィンドウを出す.
+			if(window.confirm(rowid + "番目のレコードを更新します。")){
+				updateOrderRecord(rowid, this);
 			}
 		}
 	};
