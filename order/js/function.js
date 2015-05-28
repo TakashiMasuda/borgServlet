@@ -6,7 +6,7 @@
  *  openButton : ダイアログを開くためのボタン
  * 戻り値:なし
  * 概要  :ダイアログを作る
- * 作成日 :2015.05.12
+ * 作成日 :2015.01.14
  * 作成者:T.Yamamoto
 */
 function createDialog(dialogName, openButton) {
@@ -33,7 +33,7 @@ function createDialog(dialogName, openButton) {
  * 引数  :なし
  * 戻り値:なし
  * 概要  :optionタグのvalue属性に値を入れる
- * 作成日 :2015.05.13
+ * 作成日 :2015.01.16
  * 作成者:T.Yamamoto
 */
 function setOptionValue() {
@@ -53,7 +53,7 @@ function setOptionValue() {
  *   link  		: href属性の値
  * 戻り値:なし
  * 概要  :追加ボタンのhref属性をセットする
- * 作成日 :2015.05.13
+ * 作成日 :2015.01.13
  * 作成者:T.Yamamoto
 */
 function setAddButtonLink(selector, link) {
@@ -66,7 +66,7 @@ function setAddButtonLink(selector, link) {
  * 引数 :なし
  * 戻り値:なし
  * 概要  :タブ機能を実装する
- * 作成日 :2015.05.13
+ * 作成日 :2015.01.13
  * 作成者:T.Yamamoto
 */
 function funcTab() {
@@ -94,7 +94,7 @@ function funcTab() {
  * 引数 :なし
  * 戻り値:なし
  * 概要  :カレンダー機能を実装する
- * 作成日 :2015.05.14
+ * 作成日 :2015.01.16
  * 作成者:T.Yamamoto
 */
 function setCalendar() {
@@ -140,7 +140,7 @@ var receivedAddEdit = {
  * 引数 :targetArray : name属性を設定するための値が入っている連想配列
  * 戻り値:なし
  * 概要  :databoxクラスにname属性を設定する
- * 作成日 :2015.05.14
+ * 作成日 :2015.01.15
  * 作成者:T.Yamamoto
 */
 function setName(targetArray) {

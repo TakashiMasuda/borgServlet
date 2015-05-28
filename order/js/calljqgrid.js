@@ -550,7 +550,7 @@
 	 * 引数  :string target:テーブルのクラス。
 	 * 戻り値:なし
 	 * 概要  :jqGridのテーブルを作成する。
-	 * 作成日 :2015.05.05
+	 * 作成日 :2015.01.14
 	 * 作成者:T.Masuda
 	*/
 	function makeGrid(target, postData){
