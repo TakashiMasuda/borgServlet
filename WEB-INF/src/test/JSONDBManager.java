@@ -28,10 +28,15 @@ public class JSONDBManager{
 	 * 設計者:H.Kaneko
 	 * 作成者:T.Masuda
 	 * 作成日:2015.05.15
+	 * 修正者:T.Masuda
+	 * 修正日:2015.06.09
+	 * 内容　:JSONのkeyとvalueをメンバに保存するようにしました
 	 */
 	class DB_ResultTree{
-		DB_ResultTree parent = null;	//このノード(インスタンス)の親
-		ResultSet db_result = null;		//DBの結果セット
+		DB_ResultTree parent = null;		//このノード(インスタンス)の親
+		Map<String, Object> json = null;	//カレントのJSONデータ
+		String keyData = "";				//メンバのjsonのキー
+		ResultSet db_result = null;			//DBの結果セット
 	}	
 	
 	
@@ -78,7 +83,7 @@ public class JSONDBManager{
 	    Map<String, Object> map = mapper.readValue(jsonString, Map.class);
 		
 	    this.json = map;	//Mapに変換されたJSONを返す
-	}	
+	}
 
 	/*
 	 * 関数名:String outputJSON(String jsonString, String key)
@@ -123,6 +128,9 @@ public class JSONDBManager{
 		db_resultTree.db_result = this.executeQuery(json, DB_GETQUERY);
 		//親子関係を構築する
 		db_resultTree.parent = dbrt_parent;
+		//カレントのJSONを保存する
+		db_resultTree.json = json;
+		db_resultTree.keyData = key;
 		
 		//db_resultTreeからkeyに該当するデータを取得する
 		String column = this.getDBColumn(key, db_resultTree);
@@ -207,12 +215,13 @@ public class JSONDBManager{
 		boolean retBoo = false;						//返却する真理値の変数を用意する
 		ResultSetMetaData rsm = rs.getMetaData();	//結果セットのメタデータを取得する
 		int ccount = rsm.getColumnCount();			//列の数を取得する
-		 
+		 		
 		//結果セットの列を走査する
 		for(int iLoop = 1 ;iLoop <= ccount ; iLoop ++){
 			//結果セットの列に指定した列名の列が存在する
 			if(columnName.equals(rsm.getColumnLabel(iLoop))){
 				retBoo = true;	//返す変数にtrueを格納する
+				break;			//追加
 			}
 		}
 			 
@@ -232,13 +241,31 @@ public class JSONDBManager{
 	 String getDBColumn(String key, DB_ResultTree dbrTree) throws SQLException {
 		//返却する、列の文字列を格納する変数を宣言、nullで初期化する
 		String column = null;
-		 
+		int columnNumber=0;		//取得対象が列の何行目かをセットする
+		//カラムからデミリタ文字「^」を探す　note:'列名^0'←開始キー名。ゼロ始まり。
+		//@add 2015.0609 H.Kaneko レコードの行数を指定できるように修正
+		if (dbrTree.parent != null && dbrTree.parent.keyData.contains("~")) {
+			//keyを~を境に分離する
+			String[] keyString = dbrTree.parent.keyData.split("~");
+			//デミリタを元に行数のトークンに分ける
+			columnNumber = Integer.parseInt(keyString[1]); //行数をセットする
+		}
+
 		//親がなくなるまでDBレコードツリーを操作する
 		for(;dbrTree != null;){
 			//dbrTreeに結果セットが登録されていれば
 			if(dbrTree.db_result!=null && checkColumn(dbrTree.db_result, key)){
+				
+				//行数分、行ポインタをシフトする
+				while(columnNumber > 0) {
+					dbrTree.db_result.next();
+					columnNumber--;
+				}
 				//カラムの値を取得する
 				column = dbrTree.db_result.getString(key);
+				//@add 2015.0609 T.Masuda ループが終わったら結果セットのポインタを先頭に戻すようにしました
+				dbrTree.db_result.beforeFirst();	//結果セットの行のポインタを先頭の前に戻す
+				dbrTree.db_result.next();			//結果セットの行のポインタを1行目に当てる
 				break;	//ループを抜ける
 			}
 			 
