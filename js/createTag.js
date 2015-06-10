@@ -129,6 +129,7 @@ function createTag(){
 	 * 概要  :JSON、DOMのトップノードを引数で指定して返す
 	 * 引数  :String key, String domNodeName
 	 * 返却値  :Object:JSON、DOMのトップノードをオブジェクトにまとめて返す
+	 * 設計者:H.Kaneko
 	 * 作成者:T.Masuda
 	 * 作成日:2015.06.09
 	 */
@@ -150,18 +151,18 @@ function createTag(){
 	 * 作成日:2015.02.20
 	 * 修正者:T.Masuda
 	 * 修正日:2015.06.09
-	 * 内容　:createTagに渡す値を取得するコードをサブ関数化しました
+	 * 内容　:createTagに渡す値を取得するコードをサブ関数化しました(指示者:H.Kaneko)
 	 */
 	this.outputTag = function(key, domNodeName, appendTo){
-		//@mod 2015.0609 T.Masuda JSON、DOMをオブジェクトにまとめて取得するようにしました
+		//@mod 2015.0609 T.Masuda JSON、DOMをオブジェクトにまとめて取得するようにしました(指示者:H.Kaneko)
 		var headNodes = this.readyCreateTag(key, domNodeName);
 		
-		//@mod 2015.0609 T.Masuda createTagの引数をオブジェクトから取得した値にしました
+		//@mod 2015.0609 T.Masuda createTagの引数をオブジェクトから取得した値にしました(指示者:H.Kaneko)
 		// createTagでキーに対応したHTMLのパーツを作成し、変数tagに格納する。
 		var tag = this.createTag(headNodes[STR_JSON], headNodes[STR_DOM]);
 		// パーツの作成に成功したならば
 		if(tag != null){
-			//@mod 2015.03.10 T.Masuda 第三引数appendToに対応しました。
+			//@mod 2015.03.10 T.Masuda 第三引数appendToに対応しました。(指示者:H.Kaneko)
 			//appendToが入力されていれば
 			if(appendTo != null){
 				//appendで、作成したタグをappendToに追加する。
@@ -171,7 +172,7 @@ function createTag(){
 				//appendで作成したタグをmainに追加する。
 				$('.main').append(tag);
 			}
-			//@mod 2015.03.10 T.Masuda ここまで変更しました。
+			//@mod 2015.03.10 T.Masuda ここまで変更しました。(指示者:H.Kaneko)
 		// パーツの作成に失敗したならば
 		} else{
 			//失敗のメッセージダイアログを出す。
@@ -665,10 +666,10 @@ function createTag(){
 		//テキスト編集用のタグを入れるタグのjQueryオブジェクトを生成、保存する。
 		var $values = $('.values', retDom);
 		//ループのカウント用にmapNodeの要素数を取得する。
-		var mapNodeLength = mapNode.length;
+		var mapNodeArrayLength = mapNode.length;
 		
 		//mapNodeを走査する。
-		for(var i = 0; i < mapNodeLength; i++){
+		for(var i = 0; i < mapNodeArrayLength; i++){
 			//編集用テキストエリアを追加する。name属性には_で区切ったキーを格納する。
 			$values.append($('<textarea></textarea>').addClass('editValue').val(mapNode[i]).attr('name', connectedKey));
 		}
@@ -980,44 +981,60 @@ function createTag(){
 	 * 作成日:2015.06.09
 	 */
 	this.createTagTable = function(mapNode, domNode){
+		//mapNodeからテーブル用のデータを取り出す
+		var mapNodeArray = mapNode.table;
 		//見出し行用のDOMを格納する変数を宣言する
 		var colNameNode = null;
 		//何度も使うため、テーブルのjQueryオブジェクトを生成して変数に格納しておく
 		var $table = $(domNode);
 		//mapNodeの要素数を取得する。
-		var mapNodeLength = mapNode.length;
+		var mapNodeArrayLength = mapNodeArray.length;
 		//レコードの列数を取得する
-		var mapObjectLength = Object.keys(mapNode[0]).length;
+		var mapObjectLength = Object.keys(mapNodeArray[0]).length;
+		//列設定データを格納するための変数を用意する
+		var columns = null;
+		
+		//列設定データが存在すれば
+		if(mapNode.config !== void(0) && mapNode.config.columns !== void(0)){
+			columns = mapNode.config.columns;	//列設定データを取得する
+		}
+
+		//テーブルの1行目のjQueryオブジェクトを生成し、変数に保存する。
+		//tableタグ直下に自動生成されるtbodyタグの取得をスキップするため、children関数を2度コールする
+		var $firstRow = $table.children().eq(0).children().eq(0);
+		
+		//配列のオブジェクト数分のdomNodeを作成する
+		for(var j = 1; j < mapObjectLength; j++){
+			//1行目の行の最初の子供(tdタグ)を必要なだけ増やす。
+			$firstRow.append($firstRow.children().eq(0).clone(false));
+		}
+
 		//配列のオブジェクト数分のdomNodeを作成する。最初から1行分のDOMが用意されているので、カウンターを1から開始する
-		for(var i = 1; i < mapNodeLength; i++){
+		for(var i = 1; i < mapNodeArrayLength; i++){
 			//テーブルに必要なだけの行を追加する
-			$table.append($('tr:first', $table).clone(false));
+			$table.append($firstRow.clone(false));
 		}
 
 		//mapNodeの要素数分ループする
-		for(var i = 0; i < mapNodeLength; i++){
-			var $row = $('tr', $table).eq(i);	//i番目の行を取得してjQueryオブジェクトに変換し、変数に格納する
-			//配列のオブジェクト数分のdomNodeを作成する
-			for(var j = 1; j < mapObjectLength; j++){
-				//必要なだけのセルを追加する。1行目の1番目のセルをコピーして、該当する行に追加していく
-				$row.append($('tr:first td:first', $table).clone(false));
-			}
+		for(var i = 0; i < mapNodeArrayLength; i++){
+			//i番目の行を取得してjQueryオブジェクトに変換し、変数に格納する
+			var $row = $table.children().eq(0).children().eq(i);
 			var j = 0;	//オブジェクト用ループ内でのカウンターを用意する
 			//テーブルの行に相当するオブジェクトを、テーブルに相当する配列から取得する
-			var mapObject = mapNode[i];
+			var mapObject = mapNodeArray[i];
 			//テーブルの行に相当するオブジェクトの要素分ループする
 			for(key in mapObject){
 				if(i == 0){
 					//最初のオブジェクトなら
 					if(colNameNode == null){
 						//見出し行にセルを追加する
-						colNameNode = $('tr:first', $table).clone(false);
+						colNameNode = $firstRow.clone(false);
 					}
 					//見出し行のセルに値を入れる
-					$('td', colNameNode).eq(j).text(key);
+					$(colNameNode).children().eq(j).text(this.getColumnName(columns, key));
 				}
-				//セルにテキストを追加していく
-				$('td', $row).eq(j++).text(mapObject[key]);
+				//セルにクラスとテキストを追加していく
+				$row.children().eq(j++).text(mapObject[key]).addClass(this.getClassName(columns, key));
 			}
 		}
 		
@@ -1027,5 +1044,52 @@ function createTag(){
 		return $table;	//作成したテーブルを返す
 	}
 	
+	/*
+	 * 関数名:getColumnName
+	 * 概要  :列設定のJSONから列のカラム名を取得する。見出し行に日本語の列名を設定するために使う
+	 * 引数  :Object mapNode:列データを定義したオブジェクト
+	 * 　　  :String key:列名
+	 * 返却値 :String:取得した列名を返す。取得できなければkeyを返す
+	 * 設計者:H.Kaneko
+	 * 作成者:T.Masuda
+	 * 作成日:2015.06.10
+	 */
+	this.getColumnName = function(mapNode, key){
+		//keyから該当する列名をmapNodeから取得する
+		var ret = "";
+		//mapNodeから取得した値を格納する変数を用意する
+		var mapReturn = mapNode[key];
+			//取得に成功した
+			if(mapReturn !== void(0)){
+				ret = mapReturn;
+			}
+		
+		//列名を取得して返す。取得できなければキーを返す
+		return ret['columnName'] !== void(0)? ret['columnName']: key;
+	}
+	
+	/*
+	 * 関数名:getClassName
+	 * 概要  :列設定のJSONからセルに設定するクラス名を取得する
+	 * 引数  :Object mapNode:列データを定義したオブジェクト
+	 * 　　  :String key:列名
+	 * 返却値 :String:取得した列名を返す。取得できなけれ空文字を出す
+	 * 設計者:H.Kaneko
+	 * 作成者:T.Masuda
+	 * 作成日:2015.06.10
+	 */
+	this.getClassName = function(mapNode, key){
+		//keyから該当する列名をmapNodeから取得する
+		var ret = "";
+		//mapNodeから取得した値を格納する変数を用意する
+		var mapReturn = mapNode[key];
+			//取得に成功した
+			if(mapReturn !== void(0)){
+				ret = mapReturn;
+			}
+		
+		//列名を取得して返す。取得できなければ空文字を返す
+		return ret['className'] !== void(0)? ret['className']: "";
+	}
 }
 	

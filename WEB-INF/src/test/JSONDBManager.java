@@ -6,10 +6,14 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -280,7 +284,7 @@ public class JSONDBManager{
 	 * 関数名:String getListJSON(Map<String, Object> json)
 	 * 概要  :DBからリストに用いるレコード群を取得し文字列にしてJSON文字列に追加する。
 	 * 引数  :Map<String, Object> json:JSONのオブジェクト。
-	 * 返却値  :なし
+	 * 返却値  :String:JSON配列の文字列を返す
 	 * 設計者:H.Kaneko
 	 * 作成者:T.Masuda
 	 * 作成日:2015.05.15
@@ -326,6 +330,30 @@ public class JSONDBManager{
 		strAll = "["+strBlock+"]";
 		
 		return strAll;	//作成した文字列を返す
+	 }
+	 
+	 /*
+	  * 関数名:String getListJSONPlusKey(Map<String, Object> json, String key)
+	  * 概要  :getListJSONで作成した配列をオブジェクトで囲む。
+	  * 引数  :Map<String, Object> json:JSONのオブジェクト。
+	  * 　　  :String key:キー名
+	  * 返却値  :String:オブジェクトで囲んだ配列のJSON文字列を返す
+	  * 設計者:H.Kaneko
+	  * 作成者:T.Masuda
+	  * 作成日:2015.06.10
+	  */
+	 String getListJSONPlusKey(Map<String, Object> json, String key) throws SQLException, JsonParseException, JsonMappingException, IOException {
+		 //返却する文字列をオブジェクトに格納する
+		 String retArray = this.getListJSON(json);
+		 //JSON変換用のクラスのインスタンスを用意する
+		 ObjectMapper mapper = new ObjectMapper();
+		 //JSON配列をArrayListに変換する
+		 List list = mapper.readValue(retArray, ArrayList.class);
+		 json.put(key, list);	//JSON配列を引数のJSONに追加する
+		 
+		 retArray = mapper.writeValueAsString(json);
+		 
+		 return retArray;	//作成した文字列を返す
 	 }
 }
 
