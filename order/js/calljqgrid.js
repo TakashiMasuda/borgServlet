@@ -399,7 +399,7 @@
         //@add 2015.0602 T.Masuda チェックボックスを追加 
         multiselect: true,	//jqGrid側でチェックボックスを用意する
         //行を選択した後に実行される関数。
-		afterEditCell:function(rowid, status, e){
+		beforeEditCell:function(rowid, status, e){
 			//確認ウィンドウを出す.
 			if(window.confirm(rowid + "番目のレコードを複製します。")){
 				insertOrderRecord(rowid, this);	//レコードを複製してDBに保存する
