@@ -243,12 +243,12 @@ public class JSONDBManager{
 		String column = null;
 		int columnNumber=0;		//取得対象が列の何行目かをセットする
 		//カラムからデミリタ文字「^」を探す　note:'列名^0'←開始キー名。ゼロ始まり。
-		//@add 2015.0609 H.Kaneko レコードの行数を指定できるように修正
+		//dbrTreeに親がいてかつ、キーに区切り文字「~」が含まれていれば
 		if (dbrTree.parent != null && dbrTree.parent.keyData.contains("~")) {
 			//keyを~を境に分離する
 			String[] keyString = dbrTree.parent.keyData.split("~");
-			//デミリタを元に行数のトークンに分ける
-			columnNumber = Integer.parseInt(keyString[1]); //行数をセットする
+			//デリミタを元に行数のトークンに分ける
+			columnNumber = Integer.parseInt(keyString[1]); //シフトする結果セットの行数をセットする
 		}
 
 		//親がなくなるまでDBレコードツリーを操作する
@@ -257,9 +257,10 @@ public class JSONDBManager{
 			if(dbrTree.db_result!=null && checkColumn(dbrTree.db_result, key)){
 				
 				//行数分、行ポインタをシフトする
+				//結果セットの行のポインタが必要な分だけシフトし終わるまで繰り返す
 				while(columnNumber > 0) {
-					dbrTree.db_result.next();
-					columnNumber--;
+					dbrTree.db_result.next();	//結果セットのポイントを次のレコードに移動する
+					columnNumber--;				//行ポインタをシフトのカウントを1つ減らす
 				}
 				//カラムの値を取得する
 				column = dbrTree.db_result.getString(key);
