@@ -2,9 +2,9 @@
 
 //createTagコール時の引数として使う定数。
 CREATETAG_FIRST = -1;
-//「JSON」と「DOM」の文字列
-JSON = 'json';
-DOM = 'dom';
+//@add 2015.0610 T,Masuda「JSON」と「DOM」の文字列の定数を追加しました
+STR_JSON = 'json';
+STR_DOM = 'dom';
 
 function createTag(){
 	this.json = null;			//JSONデータを格納する変数。
@@ -34,8 +34,9 @@ function createTag(){
 	this.getJsonFile = function(jsonPath, map, key){
 		//一時的に値を保存する変数tmpを宣言する。
 		var tmp;
+		
 		//mapに何も入力されていなければ、空の連想配列を代入する。入力されていればJSON文字列に変換する
-		map = map === void(0) ? {blank:""} : JSON.stringify(map);
+		map = map === void(0) ? {json:""} : JSON.stringify(map);
 		//Ajax通信でjsonファイルを取得する。
 		$.ajax({
 			//jsonファイルのURLを指定する。
@@ -47,7 +48,7 @@ function createTag(){
 			//同期通信を行う。
 			async: false,
 			//サーバへ連想配列を送信する。
-			data: map,
+			data: {json:map},
 			//キャッシュを無効にする。
 			cache:false,
 			//通信完了時の処理を記述する。
@@ -157,7 +158,7 @@ function createTag(){
 		
 		//@mod 2015.0609 T.Masuda createTagの引数をオブジェクトから取得した値にしました
 		// createTagでキーに対応したHTMLのパーツを作成し、変数tagに格納する。
-		var tag = this.createTag(headNodes[JSON], headNodes[DOM]);
+		var tag = this.createTag(headNodes[STR_JSON], headNodes[STR_DOM]);
 		// パーツの作成に成功したならば
 		if(tag != null){
 			//@mod 2015.03.10 T.Masuda 第三引数appendToに対応しました。
@@ -945,11 +946,11 @@ function createTag(){
 	 * 作成日:2015.06.09
 	 */
 	this.outputTagTable = function(key, appendTo){
-		//@mod 2015.0609 T.Masuda JSON、DOMをオブジェクトにまとめて取得するようにしました
+		//取得するJSONとDOMの先頭のノードをオブジェクトにまとめて取得する
 		var headNodes = this.readyCreateTag(key, key);
 		
-		// createTagでキーに対応したHTMLのパーツを作成し、変数tagに格納する。
-		var tag = this.createTagTable(headNodes[JSON], headNodes[DOM]);
+		// createTagTableでテーブルを作成し、変数tagに格納する。
+		var tag = this.createTagTable(headNodes[STR_JSON], headNodes[STR_DOM]);
 		// パーツの作成に成功したならば
 		if(tag != null){
 			//appendToが入力されていれば
@@ -970,61 +971,61 @@ function createTag(){
 
 	/*
 	 * 関数名:createTagTable
-	 * 概要  :JSONからレコード数可変のテーブルを作る
-	 * 引数  :Map jsonArray:JSON配列
+	 * 概要  :配列と、その配列に格納された行に相当するオブジェクト群からレコード数可変のテーブルを作る
+	 * 引数  :Array mapNode:テーブルのデータを格納した配列
 	 * 　　  :Element domNode:テーブルのHTML
 	 * 返却値 :Element:作成したテーブルのDOMを返す
 	 * 設計者:H.Kaneko
 	 * 作成者:T.Masuda
 	 * 作成日:2015.06.09
 	 */
-	this.createTagTable = function(jsonArray, domNode){
+	this.createTagTable = function(mapNode, domNode){
 		//見出し行用のDOMを格納する変数を宣言する
 		var colNameNode = null;
-		//jQueryオブジェクト生成を逐一しないように、テーブルのDOMを取得する
+		//何度も使うため、テーブルのjQueryオブジェクトを生成して変数に格納しておく
 		var $table = $(domNode);
-		//jsonArrayの要素数を取得する。
-		var jsonArrayLength = jsonArray.length;
+		//mapNodeの要素数を取得する。
+		var mapNodeLength = mapNode.length;
 		//レコードの列数を取得する
-		var jsonObjectLength = Object.keys(jsonArray[0]).length;
-		//配列のオブジェクト数分のdomNodeを作成する。見出し行のDOMは別途作成するので1から始める
-		for(var i = 1; i < jsonArrayLength; i++){
+		var mapObjectLength = Object.keys(mapNode[0]).length;
+		//配列のオブジェクト数分のdomNodeを作成する。最初から1行分のDOMが用意されているので、カウンターを1から開始する
+		for(var i = 1; i < mapNodeLength; i++){
 			//テーブルに必要なだけの行を追加する
-			$table.append($('tr', $table).clone(false));
+			$table.append($('tr:first', $table).clone(false));
 		}
-		
-		//見出し行にもDOMをセットする
-		colNameNode = $('tr', $table).clone(false);
-		
-		//jsonArrayの要素数分ループする
-		for(var i = 0; i < jsonArrayLength; i++){
-			//配列のオブジェクト数分のdomNodeを作成する。見出し行のDOMは別途作成するので1から始める
-			for(var i = 1; i < jsonArrayLength; i++){
-				//テーブルに必要なだけの行を追加する
-				$('tr', $table).append($('td:first', $table).clone(false));
+
+		//mapNodeの要素数分ループする
+		for(var i = 0; i < mapNodeLength; i++){
+			var $row = $('tr', $table).eq(i);	//i番目の行を取得してjQueryオブジェクトに変換し、変数に格納する
+			//配列のオブジェクト数分のdomNodeを作成する
+			for(var j = 1; j < mapObjectLength; j++){
+				//必要なだけのセルを追加する。1行目の1番目のセルをコピーして、該当する行に追加していく
+				$row.append($('tr:first td:first', $table).clone(false));
 			}
 			var j = 0;	//オブジェクト用ループ内でのカウンターを用意する
-			var $row = $('tr', $table).eq(i);	//j番目の行を取得してjQueryオブジェクトに変換し、変数に格納する
-			//オブジェクトの要素分ループする
-			for(key in jsonArray[i]){
-				if(i = 0){
+			//テーブルの行に相当するオブジェクトを、テーブルに相当する配列から取得する
+			var mapObject = mapNode[i];
+			//テーブルの行に相当するオブジェクトの要素分ループする
+			for(key in mapObject){
+				if(i == 0){
 					//最初のオブジェクトなら
 					if(colNameNode == null){
 						//見出し行にセルを追加する
 						colNameNode = $('tr:first', $table).clone(false);
 					}
 					//見出し行のセルに値を入れる
-					$('td', colNodeName).eq(j).text(key);
+					$('td', colNameNode).eq(j).text(key);
 				}
 				//セルにテキストを追加していく
-				$('td', $row).eq(j++).text(key);
+				$('td', $row).eq(j++).text(mapObject[key]);
 			}
 		}
 		
 		//colNameNodeを行の先頭に配置する
-		$table.prepend(colNodeName);
+		$table.prepend(colNameNode);
 		
 		return $table;	//作成したテーブルを返す
-	}	
+	}
+	
 }
 	
