@@ -29,12 +29,14 @@
 			creator.getJsonFile('json/createTagTable.json');
 			//テーブル用のJSON配列を取得する
 			creator.getJsonFile('../GetJSONArray', creator.json['jqgrid_post'], 'createTagTable');
+			creator.getJsonFile('../GetJSONArray', creator.json['createTagTable'], 'createTagTable');
 
 			// 受発注画面に配置するdomを取得する
 			creator.getDomFile('source/template.html');
 
 			//createTagTableによりテーブルを作成する
 			creator.outputTagTable('createTagTable','.main');
+			creator.outputTagTable('createTagTable', 'createTagTable', '.main');
 		});
 
 		//JavaScriptのコード記述を終える

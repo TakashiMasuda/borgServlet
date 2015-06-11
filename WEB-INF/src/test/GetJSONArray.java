@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 
 
 
+
 //サーブレットでのエラー用の例外クラスをインポートする。
 import javax.servlet.ServletException;
 //サーブレットのクラス群をインポートする。
@@ -21,8 +22,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 //サーブレットのGetJSONクラスを宣言する。
 public class GetJSONArray extends HttpServlet {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//tableの文字列の定数を用意する
+	public static final String STR_TABLE = "table";
+	
 	//postメソッドで通信する。
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		    throws ServletException, IOException {
 		//クライアントから送信されたJSONのキーとJSON文字列を取得する。
@@ -39,15 +47,9 @@ public class GetJSONArray extends HttpServlet {
 			jdbm.conn = DBManager.getConnection();
 			//JSON文字列を解析して、jdbmのメンバに格納する
 			jdbm.getJSONMap(json);
-			//取得したJSON連想配列を走査する
-			for(Entry<String, Object> key: jdbm.json.entrySet()){
-				//キーの値がオブジェクトであれば
-				if(key.getValue() instanceof LinkedHashMap){
-					//レコードのJSONを作る
-					retArrayString += jdbm.getListJSON((Map<String, Object>) key.getValue());
-				}
-			}
-			//SQL例外のcatchブロック
+			//レコードのJSONを作り、クライアントから受け取ったJSONに追加する。第2匹数で追加するキーを指定しておく
+			retArrayString = jdbm.getListJSONPlusKey(jdbm.json, STR_TABLE);
+		//SQL例外のcatchブロック
 		} catch (SQLException e) {
 			//例外時にログを長洲
 			e.printStackTrace();
