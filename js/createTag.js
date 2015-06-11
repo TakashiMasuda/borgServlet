@@ -64,14 +64,15 @@ function createTag(){
 		});
 
 		//@mod 2015.0609 T.Masuda 条件分岐を追加しました
-		//キーが入力されていたら
-		if(key !== void(0)){
+		//フィールドのメンバのjsonが空であれば
+		if(this.json == null){
+			//keyが入力されていたら、オブジェクトを生成し、その中にtmpを格納する。
+			//そうでなければ、そのままtmpを格納する
+			this.json = key !== void(0) && key!= ''?{key:tmp}:tmp;
+			//キーが入力されていたら
+		} else if(key !== void(0)){
 			//指定したキーにJSONを格納する
 			this.json[key] = tmp;
-		//フィールドのメンバのjsonが空であれば
-		} else if(this.json == null){
-			//クラスのメンバのjsonにtmpの連想配列を格納する。
-			this.json = tmp;
 		//既にJSONが格納されていたら
 		} else {
 			//連想配列を連結する。
@@ -940,15 +941,16 @@ function createTag(){
 	 * 関数名:this.outputTagTable = function(key, appendTo)
 	 * 概要  :JSON配列からテーブルを作り、画面に追加する
 	 * 引数  :String key:JSON配列を格納しているキー
+	 * 	　　 :String domNodeName:テーブルのクラス名
 	 * 	　　 :String appendTo:作成したテーブルの追加先
 	 * 返却値  :なし
 	 * 設計者:H.Kaneko
 	 * 作成者:T.Masuda
 	 * 作成日:2015.06.09
 	 */
-	this.outputTagTable = function(key, appendTo){
+	this.outputTagTable = function(key, domNodeName, appendTo){
 		//取得するJSONとDOMの先頭のノードをオブジェクトにまとめて取得する
-		var headNodes = this.readyCreateTag(key, key);
+		var headNodes = this.readyCreateTag(key, domNodeName);
 		
 		// createTagTableでテーブルを作成し、変数tagに格納する。
 		var tag = this.createTagTable(headNodes[STR_JSON], headNodes[STR_DOM]);
@@ -991,12 +993,12 @@ function createTag(){
 		var mapNodeArrayLength = mapNodeArray.length;
 		//レコードの列数を取得する
 		var mapObjectLength = Object.keys(mapNodeArray[0]).length;
-		//列設定データを格納するための変数を用意する
-		var columns = null;
+		//設定データを格納するための変数を用意する
+		var config = null;
 		
-		//列設定データが存在すれば
-		if(mapNode.config !== void(0) && mapNode.config.columns !== void(0)){
-			columns = mapNode.config.columns;	//列設定データを取得する
+		//設定データが存在すれば
+		if(mapNode.config !== void(0)){
+			config = mapNode.config;	//列設定データを取得する
 		}
 
 		//テーブルの1行目のjQueryオブジェクトを生成し、変数に保存する。
@@ -1015,6 +1017,8 @@ function createTag(){
 			$table.append($firstRow.clone(false));
 		}
 
+		//見出し行にセルを追加する
+		colNameNode = $firstRow.clone(false);
 		//mapNodeの要素数分ループする
 		for(var i = 0; i < mapNodeArrayLength; i++){
 			//i番目の行を取得してjQueryオブジェクトに変換し、変数に格納する
@@ -1025,16 +1029,11 @@ function createTag(){
 			//テーブルの行に相当するオブジェクトの要素分ループする
 			for(key in mapObject){
 				if(i == 0){
-					//最初のオブジェクトなら
-					if(colNameNode == null){
-						//見出し行にセルを追加する
-						colNameNode = $firstRow.clone(false);
-					}
 					//見出し行のセルに値を入れる
-					$(colNameNode).children().eq(j).text(this.getColumnName(columns, key));
+					$(colNameNode).children().eq(j).text(this.getColumnName(config, key));
 				}
 				//セルにクラスとテキストを追加していく
-				$row.children().eq(j++).text(mapObject[key]).addClass(this.getClassName(columns, key));
+				$row.children().eq(j++).text(mapObject[key]).addClass(this.getClassName(config, key));
 			}
 		}
 		
@@ -1047,21 +1046,20 @@ function createTag(){
 	/*
 	 * 関数名:getColumnName
 	 * 概要  :列設定のJSONから列のカラム名を取得する。見出し行に日本語の列名を設定するために使う
-	 * 引数  :Object mapNode:列データを定義したオブジェクト
+	 * 引数  :Object configNode:設定データを定義したオブジェクト
 	 * 　　  :String key:列名
 	 * 返却値 :String:取得した列名を返す。取得できなければkeyを返す
 	 * 設計者:H.Kaneko
 	 * 作成者:T.Masuda
 	 * 作成日:2015.06.10
 	 */
-	this.getColumnName = function(mapNode, key){
-		//keyから該当する列名をmapNodeから取得する
-		var ret = "";
-		//mapNodeから取得した値を格納する変数を用意する
-		var mapReturn = mapNode[key];
+	this.getColumnName = function(configNode, key){
+		var ret = "";	//返却する値を持つオブジェクトを格納する変数を準備する
+		//keyに該当する列のオブジェクトを引数のオブジェクトから取得する
+		var oneColumn = configNode.columns[key];
 			//取得に成功した
-			if(mapReturn !== void(0)){
-				ret = mapReturn;
+			if(oneColumn !== void(0)){
+				ret = oneColumn;	//列のオブジェクトを返却用の変数に格納する
 			}
 		
 		//列名を取得して返す。取得できなければキーを返す
@@ -1071,22 +1069,21 @@ function createTag(){
 	/*
 	 * 関数名:getClassName
 	 * 概要  :列設定のJSONからセルに設定するクラス名を取得する
-	 * 引数  :Object mapNode:列データを定義したオブジェクト
+	 * 引数  :Object configNode:設定データを定義したオブジェクト
 	 * 　　  :String key:列名
 	 * 返却値 :String:取得した列名を返す。取得できなけれ空文字を出す
 	 * 設計者:H.Kaneko
 	 * 作成者:T.Masuda
 	 * 作成日:2015.06.10
 	 */
-	this.getClassName = function(mapNode, key){
-		//keyから該当する列名をmapNodeから取得する
-		var ret = "";
-		//mapNodeから取得した値を格納する変数を用意する
-		var mapReturn = mapNode[key];
-			//取得に成功した
-			if(mapReturn !== void(0)){
-				ret = mapReturn;
-			}
+	this.getClassName = function(configNode, key){
+		var ret = "";	//返却する値を持つオブジェクトを格納する変数を準備する
+		//keyに該当する列のオブジェクトを引数のオブジェクトから取得する
+		var oneColumn = configNode.columns[key];
+		//取得に成功した
+		if(oneColumn !== void(0)){
+			ret = oneColumn;	//列のオブジェクトを返却用の変数に格納する
+		}
 		
 		//列名を取得して返す。取得できなければ空文字を返す
 		return ret['className'] !== void(0)? ret['className']: "";
