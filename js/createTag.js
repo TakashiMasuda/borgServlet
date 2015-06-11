@@ -220,8 +220,9 @@ function createTag(){
 			} else if(typeof mapNode == 'object'){
 				//カレントの子DOMノードからkeyを持つDOMノードを取得する。
 				var domNode = this.getDomChild(key, curDomNode);
-				//domNodeがnullでなければ
-				if(domNode){
+				//domNodeがundefinedでなければ
+				//@mod 2015.0611 T.Masuda 「DOMが取得できなかったとき」の条件文を修正しました
+				if(domNode[0] !== void(0)){
 					//子ノードへ再帰する。
 					this.createTag(mapNode, domNode);
 				}
